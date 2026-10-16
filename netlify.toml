@@ -1,0 +1,20 @@
+# Netlify configuration for Slow the Rush to YRO
+# A static site: no build step, publish the repo root.
+
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Short cache so edits show up within minutes of a deploy;
+# Netlify's CDN invalidates on each deploy anyway.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

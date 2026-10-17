@@ -327,7 +327,7 @@ svg .fgtext{fill:var(--fg)}
 <h2 data-t="C1-002">Twelve months to write the rules.</h2>
 <p class="lede" data-t="C1-003">Applications for the first year-round classes open in October 2027. What has been published about the plan is shorter than the list of questions that remains.</p>
 <div aria-label="A timeline from early 2026 to late 2028. Work already done sits to the left of today. Work still to do starts today and runs past the point by which the design must be set, past the application opening, offers and the first classes." class="fig">
-<svg role="img" viewbox="0 0 760 330">
+<svg role="img" viewbox="0 0 760 336">
 <line class="ax" x1="40" x2="720" y1="96" y2="96"></line>
 <g id="ticks"></g>
 <g font-size="9">
@@ -356,12 +356,12 @@ svg .fgtext{fill:var(--fg)}
 </g>
 <text data-t="C1-018" text-anchor="end" x="214" y="162">WORK DONE · 6 ITEMS</text>
 <g id="done-bar"></g>
-<path class="cpline" d="M222 212 L222 206 L740 206 L740 212" stroke-width="1"></path>
-<text class="redtext" data-t="C1-019" x="426" y="200">← ALL OF THIS WORK MUST BE DONE BY HERE</text>
-<text class="redtext" data-t="C1-020" x="222" y="234">WORK STILL TO DO · 26 ITEMS, ONE BLOCK EACH · A COUNT, NOT A DURATION</text>
-<path class="cpline" d="M532 230 H562 V214" stroke-width="1.2"></path><path class="cpfill" d="M557 215 L562 206 L567 215 Z"></path>
+<text class="redtext" data-t="C1-020" x="222" y="206">WORK STILL TO DO · 26 ITEMS, ONE BLOCK EACH · A COUNT, NOT A DURATION</text>
+<path class="cpline" d="M706 202 H730 V214" stroke-width="1.2"></path><path class="cpfill" d="M725 213 L730 222 L735 213 Z"></path>
+<text class="redtext" data-t="C1-019" x="426" y="232">← ALL OF THIS WORK MUST BE DONE BY HERE</text>
+<path class="cpline" d="M222 244 L222 238 L740 238 L740 244" stroke-width="1"></path>
 <g id="todo-bar"></g>
-<text class="redtext" data-t="C1-021" text-anchor="end" x="740" y="304">AND COUNTING →</text>
+<text class="redtext" data-t="C1-021" text-anchor="end" x="740" y="310">AND COUNTING →</text>
 </svg>
 </div>
 <p class="cap" data-t="C1-022">Readiness has not been demonstrated against the March 12, 2027 catalog deadline or the October 2027 application opening. Blocks count items on the record below; they are not estimates of time.</p>
@@ -602,7 +602,7 @@ svg .fgtext{fill:var(--fg)}
 <h3 data-t="PC-056">Questions not raised in public</h3>
 <p class="colcount" data-t="PC-057">18 questions</p>
 <div class="tiles">
-<div class="tile absent" data-t="PC-058"><span class="k" data-t="PC-059">Departments</span>Who teaches the summer sections of the service courses, in departments that are not on the list?</div>
+<div class="tile absent" data-t="PC-058"><span class="k" data-t="PC-059">Departments</span>Who teaches the summer sections of the service courses, in departments that have not converted to YRO and still operate only Fall–Spring?</div>
 <div class="tile absent" data-t="PC-060"><span class="k" data-t="PC-061">Departments</span>How do lab and studio sequences run when one student in four or five is away in any fall or spring, and more than half in summer?</div>
 <div class="tile absent" data-t="PC-062"><span class="k" data-t="PC-063">Departments</span>What happens to curriculum review? Faculty report being told it may be suspended to meet the timeline.</div>
 <div class="tile absent" data-t="PC-064"><span class="k" data-t="PC-065">Departments</span>Advising, orientation and first-year programs for two entry points a year</div>
@@ -1009,7 +1009,7 @@ svg .fgtext{fill:var(--fg)}
     var w=26, gap=2, s='', x=220-6*(w+gap)+gap;
     for(var i=0;i<6;i++){ s+='<rect class="doneblk" x="'+x+'" y="170" width="'+w+'" height="26"/>'; x+=w+gap; }
     done.innerHTML=s; s=''; x=222;
-    for(var j=0;j<26 && x<745;j++){ s+='<rect class="cpfill" x="'+x+'" y="242" width="'+w+'" height="26"/>'; x+=w+gap; }
+    for(var j=0;j<26 && x<745;j++){ s+='<rect class="cpfill" x="'+x+'" y="250" width="'+w+'" height="26"/>'; x+=w+gap; }
     todo.innerHTML=s;
   })();
 

@@ -200,6 +200,19 @@ sup.fn{color:var(--cp);font-family:var(--mono);font-size:.7em;margin-left:1px}
 .four{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:8px;max-width:60ch}
 .four li{display:grid;grid-template-columns:5.5ch 1fr;gap:12px;font-size:1rem;line-height:1.4;align-items:baseline}
 .four li b{font-family:var(--mono);font-weight:500;font-size:.8rem;letter-spacing:.04em;color:var(--cp)}
+/* take-action modal */
+.modal{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-left,0px));background:rgba(0,0,0,.55)}
+.modal-box{background:var(--bg-2);color:var(--fg);border:1px solid var(--line-2);border-radius:2px;max-width:640px;width:100%;max-height:90vh;overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 16px 14px 22px;border-bottom:1px solid var(--line)}
+.modal-head .mono{color:var(--cp)}
+.modal-lede{padding:20px 22px 6px;font-size:1.05rem}
+.contacts{list-style:none;margin:0;padding:6px 22px 22px;display:grid;gap:12px}
+.contacts li{display:grid;gap:2px;font-size:.98rem;line-height:1.45;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.contacts li:last-child{border-bottom:0}
+.contacts b{font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:500}
+.contacts span{color:var(--mute);overflow-wrap:anywhere}
+.contacts a{color:var(--fg);text-decoration-color:var(--line-2);text-underline-offset:3px}
+.contacts a:hover{text-decoration-color:var(--cp)}
 /* staffing dots */
 .dots{display:grid;gap:14px;margin-top:18px}
 .dotrow{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center}
@@ -304,7 +317,7 @@ svg .fgtext{fill:var(--fg)}
 <a class="brand" data-t="HD-001" href="#top"><span>SLOW</span> THE RUSH TO <span>YRO</span></a>
 <div class="top-right">
 <span class="mono byl" data-t="HD-002">Prepared by Cal Poly faculty</span>
-<a class="btn primary" data-survey="" data-t="HD-003" href="#">Take the survey <span class="arr">→</span></a>
+<a class="btn primary" data-survey="" data-t="HD-003" href="#">Take the survey <span class="arr">→</span></a> <button class="btn primary" data-action="" type="button">Take action <span class="arr">→</span></button>
 </div>
 </div>
 </header>
@@ -315,7 +328,7 @@ svg .fgtext{fill:var(--fg)}
 <p class="dek" data-t="HE-003">Cal Poly plans to launch year-round operations in fall 2028, a project that requires redesigning the calendar, the curriculum, housing, financial aid and staffing for every student. <b>Two years out, no budget, no staffing plan and no financial-aid model has been published and the multi-year process of curriculum redesign has only just begun.</b></p>
 <p class="standing" data-t="HE-004">The authors of this webpage cannot claim to speak for the entire campus community. However, based on recent meetings of the Academic Senate, we are confident that the views expressed on this website accurately represent those of a large portion of the faculty. Academic Senate reports from every college on campus were uniformly and overwhelmingly against YRO and the rush to implement it.</p>
 <div class="byline">
-<a class="btn primary" data-survey="" data-t="HE-005" href="#">Take the survey <span class="arr">→</span></a>
+<a class="btn primary" data-survey="" data-t="HE-005" href="#">Take the survey <span class="arr">→</span></a> <button class="btn primary" data-action="" type="button">Take action <span class="arr">→</span></button>
 <a class="btn" data-t="HE-006" href="#clock-sec">Read the record <span class="arr">↓</span></a>
 </div>
 <p class="mono" data-t="HE-007" style="margin-top:34px">Open any record for details and sources.</p>
@@ -514,7 +527,7 @@ svg .fgtext{fill:var(--fg)}
 <h2 data-t="S5-002">What do you think of all this?</h2>
 <p class="lede" data-t="S5-003">The survey takes 3 minutes. One response per person; your email is kept separate from your answers.</p>
 <div class="ctas">
-<a class="btn primary" data-survey="" data-t="S5-004" href="#">Take the survey <span class="arr">→</span></a>
+<a class="btn primary" data-survey="" data-t="S5-004" href="#">Take the survey <span class="arr">→</span></a> <button class="btn primary" data-action="" type="button">Take action <span class="arr">→</span></button>
 <button class="btn" data-open="sayso" data-t="S5-005">What else can be done <span class="arr">→</span></button>
 </div>
 </section>
@@ -525,6 +538,20 @@ svg .fgtext{fill:var(--fg)}
 </div>
 </footer>
 </main>
+<div class="modal" id="action-modal" hidden role="dialog" aria-modal="true" aria-labelledby="action-title">
+<div class="modal-box">
+<div class="modal-head"><span class="mono">Take action</span><button aria-label="Close" class="close" data-action-close="" type="button">×</button></div>
+<p class="modal-lede" id="action-title">Reach out to express your concerns and ask for more information:</p>
+<ul class="contacts">
+<li><b>Cal Poly President Jeff Armstrong</b><span><a href="mailto:jarmstro@calpoly.edu">jarmstro@calpoly.edu</a> and <a href="mailto:presidentsoffice@calpoly.edu">presidentsoffice@calpoly.edu</a>; 805-756-6000</span></li>
+<li><b>CSU Chancellor Mildred García</b><span><a href="mailto:mgarcia@calstate.edu">mgarcia@calstate.edu</a>, <a href="mailto:csu-chancellor@calstate.edu">csu-chancellor@calstate.edu</a>; (562) 951-4000</span></li>
+<li><b>CSU Trustees</b><span><a href="mailto:trusteesoffice@calstate.edu">trusteesoffice@calstate.edu</a></span></li>
+<li><b>Sen. John Laird</b><span><a href="mailto:senator.laird@senate.ca.gov">senator.laird@senate.ca.gov</a>; (805) 549-3784; or <a href="https://sd17.senate.ca.gov/contact-us" rel="noopener" target="_blank">here</a></span></li>
+<li><b>Asm. Dawn Addis</b><span><a href="mailto:Assemblymember.Addis@assembly.ca.gov">Assemblymember.Addis@assembly.ca.gov</a>; (805) 549-3001; or <a href="https://addis.asmdc.org/contact" rel="noopener" target="_blank">here</a></span></li>
+<li><b>SLO City Council</b><span><a href="mailto:emailcouncil@slocity.org">emailcouncil@slocity.org</a>; (805) 781-7114</span></li>
+</ul>
+</div>
+</div>
 <div class="scrim" data-close=""></div>
 <!-- PANEL: CLOCK -->
 <aside aria-labelledby="h-clock" aria-modal="true" class="panel" hidden="" id="p-clock" role="dialog">
@@ -640,7 +667,7 @@ svg .fgtext{fill:var(--fg)}
 <h3 data-t="PB-003">How it would be paid for</h3>
 <p data-t="PB-004">The plan was presented to the faculty as a revenue source: growth whose surplus would fund the Teacher-Scholar Model and other high-impact practices. Within the assumptions and cases documented in a faculty financial analysis built on the public evidence, no configuration consistent with an equal-stature summer produces the $12–16 million a year the Teacher-Scholar Model would need, and most configurations lose money. The levers that close the gap in that analysis are state growth funding at marginal cost, indexed and sustained, or full-cost admission. This is a conditional model result, not proof that every feasible financing arrangement requires self-support.</p>
 <p data-t="PB-061">Faculty have been told by the administration, in college YRO planning meetings, that self-support enrollment is part of the funding model: students admitted to the same major, on the same calendar, through Extended Education at a per-unit fee set to recover full cost, outside the state-supported count. CSU policy allows a self-support counterpart of an existing state-supported degree, subject to Chancellor's Office review and written approval, a cost-recovery budget with per-unit fees, and a showing that state-supported instruction is not supplanted (Education Code §89708). If this is the proposed pathway, the university should identify its approval status, cost-recovery budget, student charges, and how it would avoid supplanting. A Californian who pays $15,724 for two semesters of engineering today would pay on the order of $27,000 to $30,000 on either published full-cost reference point; the actual fee has not been published. The reported proposal is not specific to summer.</p>
-<p>There are laws against self-support and state-supported students attending the same courses. The State Auditor found in 2016 that UC had disadvantaged California residents by admitting non-residents for revenue; a full-cost resident pathway reaches a similar end by a different route.</p>
+<p>There are rules against self-support and state-supported students attending the same courses. The State Auditor found in 2016 that UC had disadvantaged California residents by admitting non-residents for revenue; a full-cost resident pathway reaches a similar end by a different route.</p>
 <p data-t="PB-005">None of this has been proposed on the public record. The issue has been raised in Academic Senate but not fully discussed, nor is it clear all faculty have been told.</p>
 <div class="callout swap">
 <p class="mono" data-t="PB-006" style="margin-bottom:10px">Why growth does not entirely pay for the summer</p>
@@ -917,7 +944,7 @@ svg .fgtext{fill:var(--fg)}
 <p class="big" data-t="PS-002">The plan's own sequencing is the lever. Nothing here asks the administration to break a rule; each item asks it to follow the ones it has set.</p>
 <h3 data-t="PS-003">Take the survey</h3>
 <p data-t="PS-004">3 minutes. One response per person; your email is kept separate from your answers.</p>
-<p data-t="PS-005"><a class="btn primary" data-survey="" data-t="PS-006" href="#">Take the survey <span class="arr">→</span></a></p>
+<p data-t="PS-005"><a class="btn primary" data-survey="" data-t="PS-006" href="#">Take the survey <span class="arr">→</span></a> <button class="btn primary" data-action="" type="button">Take action <span class="arr">→</span></button></p>
 <h3 data-t="PS-007">Ask for the models</h3>
 <p data-t="PS-008">In April 2026 the administration said enrollment and faculty-hiring projections existed and had not been released. The president has said the investments are "not significantly out of line" with traditional growth, which implies a comparison someone has made. A request for documents the administration says exist is a request it can grant. The Academic Senate is being asked to make it; a Public Records Act request follows if it is declined.</p>
 <h3 data-t="PS-009">Document readiness</h3>
@@ -1123,7 +1150,15 @@ svg .fgtext{fill:var(--fg)}
       return; }
     var sv=e.target.closest('[data-survey]'); if(sv && sv.getAttribute('href')==='#'){ e.preventDefault(); }
   });
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+  var am=document.getElementById('action-modal'), amLast=null;
+  function openAction(){ if(!am) return; amLast=document.activeElement; am.hidden=false; var c=am.querySelector('.close'); if(c) c.focus(); }
+  function closeAction(){ if(!am||am.hidden) return; am.hidden=true; if(amLast&&amLast.focus) amLast.focus(); }
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-action]')){ e.preventDefault(); openAction(); return; }
+    if(e.target.closest('[data-action-close]')){ closeAction(); return; }
+    if(am && !am.hidden && e.target===am){ closeAction(); }
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeAction(); close(); } });
   document.querySelectorAll('.haspop').forEach(function(el){ el.addEventListener('click',function(){ el.classList.toggle('show'); }); });
   var h=(location.hash||'').replace('#','');
   if(['clock','bill','history','elsewhere','sayso','sources'].indexOf(h)>=0){ open(h); }

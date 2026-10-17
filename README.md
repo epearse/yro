@@ -25,4 +25,4 @@ Netlify rebuilds within about a minute of each push.
 
 ## Before going public
 
-See [BEFORE-GOING-PUBLIC.md](BEFORE-GOING-PUBLIC.md) for the checklist (survey link, Ledger link, fact checks, byline).
+See [BEFORE-GOING-PUBLIC.md](BEFORE-GOING-PUBLIC.md) for the checklist (survey link, fact checks, byline).

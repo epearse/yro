@@ -12,11 +12,9 @@ off by changing `[ ]` to `[x]` and committing.
       the survey exists. The page says the survey takes 3 minutes, is one response per
       person, and keeps the email separate from the answers; make sure the survey tool
       actually does those things, or change the text.
-- [ ] **Decide what the "Open the Ledger" button points at.** It currently links to the
-      faculty Ledger as a private Claude artifact (`claude.ai/code/artifact/…`). Viewers
-      who are not signed in to that account will see a sign-in wall. Either publish the
-      Ledger somewhere public and update the link (search `index.html` for
-      `data-ledger`), or remove the button and the sentence that introduces it.
+- [x] **Ledger link removed.** The page no longer links to or names the faculty Ledger; its figures
+      (≈240–250 tenure lines, ≈$208,000 per line) remain and are attributed to a faculty financial
+      analysis.
 - [ ] **Confirm nothing from the administration's internal planning site is on the page.**
       Everything was rebuilt from public sources on 16 October; the Sources record says
       so in its first sentence. If anyone adds material later, keep that rule: the page
@@ -50,8 +48,7 @@ off by changing `[ ]` to `[x]` and committing.
       administration has published a different split, the ring, the matrix row and the
       Notes all change.
 - [ ] The ≈240 new tenure lines, ≈$208,000 per line and ≈$50M a year, which are the
-      Ledger's central-scenario figures at the time of writing. Recompute from the
-      current Ledger before launch.
+      figures from the faculty financial model at the time of writing. Recompute before launch.
 - [ ] The dates on the two timelines (application opens October 2027, offers March 2028,
       commitment May 1, new faculty hired January 2028, first classes August 2028).
       The admissions dates are the standard Cal State calendar; the hiring date is an

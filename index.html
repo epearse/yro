@@ -475,7 +475,7 @@ svg .fgtext{fill:var(--fg)}
 <h2 data-t="E4-002">The schools it is compared to are not like it.</h2>
 <p class="lede" data-t="E4-003">The universities the plan has been compared to: Georgia Tech, Northeastern, Cincinnati, Rensselaer, Waterloo, Dartmouth. Two rows: the population of each campus’s metropolitan area, and the enrollment growth the calendar is designed to produce.</p>
 <div aria-label="Circles proportional to metropolitan-area population: Atlanta 6.3 million, Boston 4.9 million, Cincinnati 2.3 million, Albany-Troy 0.9 million, Waterloo Region 0.6 million, Lebanon NH-VT micropolitan area 0.22 million for Dartmouth, San Luis Obispo-Paso Robles 0.28 million for Cal Poly. A second row shows the enrollment growth each calendar is designed to produce: none for the co-op schools and Rensselaer, Dartmouth's D-Plan in 1972, and 16 to 33 percent for Cal Poly." class="fig haspop" tabindex="0">
-<svg id="geo-story" role="img" viewbox="0 0 1000 340"></svg>
+<svg id="geo-story" role="img" viewbox="0 0 1100 340"></svg>
 <div class="popover">Population of each campus's metropolitan or micropolitan statistical area, rounded (Waterloo: the Region of Waterloo). Cal Poly's is the San Luis Obispo–Paso Robles area, about 280,000, of which about 72,000 (the city, Los Osos and Morro Bay) are within a 45-minute bus ride of campus. Cal Poly has a smaller regional population than the large co-op comparators (Atlanta 22×, Boston 18×, Cincinnati 8×, Albany–Troy 3×, Waterloo 2×) and is the only one on the chart that assigns an entering class to unenrolled off semesters at admission: one student in four or five away every fall and every spring, from the first year. Its summer held about 9 percent of fall headcount in 2025; the design puts summer at 50 to 67 percent of fall headcount (40–50 percent of all students). Dartmouth's shared summer holds one class year; Rensselaer's Arch summer, required from 2019 until October 2025, the same. A smaller regional population does not by itself say where students will live or work; what the reviewed materials do not establish is whether suitable local jobs and housing exist at the scale required, or what support students would receive.</div>
 </div>
 <p class="cap" data-t="E4-004">Hover or tap the chart for details.</p>
@@ -867,7 +867,7 @@ svg .fgtext{fill:var(--fg)}
 <h3 data-t="PE-149">Why place matters</h3>
 <p data-t="PE-150">Co-op students on a work term are in a paid position that an office helped them find, are often still registered, and are supported; Cincinnati tells its co-op students to be willing to work anywhere in the country. A Cal Poly student on an assigned off semester is not enrolled, has no job the university arranged, and has no office to turn to. Cal Poly also has a smaller regional population than the large co-op comparators: the San Luis Obispo–Paso Robles metropolitan area is about 280,000, and about 72,000 people live within a 45-minute bus ride of campus. The reviewed materials do not establish whether suitable local jobs and affordable housing would be available at the scale required, or what support students would receive during assigned off semesters. The Senate's budget committee is charged this year with reviewing work-integrated learning in selected programs and the financial projections behind the College of Business's YRO model; nothing from that review has been published.</p>
 <div aria-label="The same population and away-share graphic as on the main page" class="fig haspop" tabindex="0">
-<svg id="geo-panel" role="img" viewbox="0 0 1000 340"></svg>
+<svg id="geo-panel" role="img" viewbox="0 0 1100 340"></svg>
 <div class="popover">Population of each campus's metropolitan or micropolitan statistical area, rounded (Waterloo: the Region of Waterloo). Cal Poly's is the San Luis Obispo–Paso Robles area, about 280,000, of which about 72,000 (the city, Los Osos and Morro Bay) are within a 45-minute bus ride of campus. Cal Poly has a smaller regional population than the large co-op comparators (Atlanta 22×, Boston 18×, Cincinnati 8×, Albany–Troy 3×, Waterloo 2×) and is the only one on the chart that assigns an entering class to unenrolled off semesters at admission: one student in four or five away every fall and every spring, from the first year. Its summer held about 9 percent of fall headcount in 2025; the design puts summer at 50 to 67 percent of fall headcount (40–50 percent of all students). Dartmouth's shared summer holds one class year; Rensselaer's Arch summer, required from 2019 until October 2025, the same. A smaller regional population does not by itself say where students will live or work; what the reviewed materials do not establish is whether suitable local jobs and housing exist at the scale required, or what support students would receive.</div>
 </div>
 <p class="cap" data-t="PE-151">Two rows: the population of each campus's metropolitan area, and the enrollment growth the calendar is designed to produce. The four co-op universities are grouped; at Waterloo and in Cincinnati's engineering, design and IT programs co-op is required, elsewhere optional. Hover or tap for details.</p>
@@ -1104,13 +1104,13 @@ svg .fgtext{fill:var(--fg)}
       {name:'DARTMOUTH', metro:'UPPER VALLEY 0.22M', metro2:'HANOVER 11K', pop:0.22, grow:'dplan'},
       {name:'CAL POLY', metro:'SLO COUNTY 0.28M', metro2:'72K BY BUS', pop:0.28, grow:[0.16,0.33], cp:true}
     ];
-    var W=138, x0=86;
+    var W=134, x0=200;
     function draw(id){
       var svg=document.getElementById(id); if(!svg) return; var s='';
       s+='<rect class="peerfill" x="'+(x0-W/2+4)+'" y="30" width="'+(4*W-8)+'" height="300" rx="4" opacity=".07"/>';
       s+='<text style="fill:var(--peer)" font-size="10" x="'+(x0-W/2+12)+'" y="20">CO-OP: PAID WORK TERMS ARRANGED THROUGH A CO-OP OFFICE</text>';
-      s+='<text font-size="10" x="14" y="72">POPULATION OF THE METROPOLITAN AREA</text>';
-      s+='<text font-size="10" x="14" y="228">ENROLLMENT GROWTH THE CALENDAR IS DESIGNED TO PRODUCE</text>';
+      s+='<text font-size="10" x="14" y="126">POPULATION OF THE</text><text font-size="10" x="14" y="139">METROPOLITAN AREA</text>';
+      s+='<text font-size="10" x="14" y="276">ENROLLMENT GROWTH</text><text font-size="10" x="14" y="289">THE CALENDAR IS</text><text font-size="10" x="14" y="302">DESIGNED TO PRODUCE</text>';
       var b1=174, sc1=82/6.3;
       s+='<line class="lin" x1="'+(x0-20)+'" x2="'+(x0+(cols.length-1)*W+20)+'" y1="'+b1+'" y2="'+b1+'"/>';
       cols.forEach(function(c,n){

@@ -356,7 +356,7 @@ svg .fgtext{fill:var(--fg)}
 </g>
 <text data-t="C1-018" text-anchor="end" x="214" y="162">WORK DONE · 6 ITEMS</text>
 <g id="done-bar"></g>
-<text class="redtext" data-t="C1-020" x="222" y="206">WORK STILL TO DO · 26 ITEMS, ONE BLOCK EACH · A COUNT, NOT A DURATION</text>
+<text class="redtext" data-t="C1-020" x="222" y="206">WORK STILL TO DO · 27 ITEMS, ONE BLOCK EACH · A COUNT, NOT A DURATION</text>
 <path class="cpline" d="M706 202 H730 V214" stroke-width="1.2"></path><path class="cpfill" d="M725 213 L730 222 L735 213 Z"></path>
 <text class="redtext" data-t="C1-019" x="426" y="232">← ALL OF THIS WORK MUST BE DONE BY HERE</text>
 <path class="cpline" d="M222 244 L222 238 L740 238 L740 244" stroke-width="1"></path>
@@ -600,7 +600,7 @@ svg .fgtext{fill:var(--fg)}
 </div>
 <div class="col">
 <h3 data-t="PC-056">Questions not raised in public</h3>
-<p class="colcount" data-t="PC-057">18 questions</p>
+<p class="colcount" data-t="PC-057">19 questions</p>
 <div class="tiles">
 <div class="tile absent" data-t="PC-058"><span class="k" data-t="PC-059">Departments</span>Who teaches the summer sections of the service courses, in departments that have not converted to YRO and still operate only Fall–Spring?</div>
 <div class="tile absent" data-t="PC-060"><span class="k" data-t="PC-061">Departments</span>How do lab and studio sequences run when one student in four or five is away in any fall or spring, and more than half in summer?</div>
@@ -618,7 +618,8 @@ svg .fgtext{fill:var(--fg)}
 <div class="tile absent" data-t="PC-076"><span class="k" data-t="PC-077">Students</span>Which track a sixteen-year-old applicant chooses (Fall–Spring, Spring–Summer, Fall–Summer), and on what information</div>
 <div class="tile absent" data-t="PC-078"><span class="k" data-t="PC-079">Town</span>Leases. Student rentals run September to June or twelve months; a student present two terms in three pays for a room they live in for six, and summer vacancy becomes year-round churn for landlords and property managers.</div>
 <div class="tile absent" data-t="PC-082"><span class="k" data-t="PC-083">Town</span>Employers that staff with students; city services sized to a nine-month population. The October 2025 City Council presentation covered housing, parking and event space, not the calendar.</div>
-<div class="tile absent" data-t="PC-086"><span class="k" data-t="PC-087">Governance</span>Chancellor's Office approval of a three-equivalent-semester calendar</div>
+<div class="tile absent" data-t="PC-086"><span class="k" data-t="PC-087">Governance</span>Will the Chancellor's Office approve a three-equivalent-semester calendar?</div>
+<div class="tile absent"><span class="k">Governance</span>Will the Chancellor's Office approve self-support students and state-support students taking the same course? (Generally, this is forbidden under current rules, to avoid supplanting.)</div>
 <div class="tile absent" data-t="PC-088"><span class="k" data-t="PC-089">Governance</span>Collective bargaining over summer workload, which the contract requires</div>
 </div>
 </div>
@@ -1009,7 +1010,7 @@ svg .fgtext{fill:var(--fg)}
     var w=26, gap=2, s='', x=220-6*(w+gap)+gap;
     for(var i=0;i<6;i++){ s+='<rect class="doneblk" x="'+x+'" y="170" width="'+w+'" height="26"/>'; x+=w+gap; }
     done.innerHTML=s; s=''; x=222;
-    for(var j=0;j<26 && x<745;j++){ s+='<rect class="cpfill" x="'+x+'" y="250" width="'+w+'" height="26"/>'; x+=w+gap; }
+    for(var j=0;j<27 && x<745;j++){ s+='<rect class="cpfill" x="'+x+'" y="250" width="'+w+'" height="26"/>'; x+=w+gap; }
     todo.innerHTML=s;
   })();
 

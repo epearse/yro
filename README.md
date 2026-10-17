@@ -23,6 +23,6 @@ git push
 
 Netlify rebuilds within about a minute of each push.
 
-## To do
+## Before going public
 
-- `index.html` has four "Take the survey" buttons with `href="#"` (search for `data-survey`). Replace `#` with the survey URL when it exists.
+See [BEFORE-GOING-PUBLIC.md](BEFORE-GOING-PUBLIC.md) for the checklist (survey link, Ledger link, fact checks, byline).

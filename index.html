@@ -201,6 +201,7 @@ sup.fn{color:var(--cp);font-family:var(--mono);font-size:.7em;margin-left:1px}
 .four li{display:grid;grid-template-columns:5.5ch 1fr;gap:12px;font-size:1rem;line-height:1.4;align-items:baseline}
 .four li b{font-family:var(--mono);font-weight:500;font-size:.8rem;letter-spacing:.04em;color:var(--cp)}
 /* take-action modal */
+.modal[hidden]{display:none}
 .modal{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-left,0px));background:rgba(0,0,0,.55)}
 .modal-box{background:var(--bg-2);color:var(--fg);border:1px solid var(--line-2);border-radius:2px;max-width:640px;width:100%;max-height:90vh;overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .modal-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 16px 14px 22px;border-bottom:1px solid var(--line)}
@@ -212,6 +213,20 @@ sup.fn{color:var(--cp);font-family:var(--mono);font-size:.7em;margin-left:1px}
 .contacts b{font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:500}
 .contacts span{color:var(--mute);overflow-wrap:anywhere}
 .contacts a{color:var(--fg);text-decoration-color:var(--line-2);text-underline-offset:3px}
+.modal-body{padding:4px 22px 24px;font-size:.98rem;line-height:1.5}
+.modal-body p{margin:0 0 14px}
+.modal-body ul{margin:0 0 10px;padding-left:1.25em}
+.modal-body li{margin:0 0 10px}
+.modal-body li ul{margin:8px 0 0}
+.modal-body li li{margin:0 0 6px;color:var(--mute)}
+.modal-body .src{margin-top:8px}
+/* keystone button */
+.keystone-lede{margin:26px 0 10px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.keystone{display:block;width:100%;max-width:440px;margin:0 0 26px;padding:24px 26px 20px;background:var(--bg-3);color:var(--fg);border:1px solid var(--line-2);border-left:3px solid var(--cp);border-radius:2px;text-align:left;cursor:pointer;font:inherit;transition:background .2s,border-color .2s,transform .2s}
+.keystone:hover,.keystone:focus-visible{background:var(--bg-2);border-color:var(--cp);transform:translateX(2px);outline:none}
+.keystone .k-big{display:block;font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:600;font-size:clamp(2rem,5vw,2.8rem);line-height:1;letter-spacing:-.02em}
+.keystone .k-small{display:flex;align-items:center;gap:10px;margin-top:10px;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.keystone .k-small .arr{color:var(--cp)}
 .contacts a:hover{text-decoration-color:var(--cp)}
 /* staffing dots */
 .dots{display:grid;gap:14px;margin-top:18px}
@@ -552,6 +567,27 @@ svg .fgtext{fill:var(--fg)}
 </ul>
 </div>
 </div>
+<div class="modal" id="calendar-modal" hidden role="dialog" aria-modal="true" aria-labelledby="calendar-title">
+<div class="modal-box">
+<div class="modal-head"><span class="mono">The keystone mystery</span><button aria-label="Close" class="close" data-modal-close="" type="button">×</button></div>
+<p class="modal-lede" id="calendar-title"><b>The Calendar</b>, and why everything depends on it</p>
+<div class="modal-body">
+<p>The calendar is a central organizing tool for the university and impacts curriculum, admissions, financial aid, maintenance and many other things. The calendar is the one area on YRO where the administration actually has repeatedly sought faculty input. However, the feedback to the variety of proposed calendars has been strongly negative. Two years out, the discussion has mostly converged on a 14-week calendar whose Summer term starts in the first days of May: the Registrar's April 2026 draft of the 2027–28 calendar put it at May 3, 2028, the day after spring grades are due.</p>
+<ul>
+<li>One of the main reasons given for the switch to semesters was to align the Cal Poly calendar with high schools, community colleges, and other universities. The proposed calendar would destroy the alignment we just attained.</li>
+<li>For most technical courses, especially lower-level service courses like Math, the sciences, and engineering, it is simply not possible to compress 15 weeks of material into 14.
+<ul>
+<li>Material will need to be moved to another course. Any content in those courses is required for some other course. It is also not possible to simply "teach faster" without degrading the education and leaving students irreparably behind.</li>
+<li>The curriculum is a complex web of prerequisites and breadth requirements, and changes in one course can impact other majors, including the number of units in the program and the time to graduation.</li>
+<li>Any changes need to be reviewed to ensure students don't get caught in the churn, but the time required to do so far exceeds the window before YRO launch.</li>
+</ul>
+</li>
+<li>For a Fall–Summer admit, they will move into the residence halls in Fall. After 4 months, they will move out and spend January–April doing … whatever. Then in May they move back into the residence halls just as everyone they met in orientation, in clubs and on sports teams, is moving out.</li>
+</ul>
+<p class="src">Summer start date: college and department responses to the Office of the Registrar's draft 2027–28 calendar (request sent April 3, 2026), compiled on the Academic Senate site. Responses cite a summer term beginning May 3 (one unit says May 4), with spring grades due May 2 and summer ending August 22, 2028.</p>
+</div>
+</div>
+</div>
 <div class="scrim" data-close=""></div>
 <!-- PANEL: CLOCK -->
 <aside aria-labelledby="h-clock" aria-modal="true" class="panel" hidden="" id="p-clock" role="dialog">
@@ -559,6 +595,8 @@ svg .fgtext{fill:var(--fg)}
 <div class="panel-body">
 <h2 data-t="PC-001" id="h-clock">The questions that have been answered ... and all the other ones.</h2>
 <p class="big" data-t="PC-002">The Cal State application for fall 2028 opens in October 2027. The design must be settled by summer 2027 in order for track assignment to be presented correctly in the application and recruiting materials.</p>
+<div class="keystone-wrap"><p class="keystone-lede">The keystone mystery:</p>
+<button class="keystone" data-modal="calendar-modal" type="button"><span class="k-big">The Calendar</span><span class="k-small">and why everything depends on it <span class="arr">→</span></span></button></div>
 <p>No reason has been given for why there is such urgency with implementing YRO. The administration has been asked repeatedly, and the response has been "We've wanted to do this for a long time", which is not a valid reason for destabilizing campus operations, especially right after the massive ordeal of semester conversion.</p>
 <p>The public record of what has been settled is outlined below.</p>
 <div aria-label="Detailed timeline from October 2026 to August 2028 with milestones" class="fig haspop" tabindex="0">
@@ -972,7 +1010,7 @@ svg .fgtext{fill:var(--fg)}
 <li data-t="PX-009"><a href="https://mustangnews.net/cal-poly-engineering-students-oppose-year-round/">Mustang News, "Majority of engineering students surveyed think year-round operations will harm Cal Poly," 11 April 2026</a><span class="mono">"Writing the rules as we go along"; internships, clubs, leases, cooling.</span></li>
 <li data-t="PX-010"><a href="https://magazine.calpoly.edu/winter-2025/growing-intelligently/">Cal Poly Magazine, "Growing intelligently," the president's column, Winter 2025</a><span class="mono">117 tenure-track faculty hired over two years, "partly to prepare" for year-round operations.</span></li>
 <li data-t="PX-011"><a href="https://academicaffairs.calpoly.edu/year-round-operations-academic-planning">Cal Poly Academic Affairs, Year-Round Operations: Academic Planning</a><span class="mono">The 23 programs, as the page read in April 2026; it has since been replaced by a placeholder that refers readers to the internal site.</span></li>
-<li data-t="PX-012">Cal Poly Registrar, 2027–2028 Academic Calendar Proposal, memorandum and calendar grid, 3 April 2026; Academic Senate Executive Committee vote of 5 May 2026. Senate documents.<span class="mono">Fall 73, spring 72, summer 69 instructional days.</span></li>
+<li data-t="PX-012">Cal Poly Registrar, 2027–2028 Academic Calendar Proposal, memorandum and calendar grid, 3 April 2026; Academic Senate Executive Committee vote of 5 May 2026. Senate documents; the compiled college and department responses to the draft are posted with them (<a href="https://content-calpoly-edu.s3.amazonaws.com/academicsenate/1/documents/2025-2026/Registrars2027-28_Summary_Themes.pdf" rel="noopener" target="_blank">summary of themes</a>).<span class="mono">Fall 73, spring 72, summer 69 instructional days. Summer 2028 listed as beginning May 3; spring grades due May 2; summer ends August 22.</span></li>
 <li data-t="PX-013"><a href="https://digitalcommons.calpoly.edu/senateresolutions/983/">Cal Poly Academic Senate, AS-982-24, Resolution on the Proposed 14-Week Trimester Calendar and Year-Round Operations, 26 August 2024</a></li>
 <li data-t="PX-014"><a href="https://afd.calpoly.edu/fees/estimated-fees">Cal Poly Administration &amp; Finance, Estimated Fees 2026–27</a><span class="mono">Resident total base registration and tuition fees, College of Engineering, $7,862 a semester; non-resident example, 15 units, $19,327 a semester including $471 a unit non-resident tuition and the $4,402 Cal Poly Opportunity Fee.</span></li>
 <li data-t="PX-015"><a href="https://magazine.calpoly.edu/winter-2025/growing-intelligently/">Cal Poly Magazine, Winter 2025 (president's column)</a><span class="mono">Surplus from growth to fund "salaries, deferred maintenance and other areas."</span></li>
@@ -1153,15 +1191,17 @@ svg .fgtext{fill:var(--fg)}
       return; }
     var sv=e.target.closest('[data-survey]'); if(sv && sv.getAttribute('href')==='#'){ e.preventDefault(); }
   });
-  var am=document.getElementById('action-modal'), amLast=null;
-  function openAction(){ if(!am) return; amLast=document.activeElement; am.hidden=false; var c=am.querySelector('.close'); if(c) c.focus(); }
-  function closeAction(){ if(!am||am.hidden) return; am.hidden=true; if(amLast&&amLast.focus) amLast.focus(); }
+  var mdLast=null;
+  function openModal(id){ var m=document.getElementById(id); if(!m) return; mdLast=document.activeElement; m.hidden=false; var c=m.querySelector('.close'); if(c) c.focus(); }
+  function closeModals(){ var any=false; document.querySelectorAll('.modal').forEach(function(m){ if(!m.hidden){ m.hidden=true; any=true; } }); if(any && mdLast && mdLast.focus) mdLast.focus(); return any; }
+  function closeAction(){ closeModals(); }
   document.addEventListener('click',function(e){
-    if(e.target.closest('[data-action]')){ e.preventDefault(); openAction(); return; }
-    if(e.target.closest('[data-action-close]')){ closeAction(); return; }
-    if(am && !am.hidden && e.target===am){ closeAction(); }
+    if(e.target.closest('[data-action]')){ e.preventDefault(); openModal('action-modal'); return; }
+    var mo=e.target.closest('[data-modal]'); if(mo){ e.preventDefault(); openModal(mo.getAttribute('data-modal')); return; }
+    if(e.target.closest('[data-action-close],[data-modal-close]')){ closeModals(); return; }
+    if(e.target.classList && e.target.classList.contains('modal') && !e.target.hidden){ closeModals(); }
   });
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeAction(); close(); } });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ if(!closeModals()) close(); } });
   document.querySelectorAll('.haspop').forEach(function(el){ el.addEventListener('click',function(){ el.classList.toggle('show'); }); });
   var h=(location.hash||'').replace('#','');
   if(['clock','bill','history','elsewhere','sayso','sources'].indexOf(h)>=0){ open(h); }

@@ -566,7 +566,6 @@ svg .fgtext{fill:var(--fg)}
 </svg>
 <div class="popover">Milestones from the president's April 2026 email to campus (phased implementation from summer 2028), the Academic Affairs planning list (23 programs in 2028–29, Business first in 2027–28) and the standard Cal State admissions calendar. <span id="months-left"></span></div>
 </div>
-
 <div class="cols">
 <div class="col">
 <h3 data-t="PC-024">Published</h3>
@@ -596,7 +595,7 @@ svg .fgtext{fill:var(--fg)}
 </div>
 <div class="col">
 <h3 data-t="PC-056">Not raised in anything public</h3>
-<p class="colcount" data-t="PC-057">16 questions</p>
+<p class="colcount" data-t="PC-057">19 questions</p>
 <div class="tiles">
 <div class="tile absent" data-t="PC-058"><span class="k" data-t="PC-059">Departments</span>Who teaches the summer sections of the service courses, in departments that are not on the list?</div>
 <div class="tile absent" data-t="PC-060"><span class="k" data-t="PC-061">Departments</span>How do lab and studio sequences run when a third of each cohort is away each term?</div>
@@ -604,6 +603,9 @@ svg .fgtext{fill:var(--fg)}
 <div class="tile absent" data-t="PC-064"><span class="k" data-t="PC-065">Departments</span>Advising, orientation and first-year programs for two entry points a year</div>
 <div class="tile absent" data-t="PC-066"><span class="k" data-t="PC-067">Departments</span>Labs and studios need maintenance and calibration that can only be done when they are not in use. When does that happen?</div>
 <div class="tile absent" data-t="PC-068"><span class="k" data-t="PC-069">Departments</span>Some disciplines, such as Agriculture and Natural Resources, are tied to the seasons. How do their students do research or find internships on an assigned calendar?</div>
+<div class="tile absent" data-t="PC-098"><span class="k" data-t="PC-099">Departments</span>How does an academic department operate when a third of its faculty are not on campus at any given time?</div>
+<div class="tile absent" data-t="PC-100"><span class="k" data-t="PC-101">Departments</span>How does departmental service work when a third of the faculty are not present to share it?</div>
+<div class="tile absent" data-t="PC-102"><span class="k" data-t="PC-103">Departments</span>Courses offered once a year will have to be offered two or three times a year under YRO. Who pays for that, and who teaches it when only a couple of people in the department can?</div>
 <div class="tile absent" data-t="PC-070"><span class="k" data-t="PC-071">Students</span>Clubs, teams, ensembles and chapters when one member in three is always away</div>
 <div class="tile absent" data-t="PC-072"><span class="k" data-t="PC-073">Students</span>Where summer-track students live. Sorority houses close in summer under national rules.</div>
 <div class="tile absent" data-t="PC-074"><span class="k" data-t="PC-075">Students</span>The summer internship window, for students whose summer is a full semester</div>
@@ -993,7 +995,7 @@ svg .fgtext{fill:var(--fg)}
     var w=26, gap=2, s='', x=220-6*(w+gap)+gap;
     for(var i=0;i<6;i++){ s+='<rect class="doneblk" x="'+x+'" y="170" width="'+w+'" height="26"/>'; x+=w+gap; }
     done.innerHTML=s; s=''; x=222;
-    for(var j=0;j<24 && x<745;j++){ s+='<rect class="cpfill" x="'+x+'" y="242" width="'+w+'" height="26"/>'; x+=w+gap; }
+    for(var j=0;j<27 && x<745;j++){ s+='<rect class="cpfill" x="'+x+'" y="242" width="'+w+'" height="26"/>'; x+=w+gap; }
     todo.innerHTML=s;
   })();
 

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Take action · Slow the Rush to YRO</title>
+<meta name="description" content="Who to contact about Cal Poly's year-round operations plan: the president, the CSU, local legislators and the city council.">
+<meta property="og:title" content="Take action · Slow the Rush to YRO">
+<meta property="og:description" content="Who to contact about Cal Poly's year-round operations plan: the president, the CSU, local legislators and the city council.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75,400;75,600;75,800;100,400;100,500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+/* Same tokens and components as index.html; keep the two in step. */
+:root{
+  --bg:#0b0d12; --bg-2:#121520; --bg-3:#191d2a; --line:#262b38; --line-2:#343a4a;
+  --fg:#e8e5dc; --mute:#949aa8; --dim:#5f6575;
+  --cp:#d4593b; --cp-soft:rgba(212,89,59,.14);
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f4f2ed; --bg-2:#ffffff; --bg-3:#ebe8e1; --line:#d8d4ca; --line-2:#c3bfb4;
+    --fg:#15171d; --mute:#5c616d; --dim:#8e929c;
+    --cp:#b6432a; --cp-soft:rgba(182,67,42,.12);
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f4f2ed; --bg-2:#ffffff; --bg-3:#ebe8e1; --line:#d8d4ca; --line-2:#c3bfb4;
+  --fg:#15171d; --mute:#5c616d; --dim:#8e929c;
+  --cp:#b6432a; --cp-soft:rgba(182,67,42,.12);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:18px;line-height:1.5;margin:0;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cp);outline-offset:3px}
+h1{font-family:var(--display);font-variation-settings:"wdth" 75;font-weight:800;line-height:1;margin:0;text-wrap:balance;letter-spacing:-.03em;font-size:clamp(56px,11vw,112px)}
+p{margin:0}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top-in{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-variation-settings:"wdth" 75;font-weight:800;font-size:1.05rem;letter-spacing:.02em;text-decoration:none}
+.brand span{color:var(--cp)}
+.top .mono{white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:500;font-size:.95rem;text-decoration:none;border:1px solid var(--line-2);color:var(--fg);background:transparent;padding:10px 16px;border-radius:2px;cursor:pointer;transition:border-color .2s,background .2s}
+.btn:hover{border-color:var(--fg)}
+.btn .arr{font-family:var(--mono)}
+
+/* page */
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.hero{padding-block:64px 28px}
+.hero .mono{margin-bottom:24px}
+.hero h1 em{font-style:normal;color:var(--cp)}
+.lede{font-size:clamp(20px,2.6vw,24px);line-height:1.35;margin-top:24px;max-width:34ch}
+.contacts{list-style:none;margin:0;padding:0 0 40px;display:grid;gap:0;border-top:1px solid var(--line)}
+.contacts li{display:grid;gap:4px;line-height:1.45;padding-block:16px;border-bottom:1px solid var(--line)}
+.contacts b{font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:500;font-size:1.05rem}
+.contacts span{color:var(--mute);overflow-wrap:anywhere}
+.contacts a{color:var(--fg);text-decoration-color:var(--line-2);text-underline-offset:3px}
+.contacts a:hover{text-decoration-color:var(--cp)}
+.back{padding-bottom:72px}
+footer{border-top:1px solid var(--line);padding-block:28px 48px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer .mono{line-height:1.6}
+@media (max-width:640px){ body{font-size:17px} .top .mono.byl{display:none} }
+</style>
+</head>
+<body>
+<header class="top">
+<div class="top-in">
+<a class="brand" href="/"><span>SLOW</span> THE RUSH TO <span>YRO</span></a>
+<span class="mono byl">Prepared by Cal Poly faculty</span>
+</div>
+</header>
+<main>
+<section class="hero wrap">
+<p class="mono">Cal Poly San Luis Obispo · Year-round operations</p>
+<h1>Take <em>action.</em></h1>
+<p class="lede">Reach out to express your concerns and ask for more information:</p>
+</section>
+<section class="wrap">
+<ul class="contacts">
+<li><b>Cal Poly President Jeff Armstrong</b><span><a href="mailto:jarmstro@calpoly.edu">jarmstro@calpoly.edu</a> and <a href="mailto:presidentsoffice@calpoly.edu">presidentsoffice@calpoly.edu</a>; 805-756-6000</span></li>
+<li><b>CSU Chancellor Mildred García</b><span><a href="mailto:mgarcia@calstate.edu">mgarcia@calstate.edu</a>, <a href="mailto:csu-chancellor@calstate.edu">csu-chancellor@calstate.edu</a>; (562) 951-4000</span></li>
+<li><b>CSU Trustees</b><span><a href="mailto:trusteesoffice@calstate.edu">trusteesoffice@calstate.edu</a></span></li>
+<li><b>Sen. John Laird</b><span><a href="mailto:senator.laird@senate.ca.gov">senator.laird@senate.ca.gov</a>; (805) 549-3784; or <a href="https://sd17.senate.ca.gov/contact-us" rel="noopener" target="_blank">here</a></span></li>
+<li><b>Asm. Dawn Addis</b><span><a href="mailto:Assemblymember.Addis@assembly.ca.gov">Assemblymember.Addis@assembly.ca.gov</a>; (805) 549-3001; or <a href="https://addis.asmdc.org/contact" rel="noopener" target="_blank">here</a></span></li>
+<li><b>SLO City Council</b><span><a href="mailto:emailcouncil@slocity.org">emailcouncil@slocity.org</a>; (805) 781-7114</span></li>
+</ul>
+</section>
+<div class="wrap back"><a class="btn" href="/"><span class="arr">←</span> Back to the record</a></div>
+</main>
+<footer>
+<div class="wrap">
+<p class="mono">Prepared by Cal Poly faculty. Not a university publication.</p>
+<a class="mono" href="/#sources">Sources and notes</a>
+</div>
+</footer>
+</body>
+</html>

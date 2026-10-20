@@ -219,12 +219,6 @@ sup.fn{color:var(--cp);font-family:var(--mono);font-size:.7em;margin-left:1px}
 .modal-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 16px 14px 22px;border-bottom:1px solid var(--line)}
 .modal-head .mono{color:var(--cp)}
 .modal-lede{padding:20px 22px 6px;font-size:1.05rem}
-.contacts{list-style:none;margin:0;padding:6px 22px 22px;display:grid;gap:12px}
-.contacts li{display:grid;gap:2px;font-size:.98rem;line-height:1.45;padding-bottom:12px;border-bottom:1px solid var(--line)}
-.contacts li:last-child{border-bottom:0}
-.contacts b{font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:500}
-.contacts span{color:var(--mute);overflow-wrap:anywhere}
-.contacts a{color:var(--fg);text-decoration-color:var(--line-2);text-underline-offset:3px}
 .modal-body{padding:4px 22px 24px;font-size:.98rem;line-height:1.5}
 .modal-body p{margin:0 0 14px}
 .modal-body ul{margin:0 0 10px;padding-left:1.25em}
@@ -239,7 +233,6 @@ sup.fn{color:var(--cp);font-family:var(--mono);font-size:.7em;margin-left:1px}
 .keystone .k-big{display:block;font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:600;font-size:clamp(2rem,5vw,2.8rem);line-height:1;letter-spacing:-.02em}
 .keystone .k-small{display:flex;align-items:center;gap:10px;margin-top:10px;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
 .keystone .k-small .arr{color:var(--cp)}
-.contacts a:hover{text-decoration-color:var(--cp)}
 /* staffing dots */
 .dots{display:grid;gap:14px;margin-top:18px}
 .dotrow{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center}
@@ -344,7 +337,7 @@ svg .fgtext{fill:var(--fg)}
 <a class="brand" data-t="HD-001" href="#top"><span>SLOW</span> THE RUSH TO <span>YRO</span></a>
 <div class="top-right">
 <span class="mono byl" data-t="HD-002">Prepared by Cal Poly faculty</span>
-<a class="btn primary" data-survey="" data-t="HD-003" href="#">Take the survey <span class="arr">→</span></a> <button class="btn primary" data-action="" type="button">Take action <span class="arr">→</span></button>
+<a class="btn primary" data-survey="" data-t="HD-003" href="#">Take the survey <span class="arr">→</span></a> <a class="btn primary" href="/takeaction">Take action <span class="arr">→</span></a>
 </div>
 </div>
 </header>
@@ -357,7 +350,7 @@ svg .fgtext{fill:var(--fg)}
 <p class="dek">Faculty, staff, and students at Cal Poly are deeply concerned about the pace and process of the YRO initiative. To preserve the value of a Cal Poly education and the curricular integrity of our programs, YRO needs to be implemented with clear intention and purpose on a realistic timeline.</p>
 <p class="standing" data-t="HE-004">The authors of this webpage cannot claim to speak for the entire campus community. However, based on recent meetings of the Academic Senate, we are confident that the views expressed on this website accurately reflect those of a large portion of the faculty. Recent Academic Senate reports from every college on campus have been uniformly and overwhelmingly against YRO and the rush to implement it.</p>
 <div class="byline">
-<a class="btn primary" data-survey="" data-t="HE-005" href="#">Take the survey <span class="arr">→</span></a> <button class="btn primary" data-action="" type="button">Take action <span class="arr">→</span></button>
+<a class="btn primary" data-survey="" data-t="HE-005" href="#">Take the survey <span class="arr">→</span></a> <a class="btn primary" href="/takeaction">Take action <span class="arr">→</span></a>
 <a class="btn" data-t="HE-006" href="#clock-sec">Read the record <span class="arr">↓</span></a>
 </div>
 <p class="mono" data-t="HE-007" style="margin-top:34px">Open any record for details and sources.</p>
@@ -559,7 +552,7 @@ svg .fgtext{fill:var(--fg)}
 <h2 data-t="S5-002">What do you think of all this?</h2>
 <p class="lede" data-t="S5-003">The survey takes 3 minutes. One response per person; your email is kept separate from your answers and remains private.</p>
 <div class="ctas">
-<a class="btn primary" data-survey="" data-t="S5-004" href="#">Take the survey <span class="arr">→</span></a> <button class="btn primary" data-action="" type="button">Take action <span class="arr">→</span></button>
+<a class="btn primary" data-survey="" data-t="S5-004" href="#">Take the survey <span class="arr">→</span></a> <a class="btn primary" href="/takeaction">Take action <span class="arr">→</span></a>
 <button class="btn" data-open="sayso" data-t="S5-005">What else can be done <span class="arr">→</span></button>
 </div>
 </section>
@@ -570,20 +563,6 @@ svg .fgtext{fill:var(--fg)}
 </div>
 </footer>
 </main>
-<div class="modal" id="action-modal" hidden role="dialog" aria-modal="true" aria-labelledby="action-title">
-<div class="modal-box">
-<div class="modal-head"><span class="mono">Take action</span><button aria-label="Close" class="close" data-action-close="" type="button">×</button></div>
-<p class="modal-lede" id="action-title">Reach out to express your concerns and ask for more information:</p>
-<ul class="contacts">
-<li><b>Cal Poly President Jeff Armstrong</b><span><a href="mailto:jarmstro@calpoly.edu">jarmstro@calpoly.edu</a> and <a href="mailto:presidentsoffice@calpoly.edu">presidentsoffice@calpoly.edu</a>; 805-756-6000</span></li>
-<li><b>CSU Chancellor Mildred García</b><span><a href="mailto:mgarcia@calstate.edu">mgarcia@calstate.edu</a>, <a href="mailto:csu-chancellor@calstate.edu">csu-chancellor@calstate.edu</a>; (562) 951-4000</span></li>
-<li><b>CSU Trustees</b><span><a href="mailto:trusteesoffice@calstate.edu">trusteesoffice@calstate.edu</a></span></li>
-<li><b>Sen. John Laird</b><span><a href="mailto:senator.laird@senate.ca.gov">senator.laird@senate.ca.gov</a>; (805) 549-3784; or <a href="https://sd17.senate.ca.gov/contact-us" rel="noopener" target="_blank">here</a></span></li>
-<li><b>Asm. Dawn Addis</b><span><a href="mailto:Assemblymember.Addis@assembly.ca.gov">Assemblymember.Addis@assembly.ca.gov</a>; (805) 549-3001; or <a href="https://addis.asmdc.org/contact" rel="noopener" target="_blank">here</a></span></li>
-<li><b>SLO City Council</b><span><a href="mailto:emailcouncil@slocity.org">emailcouncil@slocity.org</a>; (805) 781-7114</span></li>
-</ul>
-</div>
-</div>
 <div class="modal" id="calendar-modal" hidden role="dialog" aria-modal="true" aria-labelledby="calendar-title">
 <div class="modal-box">
 <div class="modal-head"><span class="mono">The keystone mystery</span><button aria-label="Close" class="close" data-modal-close="" type="button">×</button></div>
@@ -1008,7 +987,7 @@ svg .fgtext{fill:var(--fg)}
 <p class="big" data-t="PS-002">Ask the administration to follow the plan's own sequencing – with transparency and timeliness.</p>
 <h3 data-t="PS-003">Take the survey</h3>
 <p data-t="PS-004">3 minutes. One response per person; your email is kept separate from your answers and remains private.</p>
-<p data-t="PS-005"><a class="btn primary" data-survey="" data-t="PS-006" href="#">Take the survey <span class="arr">→</span></a> <button class="btn primary" data-action="" type="button">Take action <span class="arr">→</span></button></p>
+<p data-t="PS-005"><a class="btn primary" data-survey="" data-t="PS-006" href="#">Take the survey <span class="arr">→</span></a> <a class="btn primary" href="/takeaction">Take action <span class="arr">→</span></a></p>
 <h3 data-t="PS-007">Ask for the models</h3>
 <p data-t="PS-008">In April 2026 the administration said enrollment and faculty-hiring projections existed and had not been released. The president has said the investments are "not significantly out of line" with traditional growth, which implies a comparison someone has made. A request for documents the administration says exist is a request it can grant. The Academic Senate is being asked to make it. If it isn't passed or goes unanswered, consider filing a Public Records Act request; Cal Poly is a CA state entity.</p>
 <h3 data-t="PS-009">Document readiness</h3>
@@ -1219,11 +1198,9 @@ svg .fgtext{fill:var(--fg)}
   var mdLast=null;
   function openModal(id){ var m=document.getElementById(id); if(!m) return; mdLast=document.activeElement; m.hidden=false; var c=m.querySelector('.close'); if(c) c.focus(); }
   function closeModals(){ var any=false; document.querySelectorAll('.modal').forEach(function(m){ if(!m.hidden){ m.hidden=true; any=true; } }); if(any && mdLast && mdLast.focus) mdLast.focus(); return any; }
-  function closeAction(){ closeModals(); }
   document.addEventListener('click',function(e){
-    if(e.target.closest('[data-action]')){ e.preventDefault(); openModal('action-modal'); return; }
     var mo=e.target.closest('[data-modal]'); if(mo){ e.preventDefault(); openModal(mo.getAttribute('data-modal')); return; }
-    if(e.target.closest('[data-action-close],[data-modal-close]')){ closeModals(); return; }
+    if(e.target.closest('[data-modal-close]')){ closeModals(); return; }
     if(e.target.classList && e.target.classList.contains('modal') && !e.target.hidden){ closeModals(); }
   });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ if(!closeModals()) close(); } });

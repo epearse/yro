@@ -92,7 +92,14 @@ body.open .story{transform:translateX(-3vw);filter:brightness(.55)}
 .cap{font-family:var(--mono);font-size:.72rem;line-height:1.5;letter-spacing:.02em;color:var(--mute);margin-top:12px;max-width:70ch}
 .callout{margin-top:26px;border-left:3px solid var(--cp);padding:4px 0 4px 18px;max-width:62ch;font-size:1.05rem;line-height:1.5}
 .door{margin-top:28px}
-.door .btn{padding:14px 20px}
+.door .btn{padding:16px 24px;font-size:1.05rem;border-color:var(--fg);position:relative;animation:nudge 14s ease-out infinite}
+.door .btn::after{content:"";position:absolute;inset:-1px;border-radius:2px;border:1px solid var(--cp);opacity:0;pointer-events:none;animation:ripple 14s ease-out infinite}
+#bill-sec .door .btn,#bill-sec .door .btn::after{animation-delay:3.5s}
+#elsewhere-sec .door .btn,#elsewhere-sec .door .btn::after{animation-delay:7s}
+#history-sec .door .btn,#history-sec .door .btn::after{animation-delay:10.5s}
+@keyframes nudge{0%,88%,100%{box-shadow:0 0 0 0 transparent}91%{box-shadow:0 0 0 5px color-mix(in srgb,var(--cp) 30%,transparent)}97%{box-shadow:0 0 0 14px transparent}}
+@keyframes ripple{0%,88%,100%{transform:scale(1);opacity:0}90%{opacity:.9}97%{transform:scale(1.12,1.45);opacity:0}}
+@media (prefers-reduced-motion: reduce){.door .btn,.door .btn::after{animation:none}}
 .door .btn .arr{transition:transform .25s}
 .door .btn:hover .arr{transform:translateX(5px)}
 
@@ -591,7 +598,7 @@ svg .fgtext{fill:var(--fg)}
 <li>Any changes need to be reviewed to ensure students don't get caught in the churn, missing prereqs and having graduation delayed. However, the time required for review far exceeds the window before YRO launch.</li>
 </ul>
 </li>
-<li>A Fall–Summer admit will move into the residence halls in Fall. After 4 months, they will move out and spend January–April doing … whatever. Then in May they move back into the residence halls just as everyone they met in orientation, clubs, fraternities/sororities, and on sports teams, is moving out.</li>
+<li>A Fall–Summer admit will move into the residence halls in Fall. After 4 months, they will move out and spend January–April doing … whatever. Then in May they move back into the residence halls just as everyone they met in orientation, clubs, fraternities/sororities, and on sports teams, is moving out. No student will willingly choose this.</li>
 </ul>
 </div>
 </div>
@@ -605,7 +612,8 @@ svg .fgtext{fill:var(--fg)}
 <p class="big" data-t="PC-002">The Cal State application for fall 2028 opens in October 2027. The design must be settled by summer 2027 in order for track assignment to be presented correctly in the application and recruiting materials.</p>
 <div class="keystone-wrap"><p class="keystone-lede">The keystone mystery:</p>
 <button class="keystone" data-modal="calendar-modal" type="button"><span class="k-big">The Calendar</span><span class="k-small">and why everything depends on it <span class="arr">→</span></span></button></div>
-<p>No reason has been given for why there is such urgency with implementing YRO. The administration has been asked repeatedly, and the response has been "We've wanted to do this for a long time", which is not a valid reason for destabilizing campus operations, especially right after the massive ordeal of semester conversion.</p>
+<p class="pull">No reason has been given for why there is such urgency with implementing YRO.</p>
+<p>The administration has been asked repeatedly, and the response has been "We've wanted to do this for a long time", which is not a valid reason for destabilizing campus operations, especially right after the massive ordeal of semester conversion.</p>
 <p>The public record of what has been settled is outlined below.</p>
 <div aria-label="Detailed timeline from October 2026 to August 2028 with milestones" class="fig haspop" tabindex="0">
 <svg role="img" viewbox="0 0 760 150">
@@ -625,8 +633,8 @@ svg .fgtext{fill:var(--fg)}
 <text class="redtext" data-t="PC-011" x="46" y="52">TODAY</text>
 <rect class="hollow" height="22" width="255" x="40" y="66"></rect>
 <text class="redtext" data-t="PC-012" text-anchor="middle" x="167" y="81">DESIGN WINDOW · ≈ 9 MONTHS</text>
-<line class="cpline" stroke-dasharray="3 3" x1="182" x2="182" y1="88" y2="100"></line>
-<text class="redtext" data-t="PC-023b" font-size="9" text-anchor="middle" x="182" y="110">CATALOG DEADLINE · MAR 12</text>
+<line class="cpline" stroke-width="1.5" x1="193" x2="193" y1="88" y2="114"></line>
+<text class="redtext" data-t="PC-023b" font-size="9" text-anchor="middle" x="193" y="124">CATALOG DEADLINE</text><text class="redtext" font-size="9" text-anchor="middle" x="193" y="136">MAR 12</text>
 <g font-size="9">
 <line class="fgline" x1="295" x2="295" y1="40" y2="100"></line>
 <text class="fgtext" data-t="PC-013" text-anchor="middle" x="295" y="34">DESIGN MUST BE SET · OUR ALLOWANCE</text>

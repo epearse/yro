@@ -6,12 +6,13 @@ off by changing `[ ]` to `[x]` and committing.
 
 ## Must do
 
-- [ ] **Fix the "Take the survey" buttons.** There are five, on the hero, the top bar, the
-      "Say so" section, the "Say so" record and the footer. All five still point at `#`
-      (search `index.html` for `data-survey`). Replace `#` with the real survey URL once
-      the survey exists. The page says the survey takes 3 minutes, is one response per
-      person, and keeps the email separate from the answers; make sure the survey tool
-      actually does those things, or change the text.
+- [x] **"Take the survey" buttons linked.** All four (top bar, hero, "Tell us your
+      thoughts" section and its record) open the Microsoft Forms survey in a new tab
+      (search `index.html` for `data-survey`).
+- [ ] **Check the survey does what the page says.** The page says the survey takes only
+      a few minutes, the email is used only to verify the respondent, and answers remain
+      private with all data anonymized. Make sure the form's settings match, or change
+      the text.
 - [x] **Ledger link removed.** The page no longer links to or names the faculty Ledger; its figures
       (≈240–250 tenure lines, ≈$208,000 per line) remain and are attributed to a faculty financial
       analysis.

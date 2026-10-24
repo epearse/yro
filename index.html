@@ -265,18 +265,25 @@ tbody th{color:var(--fg);font-family:var(--display);font-size:.85rem;text-transf
 th.cp,td.cp{min-width:170px}
 
 /* term pictograms */
-.patterns{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:18px}
+.patterns{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-top:18px}
 .pat{border-top:1px solid var(--line);padding-top:12px}
 .pat .t{font-family:var(--display);font-variation-settings:"wdth" 100;font-size:.9rem;font-weight:500}
 .pat .s{font-family:var(--mono);font-size:.64rem;letter-spacing:.04em;color:var(--mute);text-transform:uppercase;margin-top:4px;min-height:2.4em}
 .yrs{display:grid;gap:5px;margin-top:10px}
 .yr{display:grid;grid-template-columns:28px repeat(3,1fr);gap:4px;align-items:center}
 .yr b{font-family:var(--mono);font-size:.62rem;color:var(--dim);font-weight:400}
-.yr i{height:18px;border:1px solid var(--line-2);display:block;border-radius:1px}
+.yr i{height:22px;border:1px solid var(--line-2);display:block;border-radius:1px;position:relative;font-style:normal}
+.yr i::after{content:attr(data-l);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.5rem;letter-spacing:.06em;color:var(--dim)}
+.yr i.on::after,.yr i.peer::after,.yr i.sum::after,.yr i.req::after{color:#fff}
+.yr i.choice::after,.yr i.off::after{font-weight:500}
+.yr i.req{background:color-mix(in srgb,var(--peer) 60%,var(--fg));border-color:transparent}
+.yr.hd span{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);text-align:center}
 .yr i.on{background:var(--fg);border-color:var(--fg)}
 .yr i.peer{background:var(--peer);border-color:var(--peer)}
-.yr i.choice{background:repeating-linear-gradient(45deg,var(--peer) 0 3px,transparent 3px 7px);border-color:var(--peer)}
+.yr i.choice{background:color-mix(in srgb,var(--peer) 22%,transparent);border:1px dashed var(--peer)}
+.yr i.choice::after{color:var(--peer)}
 .yr i.off{border:1px dashed var(--cp)}
+.yr i.off::after{color:var(--cp)}
 .yr i.sum{background:var(--cp);border-color:var(--cp)}
 .patkey{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:var(--mute);text-transform:uppercase}
 .patkey span{display:inline-flex;gap:8px;align-items:center}
@@ -832,40 +839,6 @@ svg .fgtext{fill:var(--fg)}
 </table>
 </div>
 <p class="cap" data-t="PE-133">UNSW: Times Higher Education (2025); Honi Soit (2024, 2025), citing the university's 2023 calendar review and staff surveys. Florida, Pittsburgh, Binghamton: Time, "Universities: Trimester's Tribulations" (11 March 1966); Binghamton dates from the university's own history, "Binghamton University at 80" (2026); Hofstra University review of calendar research, ERIC ED 056 646 (1971); Michigan Daily (1965). Cal Poly: Mustang News (April 2026), Academic Senate AS-982-24, Registrar's 2027–28 calendar proposal. Dashes mark what the sources do not report.</p>
-<h3 data-t="PE-134">What each student is asked to give up</h3>
-<p data-t="PE-135">Four years, three terms each. Filled boxes are terms on campus. Hatched boxes are terms the student decides. Dashed red boxes are terms assigned at admission, in the same slot every year.</p>
-<div class="patterns">
-<div class="pat"><div class="t" data-t="PE-136">Georgia Tech · optional co-op</div><div class="s" data-t="PE-137">Student chooses which terms to work, if any</div>
-<div class="yrs">
-<div class="yr"><b>Y1</b><i class="peer"></i><i class="peer"></i><i></i></div>
-<div class="yr"><b>Y2</b><i class="peer"></i><i class="choice"></i><i class="choice"></i></div>
-<div class="yr"><b>Y3</b><i class="choice"></i><i class="peer"></i><i class="choice"></i></div>
-<div class="yr"><b>Y4</b><i class="peer"></i><i class="peer"></i><i></i></div>
-</div></div>
-<div class="pat"><div class="t" data-t="PE-138">Dartmouth · D-Plan</div><div class="s" data-t="PE-139">One shared sophomore summer; off-terms chosen</div>
-<div class="yrs">
-<div class="yr"><b>Y1</b><i class="peer"></i><i class="peer"></i><i></i></div>
-<div class="yr"><b>Y2</b><i class="peer"></i><i class="peer"></i><i class="peer"></i></div>
-<div class="yr"><b>Y3</b><i class="choice"></i><i class="choice"></i><i class="choice"></i></div>
-<div class="yr"><b>Y4</b><i class="peer"></i><i class="peer"></i><i></i></div>
-</div></div>
-<div class="pat"><div class="t" data-t="PE-140">Rensselaer · The Arch</div><div class="s" data-t="PE-141">Arch, 2019–2025: one required summer; one away semester, student's choice</div>
-<div class="yrs">
-<div class="yr"><b>Y1</b><i class="peer"></i><i class="peer"></i><i></i></div>
-<div class="yr"><b>Y2</b><i class="peer"></i><i class="peer"></i><i class="peer"></i></div>
-<div class="yr"><b>Y3</b><i class="choice"></i><i class="choice"></i><i></i></div>
-<div class="yr"><b>Y4</b><i class="peer"></i><i class="peer"></i><i></i></div>
-</div></div>
-<div class="pat"><div class="t" data-t="PE-142">Cal Poly plan · Fall–Summer track</div><div class="s" data-t="PE-143">Every spring away, assigned at admission, every year</div>
-<div class="yrs">
-<div class="yr"><b>Y1</b><i class="on"></i><i class="off"></i><i class="sum"></i></div>
-<div class="yr"><b>Y2</b><i class="on"></i><i class="off"></i><i class="sum"></i></div>
-<div class="yr"><b>Y3</b><i class="on"></i><i class="off"></i><i class="sum"></i></div>
-<div class="yr"><b>Y4</b><i class="on"></i><i class="off"></i><i class="sum"></i></div>
-</div></div>
-</div>
-<div class="patkey"><span data-t="PE-144"><i style="background:var(--peer);border-color:var(--peer)"></i>On campus</span><span data-t="PE-145"><i style="background:repeating-linear-gradient(45deg,var(--peer) 0 3px,transparent 3px 7px)"></i>Student's choice</span><span data-t="PE-146"><i style="background:var(--cp);border-color:var(--cp)"></i>Assigned summer</span><span data-t="PE-147"><i style="border:1px dashed var(--cp)"></i>Assigned away</span></div>
-<p class="cap" data-t="PE-148">Columns are fall, spring, summer. Peer patterns are illustrative of each model's rules, not of any one student's schedule. The Cal Poly spring–summer track mirrors the Fall–Summer pattern with fall away.</p>
 <h3 data-t="PE-149">Why place matters</h3>
 <p data-t="PE-150">Co-op students on a work term are in a paid position that an office helped them find, are often still registered, and are supported; Cincinnati tells its co-op students to be willing to work anywhere in the country. A Cal Poly student on an assigned off semester is not enrolled, has no job the university arranged, and has no office to turn to. Cal Poly also has a smaller regional population than the large co-op comparators: the San Luis Obispo–Paso Robles metropolitan area is about 280,000, and about 72,000 people live within a 45-minute bus ride of campus. The reviewed materials do not establish whether suitable local jobs and affordable housing would be available at the scale required, or what support students would receive during assigned off semesters. The Senate's budget committee is charged this year with reviewing work-integrated learning in selected programs and the financial projections behind the College of Business's YRO model; nothing from that review has been published.</p>
 <div aria-label="The same population and away-share graphic as on the main page" class="fig haspop" tabindex="0">
@@ -881,6 +854,44 @@ svg .fgtext{fill:var(--fg)}
 </div>
 <h3 data-t="PE-162">The Fall–Summer student experience: a scenario</h3>
 <p data-t="PE-163">A Fall–Summer first-year arrives in August with the rest of the class, joins a chapter or a team in September, and leaves in December. They are away all spring. They return in May to a summer campus holding 40–50 percent of students and none from the traditional track, where most fraternity houses are empty and sorority chapter houses are generally closed, and where the officers who recruited them are gone. The design assumes this student stays. We expect the first organized request to switch tracks to come from the chapters, the teams and the friend groups that want to be on the same calendar, and the track they will ask for is the traditional one.</p>
+<h3 data-t="PE-134">What each student is asked to give up</h3>
+<p data-t="PE-135">Each strip is one illustrative student under that institution’s rules: four years, read across, with a column for fall, spring and summer. ON is a term on campus. WORK and OFF are terms the student chose to spend away, in a paid co-op job or on leave. The teal SUM is a summer the whole class spends on campus together, once. The red cells are the terms Cal Poly would assign at admission, in the same slot every year: AWAY is a semester the student is simply not enrolled; SUM is a full summer semester on campus.</p>
+<div class="patterns">
+<div class="pat"><div class="t" data-t="PE-136">Georgia Tech · a co-op student</div><div class="s" data-t="PE-137">Optional. The student decides which terms to work, if any; most students never do</div>
+<div class="yrs">
+<div class="yr hd"><b></b><span>Fall</span><span>Spring</span><span>Summer</span></div>
+<div class="yr"><b>Y1</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+<div class="yr"><b>Y2</b><i class="peer" data-l="ON"></i><i class="choice" data-l="WORK"></i><i class="peer" data-l="ON"></i></div>
+<div class="yr"><b>Y3</b><i class="choice" data-l="WORK"></i><i class="peer" data-l="ON"></i><i class="choice" data-l="WORK"></i></div>
+<div class="yr"><b>Y4</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+</div></div>
+<div class="pat"><div class="t" data-t="PE-138">Dartmouth · D-Plan</div><div class="s" data-t="PE-139">One summer on campus with the whole sophomore class; one or more later off-terms, chosen by the student</div>
+<div class="yrs">
+<div class="yr hd"><b></b><span>Fall</span><span>Spring</span><span>Summer</span></div>
+<div class="yr"><b>Y1</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+<div class="yr"><b>Y2</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i class="req" data-l="SUM"></i></div>
+<div class="yr"><b>Y3</b><i class="choice" data-l="OFF"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+<div class="yr"><b>Y4</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+</div></div>
+<div class="pat"><div class="t" data-t="PE-140">Rensselaer · the Arch, 2019–2025</div><div class="s" data-t="PE-141">One summer on campus with the whole sophomore class; one junior semester away, fall or spring at the student’s choice. Requirement ended 2025</div>
+<div class="yrs">
+<div class="yr hd"><b></b><span>Fall</span><span>Spring</span><span>Summer</span></div>
+<div class="yr"><b>Y1</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+<div class="yr"><b>Y2</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i class="req" data-l="SUM"></i></div>
+<div class="yr"><b>Y3</b><i class="choice" data-l="OFF"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+<div class="yr"><b>Y4</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+</div></div>
+<div class="pat"><div class="t" data-t="PE-142">Cal Poly plan · a Fall–Summer student</div><div class="s" data-t="PE-143">Assigned at admission. Every spring away, every summer on campus, all four years; no choice of terms</div>
+<div class="yrs">
+<div class="yr hd"><b></b><span>Fall</span><span>Spring</span><span>Summer</span></div>
+<div class="yr"><b>Y1</b><i class="on" data-l="ON"></i><i class="off" data-l="AWAY"></i><i class="sum" data-l="SUM"></i></div>
+<div class="yr"><b>Y2</b><i class="on" data-l="ON"></i><i class="off" data-l="AWAY"></i><i class="sum" data-l="SUM"></i></div>
+<div class="yr"><b>Y3</b><i class="on" data-l="ON"></i><i class="off" data-l="AWAY"></i><i class="sum" data-l="SUM"></i></div>
+<div class="yr"><b>Y4</b><i class="on" data-l="ON"></i><i class="off" data-l="AWAY"></i><i class="sum" data-l="SUM"></i></div>
+</div></div>
+</div>
+<div class="patkey"><span data-t="PE-144"><i style="background:var(--peer);border-color:var(--peer)"></i>On campus</span><span data-t="PE-145"><i style="background:color-mix(in srgb,var(--peer) 22%,transparent);border:1px dashed var(--peer)"></i>Away, student’s choice (WORK = paid co-op term, OFF = leave)</span><span data-t="PE-146b"><i style="background:color-mix(in srgb,var(--peer) 60%,var(--fg));border-color:transparent"></i>Required summer, whole class together</span><span data-t="PE-147"><i style="border:1px dashed var(--cp)"></i>Away, assigned at admission</span><span data-t="PE-146"><i style="background:var(--cp);border-color:var(--cp)"></i>Summer on campus, assigned at admission</span><span data-t="PE-147b"><i></i>Ordinary summer break</span></div>
+<p class="cap" data-t="PE-148">Illustrative of each model’s rules, not of any one student’s schedule; Dartmouth’s four 10-week terms are shown in three columns. A Cal Poly Spring–Summer student has the mirror image: every fall away. Co-op students at Georgia Tech, Cincinnati, Northeastern and Waterloo usually take five years, alternating school and paid work.</p>
 </div>
 </aside>
 <!-- PANEL: ELSEWHERE -->

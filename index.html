@@ -257,6 +257,10 @@ sup.fn{color:var(--cp);font-family:var(--mono);font-size:.7em;margin-left:1px}
 
 /* matrix */
 .tablewrap{overflow-x:auto;margin-top:18px;border-top:1px solid var(--line)}
+.toc{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:22px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase}
+.toc .mono{color:var(--dim)}
+.toc a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:1px}
+.toc a:hover{border-color:var(--cp);color:var(--cp)}
 table{border-collapse:collapse;width:100%;min-width:760px;font-family:var(--display);font-variation-settings:"wdth" 100;font-size:.85rem}
 th,td{text-align:left;padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:top}
 th{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);font-weight:400}
@@ -799,7 +803,8 @@ svg .fgtext{fill:var(--fg)}
 <div class="panel-body">
 <h2 data-t="PE-001" id="h-elsewhere">Cal Poly's plan against the places it is compared to.</h2>
 <p class="big" data-t="PE-002">The president has cited Dartmouth and Waterloo as models, and the campus has studied the co-op universities. Of the institutions reviewed, none assigns an entering class to unenrolled off semesters at admission. The one that required a summer semester of every student ended the requirement in October 2025. The others run co-op work terms, student-chosen leave terms, or experiential requirements with student choice of timing and form.</p>
-<h3 data-t="PE-003">How Cal Poly compares to successful peer institutions</h3>
+<nav class="toc" aria-label="In this record"><span class="mono">In this record</span><a data-jump="peer-success" href="#peer-success">Successful peers</a><a data-jump="peer-fail" href="#peer-fail">Unsuccessful peers</a><a data-jump="peer-declined" href="#peer-declined">Peers that decided against it</a><a data-jump="why-place" href="#why-place">Why place matters</a><a data-jump="give-up" href="#give-up">What each student gives up</a></nav>
+<h3 data-t="PE-003" id="peer-success">How Cal Poly compares to successful peer institutions</h3>
 <div class="tablewrap">
 <table>
 <thead><tr><th data-t="PE-004"></th><th class="cp" data-t="PE-005">Cal Poly plan</th><th data-t="PE-006">Dartmouth</th><th data-t="PE-007">Rensselaer</th><th data-t="PE-008">Georgia Tech</th><th data-t="PE-009">Cincinnati</th><th data-t="PE-010">Northeastern</th><th data-t="PE-011">Waterloo</th></tr></thead>
@@ -820,7 +825,7 @@ svg .fgtext{fill:var(--fg)}
 </table>
 </div>
 <p class="cap" data-t="PE-076">Peer facts from each university's published calendar and co-op rules; Rensselaer from its student newspaper's coverage of the Arch; Dartmouth from the college's published D-Plan. Agriculture row from each institution's published list of colleges, schools or faculties; Cal Poly figures from the CAFES profile below. Dashes mark what the sources do not state.</p>
-<h3 data-t="PE-077">How Cal Poly compares to unsuccessful peer institutions</h3>
+<h3 data-t="PE-077" id="peer-fail">How Cal Poly compares to unsuccessful peer institutions</h3>
 <p data-t="PE-078">Four universities have run a compulsory year-round or trimester calendar at scale and reversed it. The complaints that ended each one are already on the record at Cal Poly, two years before the first class. Growth was a primary motivation for all failed schools; the only successful school that was motivated by growth issues was Dartmouth.</p>
 <div class="tablewrap">
 <table>
@@ -842,7 +847,23 @@ svg .fgtext{fill:var(--fg)}
 </table>
 </div>
 <p class="cap" data-t="PE-133">UNSW: Times Higher Education (2025); Honi Soit (2024, 2025), citing the university's 2023 calendar review and staff surveys. Florida, Pittsburgh, Binghamton: Time, "Universities: Trimester's Tribulations" (11 March 1966); Binghamton dates from the university's own history, "Binghamton University at 80" (2026); Hofstra University review of calendar research, ERIC ED 056 646 (1971); Michigan Daily (1965). Cal Poly: Mustang News (April 2026), Academic Senate AS-982-24, Registrar's 2027–28 calendar proposal. Dashes mark what the sources do not report.</p>
-<h3 data-t="PE-149">Why place matters</h3>
+<h3 data-t="PE-400" id="peer-declined">How Cal Poly compares to institutions that decided against YRO</h3>
+<p data-t="PE-401">Cal Poly has not been compared, at least not publicly, with the universities that studied a compulsory year-round calendar and decided against it; on the characteristics that matter, they are the closest match to Cal Poly’s situation.</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th data-t="PE-402"></th><th class="cp" data-t="PE-403">Cal Poly plan · 2025–</th><th data-t="PE-404">George Washington · 2002–03</th><th data-t="PE-405">Minnesota · 2012–13</th><th data-t="PE-406">Purdue · 2012–15</th></tr></thead>
+<tbody>
+<tr><th data-t="PE-410">The pitch: revenue and capacity from a campus that sits idle in summer</th><td class="cp y" data-t="PE-411">Yes · resources "sit idle outside the traditional school year"; growth without new buildings</td><td class="y" data-t="PE-412">Yes · use classrooms, labs and faculty more efficiently to hold down tuition increases</td><td class="y" data-t="PE-413">Yes · year-round use of facilities, more enrollment, more tuition revenue</td><td class="y" data-t="PE-414">Yes · use the campus in summer; raise summer enrollment; faster degrees</td></tr>
+<tr><th data-t="PE-420">The design studied: a compulsory three-term calendar</th><td class="cp y" data-t="PE-421">Yes · three equal terms; every student assigned two of three at admission</td><td class="y" data-t="PE-422">Yes · three 14-week terms; every student required to attend two of the three</td><td class="y" data-t="PE-423">Yes · a full third summer semester, university-wide</td><td class="y" data-t="PE-424">Yes · a year-round trimester, announced January 2012, target fall 2015</td></tr>
+<tr><th data-t="PE-430">Existing terms compressed to fit</th><td class="cp y" data-t="PE-431">Yes · the 15-week semester adopted in 2026 becomes 14 weeks</td><td class="n" data-t="PE-432">— · three 14-week terms proposed</td><td class="n" data-t="PE-433">—</td><td class="y" data-t="PE-434">Yes · 16 weeks of class to 14, with 50-minute classes lengthened to 60 and 75 to 90</td></tr>
+<tr><th data-t="PE-440">Initiated by the president, then handed to a study</th><td class="cp y" data-t="PE-441">Yes · the president’s initiative; the Senate’s only action on a YRO calendar (AS-982-24) asked for postponement</td><td class="y" data-t="PE-442">Yes · President Trachtenberg’s task force, fall 2002</td><td class="y" data-t="PE-443">Yes · President Kaler’s ad hoc committee</td><td class="y" data-t="PE-444">Yes · announced by President Córdova and Provost Sands; a University Senate task force under President Daniels</td></tr>
+<tr><th data-t="PE-450">Problems the study turned up</th><td class="cp y" data-t="PE-451">Raised by faculty and students: aid, summer jobs and internships, curriculum review, housing, faculty workload (see the clock record)</td><td class="y" data-t="PE-452">Unequal terms are "not a true trimester"; summer credit for students abroad or interning better served by a longer optional session</td><td class="y" data-t="PE-453">Federal aid built on two semesters, no summer Pell; students who need summer jobs; faculty research in summer; athletics</td><td class="y" data-t="PE-454">Students skeptical of longer classes and of summer on campus; faculty wanted summer enrollment, not a shorter term</td></tr>
+<tr><th data-t="PE-460">Outcome</th><td class="cp y" data-t="PE-461">Proceeding · launch delayed two years, to fall 2029, on October 21, 2026</td><td class="y" data-t="PE-462">Dropped within six months · a 10-week optional summer instead; semesters kept</td><td class="y" data-t="PE-463">"Not yet needed" · an optional three-year pilot in two College of Design programs; semesters kept</td><td class="y" data-t="PE-464">Never adopted · 16-week semesters kept; summer grown voluntarily ("Think Summer", Summer Start)</td></tr>
+</tbody>
+</table>
+</div>
+<p class="cap" data-t="PE-465">George Washington: GW Hatchet, "Committee nixes trimesters," 27 March 2003. Minnesota: Minnesota Daily, "U works out kinks in year-round calendar," 18 February 2013. Purdue: WBAA (January 2012), Purdue Today (January 2013), Purdue Exponent (2014), and the Registrar’s current calendar. Dashes mark what the sources do not report.</p>
+<h3 data-t="PE-149" id="why-place">Why place matters</h3>
 <p data-t="PE-150">Co-op students on a work term are in a paid position that an office helped them find, are often still registered, and are supported; Cincinnati tells its co-op students to be willing to work anywhere in the country. A Cal Poly student on an assigned off semester is not enrolled, has no job the university arranged, and has no office to turn to. Cal Poly also has a smaller regional population than the large co-op comparators: the San Luis Obispo–Paso Robles metropolitan area is about 280,000, and about 72,000 people live within a 45-minute bus ride of campus. The reviewed materials do not establish whether suitable local jobs and affordable housing would be available at the scale required, or what support students would receive during assigned off semesters. The Senate's budget committee is charged this year with reviewing work-integrated learning in selected programs and the financial projections behind the College of Business's YRO model; nothing from that review has been published.</p>
 <div aria-label="The same population and away-share graphic as on the main page" class="fig haspop" tabindex="0">
 <svg id="geo-panel" role="img" viewbox="0 0 1100 340"></svg>
@@ -857,7 +878,7 @@ svg .fgtext{fill:var(--fg)}
 </div>
 <h3 data-t="PE-162">The Fall–Summer student experience: a scenario</h3>
 <p data-t="PE-163">A Fall–Summer first-year arrives in August with the rest of the class, joins a chapter or a team in September, and leaves in December. They are away all spring. They return in May to a summer campus holding 40–50 percent of students and none from the traditional track, where most fraternity houses are empty and sorority chapter houses are generally closed, and where the officers who recruited them are gone. The design assumes this student stays. We expect the first organized request to switch tracks to come from the chapters, the teams and the friend groups that want to be on the same calendar, and the track they will ask for is the traditional one.</p>
-<h3 data-t="PE-134">What each student is asked to give up</h3>
+<h3 data-t="PE-134" id="give-up">What each student is asked to give up</h3>
 <p data-t="PE-135">Each strip is one illustrative student under that institution’s rules: four years, read across, with a column for fall, spring and summer. ON is a term on campus. WORK and OFF are terms the student chose to spend away, in a paid co-op job or on leave. The teal SUM is a summer the whole class spends on campus together, once. The red cells are the terms Cal Poly would assign at admission, in the same slot every year: AWAY is a semester the student is simply not enrolled; SUM is a full summer semester on campus.</p>
 <div class="patterns">
 <div class="pat"><div class="t" data-t="PE-136">Georgia Tech · a co-op student</div><div class="s" data-t="PE-137">Optional. The student decides which terms to work, if any; most students never do</div>
@@ -1076,6 +1097,9 @@ svg .fgtext{fill:var(--fg)}
 <li data-t="PX-035"><a href="https://www.timeshighereducation.com/news/unsw-scraps-trimester-calendar-after-workload-complaints">Times Higher Education, "UNSW scraps trimester calendar after workload complaints," 2025</a></li>
 <li data-t="PX-036"><a href="https://honisoit.com/2024/03/unsw-postured-to-scrap-trimester-system/">Honi Soit, "UNSW postured to scrap trimester system," March 2024</a> · <a href="https://honisoit.com/2025/04/unsw-introduces-flexible-semester-scraps-trimester-system/">"UNSW introduces 'flexible semester', scraps trimester system," April 2025</a><span class="mono">2023 calendar review: 40 percent less time for paid work, 41 percent less for activities; "significant workload and anxiety issues for both staff and students"; NTEU on consultation.</span></li>
 <li data-t="PX-037"><a href="https://time.com/archive/6834085/universities-trimesters-tribulations/">Time, "Universities: Trimester's Tribulations," 11 March 1966</a> · <a href="https://www.binghamton.edu/news/story/6290/Binghamton-at-80-thehistory" rel="noopener" target="_blank">Binghamton University, "Binghamton University at 80: The history"</a><span class="mono">Florida statewide trimester dropped in 1966; 11 percent raise for 25 percent heavier loads; 16-week courses in 14; Pittsburgh's Ford Foundation study, costs per student doubled, a quarter of undergraduates in summer; Binghamton "almost no increase."</span></li>
+<li data-t="PX-060"><a href="https://www.gwhatchet.com/2003/03/27/committee-nixes-trimesters/" rel="noopener" target="_blank">GW Hatchet, "Committee nixes trimesters," 27 March 2003</a><span class="mono">Trachtenberg task force, fall 2002; true trimester of three 14-week terms with two required; initial findings favored 14-14-10 and a stronger summer program.</span></li>
+<li data-t="PX-061"><a href="https://mndaily.com/251059/uncategorized/u-work-out-kinks-year-round-calendar/" rel="noopener" target="_blank">Minnesota Daily, "U works out kinks in year-round calendar," 18 February 2013</a><span class="mono">Kaler ad hoc committee; university-wide third semester "not yet needed"; optional pilot in two College of Design programs; aid, summer jobs, research and athletics concerns.</span></li>
+<li data-t="PX-062"><a href="https://www.wbaa.org/education/2012-01-11/purdue-begins-process-of-switching-to-trimesters" rel="noopener" target="_blank">WBAA, "Purdue begins process of switching to trimesters," 11 January 2012</a> · <a href="https://www.purdue.edu/newsroom/purduetoday/releases/2013/Q1/forum-to-continue-conversation-on-trimester-initiative.html" rel="noopener" target="_blank">Purdue Today, forum on the trimester initiative and "Think Summer," 31 January 2013</a> · <a href="https://www.purdueexponent.org/features/feature-purdue-pursues-trimester-calendar/article_7b7648d4-fe27-5435-aaf8-68a9b8c4a690.html" rel="noopener" target="_blank">Purdue Exponent, "Purdue pursues trimester calendar," 2014</a> · <a href="https://www.purdue.edu/registrar/calendars/academic-archive/" rel="noopener" target="_blank">Purdue Registrar, academic calendars</a><span class="mono">Trimester announced 2012; task force studied 14-week terms and longer class periods for fall 2015; never adopted, 16-week semesters kept.</span></li>
 <li data-t="PX-038"><a href="https://eric.ed.gov/?id=ED056646">Hofstra University, review of academic-calendar research, ERIC ED 056 646 (1971)</a> · Michigan Daily, 1965<span class="mono">Pittsburgh: "rash moves without total planning for budget, space, and curriculum"; deficit and student-interest figures.</span></li>
 </ul>
 <h3 data-t="PX-039">Notes</h3>
@@ -1231,6 +1255,7 @@ svg .fgtext{fill:var(--fg)}
     if(e.target.classList && e.target.classList.contains('modal') && !e.target.hidden){ closeModals(); }
   });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ if(!closeModals()) close(); } });
+  document.addEventListener('click',function(e){ var j=e.target.closest('[data-jump]'); if(!j) return; var t=document.getElementById(j.getAttribute('data-jump')); if(!t) return; e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); });
   document.querySelectorAll('.haspop').forEach(function(el){ el.addEventListener('click',function(){ el.classList.toggle('show'); }); });
   var h=(location.hash||'').replace('#','');
   if(['clock','bill','history','elsewhere','sayso','sources','survey'].indexOf(h)>=0){ open(h); }

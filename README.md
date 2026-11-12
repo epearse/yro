@@ -26,3 +26,11 @@ Netlify rebuilds within about a minute of each push.
 ## Before going public
 
 See [BEFORE-GOING-PUBLIC.md](BEFORE-GOING-PUBLIC.md) for the checklist (survey link, fact checks, byline).
+
+## Other pages in this repo
+
+- `/ledger/` and `/model-explorer/` — the Year-Round Operations Ledger and its model explorer, copied from
+  the claude.ai artifacts on 11 November 2026. Not linked from the main page; both carry `noindex`. They
+  link to each other by site path, so re-copying from the artifacts means re-pointing those links.
+- `/archive/2026-11-11/` — a frozen, self-contained copy of the main page and `/takeaction` as they stood
+  before the November rewrite (also `noindex`). The same state is tagged `archive-2026-11-11` in git.

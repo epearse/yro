@@ -1,0 +1,1291 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>YRO Model Explorer</title><meta name="description" content="Every formula in the Year-Round Operations Ledger, as a live dependency map."><meta name="robots" content="noindex"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a full-height workbench. Thin header with the settings the map is evaluated at, a pan-and-zoom canvas that
+   holds the whole dependency graph laid out left to right, and a detail panel on the right that reads one node at a
+   time: its formula with live values, where it comes from, where it goes, and its path to the net result. The palette
+   and faces are the ledger's own, so the two pages read as one publication. */
+:root{
+  color-scheme:light;
+  --paper:#f4f6f2; --surface:#ffffff; --surface-2:#eef2ee; --ink:#17221d; --ink-2:#48534e; --muted:#7b857f; --line:#d9dfda; --line-2:#c6cec8;
+  --accent:#1e5a46; --accent-soft:#e3eee8; --gold:#9a6d12; --gold-soft:#f6ecd4; --crit:#c23b3b; --good:#0a7a0a;
+  --edge:#b9c3bc; --edge-up:#9a6d12; --edge-down:#1e5a46; --dim:.14;
+  --st-scale:#6b4fbb; --st-enroll:#2a78d6; --st-funding:#1c8c8c; --st-revenue:#1e5a46; --st-target:#b04a8a; --st-instr:#eb6834; --st-ops:#c9801a; --st-need:#8a6d3b; --st-calendar:#7a5195; --st-totals:#17221d; --st-through:#3a8f5a; --st-bench:#5a6b7a; --st-derived:#5a6b7a; --st-ten:#2a5a94; --st-input:#9a6d12;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif; --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --shadow:0 1px 2px rgba(23,34,29,.06),0 8px 24px -12px rgba(23,34,29,.18);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --paper:#111614; --surface:#191f1c; --surface-2:#1f2622; --ink:#edf1ee; --ink-2:#b9c2bc; --muted:#8a948e; --line:#2b332f; --line-2:#3a443f;
+  --accent:#72bd9e; --accent-soft:#1d3129; --gold:#d9a640; --gold-soft:#332a14; --crit:#e66767; --good:#3fbf3f;
+  --edge:#3a443f; --edge-up:#d9a640; --edge-down:#72bd9e; --dim:.12;
+  --st-scale:#9f8ae6; --st-enroll:#5f9ae8; --st-funding:#3fb3b3; --st-revenue:#72bd9e; --st-target:#d36fae; --st-instr:#f08a5e; --st-ops:#e0a24a; --st-need:#b9a070; --st-calendar:#a98ac4; --st-totals:#edf1ee; --st-through:#6cc48a; --st-bench:#8fa3b4; --st-derived:#8fa3b4; --st-ten:#6e9ad6; --st-input:#d9a640;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6)}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --paper:#111614; --surface:#191f1c; --surface-2:#1f2622; --ink:#edf1ee; --ink-2:#b9c2bc; --muted:#8a948e; --line:#2b332f; --line-2:#3a443f;
+  --accent:#72bd9e; --accent-soft:#1d3129; --gold:#d9a640; --gold-soft:#332a14; --crit:#e66767; --good:#3fbf3f;
+  --edge:#3a443f; --edge-up:#d9a640; --edge-down:#72bd9e; --dim:.12;
+  --st-scale:#9f8ae6; --st-enroll:#5f9ae8; --st-funding:#3fb3b3; --st-revenue:#72bd9e; --st-target:#d36fae; --st-instr:#f08a5e; --st-ops:#e0a24a; --st-need:#b9a070; --st-calendar:#a98ac4; --st-totals:#edf1ee; --st-through:#6cc48a; --st-bench:#8fa3b4; --st-derived:#8fa3b4; --st-ten:#6e9ad6; --st-input:#d9a640;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6)}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased;overflow:hidden}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button{font:inherit}
+.app{height:100%;display:grid;grid-template-rows:auto 1fr;grid-template-columns:1fr 400px;grid-template-areas:"head head" "canvas panel"}
+header{grid-area:head;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:10px 16px;border-bottom:1px solid var(--line-2);background:var(--surface)}
+header h1{font-family:var(--serif);font-weight:500;font-size:22px;margin:0;letter-spacing:-.01em;line-height:1.1}
+header .sub{font-size:12px;color:var(--muted);display:block;font-family:var(--sans);margin-top:2px}
+.ctl{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2)}
+.ctl label{white-space:nowrap}
+input[type=text],input[type=search],select{font:inherit;font-size:12.5px;padding:6px 8px;border:1px solid var(--line-2);border-radius:6px;background:var(--surface);color:var(--ink);min-width:0}
+input[type=search]{width:min(260px,60vw)}
+#setcode{width:min(300px,60vw);font-family:var(--mono);font-size:11.5px}
+.presets{display:inline-flex;flex-wrap:wrap;gap:4px}
+.presets button{font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);cursor:pointer}
+.presets button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.btn{font-size:12px;font-weight:600;padding:6px 10px;border-radius:6px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.canvas{grid-area:canvas;position:relative;overflow:hidden;background:var(--paper);min-width:0;touch-action:none}
+.canvas svg{width:100%;height:100%;display:block;cursor:grab}
+.canvas svg.dragging{cursor:grabbing}
+.zoom{position:absolute;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:4px;z-index:3}
+.zoom button{width:32px;height:32px;border-radius:6px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);cursor:pointer;font-weight:600;box-shadow:var(--shadow)}
+.legend{position:absolute;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:3;background:var(--surface);border:1px solid var(--line-2);border-radius:8px;box-shadow:var(--shadow);font-size:11.5px;color:var(--ink-2);max-width:min(380px,calc(100% - 70px))}
+.legend .head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 6px 6px 11px;font-weight:600;color:var(--ink)}
+.legend .x{appearance:none;border:0;background:transparent;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;padding:2px 6px;border-radius:4px}
+.legend .x:hover{color:var(--ink);background:var(--surface-2)}
+.btn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.legend .body{padding:0 11px 10px;display:grid;grid-template-columns:1fr 1fr;gap:4px 14px}
+.legend .k{display:flex;align-items:center;gap:7px}
+.legend .k i{width:12px;height:12px;border-radius:2px;display:inline-block;flex:none}
+.legend .k b{font-family:var(--mono);font-weight:500;color:var(--ink);width:1.6em;text-align:center;flex:none}
+.stagebar{position:absolute;left:0;right:0;top:0;height:0;z-index:2;pointer-events:none}
+.panel{grid-area:panel;border-left:1px solid var(--line-2);background:var(--surface);overflow-y:auto;min-width:0;padding:16px 18px 28px}
+.panel h2{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.panel h3{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:18px 0 6px}
+.panel p{margin:0 0 10px;color:var(--ink-2);font-size:13px}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1px solid currentColor;border-radius:3px;padding:0 5px;line-height:1.6;margin-right:6px;vertical-align:1px}
+.formula{font-family:var(--mono);font-size:12.5px;line-height:1.75;background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:10px 12px;color:var(--ink);word-break:break-word}
+.formula .v{display:inline-block;border-bottom:2px solid var(--line-2);cursor:pointer;color:var(--ink)}
+.formula .v:hover{border-color:var(--accent);color:var(--accent)}
+.formula .v small{color:var(--muted);font-size:10.5px;margin-left:2px}
+.formula .c{color:var(--muted)}
+.val{font-family:var(--sans);font-size:26px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin:4px 0 2px}
+.val.neg{color:var(--crit)} .val.pos{color:var(--good)}
+.val small{font-size:12px;font-weight:500;color:var(--muted);letter-spacing:0;margin-left:6px}
+ul.links{list-style:none;margin:0;padding:0}
+ul.links li{padding:5px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;font-size:12.5px}
+ul.links li a{text-decoration:none;color:var(--ink);cursor:pointer;min-width:0}
+ul.links li a:hover{color:var(--accent)}
+ul.links li .n{font-variant-numeric:tabular-nums;color:var(--ink-2);white-space:nowrap}
+ul.links li .num{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-right:6px}
+ol.path{list-style:none;margin:0;padding:0;border-left:2px solid var(--line-2)}
+ol.path li{padding:4px 0 8px 12px;position:relative;font-size:12.5px}
+ol.path li::before{content:"";position:absolute;left:-6px;top:11px;width:8px;height:8px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+ol.path li a{color:var(--ink);text-decoration:none;font-weight:600;cursor:pointer}
+ol.path li a:hover{color:var(--accent)}
+ol.path li .f{font-family:var(--mono);font-size:11px;color:var(--muted);display:block;margin-top:1px;word-break:break-word}
+ol.path li .n{color:var(--ink-2);font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:8px 0 4px}
+.kpi{background:var(--surface);padding:10px 12px;min-width:0;cursor:pointer}
+.kpi:hover{background:var(--surface-2)}
+.kpi .lab{font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi .v{font-size:20px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin-top:3px}
+.kpi .v.neg{color:var(--crit)} .kpi .v.pos{color:var(--good)}
+.row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.edit{display:flex;align-items:center;gap:10px;margin:6px 0 4px}
+.edit input[type=range]{flex:1;min-width:0;accent-color:var(--accent);height:24px}
+.note{font-size:12.5px;color:var(--ink-2);border-left:3px solid var(--gold);padding:4px 0 4px 10px;margin:8px 0 10px}
+.meta{font-size:12px;color:var(--muted)}
+/* graph */
+.node{cursor:pointer}
+.node rect.box{fill:var(--surface);stroke:var(--line-2);stroke-width:1}
+.node rect.stripe{stroke:none}
+.node.input rect.box{rx:14;ry:14;stroke:var(--st-input)}
+.node .fo{overflow:visible}
+.nb{font-family:var(--sans);color:var(--ink);padding:6px 9px 6px 12px;height:100%;display:flex;flex-direction:column;gap:2px;overflow:hidden;line-height:1.25}
+.nb .h{display:flex;align-items:center;gap:6px;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+.nb .h b{font-family:var(--mono);color:var(--ink-2);font-weight:500;letter-spacing:0;text-transform:none;border:1px solid var(--line-2);border-radius:3px;padding:0 4px;font-size:9.5px}
+.nb .nm{font-size:11.5px;font-weight:600;color:var(--ink)}
+.nb .fx{font-family:var(--mono);font-size:9.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nb .vl{font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);margin-top:auto}
+.nb .vl.neg{color:var(--crit)} .nb .vl.pos{color:var(--good)}
+.node.sel rect.box{stroke:var(--accent);stroke-width:2.5}
+.node.up rect.box{stroke:var(--edge-up);stroke-width:1.8}
+.node.down rect.box{stroke:var(--edge-down);stroke-width:1.8}
+.node.dim{opacity:var(--dim)}
+.edge{fill:none;stroke:var(--edge);stroke-width:1.2;opacity:.5;vector-effect:non-scaling-stroke}
+.edge.inp{opacity:.32;stroke-dasharray:none}
+svg.noinp .edge.inp:not(.up):not(.down):not(.hov){display:none}
+.edge.up,.edge.down{stroke-width:2.4;opacity:1}
+.edge.hov{stroke-width:3;opacity:1}
+.edge.dim{opacity:.04}
+.edge.rerun{stroke-dasharray:6 4}
+.stage-label{font-family:var(--serif);font-size:15px;fill:var(--muted);font-style:italic}
+.pulse rect.box{animation:pulse 1.6s ease-out 2}
+@keyframes pulse{0%{stroke-width:2.5;filter:drop-shadow(0 0 0 var(--accent))}50%{stroke-width:5;filter:drop-shadow(0 0 10px var(--accent))}100%{stroke-width:2.5}}
+@media (prefers-reduced-motion:reduce){.pulse rect.box{animation:none}}
+@media (max-width:860px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto 1fr auto;grid-template-areas:"head" "canvas" "panel"}
+  .panel{border-left:0;border-top:1px solid var(--line-2);max-height:42vh;padding:12px 16px 20px}
+  header h1{font-size:18px}
+  header .sub,.ctl.adv{display:none}
+  .legend{max-width:calc(100% - 24px);right:12px;left:12px;font-size:11px}
+}
+</style>
+
+<div class="app">
+<header>
+  <div><h1>YRO Model Explorer</h1><span class="sub">Every formula in the Year-Round Operations Ledger, as a map · values are live at the settings below</span></div>
+  <div class="ctl"><label for="finder">Find</label><input type="search" id="finder" list="nodelist" placeholder="slider number, name or quantity…" aria-label="Find a slider or quantity"><datalist id="nodelist"></datalist></div>
+  <div class="ctl"><span>Evaluated at</span><span class="presets" id="presets"></span></div>
+  <div class="ctl adv"><label for="setcode">Settings code</label><input type="text" id="setcode" placeholder="paste a yro: code and press Enter" aria-label="Settings code"></div>
+  <div class="ctl adv"><label for="year">Ten-year lane shows year</label><select id="year" aria-label="Year shown in the ten-year lane"></select></div>
+  <button type="button" class="btn" id="legend-btn" aria-pressed="true" aria-controls="legend">Legend</button>
+  <a class="btn" id="tocalc" href="#" target="_blank" rel="noopener">Open these settings in the calculator ↗</a>
+</header>
+<div class="canvas" id="canvas">
+  <svg id="svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dependency graph of the YRO ledger"><g id="world"><g id="stages"></g><g id="edges"></g><g id="nodes"></g></g></svg>
+  <div class="zoom"><button type="button" id="zin" title="Zoom in" aria-label="Zoom in">+</button><button type="button" id="zout" title="Zoom out" aria-label="Zoom out">−</button><button type="button" id="zfit" title="Fit the whole map" aria-label="Fit the whole map">⤢</button><button type="button" id="zsel" title="Fit the highlighted path" aria-label="Fit the highlighted path">◎</button></div>
+  <div class="legend" id="legend"><div class="head">How to read the map<button type="button" class="x" id="legend-x" aria-label="Hide the legend">×</button></div><div class="body">
+    <div class="k"><i style="background:var(--st-input)"></i>Slider (number as in the calculator)</div><div class="k"><i style="background:var(--st-enroll)"></i>Enrollment</div>
+    <div class="k"><i style="background:var(--st-revenue)"></i>Revenue &amp; funding</div><div class="k"><i style="background:var(--st-instr)"></i>Instruction</div>
+    <div class="k"><i style="background:var(--st-ops)"></i>Operations &amp; need</div><div class="k"><i style="background:var(--st-calendar)"></i>Calendar layer</div>
+    <div class="k"><i style="background:var(--st-through)"></i>Throughput &amp; benchmark</div><div class="k"><i style="background:var(--st-ten)"></i>Ten-year view</div>
+    <div class="k"><b>⌊⌋</b>floor or cap</div><div class="k"><b>⎇</b>two-way case</div><div class="k"><b>⊢</b>step threshold</div><div class="k"><b>∿</b>saturation</div>
+    <div class="k" style="grid-column:1/-1;color:var(--muted)">Lines take the color of the box they leave. Hover a box to thicken its own lines; click it and the boxes it draws on turn gold, the boxes that draw on it green, everything else fades. Drag to pan, scroll to zoom.</div>
+    <label class="k" style="grid-column:1/-1;cursor:pointer"><input type="checkbox" id="noinp" style="margin:0 2px 0 0"> Hide slider lines (keep the formula structure)</label>
+  </div></div>
+</div>
+<aside class="panel" id="panel"></aside>
+</div>
+
+<script>
+/* YRO Model Explorer: the ledger as a list of nodes. Each node is one expression; the page draws the list as a graph
+   and evaluates it in order, so the picture and the numbers are the same object. Expressions use bare identifiers:
+   a slider id reads the slider, a node id reads that node, a constant reads C, and ov is the override object the
+   ten-year view and the derived figures pass in (the same contract as the calculator's model(p, ov)). */
+const SPEC = (function(){
+const C = {f:0.973,H0:23400,S0:1100,resShare:0.85,staffCost:110000,crf:0.06505,interm:0.079,indirect:150,pell0:23,sugPer:2790,SVC_TT:0.20,MISS:0.05,CPY:10,CPD:40,UNITS:3.5,includeBuild:1,RAMP:[0,0.3,0.55,0.8,1]};
+const STAGES = {
+  scale:"Program scaling", enroll:"Enrollment by term", funding:"Funding channels", revenue:"Revenue", target:"CSU enrollment target",
+  instr:"Instruction", ops:"Operations & facilities", need:"Financial need", calendar:"Calendar layer", totals:"Totals",
+  through:"Throughput", bench:"Traditional-growth benchmark", derived:"Derived figures", ten:"Ten-year view"
+};
+// kinds: calc · clamp (floor or cap) · case (two-way switch) · threshold (step) · sat (saturation) · const · view (re-runs the graph)
+const N = [
+// ---- program scaling (effP) ----
+{id:"q",st:"scale",k:"case",name:"Share of campus on the YRO design",expr:"yjoin >= 11 ? yshare/100 : 1",note:"Never joining: only the listed programs follow the design. Any year: the whole campus does, so the design applies to all of it."},
+{id:"Hdesign",st:"scale",name:"Design headcount scaled to participating programs",expr:"H0 + (H - H0) * q",note:"The headcount slider describes the full design; the ledger moves today's 23,400 toward it by the participating share."},
+{id:"sDesign",st:"scale",name:"Track share scaled to participating programs (%)",expr:"s * q"},
+// ---- enrollment ----
+{id:"Htarget",st:"enroll",k:"case",name:"Target annual headcount",expr:"ov.H !== undefined ? ov.H : Hdesign",note:"Overridden by the last-student figure (design − 500) and by the ten-year phase-in."},
+{id:"mcaN",st:"enroll",k:"case",name:"Full-cost admits",expr:"ov.mca !== undefined ? ov.mca : mca",note:"Overridden by the break-even sweep and the ten-year phase-in."},
+{id:"sRaw",st:"enroll",k:"case",name:"Realized off-cycle share of the target",expr:"ov.sEff !== undefined ? ov.sEff : (sDesign/100) * (r/100)",note:"Track share × realization. Overridden by the summer-share sweep, Column A and the ten-year decay."},
+{id:"assigned",st:"enroll",k:"case",name:"Share assigned to a summer track",expr:"ov.assigned !== undefined ? ov.assigned : sDesign/100"},
+{id:"leaveShare",st:"enroll",k:"case",name:"Share of declined offers lost",expr:"ov.leaveShare !== undefined ? ov.leaveShare : leave/100",note:"At 0 every decliner is switched to fall–spring; at 1 the track is a condition of admission. The ten-year view raises it as the pool thins."},
+{id:"unfilled",st:"enroll",k:"clamp",name:"Unfilled share of the target",expr:"leaveShare * max(0, min(0.95, assigned - sRaw))",note:"Floor at 0 (realization above the assigned share loses nobody) and cap at 95%."},
+{id:"shrink",st:"enroll",name:"Delivered fraction of the target",expr:"1 - unfilled"},
+{id:"Hbase",st:"enroll",name:"Annual headcount actually enrolled (regular admits)",expr:"Htarget * shrink"},
+{id:"Htot",st:"enroll",name:"Total annual headcount, with full-cost admits",expr:"Hbase + mcaN"},
+{id:"sEff",st:"enroll",k:"clamp",name:"Realized off-cycle share of enrolled students",expr:"shrink > 0 ? min(1, sRaw/shrink) : 0",note:"Lost decliners shrink the denominator, so the share of those who remain rises; capped at 1."},
+{id:"fallHC",st:"enroll",name:"Fall (and spring) headcount",expr:"Htot * (1 - sEff/2)",note:"Half of the off-cycle students are away in each regular term."},
+{id:"summerHC",st:"enroll",name:"Summer headcount",expr:"Htot * sEff"},
+{id:"fallF",st:"enroll",name:"Fall (and spring) FTES",expr:"f * fallHC"},
+{id:"summerF",st:"enroll",name:"Summer FTES",expr:"f * lam/100 * summerHC"},
+{id:"cy",st:"enroll",name:"Annual FTES",expr:"(2*fallF + summerF) / 2",note:"The CSU convention: college-year FTES is the term total over two."},
+{id:"cy0",st:"enroll",k:"const",name:"Annual FTES today",expr:"(2*f*H0 + S0) / 2"},
+{id:"added",st:"enroll",name:"Students added above today",expr:"Htot - H0"},
+{id:"addReg",st:"enroll",name:"Regular admits added above today",expr:"Hbase - H0"},
+{id:"addRes",st:"enroll",name:"Added resident students",expr:"addReg * (1 - nr/100)"},
+{id:"addNR",st:"enroll",name:"Added non-resident students",expr:"addReg * nr/100"},
+{id:"resHC",st:"enroll",name:"Resident headcount",expr:"resShare*H0 + addRes"},
+{id:"resFrac",st:"enroll",name:"Resident fraction of headcount",expr:"resHC / Htot"},
+{id:"resCY",st:"enroll",name:"Resident annual FTES",expr:"cy * resFrac"},
+{id:"resCY0",st:"enroll",k:"const",name:"Resident annual FTES today",expr:"cy0 * resShare"},
+{id:"dResCY",st:"enroll",name:"Added resident FTES",expr:"resCY - resCY0"},
+// ---- funding channels ----
+{id:"stmult",st:"funding",k:"case",name:"State-funding switch",expr:"ov.stmult !== undefined ? ov.stmult : 1",note:"1 while funding continues; the ten-year view sets it to 0 after the chosen year."},
+{id:"fNew",st:"funding",k:"clamp",name:"Share funded as new state growth",expr:"min(1, st/100)"},
+{id:"fRe",st:"funding",k:"clamp",name:"Share funded by reallocation",expr:"min(stre/100, 1 - fNew)",note:"The two channels are capped at 100% together; new growth takes precedence."},
+{id:"gfPerFTES",st:"funding",name:"General Fund per added resident FTES",expr:"stmult * (fNew*strate + fRe*rerate)"},
+// ---- revenue ----
+{id:"revTui",st:"revenue",name:"Resident tuition, net of aid",expr:"addRes * tui * (1 - aid/100)"},
+{id:"revNR",st:"revenue",name:"Non-resident revenue",expr:"addNR * nrrev"},
+{id:"revFee",st:"revenue",name:"Campus fees, discretionary share",expr:"added * fee * feed/100"},
+{id:"revState",st:"revenue",k:"case",name:"State funding of added resident FTES",expr:"max(0, dResCY) * gfPerFTES + min(0, dResCY) * strate",note:"Gains are funded at the blended rate; a loss of resident FTES loses funding at the full state share."},
+{id:"revMCA",st:"revenue",name:"Full-cost admit revenue",expr:"mcaN * nrrev"},
+{id:"hsEff",st:"revenue",k:"case",name:"Housed share of added summer students",expr:"ov.hsh !== undefined ? ov.hsh : hshare/100",note:"The slider in the steady state; the ten-year view raises it while the summer cohorts are all first- and second-years, who are required residents."},
+{id:"sumRes",st:"revenue",k:"clamp",name:"Added summer residents in campus housing",expr:"min(8800, max(0, summerHC - S0) * hsEff)",note:"Summer students beyond today's session who take a campus bed, capped at the bed stock. Fall and spring beds are full regardless, so each is a bed-term that would otherwise be empty."},
+{id:"revAux",st:"revenue",name:"Summer housing, dining and parking margin",expr:"sumRes * hmarg",note:"Set against the forgone conference and camp income charged as a cost; the calendar's auxiliary loss is a separate standing cost."},
+{id:"revenue",st:"totals",name:"Total added revenue",expr:"revTui + revNR + revFee + revState + revMCA + revAux"},
+// ---- CSU enrollment target and reallocation penalty ----
+{id:"fallHCt",st:"target",name:"Fall headcount if the target were delivered",expr:"(Htarget + mcaN) * (1 - sRaw/2)"},
+{id:"summerHCt",st:"target",name:"Summer headcount if the target were delivered",expr:"(Htarget + mcaN) * sRaw"},
+{id:"cyT",st:"target",name:"Annual FTES at the target",expr:"(2*f*fallHCt + f*lam/100*summerHCt) / 2"},
+{id:"resHCt",st:"target",name:"Resident headcount at the target",expr:"resShare*H0 + (Htarget - H0) * (1 - nr/100)"},
+{id:"resCYT",st:"target",name:"Resident FTES at the target",expr:"(Htarget + mcaN) > 0 ? cyT * resHCt / (Htarget + mcaN) : 0"},
+{id:"committedRes",st:"target",k:"clamp",name:"Resident FTES target the campus commits to",expr:"resCY0 + max(0, resCYT - resCY0) * tgtcommit/100"},
+{id:"missRes",st:"target",k:"clamp",name:"Shortfall against the committed target",expr:"max(0, committedRes - resCY)"},
+{id:"missPct",st:"target",name:"Shortfall as a share of the target",expr:"committedRes > 0 ? missRes / committedRes : 0"},
+{id:"cTargetPenalty",st:"target",k:"threshold",name:"Base funding reallocated away",expr:"missPct > MISS ? committedRes * realloc/100 * strate : 0",note:"A step: nothing until the miss exceeds 5% of the target, then a share of the whole target at once."},
+// ---- instruction ----
+{id:"kEff",st:"instr",k:"sat",name:"Effective FTES per faculty under fragmentation",expr:"k / (1 + frag/100 * min(1, sEff/0.4))",note:"The fragmentation penalty grows with the off-cycle share and saturates at SEM's 40% design."},
+{id:"need0",st:"instr",name:"FTEF needed per regular term today",expr:"f * H0 / k"},
+{id:"lec0",st:"instr",k:"clamp",name:"Lecturer FTEF per regular term today",expr:"max(0, need0 - tt)"},
+{id:"vmult",st:"instr",k:"case",name:"Volunteer participation multiplier",expr:"ov.vmult !== undefined ? ov.vmult : 1",note:"1 in the steady state; decays with realization after year four in the ten-year view."},
+{id:"volCap",st:"instr",name:"Volunteer FTEF-terms available, gross",expr:"tt * v/100 * w/100 * vmult"},
+{id:"volExisting",st:"instr",name:"Volunteer FTEF-terms today's summer already uses",expr:"S0 / k"},
+{id:"needS",st:"instr",k:"clamp",name:"Summer FTEF-terms needed beyond today's summer",expr:"max(0, summerF - S0) / kEff"},
+{id:"volAvail",st:"instr",k:"clamp",name:"Volunteer FTEF-terms available to YRO",expr:"max(0, volCap - volExisting)"},
+{id:"volUsed",st:"instr",k:"clamp",name:"Summer FTEF-terms covered by volunteers",expr:"min(needS * svcshare/100, volAvail * SVC_TT) + min(needS * (1 - svcshare/100), volAvail * (1 - SVC_TT))",note:"Two caps: service courses can draw only on the fifth of tenure-line faculty in service departments; the rest on the other four-fifths."},
+{id:"svcFTEF",st:"instr",name:"Service-course FTEF-terms in summer",expr:"needS * svcshare/100"},
+{id:"mathSections",st:"instr",name:"Illustrative mathematics sections in summer",expr:"summerHC * 0.60 / 35"},
+{id:"remain",st:"instr",name:"Summer FTEF-terms not covered by volunteers",expr:"needS - volUsed"},
+{id:"lecS",st:"instr",name:"Summer lecturer FTEF-terms",expr:"remain * lec/100"},
+{id:"hiresTeach",st:"instr",name:"Summer FTEF-terms the new lines must teach",expr:"remain * (1 - lec/100)"},
+{id:"hires",st:"instr",name:"New summer-obligated tenure lines",expr:"hiresTeach * 12 / wtutt",note:"A line teaches wtutt WTU a term against the 12 the FTES ratio was calibrated on."},
+{id:"needF",st:"instr",name:"FTEF needed per regular term under YRO",expr:"fallF / kEff"},
+{id:"ttCap",st:"instr",name:"Tenure-line capacity per regular term",expr:"tt + hiresTeach/2",note:"Each new line brings one regular term with it."},
+{id:"lecReg",st:"instr",k:"clamp",name:"Lecturer FTEF per regular term under YRO",expr:"max(0, needF - ttCap)"},
+{id:"idleTT",st:"instr",k:"clamp",name:"Underused tenure-line FTEF per regular term",expr:"max(0, ttCap - needF)"},
+{id:"lecTermCost",st:"instr",name:"Cost of one lecturer FTEF-term",expr:"lsal * (1 + fr/100) / 2"},
+{id:"volCost",st:"instr",name:"Cost of one volunteer FTEF-term",expr:"sal * 0.5 * (1 + interm) + 15 * indirect",note:"15 WTU at 1/30 of salary each, plus $150 a unit of indirect instruction, at the intermittent benefits rate."},
+{id:"lecSCost",st:"instr",k:"case",name:"Cost of one summer lecturer FTEF-term",expr:"lecappt > 0.5 ? lsal * (1 + fr/100) / 2 : lsal * 0.5 * (1 + interm)",note:"An appointment with full benefits, or summer extra pay at the intermittent rate."},
+{id:"hireCost",st:"instr",name:"Loaded cost of one new line",expr:"nsal * (1 + prem/100) * (1 + fr/100)"},
+{id:"cVol",st:"instr",name:"Volunteer summer teaching",expr:"volUsed * volCost"},
+{id:"cLecS",st:"instr",name:"Lecturer summer appointments",expr:"lecS * lecSCost"},
+{id:"cHires",st:"instr",name:"New summer-obligated hires",expr:"hires * hireCost"},
+{id:"equityN",st:"instr",k:"threshold",name:"Existing faculty raised to the premium",expr:"hires > 0 ? min(equity, 2 * hires) : 0",note:"A gate and a cap: no inversions without premium-paid hires, and at most two colleagues per new line."},
+{id:"cEquity",st:"instr",name:"Equity adjustments",expr:"equityN * nsal * prem/100 * (1 + fr/100)"},
+{id:"dLecReg",st:"instr",name:"Change in fall/spring lecturer cost",expr:"(lecReg - lec0) * 2 * lecTermCost",note:"Negative when the regular terms thin out: a saving in the ledger, a reduction in lecturer appointments in practice."},
+{id:"instr",st:"instr",name:"Instruction, total",expr:"cVol + cLecS + cHires + dLecReg"},
+// ---- operations ----
+{id:"phiS",st:"ops",k:"case",name:"Design share reached",expr:"ov.phi !== undefined ? ov.phi : 1",note:"1 in the steady state; the standing costs of a third term phase in with it in the ten-year view."},
+{id:"addSummerF",st:"ops",k:"clamp",name:"Summer FTES added above today's summer",expr:"max(0, summerF - S0)"},
+{id:"cOps",st:"ops",name:"Summer operations",expr:"addSummerF * ops"},
+{id:"cStaff",st:"ops",name:"Added staff",expr:"addSummerF / 1000 * staff * staffCost"},
+{id:"cSvc",st:"ops",name:"Student services for added students",expr:"added * svc"},
+{id:"cHvac",st:"ops",name:"Cooling retrofit, annualized",expr:"hvac * 1e6 * crf"},
+{id:"overflowSeats",st:"ops",k:"clamp",name:"Fall/spring seats above the cap",expr:"max(0, fallHC - cap)"},
+{id:"cBuildYRO",st:"ops",k:"case",name:"Seats built for YRO's overflow, annualized",expr:"includeBuild ? overflowSeats * capseat * crf : 0",note:"The checkbox on the charts can exclude seat construction when fall and spring exceed the cap."},
+{id:"cMaint",st:"ops",name:"Maintenance and construction premium",expr:"maint * 1e6 * phiS"},
+{id:"cAux",st:"ops",name:"Forgone summer auxiliary income",expr:"aux * 1e6 * phiS"},
+{id:"cAuxCal",st:"ops",k:"threshold",name:"Auxiliary margin lost to the 14-week calendar",expr:"auxcal * 1e6 * (phiS > 0 ? 1 : 0)",note:"Charged in full from the first YRO year rather than phased with the design: the calendar changes for every student at once."},
+{id:"cAdm",st:"ops",name:"YRO administration",expr:"adm * 1e6 * phiS"},
+{id:"cTurn",st:"ops",name:"Per-term transitions",expr:"summerHC * turn"},
+// ---- financial need ----
+{id:"pellExtra",st:"need",k:"clamp",name:"Added Pell students beyond today's mix",expr:"max(0, added * (pell - pell0)/100)"},
+{id:"cPell",st:"need",name:"Support and aid for added Pell students",expr:"pellExtra * (pellsup + pellaid)"},
+{id:"sugNeed",st:"need",k:"clamp",name:"State University Grant need of added students",expr:"max(0, added) * pell/100 * sugPer"},
+{id:"cSugLag",st:"need",name:"Grant need not yet recognized",expr:"sugNeed * suglag/100"},
+// ---- calendar layer ----
+{id:"L",st:"calendar",k:"case",name:"Calendar and student-outcome layer",expr:"ov.layer !== undefined ? ov.layer : (callayer > 0.5 ? 1 : 0)",note:"Off or on in the steady state; applied to the first N cohort-years in the ten-year view."},
+{id:"dfwPressure",st:"calendar",name:"D/F/W grades the calendar would produce",expr:"Htot * CPY * aff/100 * dfw/100 * L"},
+{id:"absorbed",st:"calendar",name:"Grades absorbed by grading (unpriced)",expr:"dfwPressure * absorb/100"},
+{id:"retakes",st:"calendar",name:"Extra D/F/W grades issued",expr:"dfwPressure - absorbed"},
+{id:"retakeFT",st:"calendar",name:"Retake seats, FTES-terms",expr:"retakes * UNITS / 15"},
+{id:"cRetake",st:"calendar",name:"Retake seats taught",expr:"retakeFT / kEff * lecTermCost"},
+{id:"retakesPerGrad",st:"calendar",name:"Retakes per graduate",expr:"CPD * aff/100 * dfw/100 * (1 - absorb/100) * L"},
+{id:"extraYears",st:"calendar",name:"Extra years per degree from retakes",expr:"retakesPerGrad / 10"},
+{id:"contactLoss",st:"calendar",k:"clamp",name:"Contact hours lost vs. a 15-week term",expr:"max(0, (75 - days)/75)",note:"Drives the warning flag only; its cost is priced through the D/F/W slider."},
+// ---- totals ----
+{id:"cost",st:"totals",name:"Total added cost",expr:"instr + cOps + cStaff + cSvc + cHvac + cBuildYRO + cMaint + cAux + cAuxCal + cAdm + cRetake + cEquity + cTurn + cTargetPenalty + cPell + cSugLag"},
+{id:"net",st:"totals",name:"Net annual result, steady state",expr:"revenue - cost"},
+// ---- throughput ----
+{id:"G0",st:"through",name:"Graduates per year today",expr:"H0 / D"},
+{id:"blocked",st:"through",name:"Off-cycle students blocked from a minor or change of major",expr:"Htot * sEff * blk/100 * L"},
+{id:"blockedLeave",st:"through",name:"Blocked students who leave",expr:"blocked * 0.25"},
+{id:"blockedWait",st:"through",name:"Blocked students who wait a term",expr:"blocked * 0.75"},
+{id:"Deff",st:"through",name:"Effective students per graduate",expr:"D + extraYears + (blockedWait * 0.5) / max(1, Htot) * D"},
+{id:"lostFirstYear",st:"through",name:"Calendar-driven first-year departures",expr:"(Htot/Deff) * attrC/100 * (1 - absorb/100) * L"},
+{id:"enteringOff",st:"through",name:"Entering off-cycle students per year",expr:"(Htot/Deff) * sEff"},
+{id:"lostFS",st:"through",name:"Fall–Summer first-years who do not return",expr:"(enteringOff/2) * att1/100 * L"},
+{id:"lostCont",st:"through",name:"Continuing off-cycle students lost",expr:"(Htot*sEff - enteringOff) * att/100 * L"},
+{id:"G",st:"through",name:"Graduates per year",expr:"Htot/Deff - lostCont - lostFS - lostFirstYear - blockedLeave"},
+{id:"dG",st:"through",name:"Added graduates per year",expr:"G - G0"},
+// ---- benchmark ----
+{id:"tradSeats",st:"bench",k:"clamp",name:"Seats traditional growth must build",expr:"max(0, Htot - cap)"},
+{id:"cBuildTrad",st:"bench",name:"Traditional seat construction, annualized",expr:"tradSeats * capseat * crf"},
+{id:"tradCY",st:"bench",name:"Annual FTES, traditional growth",expr:"f * Htot + S0/2"},
+{id:"tradRes",st:"bench",name:"Added resident FTES, traditional growth",expr:"tradCY * resFrac - resCY0"},
+{id:"tradRev",st:"bench",k:"clamp",name:"Revenue, traditional growth",expr:"revTui + revNR + revFee + revMCA + max(0, tradRes) * gfPerFTES"},
+{id:"tradLec",st:"bench",k:"clamp",name:"Added lecturer FTEF per term, traditional growth",expr:"max(0, f*Htot/k - tt) - lec0"},
+{id:"tradCost",st:"bench",name:"Cost, traditional growth",expr:"tradLec * 2 * lecTermCost + cSvc + cBuildTrad"},
+{id:"tradNet",st:"bench",name:"Net, traditional growth",expr:"tradRev - tradCost"},
+{id:"summerPct",st:"derived",name:"Summer as a share of fall FTES",expr:"fallF > 0 ? summerF / fallF : 0"},
+{id:"encumbered",st:"derived",name:"Base budget encumbered by new lines",expr:"hires * hireCost"}
+];
+// ---- ten-year view: evaluated for year t with Y = {t, Qprev, prevSticky, needAhead, cumPrev}; rerun re-evaluates the graph above ----
+const T = [
+{id:"phi_t",st:"ten",k:"case",name:"Phase-in share reached by year t",expr:"PHI(min(Y.t, hold))",note:"Cohorts accumulate one a year: 30%, 55%, 80%, 100%. Holding the rollout freezes it at that stage."},
+{id:"Q_t",st:"ten",k:"case",name:"Campus-wide design share in year t",expr:"yshare/100 * phi_t + (yjoin >= 11 ? 0 : (1 - yshare/100) * PHI(min(Y.t - yjoin, hold)))",note:"The listed programs, then the rest of the campus if set to join."},
+{id:"poolIdx_t",st:"ten",k:"case",name:"Applicant pool relative to the plateau",expr:"Y.t <= 2 ? 1 : pow(1 + pool/100, Y.t - 2)"},
+{id:"decl_t",st:"ten",k:"clamp",name:"Pool decline, percent",expr:"max(0, (1 - poolIdx_t) * 100)"},
+{id:"rmult_t",st:"ten",k:"threshold",name:"Realization decay multiplier",expr:"Y.t > 4 ? max(0, pow(1 + decay/100, Y.t - 4)) : 1",note:"Starts after year four, once the tracks are fully phased in."},
+{id:"pmult_t",st:"ten",k:"clamp",name:"Realization lost to the pool",expr:"max(0, 1 - poolsens * decl_t/100)"},
+{id:"leaveShare_t",st:"ten",k:"clamp",name:"Declined offers lost, year t",expr:"min(1, leave/100 + poolleave * decl_t/100)"},
+{id:"H_t",st:"ten",name:"Headcount target in year t",expr:"H0 + (H - H0) * Q_t"},
+{id:"sEff_t",st:"ten",name:"Realized off-cycle share in year t",expr:"s/100 * r/100 * Q_t * rmult_t * pmult_t"},
+{id:"assigned_t",st:"ten",name:"Assigned share in year t",expr:"s/100 * Q_t"},
+{id:"mca_t",st:"ten",name:"Full-cost admits in year t",expr:"mca * phi_t"},
+{id:"layer_t",st:"ten",k:"threshold",name:"Calendar layer applied in year t",expr:"Y.t <= calyrs ? 1 : 0"},
+{id:"stmult_t",st:"ten",k:"threshold",name:"State funding continues in year t",expr:"Y.t <= stcut ? 1 : 0"},
+{id:"f2_t",st:"ten",name:"Share of the summer cohort in its first two years",expr:"min(Y.t, 2) / min(Y.t, 4)",note:"All of it in years one and two, two-thirds in year three, half from year four, as cohorts age through the degree."},
+{id:"hsh_t",st:"ten",k:"clamp",name:"Housed share of summer students in year t",expr:"f2_t * min(1, hshare/50) + (1 - f2_t) * max(0, 2*hshare/100 - 1)",note:"First- and second-years are required residents; the slider's steady-state share implies the upper-division rate (zero at 50% and below)."},
+{id:"rerun",st:"ten",k:"view",name:"The ledger re-run for year t",expr:"RERUN({H:H_t, sEff:sEff_t, assigned:assigned_t, mca:mca_t, layer:layer_t, stmult:stmult_t, vmult:rmult_t, leaveShare:leaveShare_t, phi:Q_t, hsh:hsh_t})",note:"Every node to the left is evaluated again with these overrides; the lines below read from that run."},
+{id:"revBase_t",st:"ten",name:"Revenue in year t, before growth",expr:"rerun.revenue"},
+{id:"revState_t",st:"ten",name:"State funding in year t",expr:"rerun.revState"},
+{id:"costBase0_t",st:"ten",name:"Cost in year t, before hires, cooling and equity",expr:"rerun.cost - rerun.cHires - rerun.cHvac - rerun.cEquity"},
+{id:"hires_t",st:"ten",name:"Lines needed in year t",expr:"rerun.hires"},
+{id:"needAhead_t",st:"ten",name:"Lines needed in the year the hiring lead points at",expr:"Y.need[min(12, Y.t + lead)] || 0",note:"With a lead of one, salaries on the lines year t+1 needs begin in year t."},
+{id:"sticky_t",st:"ten",k:"clamp",name:"Lines filled by year t (never shrink)",expr:"max(Y.prevSticky, needAhead_t)",note:"Once filled, lines are never reduced, whatever summer enrollment does afterward."},
+{id:"esc_t",st:"ten",name:"Cost escalation factor",expr:"pow(1 + cg/100, Y.t - 1)"},
+{id:"tesc_t",st:"ten",name:"Tuition escalation factor",expr:"pow(1 + tg/100, Y.t - 1)"},
+{id:"rev_t",st:"ten",name:"Revenue in year t",expr:"(revBase_t - revState_t) * tesc_t + revState_t",note:"State funding is held flat per FTES; tuition and fees grow."},
+{id:"costBase_t",st:"ten",k:"threshold",name:"Recurring cost in year t, before escalation",expr:"costBase0_t + sticky_t * rerun.hireCost + (Y.t >= 3 ? rerun.cEquity : 0)",note:"Equity adjustments arrive from year three."},
+{id:"hvacCash_t",st:"ten",k:"clamp",name:"Cooling retrofit expensed as cash",expr:"hvac * 1e6 * max(0, Q_t - Y.Qprev)"},
+{id:"oneTime_t",st:"ten",k:"threshold",name:"Transition and redesign, year one only",expr:"Y.t === 1 ? (trans + redesign) * 1e6 : 0"},
+{id:"startupCash_t",st:"ten",k:"clamp",name:"Startup and office fit-out as lines are filled",expr:"max(0, sticky_t - Y.prevSticky) * (startup + office)"},
+{id:"annual_t",st:"ten",name:"Annual result in year t",expr:"rev_t - costBase_t * esc_t - hvacCash_t - oneTime_t - startupCash_t"},
+{id:"cum_t",st:"ten",name:"Cumulative result through year t",expr:"Y.cumPrev + annual_t"},
+{id:"disc_t",st:"ten",name:"Discounted annual result",expr:"annual_t / pow(1 + disc/100, Y.t)"}
+];
+return {C,STAGES,N,T};
+})();
+
+
+/* Evaluator for SPEC: compiles each node's expression once, then runs the list in order. */
+const ENGINE = (function(SPEC){
+const {C,N,T} = SPEC;
+const nodeIds = new Set(N.map(n=>n.id)), tenIds = new Set(T.map(n=>n.id)), constIds = new Set(Object.keys(C));
+const KEEP = new Set(["max","min","pow","abs","ov","Y","RERUN","PHI","undefined","true","false","Math"]);
+let sliderIds = new Set();
+function setSliders(ids){ sliderIds = new Set(ids); }
+function deps(expr){ const d=new Set(); expr.replace(/[A-Za-z_]\w*/g,(m,off)=>{ const pre=expr[off-1]; if(pre==="."||/[0-9]/.test(pre)) return m; if(expr[off+m.length]===":" && /[{,]\s*$/.test(expr.slice(0,off))) return m; if(nodeIds.has(m)||tenIds.has(m)||sliderIds.has(m)) d.add(m); return m; }); return [...d]; }
+function compile(expr){
+  const js = expr.replace(/[A-Za-z_]\w*/g,(m,off)=>{ const pre=expr[off-1]; if(pre==="."||/[0-9]/.test(pre)) return m; if(expr[off+m.length]===":" && /[{,]\s*$/.test(expr.slice(0,off))) return m; if(nodeIds.has(m)||tenIds.has(m)) return "n."+m; if(sliderIds.has(m)) return "p."+m; if(constIds.has(m)) return "C."+m; if(KEEP.has(m)) return m; throw new Error("unknown identifier "+m+" in "+expr); });
+  return new Function("n","p","ov","Y","C","max","min","pow","abs","RERUN","PHI","return ("+js+")");
+}
+let FN=null, FT=null;
+function prepare(ids){ setSliders(ids); FN=N.map(n=>({id:n.id,f:compile(n.expr)})); FT=T.map(n=>({id:n.id,f:compile(n.expr)})); N.forEach(n=>n.deps=deps(n.expr)); T.forEach(n=>n.deps=deps(n.expr)); }
+const PHI = t => t<=0?0:(t>=4?1:C.RAMP[t]);
+function steady(p, ov){ ov=ov||{}; const n={}; for(const {id,f} of FN) n[id]=f(n,p,ov,null,C,Math.max,Math.min,Math.pow,Math.abs,null,PHI); return n; }
+function tenYear(p){
+  const RERUN = ov => steady(p, ov);
+  const years=[]; const need=[]; const lead=Math.round(p.lead);
+  const run = (t,Y)=>{ const n={}; Y.t=t; for(const {id,f} of FT) n[id]=f(n,p,{},Y,C,Math.max,Math.min,Math.pow,Math.abs,RERUN,PHI); return n; };
+  // lines needed in each year, through year 12, so the hiring lead can look ahead
+  for(let t=1;t<=12;t++){ need[t]=run(t,{Qprev:0,prevSticky:0,need:[],cumPrev:0}).hires_t; }
+  let Qprev=0, prevSticky=0, cum=0;
+  for(let t=1;t<=10;t++){
+    const n=run(t,{Qprev,prevSticky,need,cumPrev:cum});
+    n.label=(2027+t)+"-"+String(28+t).padStart(2,"0");
+    years.push(n); Qprev=n.Q_t; prevSticky=n.sticky_t; cum=n.cum_t;
+  }
+  return years;
+}
+// derived figures the page cites
+function derived(p){
+  const m=steady(p); const H=m.Hdesign;
+  const a=steady(p,{H:H-500}); const lastStudent=(m.net-a.net)/Math.max(1,m.Htot-a.Htot);
+  // Column A and the pair hold enrollment fixed apart from what the operation adds (the lost-decliner share is pinned)
+  const N=500, Hb=m.Htot-m.mcaN; const base=steady(p,{H:Hb,leaveShare:0,sEff:m.sEff});
+  const colA=(steady(p,{H:Hb,leaveShare:0,sEff:(m.Htot*m.sEff+N)/m.Htot}).net-base.net)/N;
+  const addS=(steady(p,{H:Hb+N,leaveShare:0,sEff:(m.Htot*m.sEff+N)/(m.Htot+N)}).net-base.net)/N;
+  const pair=(steady(p,{H:Hb+N,leaveShare:0,sEff:(m.Htot*m.sEff+2*N)/(m.Htot+N)}).net-base.net)/N;
+  let beMCA=null; if(m.net<0){ for(let x=0;x<=4400;x+=50){ if(steady(p,{mca:x}).net>=0){ beMCA=x; break; } } }
+  const yrs=tenYear(p); const cum=yrs[9].cum_t; let npv=0,pb=null; yrs.forEach(y=>{ npv+=y.disc_t; if(pb===null&&y.cum_t>=0) pb=y.t_label||null; });
+  return {lastStudent,colA,addS,pair,beMCA,ten:cum,npv,years:yrs};
+}
+return {prepare,steady,tenYear,derived,PHI,deps};
+})(typeof SPEC!=="undefined"?SPEC:require("./spec.js"));
+
+
+const INPUTS=[
+{
+"id": "H",
+"num": 1,
+"label": "Target total headcount if every program were on YRO",
+"panel": "Enrollment & demand",
+"min": 23400.0,
+"max": 34000.0,
+"step": 100.0
+},
+{
+"id": "yshare",
+"num": 2,
+"label": "Share of enrollment in the programs on YRO",
+"panel": "Enrollment & demand",
+"min": 20.0,
+"max": 100.0,
+"step": 1.0
+},
+{
+"id": "yjoin",
+"num": 3,
+"label": "Remaining programs join YRO after year",
+"panel": "Enrollment & demand",
+"min": 1.0,
+"max": 11.0,
+"step": 1.0
+},
+{
+"id": "s",
+"num": 4,
+"label": "Students on summer-inclusive tracks",
+"panel": "Enrollment & demand",
+"min": 0.0,
+"max": 50.0,
+"step": 1.0
+},
+{
+"id": "r",
+"num": 5,
+"label": "Realization: off-cycle students who actually enroll in summer",
+"panel": "Enrollment & demand",
+"min": 20.0,
+"max": 100.0,
+"step": 1.0
+},
+{
+"id": "leave",
+"num": 6,
+"label": "Declined summer-track offers that are lost rather than switched to fall–spring",
+"panel": "Enrollment & demand",
+"min": 0.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "lam",
+"num": 7,
+"label": "Summer unit load vs. a regular term",
+"panel": "Enrollment & demand",
+"min": 50.0,
+"max": 100.0,
+"step": 1.0
+},
+{
+"id": "cap",
+"num": 8,
+"label": "Concurrent on-campus capacity (students per term)",
+"panel": "Enrollment & demand",
+"min": 22000.0,
+"max": 30000.0,
+"step": 100.0
+},
+{
+"id": "nr",
+"num": 9,
+"label": "Non-resident share of added students",
+"panel": "Enrollment & demand",
+"min": 0.0,
+"max": 40.0,
+"step": 1.0
+},
+{
+"id": "tui",
+"num": 10,
+"label": "Resident tuition per student-year",
+"panel": "Revenue",
+"min": 6000.0,
+"max": 9000.0,
+"step": 1.0
+},
+{
+"id": "aid",
+"num": 11,
+"label": "Tuition set aside for financial aid",
+"panel": "Revenue",
+"min": 0.0,
+"max": 45.0,
+"step": 1.0
+},
+{
+"id": "nrrev",
+"num": 12,
+"label": "Net revenue per non-resident student-year",
+"panel": "Revenue",
+"min": 15000.0,
+"max": 34000.0,
+"step": 250.0
+},
+{
+"id": "fee",
+"num": 13,
+"label": "Campus fees per student-year",
+"panel": "Revenue",
+"min": 0.0,
+"max": 9000.0,
+"step": 100.0
+},
+{
+"id": "feed",
+"num": 14,
+"label": "Share of fee revenue not consumed by the service it funds",
+"panel": "Revenue",
+"min": 0.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "st",
+"num": 15,
+"label": "Share of added resident FTES funded as new state growth",
+"panel": "Revenue",
+"min": 0.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "strate",
+"num": 16,
+"label": "State share per new-growth FTES",
+"panel": "Revenue",
+"min": 6000.0,
+"max": 13000.0,
+"step": 1.0
+},
+{
+"id": "stre",
+"num": 17,
+"label": "Share of added resident FTES funded by reallocation from campuses below target",
+"panel": "Revenue",
+"min": 0.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "rerate",
+"num": 18,
+"label": "General Fund per reallocated FTES",
+"panel": "Revenue",
+"min": 6000.0,
+"max": 13000.0,
+"step": 1.0
+},
+{
+"id": "tgtcommit",
+"num": 19,
+"label": "Share of YRO's growth written into Cal Poly's CSU enrollment target",
+"panel": "Revenue",
+"min": 0.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "realloc",
+"num": 20,
+"label": "Base funding reallocated away if the campus lands below that target",
+"panel": "Revenue",
+"min": 0.0,
+"max": 10.0,
+"step": 0.5
+},
+{
+"id": "mca",
+"num": 21,
+"label": "Students admitted on a full-cost basis (self-support tracks, or non-resident rates for residents)",
+"panel": "Revenue",
+"min": 0.0,
+"max": 4400.0,
+"step": 50.0
+},
+{
+"id": "k",
+"num": 22,
+"label": "FTES taught per full-time faculty per term",
+"panel": "Faculty",
+"min": 14.0,
+"max": 26.0,
+"step": 0.5
+},
+{
+"id": "frag",
+"num": 23,
+"label": "Section fragmentation: extra instruction per FTES from splitting courses across three terms",
+"panel": "Faculty",
+"min": 0.0,
+"max": 25.0,
+"step": 1.0
+},
+{
+"id": "tt",
+"num": 24,
+"label": "Tenure-line faculty today, before YRO hiring (FTEF)",
+"panel": "Faculty",
+"min": 600.0,
+"max": 1000.0,
+"step": 10.0
+},
+{
+"id": "svcshare",
+"num": 25,
+"label": "Share of summer instruction that is lower-division service (math, physics, chemistry, statistics, GE)",
+"panel": "Faculty",
+"min": 0.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "v",
+"num": 26,
+"label": "Tenure-line faculty who volunteer for summer",
+"panel": "Faculty",
+"min": 0.0,
+"max": 60.0,
+"step": 1.0
+},
+{
+"id": "w",
+"num": 27,
+"label": "Load a volunteer takes (share of a full 15-WTU term)",
+"panel": "Faculty",
+"min": 25.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "lecappt",
+"num": 28,
+"label": "How summer lecturers are paid",
+"panel": "Faculty",
+"min": 0.0,
+"max": 1.0,
+"step": 1.0
+},
+{
+"id": "wtutt",
+"num": 29,
+"label": "Direct-teaching WTU per tenure-line term",
+"panel": "Faculty",
+"min": 9.0,
+"max": 12.0,
+"step": 0.5
+},
+{
+"id": "lec",
+"num": 30,
+"label": "Remaining summer instruction covered by lecturers",
+"panel": "Faculty",
+"min": 0.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "sal",
+"num": 31,
+"label": "Average tenure-line salary",
+"panel": "Faculty",
+"min": 100000.0,
+"max": 160000.0,
+"step": 1000.0
+},
+{
+"id": "nsal",
+"num": 32,
+"label": "Starting salary, new summer-obligated hire",
+"panel": "Faculty",
+"min": 90000.0,
+"max": 150000.0,
+"step": 1000.0
+},
+{
+"id": "prem",
+"num": 33,
+"label": "Salary premium to recruit for a summer-teaching appointment",
+"panel": "Faculty",
+"min": 0.0,
+"max": 30.0,
+"step": 1.0
+},
+{
+"id": "equity",
+"num": 34,
+"label": "Existing faculty raised to match the summer premium (equity adjustments)",
+"panel": "Faculty",
+"min": 0.0,
+"max": 600.0,
+"step": 10.0
+},
+{
+"id": "lsal",
+"num": 35,
+"label": "Average lecturer salary (full-time equivalent)",
+"panel": "Faculty",
+"min": 66000.0,
+"max": 110000.0,
+"step": 1000.0
+},
+{
+"id": "fr",
+"num": 36,
+"label": "Benefits load on regular appointments",
+"panel": "Faculty",
+"min": 30.0,
+"max": 70.0,
+"step": 1.0
+},
+{
+"id": "startup",
+"num": 37,
+"label": "Startup and recruitment cost per new hire (one-time)",
+"panel": "Faculty",
+"min": 0.0,
+"max": 300000.0,
+"step": 10000.0
+},
+{
+"id": "office",
+"num": 38,
+"label": "Office and research space per new line: relocation and fit-out (one-time)",
+"panel": "Faculty",
+"min": 0.0,
+"max": 250000.0,
+"step": 5000.0
+},
+{
+"id": "ops",
+"num": 39,
+"label": "Operating cost per added summer FTES (utilities, custodial, lab supplies, IT)",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 5000.0,
+"step": 100.0
+},
+{
+"id": "staff",
+"num": 40,
+"label": "Added staff per 1,000 summer FTES (advising, lab techs, registrar, health)",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 30.0,
+"step": 1.0
+},
+{
+"id": "svc",
+"num": 41,
+"label": "Student services & overhead per added student (any term)",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 8000.0,
+"step": 100.0
+},
+{
+"id": "hvac",
+"num": 42,
+"label": "Cooling / ventilation retrofit capital",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 250.0,
+"step": 5.0
+},
+{
+"id": "capseat",
+"num": 43,
+"label": "All-in capital cost per seat of peak fall/spring capacity",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 300000.0,
+"step": 5000.0
+},
+{
+"id": "turn",
+"num": 44,
+"label": "Per-term transition cost per off-cycle student (move-in and move-out, orientation, enrollment and aid processing)",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 1500.0,
+"step": 50.0
+},
+{
+"id": "maint",
+"num": 45,
+"label": "Maintenance & construction premium from losing the summer window",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 20.0,
+"step": 0.5
+},
+{
+"id": "aux",
+"num": 46,
+"label": "Forgone summer conference, camp and auxiliary income",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 10.0,
+"step": 0.5
+},
+{
+"id": "hshare",
+"num": 47,
+"label": "Added summer students living in campus housing",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "hmarg",
+"num": 48,
+"label": "Net auxiliary margin per summer resident (housing, dining, parking)",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 8000.0,
+"step": 250.0
+},
+{
+"id": "auxcal",
+"num": 49,
+"label": "Fall and spring auxiliary margin lost to 14-week terms (housing, dining, parking)",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 12.0,
+"step": 0.5
+},
+{
+"id": "adm",
+"num": 50,
+"label": "YRO administration, scheduling, advising infrastructure",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 10.0,
+"step": 0.5
+},
+{
+"id": "trans",
+"num": 51,
+"label": "One-time transition cost",
+"panel": "Facilities, staff & operations",
+"min": 0.0,
+"max": 40.0,
+"step": 1.0
+},
+{
+"id": "pell",
+"num": 52,
+"label": "Pell share of the added students",
+"panel": "Financial need",
+"min": 10.0,
+"max": 50.0,
+"step": 1.0
+},
+{
+"id": "pellsup",
+"num": 53,
+"label": "Above-average support per added Pell student beyond today's mix",
+"panel": "Financial need",
+"min": 0.0,
+"max": 6000.0,
+"step": 250.0
+},
+{
+"id": "pellaid",
+"num": 54,
+"label": "Supplemental campus aid per added Pell student beyond today's mix",
+"panel": "Financial need",
+"min": 0.0,
+"max": 8000.0,
+"step": 250.0
+},
+{
+"id": "suglag",
+"num": 55,
+"label": "Share of the added State University Grant need not yet recognized by the allocation",
+"panel": "Financial need",
+"min": 0.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "callayer",
+"num": 56,
+"label": "Calendar and student-outcome layer in the steady state",
+"panel": "Calendar & instructional quality",
+"min": 0.0,
+"max": 1.0,
+"step": 1.0
+},
+{
+"id": "calyrs",
+"num": 57,
+"label": "Cohort-years the layer applies to in the ten-year view",
+"panel": "Calendar & instructional quality",
+"min": 0.0,
+"max": 10.0,
+"step": 1.0
+},
+{
+"id": "days",
+"num": 58,
+"label": "Instructional days per regular term under the YRO calendar",
+"panel": "Calendar & instructional quality",
+"min": 60.0,
+"max": 75.0,
+"step": 1.0
+},
+{
+"id": "dfw",
+"num": 59,
+"label": "Rise in the D/F/W rate in affected courses (percentage points)",
+"panel": "Calendar & instructional quality",
+"min": 0.0,
+"max": 15.0,
+"step": 0.5
+},
+{
+"id": "aff",
+"num": 60,
+"label": "Share of course enrollments in affected courses",
+"panel": "Calendar & instructional quality",
+"min": 0.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "absorb",
+"num": 61,
+"label": "Share of the D/F pressure absorbed by grading rather than retakes",
+"panel": "Calendar & instructional quality",
+"min": 0.0,
+"max": 100.0,
+"step": 5.0
+},
+{
+"id": "attrC",
+"num": 62,
+"label": "Extra first-year attrition from the calendar change (percentage points of the entering cohort)",
+"panel": "Calendar & instructional quality",
+"min": 0.0,
+"max": 5.0,
+"step": 0.5
+},
+{
+"id": "redesign",
+"num": 63,
+"label": "Curriculum redesign for the YRO calendar, one-time",
+"panel": "Calendar & instructional quality",
+"min": 0.0,
+"max": 15.0,
+"step": 0.5
+},
+{
+"id": "cg",
+"num": 64,
+"label": "Annual growth in salaries, benefits and operating costs",
+"panel": "Dynamics over ten years",
+"min": 0.0,
+"max": 6.0,
+"step": 0.5
+},
+{
+"id": "tg",
+"num": 65,
+"label": "Annual growth in tuition and fees after 2028-29",
+"panel": "Dynamics over ten years",
+"min": 0.0,
+"max": 6.0,
+"step": 0.5
+},
+{
+"id": "decay",
+"num": 66,
+"label": "Change in summer realization each year once the tracks are fully phased in (after year 4)",
+"panel": "Dynamics over ten years",
+"min": -25.0,
+"max": 10.0,
+"step": 1.0
+},
+{
+"id": "lead",
+"num": 67,
+"label": "Hiring lead: years salary on new lines begins before the cohort it serves",
+"panel": "Dynamics over ten years",
+"min": 0.0,
+"max": 2.0,
+"step": 1.0
+},
+{
+"id": "hold",
+"num": 68,
+"label": "Rollout held after year",
+"panel": "Dynamics over ten years",
+"min": 1.0,
+"max": 10.0,
+"step": 1.0
+},
+{
+"id": "pool",
+"num": 69,
+"label": "Change in the California applicant pool each year from 2030-31",
+"panel": "Dynamics over ten years",
+"min": -4.0,
+"max": 1.0,
+"step": 0.1
+},
+{
+"id": "poolsens",
+"num": 70,
+"label": "Summer realization falls by this multiple of the pool's decline",
+"panel": "Dynamics over ten years",
+"min": 0.0,
+"max": 1.0,
+"step": 0.05
+},
+{
+"id": "poolleave",
+"num": 71,
+"label": "Declined summer-track offers lost rather than backfilled: points per 1% of pool decline",
+"panel": "Dynamics over ten years",
+"min": 0.0,
+"max": 10.0,
+"step": 0.5
+},
+{
+"id": "stcut",
+"num": 72,
+"label": "State funding of added FTES continues through year",
+"panel": "Dynamics over ten years",
+"min": 1.0,
+"max": 10.0,
+"step": 1.0
+},
+{
+"id": "disc",
+"num": 73,
+"label": "Discount rate for the ten-year present value",
+"panel": "Dynamics over ten years",
+"min": 0.0,
+"max": 10.0,
+"step": 0.5
+},
+{
+"id": "D",
+"num": 74,
+"label": "Enrolled students per graduate per year",
+"panel": "Throughput",
+"min": 3.2,
+"max": 5.0,
+"step": 0.1
+},
+{
+"id": "blk",
+"num": 75,
+"label": "Off-cycle students per year whose minor, double major or change of major is blocked by their track",
+"panel": "Throughput",
+"min": 0.0,
+"max": 15.0,
+"step": 0.5
+},
+{
+"id": "att1",
+"num": 76,
+"label": "Extra first-year attrition on the Fall–Summer track (percentage points of that entering cohort)",
+"panel": "Throughput",
+"min": 0.0,
+"max": 10.0,
+"step": 0.5
+},
+{
+"id": "att",
+"num": 77,
+"label": "Extra annual attrition among continuing off-cycle students (percentage points)",
+"panel": "Throughput",
+"min": 0.0,
+"max": 10.0,
+"step": 0.5
+}
+];
+const PRESETS={"central":{"H":29000,"s":40,"r":70,"leave":0,"lam":100,"cap":25000,"nr":15,"tui":7683,"aid":30,"nrrev":26000,"fee":7600,"feed":40,"st":0,"strate":11296,"stre":40,"rerate":9400,"tgtcommit":100,"realloc":5,"mca":0,"k":18,"frag":8,"tt":800,"svcshare":60,"v":15,"w":50,"lec":40,"sal":125000,"nsal":115000,"prem":10,"equity":250,"lsal":89000,"fr":64,"startup":100000,"ops":1500,"staff":10,"svc":3000,"hvac":80,"capseat":75000,"maint":4,"aux":2,"adm":2,"turn":400,"trans":10,"days":73,"dfw":3,"aff":40,"absorb":50,"attrC":1,"redesign":2,"callayer":0,"calyrs":3,"D":3.7,"att1":3,"att":2,"blk":4,"cg":3.5,"tg":0,"decay":-10,"lead":0,"stcut":10,"disc":5,"hshare":50,"hmarg":5000,"auxcal":3,"refdyn":0,"pell":23,"pellsup":2500,"pellaid":0,"suglag":0,"pool":-1.7,"poolsens":0,"poolleave":0,"hold":10,"yshare":68,"yjoin":11,"lecappt":1,"wtutt":10.5,"office":50000},"admin":{"H":31800,"s":45,"r":95,"leave":0,"lam":100,"cap":25000,"nr":15,"tui":7683,"aid":30,"nrrev":26000,"fee":7600,"feed":50,"st":100,"strate":11296,"stre":0,"rerate":9400,"tgtcommit":100,"realloc":0,"mca":0,"k":20,"frag":0,"tt":800,"svcshare":40,"v":35,"w":60,"lec":50,"sal":125000,"nsal":115000,"prem":0,"equity":250,"lsal":89000,"fr":64,"startup":50000,"ops":800,"staff":4,"svc":2000,"hvac":15,"capseat":50000,"maint":1,"aux":0,"adm":1,"turn":100,"trans":5,"days":73,"dfw":0,"aff":40,"absorb":100,"attrC":0,"redesign":0,"callayer":0,"calyrs":0,"D":3.7,"att1":0,"att":0,"blk":0,"cg":0,"tg":0,"decay":0,"lead":0,"stcut":10,"disc":5,"hshare":60,"hmarg":6500,"auxcal":0,"refdyn":0,"pell":23,"pellsup":2500,"pellaid":0,"suglag":0,"pool":0,"poolsens":0,"poolleave":0,"hold":10,"yshare":100,"yjoin":11,"lecappt":0,"wtutt":12,"office":0},"breakeven":{"H":29000,"s":40,"r":70,"leave":50,"lam":100,"cap":25000,"nr":15,"tui":7683,"aid":30,"nrrev":26000,"fee":7600,"feed":35,"st":0,"strate":11296,"stre":30,"rerate":9400,"tgtcommit":100,"realloc":0,"mca":550,"k":18,"frag":8,"tt":800,"svcshare":40,"v":25,"w":50,"lec":50,"sal":125000,"nsal":115000,"prem":0,"equity":250,"lsal":89000,"fr":64,"startup":50000,"ops":800,"staff":4,"svc":2000,"hvac":15,"capseat":50000,"maint":1,"aux":0.5,"adm":1,"turn":100,"trans":5,"days":73,"dfw":0,"aff":40,"absorb":100,"attrC":0,"redesign":0,"callayer":0,"calyrs":0,"D":3.7,"att1":0,"att":0,"blk":0,"cg":0,"tg":0,"decay":0,"lead":0,"stcut":10,"disc":5,"hshare":0,"hmarg":5000,"auxcal":0,"refdyn":0,"pell":23,"pellsup":2500,"pellaid":0,"suglag":0,"pool":0,"poolsens":0,"poolleave":0,"hold":10,"yshare":68,"yjoin":11,"lecappt":1,"wtutt":10.5,"office":5000},"levers":{"H":29000,"s":40,"r":70,"leave":0,"lam":100,"cap":25000,"nr":15,"tui":7683,"aid":30,"nrrev":26000,"fee":7600,"feed":40,"st":0,"strate":11296,"stre":40,"rerate":9400,"tgtcommit":100,"realloc":5,"mca":0,"k":18,"frag":0,"tt":800,"svcshare":60,"v":15,"w":50,"lec":40,"sal":125000,"nsal":115000,"prem":10,"equity":250,"lsal":89000,"fr":64,"startup":100000,"ops":1000,"staff":5,"svc":2000,"hvac":0,"capseat":75000,"maint":1,"aux":2,"adm":1,"turn":0,"trans":10,"days":73,"dfw":3,"aff":40,"absorb":50,"attrC":1,"redesign":2,"callayer":0,"calyrs":3,"D":3.7,"att1":3,"att":2,"blk":4,"cg":3.5,"tg":0,"decay":-10,"lead":0,"stcut":10,"disc":5,"hshare":50,"hmarg":5000,"auxcal":3,"refdyn":0,"pell":23,"pellsup":2500,"pellaid":0,"suglag":0,"pool":-1.7,"poolsens":0,"poolleave":0,"hold":10,"yshare":68,"yjoin":11,"lecappt":1,"wtutt":10.5,"office":50000},"history":{"H":26900,"s":40,"r":35,"leave":0,"lam":90,"cap":25000,"nr":15,"tui":7683,"aid":30,"nrrev":26000,"fee":7600,"feed":35,"st":0,"strate":11296,"stre":20,"rerate":8200,"tgtcommit":100,"realloc":5,"mca":0,"k":18,"frag":12,"tt":800,"svcshare":65,"v":10,"w":50,"lec":40,"sal":125000,"nsal":115000,"prem":15,"equity":300,"lsal":89000,"fr":64,"startup":120000,"ops":2000,"staff":12,"svc":3000,"hvac":100,"capseat":100000,"maint":6,"aux":3,"adm":3,"turn":600,"trans":15,"days":70,"dfw":5,"aff":50,"absorb":30,"attrC":2,"redesign":4,"callayer":1,"calyrs":10,"D":3.7,"att1":5,"att":4,"blk":6,"cg":4,"tg":0,"decay":-15,"lead":1,"stcut":10,"disc":5,"hshare":40,"hmarg":3500,"auxcal":5,"refdyn":0,"pell":23,"pellsup":2500,"pellaid":0,"suglag":0,"pool":-1.7,"poolsens":0,"poolleave":0,"hold":10,"yshare":68,"yjoin":11,"lecappt":1,"wtutt":10.5,"office":100000}};
+const CALC_URL="/ledger/";
+const $=id=>document.getElementById(id);
+const IDS=INPUTS.map(i=>i.id); const INP={}; INPUTS.forEach(i=>INP[i.id]=i);
+ENGINE.prepare(IDS.concat(["refdyn"]));
+const NODES=SPEC.N.concat(SPEC.T); const BYID={}; NODES.forEach(n=>BYID[n.id]=n);
+// ---- formatting ----
+const MONEY=/^(c[A-Z]|rev|instr$|cost|net$|trad(Rev|Cost|Net)|dLecReg|encumbered|annual_t|cum_t|rev_t|revBase_t|revState_t|costBase|hvacCash|oneTime|startupCash|disc_t|lecTermCost|volCost|lecSCost|hireCost|gfPerFTES)/;
+const PCT=new Set(["q","hsEff","f2_t","hsh_t","sRaw","assigned","leaveShare","unfilled","shrink","sEff","resFrac","fNew","fRe","missPct","summerPct","contactLoss","phi_t","Q_t","poolIdx_t","rmult_t","pmult_t","leaveShare_t","sEff_t","assigned_t"]);
+const FLAG=new Set(["L","stmult","phiS","vmult","layer_t","stmult_t"]);
+function M(v){ if(Math.abs(v)>=1e9) return (v<0?"−$":"$")+(Math.abs(v)/1e9).toFixed(2)+"B"; const a=Math.abs(v)/1e6; const s=a>=100?a.toFixed(0):a>=10?a.toFixed(1):a.toFixed(2); return (v<0?"−$":"$")+s+"M"; }
+function usd(v){ return (v<0?"−$":"$")+Math.round(Math.abs(v)).toLocaleString(); }
+function fmtVal(id,v){ if(typeof v!=="number"||!isFinite(v)) return typeof v==="object"?"(the whole ledger)":"—"; if(MONEY.test(id)) return Math.abs(v)>=5e5? M(v) : usd(v); if(PCT.has(id)) return (v*100).toFixed(1)+"%"; if(FLAG.has(id)) return v?"on (1)":"off (0)"; if(Math.abs(v)>=100) return Math.round(v).toLocaleString(); if(Math.abs(v)>=10) return (+v.toFixed(1)).toString(); return (+v.toFixed(3)).toString(); }
+function fmtSlider(id,v){ const i=INP[id]; if(!i) return String(v); if(/^(tui|nrrev|fee|strate|rerate|sal|nsal|lsal|startup|ops|svc|capseat|turn|office|pellsup|pellaid|hmarg)$/.test(id)) return usd(v); if(/^(hvac|maint|aux|adm|trans|redesign|auxcal)$/.test(id)) return "$"+v+"M"; if(/^(H|cap|tt|mca)$/.test(id)) return Math.round(v).toLocaleString(); if(/^(s|r|leave|yshare|lam|nr|aid|feed|st|stre|tgtcommit|svcshare|v|w|lec|prem|fr|aff|absorb|pell|suglag|realloc|disc|hshare)$/.test(id)) return v+"%"; return String(v); }
+const KSYM={clamp:"⌊⌋",case:"⎇",threshold:"⊢",sat:"∿",view:"↻",const:"·"};
+const STC={scale:"--st-scale",enroll:"--st-enroll",funding:"--st-funding",revenue:"--st-revenue",target:"--st-target",instr:"--st-instr",ops:"--st-ops",need:"--st-need",calendar:"--st-calendar",totals:"--st-totals",through:"--st-through",bench:"--st-bench",derived:"--st-derived",ten:"--st-ten"};
+// ---- settings code <-> hash tokens (only letters, digits, . _ ~ - survive in an artifact link) ----
+function settingsCode(p){ const parts=[]; IDS.forEach(id=>{ if(Math.abs(p[id]-PRESETS.central[id])>1e-9) parts.push(id+"="+p[id]); }); return "yro:"+(parts.join(",")||"central"); }
+function parseCode(code){ code=(code||"").trim(); if(!code.startsWith("yro:")) return null; const p=Object.assign({},PRESETS.central); const body=code.slice(4); if(body!=="central") body.split(",").forEach(kv=>{ const [k,v]=kv.split("="); if(INP[k]&&v!==undefined&&!isNaN(parseFloat(v))) p[k]=parseFloat(v); }); return p; }
+function toTokens(p){ return IDS.filter(id=>Math.abs(p[id]-PRESETS.central[id])>1e-9).map(id=>id+"."+String(p[id]).replace("-","n").replace(".","p")).join("_"); }
+function fromTokens(t){ const p=Object.assign({},PRESETS.central); if(!t) return p; t.split("_").forEach(kv=>{ const i=kv.indexOf("."); if(i<0) return; const k=kv.slice(0,i), v=parseFloat(kv.slice(i+1).replace("n","-").replace("p",".")); if(INP[k]&&!isNaN(v)) p[k]=v; }); return p; }
+function presetName(p){ for(const k of ["central","admin","breakeven","levers","history"]){ if(IDS.every(id=>Math.abs(p[id]-PRESETS[k][id])<1e-9)) return k; } return null; }
+const PNAME={central:"Central",admin:"Plan pays",breakeven:"Break even",levers:"All levers",history:"CSU history"};
+// ---- state ----
+let P=Object.assign({refdyn:0},PRESETS.central), YEAR=10, VAL={}, YEARS=[], SEL=null;
+function evaluate(){ VAL=ENGINE.steady(P); YEARS=ENGINE.tenYear(P); const y=YEARS[YEAR-1]; for(const k in y) VAL[k]=y[k]; }
+// ---- layout: ALAP layering, barycenter ordering, then vertical placement ----
+const W=236, GAPX=130, GAPY=22, DH=6;
+function nodeH(n){ const lines=Math.min(3,Math.ceil(n.name.length/30)); return 30+lines*14+14+16; }
+const G={nodes:[],edges:[],pos:{}};
+function buildGraph(){
+  const list=[]; IDS.forEach(id=>list.push({id,input:true,name:INP[id].label,num:INP[id].num,deps:[]}));
+  NODES.forEach(n=>list.push(Object.assign({},n,{deps:n.id==="rerun"?["net","hires"].concat(n.deps):n.deps})));
+  const by={}; list.forEach(n=>{ by[n.id]=n; n.out=[]; n.h=nodeH(n); });
+  list.forEach(n=>n.deps.forEach(d=>{ if(by[d]) by[d].out.push(n.id); }));
+  // keep only sliders that are used somewhere
+  const used=list.filter(n=>!n.input||n.out.length);
+  // ASAP ranks
+  const asap={}; const order=[]; const vis={}; function dfs(n){ if(vis[n.id]) return; vis[n.id]=1; n.deps.forEach(d=>by[d]&&dfs(by[d])); order.push(n); } used.forEach(dfs);
+  order.forEach(n=>{ asap[n.id]=n.deps.length? 1+Math.max(...n.deps.map(d=>asap[d]||0)) : 0; });
+  // ALAP: sinks keep their longest-path rank, everything else sits just before its earliest consumer. The ten-year lane
+  // follows the net result because its re-run node depends on it.
+  const usedIds=new Set(used.map(n=>n.id));
+  const rank={}; order.slice().reverse().forEach(n=>{ const outs=n.out.filter(o=>usedIds.has(o)); rank[n.id]=outs.length? Math.min(...outs.map(o=>rank[o]))-1 : asap[n.id]; });
+  const minR=Math.min(...Object.values(rank)); used.forEach(n=>{ n.r=rank[n.id]-minR; });
+  // Long edges get a waypoint in every column they cross, so they are ordered and placed like boxes and weave between them.
+  const lay=[]; used.forEach(n=>{ n.ldeps=[]; n.lout=[]; lay.push(n); });
+  const ROUTES={};
+  used.forEach(n=>n.deps.forEach(d=>{ if(!usedIds.has(d)) return; const a=by[d]; const span=n.r-a.r; const chain=[a];
+    for(let r=a.r+1;r<n.r;r++){ const dm={id:"d:"+d+">"+n.id+":"+r,dummy:true,r,h:DH,ldeps:[],lout:[],src:d,dst:n.id}; by[dm.id]=dm; lay.push(dm); chain.push(dm); }
+    chain.push(n); for(let i=0;i<chain.length-1;i++){ chain[i].lout.push(chain[i+1].id); chain[i+1].ldeps.push(chain[i].id); }
+    ROUTES[d+">"+n.id]=chain.slice(1,-1).map(x=>x.id); }));
+  const cols=[]; lay.forEach(n=>{ (cols[n.r]=cols[n.r]||[]).push(n); });
+  const idx={}; cols.forEach(c=>c.forEach((n,i)=>idx[n.id]=i));
+  const bary=(n,nbrs)=>{ const v=nbrs.filter(x=>idx[x]!==undefined).map(x=>idx[x]); return v.length? v.reduce((a,b)=>a+b,0)/v.length : idx[n.id]; };
+  for(let sweep=0;sweep<16;sweep++){
+    const down=sweep%2===0; const seq=down? cols.map((c,i)=>i) : cols.map((c,i)=>i).reverse();
+    seq.forEach(ci=>{ const c=cols[ci]; if(!c) return; c.sort((a,b)=>bary(a,down?a.ldeps:a.lout)-bary(b,down?b.ldeps:b.lout)); c.forEach((n,i)=>idx[n.id]=i); });
+  }
+  const y={}; cols.forEach(c=>{ let t=0; c.forEach(n=>{ y[n.id]=t; t+=n.h+(n.dummy?8:GAPY); }); });
+  const colH=c=>c.reduce((a,n)=>a+n.h+(n.dummy?8:GAPY),0);
+  const tot=Math.max(...cols.map(c=>c?colH(c):0));
+  cols.forEach(c=>{ if(!c) return; const off=(tot-colH(c))/2; c.forEach(n=>y[n.id]+=off); });
+  const gap=n=>n.dummy?8:GAPY;
+  for(let it=0;it<10;it++){ cols.forEach(c=>{ if(!c) return; c.forEach(n=>{ const nb=n.ldeps.concat(n.lout).filter(x=>y[x]!==undefined); if(nb.length){ const target=nb.reduce((a,x)=>a+y[x]+by[x].h/2,0)/nb.length-n.h/2; y[n.id]=y[n.id]*0.4+target*0.6; } });
+    c.sort((a,b)=>y[a.id]-y[b.id]); let t=-Infinity; c.forEach(n=>{ if(y[n.id]<t) y[n.id]=t; t=y[n.id]+n.h+gap(n); }); }); }
+  const minY=Math.min(...Object.values(y)); lay.forEach(n=>{ n.x=n.r*(W+GAPX); n.y=y[n.id]-minY+40; });
+  G.nodes=used; G.by=by; G.routes=ROUTES; G.edges=[]; used.forEach(n=>n.deps.forEach(d=>{ if(usedIds.has(d)) G.edges.push({from:d,to:n.id}); }));
+  G.cols=cols; G.width=Math.max(...used.map(n=>n.x))+W+40; G.height=Math.max(...lay.map(n=>n.y+n.h))+40;
+}
+// ---- rendering ----
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent){ const e=document.createElementNS(NS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+const EDGE_EL={}, NODE_EL={};
+function pretty(expr){ return expr.replace(/\*/g,"×").replace(/\//g,"÷").replace(/>=/g,"≥").replace(/<=/g,"≤").replace(/!==/g,"≠").replace(/===/g,"=").replace(/ov\.(\w+) ≠ undefined \? ov\.\1 : /g,"override ?? "); }
+function render(){
+  const gE=$("edges"), gN=$("nodes"), gS=$("stages"); gE.innerHTML=""; gN.innerHTML=""; gS.innerHTML="";
+  // stage labels along the top where a stage first appears
+  const seen={}; G.nodes.slice().sort((a,b)=>a.x-b.x).forEach(n=>{ if(n.input||seen[n.st]) return; seen[n.st]=1; const t=el("text",{x:n.x,y:22,class:"stage-label"},gS); t.textContent=SPEC.STAGES[n.st]; });
+  G.edges.forEach(e=>{ const a=G.by[e.from], b=G.by[e.to];
+    const pts=[[a.x+W,a.y+a.h/2]]; (G.routes[e.from+">"+e.to]||[]).forEach(id=>{ const d=G.by[id]; pts.push([d.x,d.y+d.h/2],[d.x+W,d.y+d.h/2]); }); pts.push([b.x,b.y+b.h/2]);
+    let d=`M${pts[0][0]} ${pts[0][1]}`; for(let i=1;i<pts.length;i++){ const [x1,y1]=pts[i-1],[x2,y2]=pts[i]; if(i%2===1){ const dx=(x2-x1)/2; d+=` C${x1+dx} ${y1} ${x2-dx} ${y2} ${x2} ${y2}`; } else d+=` L${x2} ${y2}`; }
+    const col=a.input? "var(--st-input)" : `var(${STC[a.st]||"--st-bench"})`;
+    const p=el("path",{d,class:"edge"+(a.input?" inp":"")+(e.to==="rerun"&&!a.input?" rerun":""),style:`stroke:${col}`},gE); EDGE_EL[e.from+">"+e.to]=p; });
+  G.nodes.forEach(n=>{
+    const g=el("g",{class:"node"+(n.input?" input":""),transform:`translate(${n.x},${n.y})`,"data-id":n.id,tabindex:0,role:"button"},gN);
+    el("rect",{class:"box",x:0,y:0,width:W,height:n.h,rx:6,ry:6},g);
+    if(!n.input) el("rect",{class:"stripe",x:0,y:6,width:4,height:n.h-12,rx:2,fill:`var(${STC[n.st]||"--st-bench"})`},g);
+    const fo=el("foreignObject",{class:"fo",x:0,y:0,width:W,height:n.h},g);
+    const d=document.createElementNS("http://www.w3.org/1999/xhtml","div"); d.className="nb";
+    const head=n.input? `<span class="h"><b>${n.num}</b>${INP[n.id].panel}</span>` : `<span class="h">${n.k&&KSYM[n.k]?`<b>${KSYM[n.k]}</b>`:""}${SPEC.STAGES[n.st]}</span>`;
+    d.innerHTML=head+`<span class="nm">${n.name}</span>`+(n.input?``:`<span class="fx">${pretty(n.expr)}</span>`)+`<span class="vl" id="v-${n.id}"></span>`;
+    fo.appendChild(d); NODE_EL[n.id]=g;
+    g.addEventListener("click",()=>select(n.id,true));
+    g.addEventListener("mouseenter",()=>{ n.deps.forEach(d=>{ const p=EDGE_EL[d+">"+n.id]; if(p) p.classList.add("hov"); }); n.out.forEach(o=>{ const p=EDGE_EL[n.id+">"+o]; if(p) p.classList.add("hov"); }); });
+    g.addEventListener("mouseleave",()=>{ document.querySelectorAll(".edge.hov").forEach(p=>p.classList.remove("hov")); }); g.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); select(n.id,true); } });
+  });
+  refreshValues();
+}
+function refreshValues(){
+  G.nodes.forEach(n=>{ const e=$("v-"+n.id); if(!e) return; if(n.input){ e.textContent=fmtSlider(n.id,P[n.id]); e.className="vl"; } else { const v=VAL[n.id]; e.textContent=fmtVal(n.id,v); e.className="vl"+(MONEY.test(n.id)&&typeof v==="number"? (v<0?" neg":v>0?" pos":""):""); } });
+}
+// ---- pan & zoom ----
+let T={x:20,y:20,k:1}; const svg=$("svg"), world=$("world");
+function applyT(){ world.setAttribute("transform",`translate(${T.x},${T.y}) scale(${T.k})`); }
+function fitBox(x0,y0,x1,y1,pad){ const r=$("canvas").getBoundingClientRect(); pad=pad||40; const k=Math.min(2,Math.max(0.08,Math.min((r.width-pad*2)/(x1-x0),(r.height-pad*2)/(y1-y0)))); T={k,x:(r.width-(x1-x0)*k)/2-x0*k,y:(r.height-(y1-y0)*k)/2-y0*k}; applyT(); }
+function fitAll(){ fitBox(0,0,G.width,G.height); }
+function zoomAt(f,cx,cy){ const r=$("canvas").getBoundingClientRect(); cx=(cx===undefined?r.width/2:cx); cy=(cy===undefined?r.height/2:cy); const k=Math.min(3,Math.max(0.06,T.k*f)); T.x=cx-(cx-T.x)*k/T.k; T.y=cy-(cy-T.y)*k/T.k; T.k=k; applyT(); }
+$("zin").onclick=()=>zoomAt(1.3); $("zout").onclick=()=>zoomAt(1/1.3); $("zfit").onclick=fitAll; $("zsel").onclick=fitSel;
+svg.addEventListener("wheel",e=>{ e.preventDefault(); const r=svg.getBoundingClientRect(); zoomAt(Math.exp(-e.deltaY*0.0015),e.clientX-r.left,e.clientY-r.top); },{passive:false});
+let drag=null; svg.addEventListener("pointerdown",e=>{ if(e.button!==0) return; drag={x:e.clientX,y:e.clientY,tx:T.x,ty:T.y,moved:false}; svg.setPointerCapture(e.pointerId); });
+svg.addEventListener("pointermove",e=>{ if(!drag) return; const dx=e.clientX-drag.x, dy=e.clientY-drag.y; if(Math.abs(dx)+Math.abs(dy)>3){ drag.moved=true; svg.classList.add("dragging"); } T.x=drag.tx+dx; T.y=drag.ty+dy; applyT(); });
+svg.addEventListener("pointerup",()=>{ drag=null; svg.classList.remove("dragging"); }); svg.addEventListener("pointercancel",()=>{ drag=null; svg.classList.remove("dragging"); });
+// pinch
+let pinch=null; svg.addEventListener("touchstart",e=>{ if(e.touches.length===2){ pinch={d:Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY),k:T.k}; } },{passive:true});
+svg.addEventListener("touchmove",e=>{ if(pinch&&e.touches.length===2){ const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY); const r=svg.getBoundingClientRect(); zoomAt((pinch.k*d/pinch.d)/T.k,(e.touches[0].clientX+e.touches[1].clientX)/2-r.left,(e.touches[0].clientY+e.touches[1].clientY)/2-r.top); } },{passive:true});
+svg.addEventListener("touchend",()=>{ pinch=null; });
+// ---- selection, cones, panel ----
+function cone(id,dir){ const out=new Set(); const st=[id]; while(st.length){ const x=st.pop(); const n=G.by[x]; if(!n) continue; (dir==="up"?n.deps:n.out).forEach(y=>{ if(!out.has(y)&&G.by[y]){ out.add(y); st.push(y); } }); } return out; }
+let UP=new Set(), DOWN=new Set();
+function select(id,pan){
+  SEL=id; UP=cone(id,"up"); DOWN=cone(id,"down");
+  G.nodes.forEach(n=>{ const g=NODE_EL[n.id]; g.classList.remove("sel","up","down","dim","pulse"); if(n.id===id) g.classList.add("sel"); else if(UP.has(n.id)) g.classList.add("up"); else if(DOWN.has(n.id)) g.classList.add("down"); else g.classList.add("dim"); });
+  G.edges.forEach(e=>{ const p=EDGE_EL[e.from+">"+e.to]; p.classList.remove("up","down","dim"); const inUp=(UP.has(e.to)||e.to===id)&&(UP.has(e.from)); const inDown=(DOWN.has(e.from)||e.from===id)&&(DOWN.has(e.to)); if(inUp||(e.to===id&&UP.has(e.from))) p.classList.add("up"); else if(inDown||(e.from===id&&DOWN.has(e.to))) p.classList.add("down"); else p.classList.add("dim"); });
+  const n=G.by[id]; if(pan){ const r=$("canvas").getBoundingClientRect(); const k=Math.max(T.k,0.9); T.k=k; T.x=r.width*0.42-(n.x+W/2)*k; T.y=r.height/2-(n.y+n.h/2)*k; applyT(); }
+  NODE_EL[id].classList.add("pulse"); showPanel(id);
+  try{ history.replaceState(null,"","#"+id+(toTokens(P)?"~"+toTokens(P):"")); }catch(e){}
+}
+function clearSel(){ SEL=null; G.nodes.forEach(n=>NODE_EL[n.id].classList.remove("sel","up","down","dim","pulse")); G.edges.forEach(e=>EDGE_EL[e.from+">"+e.to].classList.remove("up","down","dim")); showHome(); }
+function fitSel(){ if(!SEL){ fitAll(); return; } const ids=[SEL,...UP,...DOWN].map(i=>G.by[i]); fitBox(Math.min(...ids.map(n=>n.x)),Math.min(...ids.map(n=>n.y)),Math.max(...ids.map(n=>n.x+W)),Math.max(...ids.map(n=>n.y+n.h))); }
+function shortestPath(from,to){ // fewest hops, avoiding steps whose value is zero when another route exists
+  const cost=x=>{ const n=G.by[x]; const v=n.input?P[x]:VAL[x]; return 1+((typeof v==="number"&&Math.abs(v)<1e-9)?8:0); };
+  const dist={[from]:0}, prev={}, done=new Set(); const q=[from];
+  while(q.length){ q.sort((a,b)=>dist[a]-dist[b]); const x=q.shift(); if(done.has(x)) continue; done.add(x); if(x===to) break; (G.by[x].out||[]).forEach(y=>{ const d=dist[x]+cost(y); if(dist[y]===undefined||d<dist[y]){ dist[y]=d; prev[y]=x; q.push(y); } }); }
+  if(dist[to]===undefined) return null; const path=[to]; while(path[0]!==from) path.unshift(prev[path[0]]); return path; }
+function chip(id){ const n=G.by[id]; const v=n.input? fmtSlider(id,P[id]) : fmtVal(id,VAL[id]); const lab=id; return `<span class="v" data-go="${id}" title="${n.name.replace(/"/g,"&quot;")}">${lab}<small>${v}</small></span>`; }
+function formulaHTML(n){ let s=pretty(n.expr); s=s.replace(/[A-Za-z_]\w*(\.\w+)?/g,(m,prop,off)=>{ const base=m.split(".")[0]; const pre=s[off-1]; if(pre==="."||/[0-9]/.test(pre)) return m; if(s[off+m.length]===":" && /[{,]\s*$/.test(s.slice(0,off))) return m; if(G.by[base]&&!prop) return chip(base); if(G.by[base]&&prop) return chip(base)+`<span class="c">${prop}</span>`; if(SPEC.C[base]!==undefined) return `<span class="c" title="constant">${base}<small>=${Array.isArray(SPEC.C[base])?SPEC.C[base].join("/"):SPEC.C[base]}</small></span>`; return m; }); return s; }
+function linkList(ids){ if(!ids.length) return `<p class="meta">none</p>`; return `<ul class="links">`+ids.map(i=>{ const n=G.by[i]; return `<li><a data-go="${i}">${n.input?`<span class="num">${n.num}</span>`:""}${n.name}</a><span class="n" data-v="${i}">${n.input?fmtSlider(i,P[i]):fmtVal(i,VAL[i])}</span></li>`; }).join("")+`</ul>`; }
+function showPanel(id){
+  const n=G.by[id]; const pn=$("panel"); const target = n.st==="ten"? "cum_t" : (DOWN.has("net")||id==="net"? "net" : (DOWN.has("cum_t")?"cum_t":null));
+  let h="";
+  if(n.input){ const i=INP[id]; h+=`<span class="tag" style="color:var(--st-input)">Slider ${i.num}</span><span class="meta">${i.panel}</span><h2>${i.label}</h2><div class="val" id="panel-val">${fmtSlider(id,P[id])}<small>at the current settings</small></div><div class="edit"><input type="range" id="edit-range" min="${i.min}" max="${i.max}" step="${i.step}" value="${P[id]}" aria-label="Set ${i.label}"><button type="button" class="btn" id="edit-reset" title="Back to the central scenario">↺ ${fmtSlider(id,PRESETS.central[id])}</button></div><p class="meta">Drag to change it here: every value on the map, and the path below, re-evaluate as you move. Range ${fmtSlider(id,i.min)} to ${fmtSlider(id,i.max)} · central scenario ${fmtSlider(id,PRESETS.central[id])}.</p>`;
+    h+=`<h3>Enters the model at</h3>${linkList(n.out)}`; }
+  else { const v=VAL[id]; h+=`<span class="tag" style="color:var(${STC[n.st]||"--st-bench"})">${SPEC.STAGES[n.st]}</span>${n.k&&KSYM[n.k]?`<span class="tag">${KSYM[n.k]} ${n.k==="sat"?"saturation":n.k}</span>`:""}<h2>${n.name}</h2><div class="val${MONEY.test(id)&&typeof v==="number"?(v<0?" neg":" pos"):""}">${fmtVal(id,v)}${n.st==="ten"?`<small>in year ${YEAR} (${YEARS[YEAR-1].label})</small>`:""}</div>`;
+    if(n.note) h+=`<div class="note">${n.note}</div>`;
+    h+=`<h3>Formula</h3><div class="formula"><span class="c">${id} =</span> ${formulaHTML(n)}</div>`;
+    h+=`<h3>Uses</h3>${linkList(n.deps)}<h3>Feeds</h3>${linkList(n.out)}`; }
+  if(target&&id!==target){ const path=shortestPath(id,target); if(path){ h+=`<h3>Shortest path to ${target==="net"?"the net result":"the ten-year cumulative"}</h3><ol class="path">`+path.map(x=>{ const m=G.by[x]; return `<li><a data-go="${x}">${m.name}</a> <span class="n" data-v="${x}">${m.input?fmtSlider(x,P[x]):fmtVal(x,VAL[x])}</span>${m.input?"":`<span class="f">${x} = ${pretty(m.expr)}</span>`}</li>`; }).join("")+`</ol>`; } }
+  if(id==="net"||id==="cum_t"){ h+=derivedHTML(); }
+  h+=`<div class="row" style="margin-top:14px"><button type="button" class="btn" data-fitsel="1">Fit the highlighted path</button><button type="button" class="btn" data-clear="1">Clear selection</button>${n.input?`<a class="btn" href="${CALC_URL}#go~${n.id}" target="_blank" rel="noopener">Slider ${n.num} in the calculator ↗</a>`:""}</div>`;
+  pn.innerHTML=h; pn.scrollTop=0; wirePanel();
+}
+function derivedHTML(){ const d=ENGINE.derived(P); const th=seatThresholds(P); return `<h3>Figures derived by re-running the map</h3><div class="kpis"><div class="kpi" data-go="net"><div class="lab">Last student added</div><div class="v ${d.lastStudent<0?"neg":"pos"}">${usd(d.lastStudent)}</div></div><div class="kpi" data-go="net"><div class="lab">Column A: move one student to summer</div><div class="v ${d.colA<0?"neg":"pos"}">${usd(d.colA)}</div></div><div class="kpi" data-go="net"><div class="lab">Column B: add one on a summer track</div><div class="v ${d.addS<0?"neg":"pos"}">${usd(d.addS)}</div></div><div class="kpi" data-go="net"><div class="lab">Pair: one added, one moved</div><div class="v ${d.pair<0?"neg":"pos"}">${usd(d.pair)}</div></div><div class="kpi" data-go="cum_t"><div class="lab">Ten-year cumulative</div><div class="v ${d.ten<0?"neg":"pos"}">${M(d.ten)}</div></div><div class="kpi" data-go="cum_t"><div class="lab">Present value at ${P.disc}%</div><div class="v ${d.npv<0?"neg":"pos"}">${M(d.npv)}</div></div><div class="kpi" data-go="revMCA"><div class="lab">Full-cost admits to break even</div><div class="v">${d.beMCA===null?(VAL.net>=0?"none needed":"over 4,400"):d.beMCA.toLocaleString()}</div></div><div class="kpi" data-go="cBuildTrad"><div class="lab">Seat cost thresholds</div><div class="v" style="font-size:14px">${th.marginal===null?"—":usd(th.marginal)} marginal<br>${th.whole===null?"—":usd(th.whole)} whole plan</div></div></div><p class="meta">The last student is the graph run at the design headcount less 500, differenced per student. Column A raises the realized share so that 500 existing students move into summer, with enrollment held fixed; Column B adds 500 on summer tracks; the pair does both, which is what growing summer at the ceiling takes. The break-even count sweeps full-cost admits in steps of 50. The thresholds solve for the seat cost at which a summer-track student costs the same as a traditional one, and at which YRO beats building to the same headcount.</p>`; }
+function seatThresholds(p){ const N=500; const m0=ENGINE.steady(p); const H=m0.Hdesign; const base=Object.assign({},p,{cap:Math.min(p.cap,m0.fallHC)}); const b=ENGINE.steady(base); const sc=m0.sDesign/100; const mB=ENGINE.steady(base,{H:H+N,sEff:(H*sc*(p.r/100)+N)/(H+N)}); const mC=ENGINE.steady(base,{H:H+N,sEff:(H*sc*(p.r/100))/(H+N)}); const gap=((mB.net-b.net)-(mC.net-b.net))/N; const marginal=(sc>0&&p.r>0)?Math.max(0,p.capseat-gap/(0.5*SPEC.C.crf)):null; const slope=(m0.tradSeats-m0.overflowSeats)*SPEC.C.crf; const whole=slope>0?Math.max(0,p.capseat+(m0.tradNet-m0.net)/slope):null; return {marginal,whole}; }
+function showHome(){ const pn=$("panel"); const pname=presetName(P); pn.innerHTML=`<span class="tag" style="color:var(--accent)">Map</span><h2>How the ledger is computed</h2><p>Each box is one quantity and one formula; the arrows are the dependencies, and the map runs left to right from the sliders to the net result, then into the ten-year lane. Values are evaluated at <b>${pname?PNAME[pname]+" scenario":"custom settings"}</b>.</p><div class="kpis"><div class="kpi" data-go="net"><div class="lab">Net, steady state</div><div class="v ${VAL.net<0?"neg":"pos"}">${M(VAL.net)}</div></div><div class="kpi" data-go="cum_t"><div class="lab">Ten-year cumulative</div><div class="v ${YEARS[9].cum_t<0?"neg":"pos"}">${M(YEARS[9].cum_t)}</div></div><div class="kpi" data-go="revenue"><div class="lab">Revenue</div><div class="v">${M(VAL.revenue)}</div></div><div class="kpi" data-go="cost"><div class="lab">Cost</div><div class="v">${M(VAL.cost)}</div></div></div><h3>Start somewhere</h3><ul class="links"><li><a data-go="net">The net result, and everything that feeds it</a></li><li><a data-go="mca">Slider 21, full-cost admits: where it enters</a></li><li><a data-go="sEff">The realized off-cycle share, the hinge of the enrollment side</a></li><li><a data-go="kEff">Fragmentation's effect on section size</a></li><li><a data-go="cTargetPenalty">The 5% step in the enrollment-target penalty</a></li><li><a data-go="hires">New tenure lines, and what sets them</a></li><li><a data-go="revAux">The summer housing credit: beds that fill, and what each is worth</a></li><li><a data-go="annual_t">The annual result in the ten-year lane</a></li></ul><p class="meta" style="margin-top:14px">${SPEC.N.length+SPEC.T.length} quantities, ${G.edges.length} dependencies, ${G.nodes.filter(n=>n.input).length} sliders. The expressions here are evaluated by the page itself and checked against the calculator's code; they are the model, not a drawing of it.</p>`; wirePanel(); }
+function refreshPanelValues(){ const pn=$("panel"); pn.querySelectorAll("[data-v]").forEach(e=>{ const i=e.dataset.v; const n=G.by[i]; if(!n) return; e.textContent=n.input?fmtSlider(i,P[i]):fmtVal(i,VAL[i]); }); const pv=$("panel-val"); if(pv&&SEL&&G.by[SEL].input) pv.firstChild.textContent=fmtSlider(SEL,P[SEL]); }
+function syncHeader(){ $("setcode").value=settingsCode(P); const pname=presetName(P); document.querySelectorAll("#presets button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.preset===pname?"true":"false")); $("tocalc").href=CALC_URL+"#"+(toTokens(P)?"set~"+toTokens(P):"calc"); try{ history.replaceState(null,"","#"+(SEL||"")+(toTokens(P)?"~"+toTokens(P):"")); }catch(e){} }
+function wirePanel(){
+  const r=$("edit-range"); if(r&&SEL){ const id=SEL; r.addEventListener("input",()=>{ P[id]=parseFloat(r.value); evaluate(); refreshValues(); syncHeader(); refreshPanelValues(); }); $("edit-reset").addEventListener("click",()=>{ r.value=PRESETS.central[id]; r.dispatchEvent(new Event("input")); }); } $("panel").querySelectorAll("[data-go]").forEach(a=>a.addEventListener("click",()=>select(a.dataset.go,true))); const f=$("panel").querySelector("[data-fitsel]"); if(f) f.addEventListener("click",fitSel); const c=$("panel").querySelector("[data-clear]"); if(c) c.addEventListener("click",clearSel); }
+// ---- header controls ----
+function setP(p,keepSel){ P=Object.assign({refdyn:0},p); evaluate(); refreshValues(); syncHeader(); if(SEL&&keepSel!==false) showPanel(SEL); else if(!SEL) showHome(); }
+(function buildHeader(){ const sp=$("presets"); ["admin","breakeven","central","levers","history"].forEach(k=>{ const b=document.createElement("button"); b.type="button"; b.dataset.preset=k; b.textContent=PNAME[k]; b.title=k; b.addEventListener("click",()=>setP(PRESETS[k])); sp.appendChild(b); });
+  $("setcode").addEventListener("keydown",e=>{ if(e.key==="Enter"){ const p=parseCode($("setcode").value); if(p) setP(p); else $("setcode").select(); } });
+  const ys=$("year"); for(let t=1;t<=10;t++){ const o=document.createElement("option"); o.value=t; o.textContent=`year ${t} · ${2027+t}-${String(28+t).padStart(2,"0")}`; ys.appendChild(o); } ys.value=10; ys.addEventListener("change",()=>{ YEAR=parseInt(ys.value,10); evaluate(); refreshValues(); if(SEL) showPanel(SEL); });
+  const dl=$("nodelist"); const f=$("finder");
+  const options=[]; const fill=()=>{ dl.innerHTML=""; options.length=0; G.nodes.forEach(n=>{ const o=document.createElement("option"); o.value=n.input?`${n.num} · ${n.name}`:n.name; options.push([o.value,n.id]); dl.appendChild(o); }); };
+  f.addEventListener("input",()=>{ if(!options.length) fill(); const q=f.value.trim().toLowerCase(); if(!q) return; const hit=options.find(([v])=>v.toLowerCase()===q); if(hit){ select(hit[1],true); f.blur(); } });
+  f.addEventListener("keydown",e=>{ if(e.key!=="Enter") return; if(!options.length) fill(); const q=f.value.trim().toLowerCase(); let hit=null; if(/^\d+$/.test(q)){ const n=G.nodes.find(n=>n.input&&String(n.num)===q); if(n) hit=n.id; } if(!hit){ const n=G.nodes.find(n=>n.name.toLowerCase().includes(q)||n.id.toLowerCase()===q); if(n) hit=n.id; } if(hit){ select(hit,true); f.blur(); } });
+  f.addEventListener("focus",()=>{ if(!options.length) fill(); });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&SEL) clearSel(); });
+  $("noinp").addEventListener("change",()=>$("svg").classList.toggle("noinp",$("noinp").checked));
+  const setLegend=on=>{ $("legend").hidden=!on; $("legend-btn").setAttribute("aria-pressed",on?"true":"false"); try{ localStorage.setItem("yro-legend",on?"1":"0"); }catch(e){} };
+  $("legend-btn").addEventListener("click",()=>setLegend($("legend").hidden)); $("legend-x").addEventListener("click",()=>setLegend(false));
+  try{ if(localStorage.getItem("yro-legend")==="0") setLegend(false); }catch(e){}
+})();
+// ---- boot ----
+function boot(){
+  buildGraph();
+  const raw=(location.hash||"").slice(1); let nodeId=null, tokens=""; if(raw){ const i=raw.indexOf("~"); nodeId=i<0?raw:raw.slice(0,i); tokens=i<0?"":raw.slice(i+1); if(nodeId==="set"){ nodeId=null; } }
+  setP(fromTokens(tokens)); render(); fitAll();
+  if(nodeId&&G.by[nodeId]) setTimeout(()=>select(nodeId,true),60); else showHome();
+}
+const mq=window.matchMedia("(prefers-color-scheme: dark)"); if(mq.addEventListener) mq.addEventListener("change",()=>{});
+window.addEventListener("resize",()=>{ if(!SEL) fitAll(); });
+window.addEventListener("hashchange",()=>{ const raw=(location.hash||"").slice(1); const i=raw.indexOf("~"); const id=i<0?raw:raw.slice(0,i); if(G.by[id]&&id!==SEL) select(id,true); });
+boot();
+</script>
+
+</body></html>

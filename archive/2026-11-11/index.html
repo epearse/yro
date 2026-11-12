@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Slow the Rush to YRO</title>
+<meta name="description" content="Cal Poly plans to launch year-round operations in fall 2028 with no published budget, staffing plan or financial-aid model. A sourced record, prepared by Cal Poly faculty.">
+<meta property="og:title" content="Slow the Rush to YRO">
+<meta property="og:description" content="Cal Poly plans to launch year-round operations in fall 2028 with no published budget, staffing plan or financial-aid model. A sourced record, prepared by Cal Poly faculty.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75,400;75,600;75,800;100,400;100,500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+img{max-width:100%}
+[hidden]:not([hidden=until-found i]){display:none!important}
+</style>
+<style>
+/* Layout: one spare story column scrolling down; each section has a door that slides a wide record panel in from the right while the story recedes. */
+:root{
+  --bg:#0b0d12; --bg-2:#121520; --bg-3:#191d2a; --line:#262b38; --line-2:#343a4a;
+  --fg:#e8e5dc; --mute:#949aa8; --dim:#5f6575;
+  --cp:#d4593b; --cp-soft:rgba(212,89,59,.14);
+  --peer:#7fb6b0; --peer-soft:rgba(127,182,176,.14);
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f4f2ed; --bg-2:#ffffff; --bg-3:#ebe8e1; --line:#d8d4ca; --line-2:#c3bfb4;
+    --fg:#15171d; --mute:#5c616d; --dim:#8e929c;
+    --cp:#b6432a; --cp-soft:rgba(182,67,42,.12);
+    --peer:#357f78; --peer-soft:rgba(53,127,120,.12);
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f4f2ed; --bg-2:#ffffff; --bg-3:#ebe8e1; --line:#d8d4ca; --line-2:#c3bfb4;
+  --fg:#15171d; --mute:#5c616d; --dim:#8e929c;
+  --cp:#b6432a; --cp-soft:rgba(182,67,42,.12);
+  --peer:#357f78; --peer-soft:rgba(53,127,120,.12);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:18px;line-height:1.5;margin:0;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cp);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-variation-settings:"wdth" 75;font-weight:800;line-height:1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.num{font-family:var(--display);font-variation-settings:"wdth" 75;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top-in{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-variation-settings:"wdth" 75;font-weight:800;font-size:1.05rem;letter-spacing:.02em;text-decoration:none}
+.brand span{color:var(--cp)}
+.top .mono{white-space:nowrap}
+.top-right{display:flex;align-items:center;gap:18px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:500;font-size:.95rem;text-decoration:none;border:1px solid var(--line-2);color:var(--fg);background:transparent;padding:10px 16px;border-radius:2px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+.btn:hover{border-color:var(--fg)}
+.btn.primary{background:var(--cp);border-color:var(--cp);color:#fff}
+.btn.primary:hover{background:color-mix(in srgb,var(--cp) 85%,#000)}
+.btn .arr{font-family:var(--mono)}
+
+/* story column */
+.story{transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .55s;transform-origin:left center}
+body.open .story{transform:translateX(-3vw);filter:brightness(.55)}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.hero{padding-block:72px 48px}
+.hero .mono{margin-bottom:28px}
+.hero h1{font-size:clamp(76px,16vw,168px);letter-spacing:-.03em}
+.hero h1 em{font-style:normal;color:var(--cp)}
+.dek{font-size:clamp(20px,2.6vw,26px);line-height:1.35;margin-top:28px;max-width:34ch;font-weight:400}
+.dek b{font-weight:500}
+.dek+.dek{margin-top:14px}
+.standing{margin-top:22px;max-width:70ch;font-size:.82rem;line-height:1.5;color:var(--mute);border-left:2px solid var(--line-2);padding-left:14px}
+.byline{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hr{border:0;border-top:1px solid var(--line);margin:0}
+.sec{padding-block:64px}
+.sec .mono{margin-bottom:18px;display:flex;gap:12px;align-items:center}
+.sec .mono i{display:inline-block;width:28px;height:1px;background:var(--cp)}
+.sec h2{font-size:clamp(34px,5.6vw,54px);max-width:16ch}
+.sec .lede{margin-top:18px;max-width:60ch;color:var(--fg)}
+.sec .lede.quiet{color:var(--mute)}
+.fig{margin-top:30px}
+.fig svg{display:block;width:100%;height:auto;max-width:100%}
+.cap{font-family:var(--mono);font-size:.72rem;line-height:1.5;letter-spacing:.02em;color:var(--mute);margin-top:12px;max-width:70ch}
+.callout{margin-top:26px;border-left:3px solid var(--cp);padding:4px 0 4px 18px;max-width:62ch;font-size:1.05rem;line-height:1.5}
+.door{margin-top:28px}
+.door .btn{padding:16px 24px;font-size:1.05rem;border-color:var(--fg);position:relative;animation:nudge 14s ease-out infinite}
+.door .btn::after{content:"";position:absolute;inset:-1px;border-radius:2px;border:1px solid var(--cp);opacity:0;pointer-events:none;animation:ripple 14s ease-out infinite}
+#bill-sec .door .btn,#bill-sec .door .btn::after{animation-delay:3.5s}
+#elsewhere-sec .door .btn,#elsewhere-sec .door .btn::after{animation-delay:7s}
+#history-sec .door .btn,#history-sec .door .btn::after{animation-delay:10.5s}
+@keyframes nudge{0%,88%,100%{box-shadow:0 0 0 0 transparent}91%{box-shadow:0 0 0 5px color-mix(in srgb,var(--cp) 30%,transparent)}97%{box-shadow:0 0 0 14px transparent}}
+@keyframes ripple{0%,88%,100%{transform:scale(1);opacity:0}90%{opacity:.9}97%{transform:scale(1.12,1.45);opacity:0}}
+@media (prefers-reduced-motion: reduce){.door .btn,.door .btn::after{animation:none}}
+.door .btn .arr{transition:transform .25s}
+.door .btn:hover .arr{transform:translateX(5px)}
+
+/* exchange (the Yes) */
+.exchange{display:grid;grid-template-columns:auto 1fr;gap:12px 20px;margin-top:30px;align-items:baseline}
+.exchange .who{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);padding-top:6px}
+.exchange .q{font-style:italic;font-size:1.2rem}
+.exchange .a{font-family:var(--display);font-variation-settings:"wdth" 75;font-weight:800;font-size:clamp(64px,12vw,120px);line-height:.9;color:var(--cp)}
+.ledgerform{margin-top:26px;border-top:1px solid var(--line);font-size:1rem}
+.ledgerform div{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding-block:12px;border-bottom:1px solid var(--line);align-items:baseline}
+.ledgerform .w{grid-column:1/-1;font-family:var(--mono);font-size:.68rem;letter-spacing:.03em;color:var(--dim);line-height:1.4}
+.ledgerform .else{color:var(--mute)}
+.ledgerform .v{font-family:var(--mono);font-size:.9rem;min-width:9ch;text-align:right}
+.ledgerform .blank{color:var(--dim);letter-spacing:.2em}
+.ledgerform .filled{color:var(--cp);font-weight:500}
+
+/* sayso */
+.sayso{padding-block:72px 96px}
+.sayso h2{font-size:clamp(40px,7vw,72px)}
+.sayso .ctas{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+.pending{font-family:var(--mono);font-size:.7rem;color:var(--dim);margin-top:10px}
+
+footer{border-top:1px solid var(--line);padding-block:28px 48px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer .mono{line-height:1.6}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--fg);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+/* panels */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:20;opacity:0;pointer-events:none;transition:opacity .4s}
+body.open .scrim{opacity:1;pointer-events:auto}
+.panel{position:fixed;top:0;right:0;bottom:0;width:min(1040px,100vw);z-index:30;background:var(--bg-2);border-left:1px solid var(--line);transform:translateX(102%);transition:transform .6s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:-40px 0 80px rgba(0,0,0,.45)}
+.panel.in{transform:translateX(0)}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;padding-top:calc(14px + env(safe-area-inset-top,0px));padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-bottom:1px solid var(--line);flex:0 0 auto}
+.panel-head .mono{color:var(--cp)}
+.close{background:none;border:1px solid var(--line-2);color:var(--fg);width:40px;height:40px;border-radius:50%;cursor:pointer;font-family:var(--mono);font-size:1rem}
+.close:hover{border-color:var(--fg)}
+.panel-body{overflow-y:auto;overflow-x:hidden;flex:1 1 auto;padding-block:40px 80px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.panel-body>*{max-width:820px;margin-left:auto;margin-right:auto}
+.panel-body>.tablewrap{max-width:none}
+.panel h2{font-size:clamp(34px,5vw,56px);max-width:18ch}
+.panel h3{font-size:1.25rem;font-weight:600;margin-top:48px;margin-bottom:12px;letter-spacing:0}
+.panel p{max-width:66ch;margin-top:14px}
+.panel p.big{font-size:1.25rem;line-height:1.4;margin-top:22px}
+.panel #h-survey{max-width:820px}
+.survey-choices{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:32px}
+.survey-choices .btn{padding:16px 24px;font-size:1.05rem;text-align:left;max-width:100%}
+.panel .fig{margin-top:24px}
+.quote{border-left:2px solid var(--cp);padding-left:18px;margin-top:22px;font-style:italic;max-width:62ch}
+.quote .src{display:block;font-style:normal;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--mute);margin-top:8px;text-transform:uppercase}
+.rec{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+.rec li{padding-left:22px;position:relative;max-width:66ch}
+.rec li::before{content:"";position:absolute;left:0;top:.65em;width:10px;height:1px;background:var(--cp)}
+
+/* tiles: done / undone */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:16px}
+.tile{border:1px solid var(--line-2);padding:12px 12px 14px;min-height:96px;font-family:var(--display);font-variation-settings:"wdth" 100;font-size:.9rem;line-height:1.3;border-radius:2px;position:relative}
+.tile .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:8px}
+.tile.done{background:var(--bg-3);border-color:transparent;color:var(--fg)}
+.tile.done::after{content:"";position:absolute;right:10px;top:10px;width:8px;height:8px;background:var(--mute);border-radius:50%}
+.tile.open{background:transparent;border-color:var(--cp);color:var(--fg)}
+.tile.open .k{color:var(--cp)}
+.tile.open::after{content:"";position:absolute;right:10px;top:10px;width:8px;height:8px;border:1px solid var(--cp);border-radius:50%}
+.tile.absent{border-style:dashed;color:var(--mute)}
+.tile.absent::after{content:"?";position:absolute;right:10px;top:6px;color:var(--cp);font-family:var(--mono)}
+.legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--mute);text-transform:uppercase}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px}
+.legend .l-done{background:var(--bg-3);border:1px solid var(--line-2)}
+.legend .l-open{border:1px solid var(--cp)}
+.legend .l-absent{border:1px dashed var(--mute)}
+.legend .l-cp{background:var(--cp)}
+.legend .l-peer{background:var(--peer)}
+.legend .l-hollow{border:1px dashed var(--cp)}
+
+/* three columns in the clock record */
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px;align-items:start}
+.cols .col h3{margin-top:0}
+.cols .col .colcount{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-top:0}
+.cols .col p{font-size:.95rem}
+.cols .tiles{grid-template-columns:1fr;gap:8px}
+.cols .tile{min-height:0;padding:10px 12px 12px}
+@media (max-width:720px){.cols{grid-template-columns:1fr;gap:28px}}
+
+.sidenote{font-family:var(--mono);font-size:.7rem;line-height:1.5;letter-spacing:.02em;color:var(--mute);margin-top:12px;max-width:70ch;border-left:1px solid var(--line-2);padding-left:12px}
+sup.fn{color:var(--cp);font-family:var(--mono);font-size:.7em;margin-left:1px}
+.campus-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 18px;margin-top:14px;font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--mute)}
+.campus-list div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line);padding-block:4px}
+.campus-list b{font-weight:500;color:var(--fg)}
+.campus-list .cp b,.campus-list .cp span{color:var(--cp)}
+@media (max-width:640px){.campus-list{grid-template-columns:1fr 1fr}}
+.haspop{position:relative;cursor:help;outline:none}
+.term{text-decoration:underline dotted;text-underline-offset:3px;text-decoration-color:var(--cp);color:var(--fg)}
+.haspop .popover{position:absolute;left:0;right:0;bottom:calc(100% - 8px);z-index:5;background:var(--bg-2);color:var(--fg);border:1px solid var(--line-2);border-radius:2px;padding:14px 16px;font-size:.95rem;line-height:1.5;max-width:62ch;margin:0 auto;box-shadow:0 18px 40px rgba(0,0,0,.35);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .2s,transform .2s}
+.haspop:hover .popover,.haspop:focus .popover,.haspop:focus-within .popover,.haspop.show .popover{opacity:1;pointer-events:auto;transform:none}
+.term .popover{left:auto;right:-8px;bottom:calc(100% + 6px);width:min(380px,calc(100vw - 48px));font-family:var(--body);font-variation-settings:normal;font-size:.9rem;color:var(--fg);text-align:left}
+.term .popover b{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cp);display:block;margin-bottom:6px}
+.pull{font-family:var(--body);font-style:italic;font-size:clamp(22px,3vw,30px);line-height:1.3;max-width:30ch;margin-top:22px;color:var(--fg);border-left:3px solid var(--cp);padding-left:18px}
+@media (prefers-reduced-motion: reduce){.haspop .popover{transition:none}}
+.pubgrid{display:grid;grid-template-columns:2fr 3fr;gap:0;margin-top:30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pubcol{padding:16px 22px 14px 0}
+.pubcol.un{border-left:1px solid var(--line);padding-left:22px;padding-right:0}
+.pubcol h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0 0 4px;font-weight:400}
+.pubcol.un h4{color:var(--cp)}
+.pubcol .row{padding-block:9px;border-bottom:1px solid var(--line);font-size:.9rem;line-height:1.4}
+.pubcol .row:last-child{border-bottom:0}
+.pubcol .row b{font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:500;color:var(--fg)}
+.pubcol .row span{color:var(--mute)}
+.pubcol.un .row span{color:var(--dim)}
+.pubcol .src{font-family:var(--mono);font-size:.62rem;letter-spacing:.03em;color:var(--dim);margin-top:12px;line-height:1.5}
+@media (max-width:640px){.pubgrid{grid-template-columns:1fr}.pubcol{padding-right:0}.pubcol.un{border-left:0;border-top:1px solid var(--line);padding-left:0}}
+.callout.swap{border-left-color:var(--cp);max-width:none;font-size:1rem}
+.callout.swap .mono{color:var(--cp)}
+.four{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:8px;max-width:60ch}
+.four li{display:grid;grid-template-columns:5.5ch 1fr;gap:12px;font-size:1rem;line-height:1.4;align-items:baseline}
+.four li b{font-family:var(--mono);font-weight:500;font-size:.8rem;letter-spacing:.04em;color:var(--cp)}
+/* take-action modal */
+.modal[hidden]{display:none}
+.modal{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-left,0px));background:rgba(0,0,0,.55)}
+.modal-box{background:var(--bg-2);color:var(--fg);border:1px solid var(--line-2);border-radius:2px;max-width:640px;width:100%;max-height:90vh;overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 16px 14px 22px;border-bottom:1px solid var(--line)}
+.modal-head .mono{color:var(--cp)}
+.modal-lede{padding:20px 22px 6px;font-size:1.05rem}
+.modal-body{padding:4px 22px 24px;font-size:.98rem;line-height:1.5}
+.modal-body p{margin:0 0 14px}
+.modal-body ul{margin:0 0 10px;padding-left:1.25em}
+.modal-body li{margin:0 0 10px}
+.modal-body li ul{margin:8px 0 0}
+.modal-body li li{margin:0 0 6px;color:var(--mute)}
+.modal-body .src{margin-top:8px}
+/* keystone button */
+.keystone-lede{margin:26px 0 10px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.keystone{display:block;width:100%;max-width:440px;margin:0 0 26px;padding:24px 26px 20px;background:var(--bg-3);color:var(--fg);border:1px solid var(--line-2);border-left:3px solid var(--cp);border-radius:2px;text-align:left;cursor:pointer;font:inherit;transition:background .2s,border-color .2s,transform .2s}
+.keystone:hover,.keystone:focus-visible{background:var(--bg-2);border-color:var(--cp);transform:translateX(2px);outline:none}
+.keystone .k-big{display:block;font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:600;font-size:clamp(2rem,5vw,2.8rem);line-height:1;letter-spacing:-.02em}
+.keystone .k-small{display:flex;align-items:center;gap:10px;margin-top:10px;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.keystone .k-small .arr{color:var(--cp)}
+/* staffing dots */
+.dots{display:grid;gap:14px;margin-top:18px}
+.dotrow{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center}
+.dotrow .n{font-family:var(--display);font-variation-settings:"wdth" 100;font-size:.9rem}
+.dotrow .n small{display:block;font-family:var(--mono);font-size:.65rem;letter-spacing:.04em;color:var(--mute);text-transform:uppercase}
+.dotrow .d{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.dotrow .d i{width:10px;height:10px;border-radius:50%;background:var(--peer);display:inline-block}
+.dotrow .d i.half{background:linear-gradient(90deg,var(--peer) 50%,transparent 50%);border:1px solid var(--peer)}
+.dotrow.cp .d i{border:1px dashed var(--cp);background:transparent}
+.dotrow.cp .d{color:var(--cp);font-family:var(--mono);font-size:.78rem}
+@media (max-width:520px){.dotrow{grid-template-columns:1fr}}
+
+/* share bars */
+.share{display:grid;gap:12px;margin-top:18px;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--mute)}
+.share .bar{display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center}
+.share .track{display:flex;height:26px;border:1px solid var(--line-2)}
+.share .state{background:var(--fg);color:var(--bg);display:flex;align-items:center;padding-left:8px;font-weight:500;white-space:nowrap;overflow:hidden}
+.share .self{flex:1;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;white-space:nowrap;overflow:hidden}
+
+/* matrix */
+.tablewrap{overflow-x:auto;margin-top:18px;border-top:1px solid var(--line)}
+.toc{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:22px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase}
+.toc .mono{color:var(--dim);margin-bottom:2px}
+.toc a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:1px}
+.toc a:hover{border-color:var(--cp);color:var(--cp)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-family:var(--display);font-variation-settings:"wdth" 100;font-size:.85rem}
+th,td{text-align:left;padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);font-weight:400}
+th.cp,td.cp{background:var(--cp-soft);color:var(--fg)}
+td.y{color:var(--fg);font-weight:500}
+td.n{color:var(--dim)}
+td.cp.y{color:var(--cp);font-weight:600}
+tbody th{color:var(--fg);font-family:var(--display);font-size:.85rem;text-transform:none;letter-spacing:0;font-weight:500;min-width:130px;max-width:170px}
+th.cp,td.cp{min-width:170px}
+
+/* term pictograms */
+.patterns{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-top:18px}
+.pat{border-top:1px solid var(--line);padding-top:12px}
+.pat .t{font-family:var(--display);font-variation-settings:"wdth" 100;font-size:.9rem;font-weight:500}
+.pat .s{font-family:var(--mono);font-size:.64rem;letter-spacing:.04em;color:var(--mute);text-transform:uppercase;margin-top:4px;min-height:2.4em}
+.yrs{display:grid;gap:5px;margin-top:10px}
+.yr{display:grid;grid-template-columns:28px repeat(3,1fr);gap:4px;align-items:center}
+.yr b{font-family:var(--mono);font-size:.62rem;color:var(--dim);font-weight:400}
+.yr i{height:22px;border:1px solid var(--line-2);display:block;border-radius:1px;position:relative;font-style:normal}
+.yr i::after{content:attr(data-l);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.5rem;letter-spacing:.06em;color:var(--dim)}
+.yr i.on::after,.yr i.peer::after,.yr i.sum::after,.yr i.req::after{color:#fff}
+.yr i.choice::after,.yr i.off::after{font-weight:500}
+.yr i.req{background:color-mix(in srgb,var(--peer) 60%,var(--fg));border-color:transparent}
+.yr.hd span{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);text-align:center}
+.yr i.on{background:var(--fg);border-color:var(--fg)}
+.yr i.peer{background:var(--peer);border-color:var(--peer)}
+.yr i.choice{background:color-mix(in srgb,var(--peer) 22%,transparent);border:1px dashed var(--peer)}
+.yr i.choice::after{color:var(--peer)}
+.yr i.off{border:1px dashed var(--cp)}
+.yr i.off::after{color:var(--cp)}
+.yr i.sum{background:var(--cp);border-color:var(--cp)}
+.patkey{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:var(--mute);text-transform:uppercase}
+.patkey span{display:inline-flex;gap:8px;align-items:center}
+.patkey i{width:16px;height:12px;display:inline-block;border:1px solid var(--line-2)}
+
+/* three peers */
+.peers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:18px}
+.peer{border-top:2px solid var(--peer);padding-top:12px}
+.peer h4{font-family:var(--display);font-variation-settings:"wdth" 75;font-weight:800;font-size:1.4rem;margin:0}
+.peer .mono{margin-top:4px}
+.peer p{font-size:1rem;margin-top:10px}
+
+/* sources */
+.srcs{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px;font-size:1rem}
+.srcs li{padding-left:0;max-width:72ch;line-height:1.4}
+.srcs a{color:var(--fg);text-decoration-color:var(--line-2);text-underline-offset:3px;word-break:break-word}
+.srcs .mono{display:block;margin-top:2px}
+
+/* copy row */
+.copy{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.copy code{font-family:var(--mono);font-size:.9rem;background:var(--bg-3);padding:8px 12px;border-radius:2px;user-select:all}
+.copy .btn{padding:8px 12px;font-size:.85rem}
+
+/* svg shared */
+svg text{font-family:var(--mono);font-size:11px;fill:var(--mute);letter-spacing:.02em}
+svg text.big{font-family:var(--display);font-variation-settings:"wdth" 75;font-weight:800;fill:var(--fg);letter-spacing:-.02em}
+svg .cpfill{fill:var(--cp)}
+svg .fgfill{fill:var(--fg)}
+svg .peerfill{fill:var(--peer)}
+svg .mutefill{fill:var(--mute)}
+svg .lin{stroke:var(--line-2);stroke-width:1;fill:none}
+svg .ax{stroke:var(--mute);stroke-width:1;fill:none}
+svg .cpline{stroke:var(--cp);fill:none}
+svg .fgline{stroke:var(--fg);fill:none}
+svg .hollow{fill:none;stroke:var(--cp);stroke-width:1.2;stroke-dasharray:3 3}
+svg .doneblk{fill:var(--bg-3);stroke:var(--line-2);stroke-width:1}
+svg .redtext{fill:var(--cp)}
+svg .fgtext{fill:var(--fg)}
+
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero>*{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+.hero>*:nth-child(2){animation-delay:.1s}.hero>*:nth-child(3){animation-delay:.25s}.hero>*:nth-child(4){animation-delay:.4s}.hero>*:nth-child(5){animation-delay:.55s}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .story,.panel,.scrim,.btn,.door .btn .arr{transition:none}
+  .hero>*{animation:none}
+}
+@media (max-width:640px){
+  body{font-size:17px}
+  .top .mono.byl{display:none}
+  .panel{width:100vw}
+}
+</style>
+</head>
+<body>
+<header class="top">
+<div class="top-in">
+<a class="brand" data-t="HD-001" href="#top"><span>SLOW</span> THE RUSH TO <span>YRO</span></a>
+<div class="top-right">
+<span class="mono byl" data-t="HD-002">Prepared by Cal Poly faculty</span>
+<a class="btn primary" data-open="survey" data-survey="" data-t="HD-003" href="#survey">Take the survey <span class="arr">→</span></a> <a class="btn primary" href="takeaction/">Take action <span class="arr">→</span></a>
+</div>
+</div>
+</header>
+<main class="story" id="top">
+<section class="hero wrap">
+<p class="mono" data-t="HE-001">Cal Poly San Luis Obispo · Year-round operations</p>
+<h1 data-t="HE-002">SLOW the rush to <em>YRO.</em></h1>
+<p class="dek" data-t="HE-003">We are pleased that the Administration announced on Oct 21, 2026 that they would delay the implementation of year-round operations for two years. Cal Poly still plans to launch year-round operations (YRO), now in fall 2029: three equal terms (Fall, Spring, Summer) with every student assigned to two out of three. For example, a Spring–Summer student would attend courses January–August, and have Fall term off. This project requires redesigning the calendar, the curriculum, housing, financial aid and staffing for every student.</p>
+<p class="dek" data-t="HE-003b"><b>Two and a half years out, and still no budget, no staffing plan and no financial-aid model has been published and the multi-year process of curriculum redesign has only just begun.</b></p>
+<p class="dek">Many faculty, staff, and students at Cal Poly remain concerned about the YRO initiative. Over 1200 members of the Cal Poly community <a href="https://cpslo-my.sharepoint.com/:w:/g/personal/bruttenb_calpoly_edu/IQDQkp4HYG6RTpeZiTSUUJbaASWCpGCr2u2fO2Xx4zuFTl0" rel="noopener" target="_blank">signed an open letter</a> to President Jeff Armstrong and the Cal Poly Administration calling for an immediate pause to YRO implementation. Many of the questions raised in that letter remain unanswered.</p>
+<p class="standing" data-t="HE-004">The authors of this webpage cannot claim to speak for the entire campus community. However, based on recent meetings of the Academic Senate, we are confident that the views expressed on this website accurately reflect those of a large portion of the faculty. Recent Academic Senate reports from every college on campus have been uniformly and overwhelmingly against YRO and the rush to implement it.</p>
+<div class="byline">
+<a class="btn primary" data-open="survey" data-survey="" data-t="HE-005" href="#survey">Take the survey <span class="arr">→</span></a> <a class="btn primary" href="takeaction/">Take action <span class="arr">→</span></a>
+<a class="btn" data-t="HE-006" href="#clock-sec">Read the record <span class="arr">↓</span></a>
+</div>
+<p class="mono" data-t="HE-007" style="margin-top:34px">Open any record for details and sources.</p>
+</section>
+<hr class="hr"/>
+<!-- 1. THE CLOCK -->
+<section class="sec wrap" id="clock-sec">
+<p class="mono" data-t="C1-001"><i></i>1 · The clock</p>
+<h2 data-t="C1-002">Twenty-four months to write the rules.</h2>
+<p class="lede" data-t="C1-003">Applications for the first year-round classes open in October 2028. What has been published about the plan is shorter than the list of questions that remains.</p>
+<div aria-label="A timeline from late 2025 to late 2029. Work already done sits to the left of today. Work still to do starts today and runs past the point by which the design must be set, past the application opening, offers and the first classes." class="fig">
+<svg role="img" viewbox="0 0 760 336">
+<line class="ax" x1="40" x2="730" y1="96" y2="96"></line>
+<g id="ticks"></g>
+<g font-size="9">
+<text class="redtext" data-t="C1-004" text-anchor="middle" x="220" y="116">OCT 2026</text>
+<text data-t="C1-005" text-anchor="middle" x="535" y="116">JUL 2028</text>
+<text data-t="C1-006" text-anchor="middle" x="580" y="128">OCT 2028</text>
+<text data-t="C1-007" text-anchor="middle" x="625" y="116">JAN 2029</text>
+<text data-t="C1-008" text-anchor="middle" x="655" y="128">MAR 2029</text>
+<text data-t="C1-009" text-anchor="middle" x="730" y="116">AUG 2029</text>
+</g>
+<line class="cpline" stroke-width="2" x1="220" x2="220" y1="22" y2="96"></line>
+<text class="redtext" data-t="C1-010" text-anchor="middle" x="220" y="16">TODAY</text>
+<g class="lin" stroke-dasharray="2 4"><line x1="580" x2="580" y1="96" y2="290"></line><line x1="625" x2="625" y1="96" y2="290"></line><line x1="655" x2="655" y1="96" y2="290"></line><line x1="730" x2="730" y1="96" y2="290"></line></g>
+<line class="cpline" stroke-dasharray="4 3" stroke-width="1.5" x1="535" x2="535" y1="96" y2="290"></line>
+<g font-size="9">
+<line class="fgline" x1="655" x2="655" y1="26" y2="96"></line>
+<text class="fgtext" data-t="C1-011" text-anchor="middle" x="655" y="20">OFFERS TO STUDENTS</text>
+<line class="fgline" x1="535" x2="535" y1="44" y2="96"></line>
+<text class="fgtext" data-t="C1-012" text-anchor="middle" x="535" y="38">DESIGN MUST BE SET</text>
+<line class="fgline" x1="730" x2="730" y1="44" y2="96"></line>
+<text class="fgtext" data-t="C1-013" text-anchor="end" x="748" y="38">FIRST CLASSES</text>
+<line class="fgline" x1="625" x2="625" y1="69" y2="96"></line>
+<text class="fgtext" data-t="C1-014" text-anchor="middle" x="625" y="52">NEW FACULTY</text><text class="fgtext" data-t="C1-015" text-anchor="middle" x="625" y="63">HIRED</text>
+<line class="fgline" x1="580" x2="580" y1="90" y2="96"></line>
+<text class="fgtext" data-t="C1-016" text-anchor="middle" x="580" y="74">STUDENTS BEGIN</text><text class="fgtext" data-t="C1-017" text-anchor="middle" x="580" y="85">TO APPLY</text>
+</g>
+<text data-t="C1-018" text-anchor="end" x="214" y="162">WORK DONE · 6 ITEMS</text>
+<g id="done-bar"></g>
+<text class="redtext" data-t="C1-020" text-anchor="end" x="698" y="206">WORK STILL TO DO · 27 ITEMS, ONE BLOCK EACH</text>
+<path class="cpline" d="M706 202 H730 V214" stroke-width="1.2"></path><path class="cpfill" d="M725 213 L730 222 L735 213 Z"></path>
+<text class="redtext" data-t="C1-019" text-anchor="end" x="527" y="232">ALL OF THIS WORK MUST BE DONE BY HERE →</text>
+<path class="cpline" d="M222 244 L222 238 L740 238 L740 244" stroke-width="1"></path>
+<g id="todo-bar"></g>
+<text class="redtext" data-t="C1-021" text-anchor="end" x="740" y="310">AND COUNTING →</text>
+</svg>
+</div>
+<p class="cap" data-t="C1-022">Readiness has not been demonstrated against the catalog deadline for 2029–30 changes (expected March 2028) or the October 2028 application opening.</p>
+<div aria-label="Two bars on a 2021 to 2030 axis: semester conversion ran four years and three months from Senate approval of the calendar and review process in May 2022 to the first semester in August 2026; year-round operations runs three years and ten months from the public description of the two-of-three design in October 2025 to the first programs in August 2029" class="fig haspop" tabindex="0">
+<svg role="img" viewbox="0 0 760 170">
+<line class="ax" x1="40" x2="720" y1="130" y2="130"></line>
+<g id="yr-ticks"></g>
+<text data-t="C1-023" x="40" y="152">2021</text><text data-t="C1-024" text-anchor="middle" x="342" y="152">2025</text><text data-t="C1-025" text-anchor="end" x="720" y="152">2030</text>
+<rect class="doneblk" height="22" width="321" x="141" y="44"></rect>
+<text class="fgtext" data-t="C1-026" x="141" y="36">SEMESTERS · SENATE APPROVAL MAY 2022 → FIRST SEMESTER AUG 2026</text>
+<text class="big" data-t="C1-027" font-size="22" text-anchor="end" x="456" y="62">4 YRS 3 MO</text>
+<rect class="cpfill" height="22" width="290" x="399" y="92"></rect>
+<text class="redtext" data-t="C1-028" text-anchor="end" x="689" y="84">YRO · TWO-OF-THREE DESIGN DESCRIBED OCT 2025 → FIRST PROGRAMS AUG 2029</text>
+<text class="big" data-t="C1-029" font-size="22" style="fill:#fff" text-anchor="end" x="683" y="110">3 YRS 10 MO</text>
+<line class="cpline" stroke-width="2" x1="480" x2="480" y1="118" y2="130"></line>
+<text class="redtext" data-t="C1-030" text-anchor="middle" x="480" y="164">TODAY</text>
+</svg>
+<div class="popover">Design to launch, on labeled milestones. The Academic Senate approved the semester calendar (AS-942-22) and the conversion curriculum-review process (AS-946-22) in May 2022, four years and three months before the first semester in August 2026. The two-of-three track design was first described publicly in October 2025, three years and ten months before the first programs now start in August 2029, after the two-year delay announced on October 21, 2026: five months shorter than the semester conversion, for a larger project. The two milestones are not the same kind of event; one is a Senate approval, the other a public description. On an initiative-to-launch basis YRO now has the longer interval (directive October 2021 → August 2026; announcement September 2023 → August 2029), but the design being built is the third in three years: a summer-start pilot (2023), a chosen summer or fall start (2024), and assigned two-of-three tracks (2025).</div>
+</div>
+<p class="cap" data-t="C1-031">Design to launch, after the two-year delay announced October 21, 2026. Initiative to launch: October 2021 → August 2026 against September 2023 → August 2029; hover or tap for both.</p>
+<p class="lede" data-t="C1-032" style="margin-top:18px">Semester conversion took five years from directive to launch, and three of them were devoted to curriculum: every course, including those that changed little, went through department, college, Senate-committee and Senate review under a process the Senate adopted in May 2022, with university-level submissions due in September 2023.</p>
+<p class="lede">Even after the two-year delay, YRO’s design-to-launch interval is five months shorter, for a project that touches almost every aspect of campus operations: academic, administrative, housing, financial, facilities, and the student experience. The catalog deadline for 2029–30 changes is expected in March 2028, seventeen months before launch. The Senate’s curriculum committee is charged this year with assessing YRO’s effects on review procedures; no resolution has yet come of it, and the Senate’s only action on a YRO calendar (AS-982-24, August 2024) asked that it be postponed. And all of this comes before any opportunity to assess the impacts of the semester conversion just completed.</p>
+<div class="door"><button class="btn" data-open="clock" data-t="C1-033">Open the record: what is unfinished <span class="arr">→</span></button></div>
+</section>
+<hr class="hr"/>
+<!-- 2. THE BILL -->
+<section class="sec wrap" id="bill-sec">
+<p class="mono" data-t="B2-001"><i></i>2 · The bill</p>
+<h2 data-t="B2-002">Presented to the faculty as a new revenue. Turns out to be feasible only if some students forgo state funding.</h2>
+<p class="lede" data-t="B2-003">The YRO plan was presented to the faculty as a source of revenue: enrollment growth whose surplus would fund the Teacher-Scholar Model and other high-impact practices. The arithmetic does not close that way. Faculty have since been told by the administration, in college YRO planning meetings, that <b>self-support</b> enrollment is part of the funding model. In plain terms, if that is the design:</p>
+<p class="pull" data-t="B2-004">Some California residents would be admitted to a California public university at prices comparable to nonresidents, so that we can afford to implement YRO.</p>
+<p class="lede" data-t="B2-005">No fee schedule, eligibility rule, student count or approval document has been published.</p>
+<p class="lede">It is unclear which students would be required to pay self-support fees; some comments seem to indicate this would befall the programs with highest demand.</p>
+<div aria-label="Three bars: a California engineering student pays about 15,700 dollars a year in tuition and fees today; resident fees plus the state's published share of the marginal cost of instruction come to about 27,000; resident fees plus non-resident tuition, without the Opportunity Fee, come to about 29,900. The fee for any self-support pathway has not been published." class="fig haspop" tabindex="0">
+<svg role="img" viewbox="0 0 890 250">
+<text data-t="B2-006" x="170" y="22">ENGINEERING, TWO SEMESTERS, 2026–27 · TODAY AGAINST TWO PUBLISHED FULL-COST REFERENCE POINTS</text>
+<text data-t="B2-007" x="170" y="58">TODAY · STATE-SUPPORTED · PUBLISHED FEE SCHEDULE</text>
+<rect class="fgfill" height="26" opacity=".85" width="259" x="170" y="66"></rect>
+<text class="big" data-t="B2-008" font-size="22" x="438" y="86">$15,724</text>
+<text class="redtext" data-t="B2-009" x="170" y="122">RESIDENT FEES + THE STATE'S SHARE OF MARGINAL COST ($11,296 PER FTES, CSU 2026–27)</text>
+<rect class="cpfill" height="26" opacity=".7" width="445" x="170" y="130"></rect>
+<text class="big" data-t="B2-010" font-size="22" x="624" y="150">≈ $27,000</text>
+<text class="redtext" data-t="B2-011" x="170" y="186">RESIDENT FEES + NON-RESIDENT TUITION ($471 × 30 UNITS), NO OPPORTUNITY FEE</text>
+<rect class="cpfill" height="26" width="492" x="170" y="194"></rect>
+<text class="big" data-t="B2-012" font-size="22" x="671" y="214">$29,854</text>
+<text class="redtext" data-t="B2-022" text-anchor="end" x="850" y="244">× 1.7 TO × 1.9 · THE SELF-SUPPORT FEE ITSELF IS UNPUBLISHED</text>
+<g aria-hidden="true"><rect x="16" y="57" width="112" height="47" fill="none" stroke="var(--mute)" stroke-width=".75" opacity=".7"></rect><text text-anchor="middle" x="72" y="73">WHAT A CA</text><text text-anchor="middle" x="72" y="86">STUDENT</text><text text-anchor="middle" x="72" y="99">PAYS TODAY</text><path class="lin" d="M132 79 H162"></path><path class="lin" d="M157 75 L163 79 L157 83"></path><rect x="16" y="109" width="112" height="60" fill="none" stroke="var(--cp)" stroke-width=".75" opacity=".7"></rect><text class="redtext" text-anchor="middle" x="72" y="125">COST FOR</text><text class="redtext" text-anchor="middle" x="72" y="138">SELF-SUPPORT</text><text class="redtext" text-anchor="middle" x="72" y="151">CA RESIDENTS</text><text class="redtext" text-anchor="middle" x="72" y="164">(ESTIMATED)</text><path class="cpline" d="M132 143 H162"></path><path class="cpline" d="M157 139 L163 143 L157 147"></path><rect x="16" y="174" width="112" height="60" fill="none" stroke="var(--cp)" stroke-width=".75" opacity=".7"></rect><text class="redtext" text-anchor="middle" x="72" y="190">COST FOR</text><text class="redtext" text-anchor="middle" x="72" y="203">NONRESIDENTS,</text><text class="redtext" text-anchor="middle" x="72" y="216">BEFORE THE</text><text class="redtext" text-anchor="middle" x="72" y="229">OPPORTUNITY FEE</text><path class="cpline" d="M132 207 H162"></path><path class="cpline" d="M157 203 L163 207 L157 211"></path></g>
+</svg>
+<div class="popover">Existing published charges and the CSU's own marginal-cost figure, not a proposed YRO price. Today: Cal Poly's 2026–27 fee schedule, College of Engineering, 15 units a semester, $7,862 a semester for a resident. State share: the CSU's 2026–27 allocation memo sets the state's share of the marginal cost of instruction at $11,296 per full-time-equivalent student, which is what a cost-recovery fee would have to replace. Non-resident tuition: $471 a unit, from the same fee schedule, without the $4,402 Opportunity Fee charged to new non-residents, which has no demonstrated application to self-support students. The fee for the reported self-support pathway has not been published; its relationship to either reference point is unknown.</div>
+</div>
+<p class="lede quiet" data-t="B2-014" style="margin-top:30px">In response to EdSource (May 2024) asking how much it would cost, President Armstrong responded</p>
+<div class="exchange">
+<span class="who" data-t="B2-015">Answer</span><p class="a" data-t="B2-016" style="font-size:clamp(30px,5.6vw,56px);line-height:1.05">"not significantly out of line"</p>
+</div>
+<p class="lede quiet" data-t="B2-017" style="margin-top:26px">This remains the <i>most specific public statement</i> on the topic. Revenue projections for YRO have been shown to the Academic Senate in slide presentations at its meetings; the figures, data, models and assumptions behind them have not been published, and no public document mentions self-support.</p>
+<div aria-label="What has been published and what has not" class="pubgrid">
+<div class="pubcol">
+<h4 data-t="B2-018">Published</h4>
+<div class="rows">
+<div class="row"><b>Enrollment target</b> <span>25,000 on campus per term by 2030</span></div>
+<div class="row"><b>Growth</b> <span>+2,000 students over five years</span></div>
+<div class="row"><b>Summer headcount</b> <span>40–50% of students. "Possibly 6,000" in 2023; nothing since. Summer 2025: 2,078.</span></div>
+</div>
+<p class="src" data-t="B2-019">Strategic Enrollment Management, Oct 2025; Tribune, Sept 2023; 2025–26 operating budget</p>
+</div>
+<div class="pubcol un">
+<h4 data-t="B2-020">Not published</h4>
+<div class="rows">
+<div class="row"><b>Students enrolled across a year under YRO</b> <span>Not published. At 25,000 on campus per term: 31,250 under a 60/20/20 track split, 33,333 under 50/25/25; the faculty financial analysis’s central case, about 29,000, assumes the summer tracks fill only partly.</span></div>
+<div class="row"><b>Cost of a third semester</b> <span>"Not significantly out of line," May 2024</span></div>
+<div class="row"><b>Revenue from a third semester</b> <span>unknown</span></div>
+<div class="row"><b>New tenure lines, and their cost</b> <span>117 hired "partly to prepare"; how many more, unstated</span></div>
+<div class="row"><b>Who pays full cost, and how much</b> <span>No price, count or eligibility rule</span></div>
+<div class="row"><b>Financial aid for a two-of-three year</b> <span>unknown</span></div>
+</div>
+</div>
+</div>
+<div class="door"><button class="btn" data-open="bill" data-t="B2-021">Open the record: what it will cost <span class="arr">→</span></button></div>
+</section>
+<hr class="hr"/>
+<!-- 3. HISTORY -->
+<section class="sec wrap" id="elsewhere-sec">
+<p class="mono" data-t="E4-001"><i></i>3 · Nobody does it this way</p>
+<h2 data-t="E4-002">The schools it is compared to are not like it.</h2>
+<p class="lede" data-t="E4-003">The universities the plan has been compared to: Georgia Tech, Northeastern, Cincinnati, Rensselaer, Waterloo, Dartmouth. Almost all these other schools provide students with co-op experiences (coordinated work-study or internships). However, SLO has a much smaller metro area and is relatively isolated, geographically. The metro base would be insufficient to support a co-op program if one had been planned. The table below provides this comparison, as well as the enrollment growth the calendar is designed to produce.</p>
+<div aria-label="Circles proportional to metropolitan-area population: Atlanta 6.3 million, Boston 4.9 million, Cincinnati 2.3 million, Albany-Troy 0.9 million, Waterloo Region 0.6 million, Lebanon NH-VT micropolitan area 0.22 million for Dartmouth, San Luis Obispo-Paso Robles 0.28 million for Cal Poly. A second row shows the enrollment growth each calendar is designed to produce: none for the co-op schools and Rensselaer, Dartmouth's D-Plan in 1972, and 16 to 33 percent for Cal Poly." class="fig haspop" tabindex="0">
+<svg id="geo-story" role="img" viewbox="0 0 1100 340"></svg>
+<div class="popover">Population of each campus's metropolitan or micropolitan statistical area, rounded (Waterloo: the Region of Waterloo). Cal Poly's is the San Luis Obispo–Paso Robles area, about 280,000, of which about 72,000 (the city, Los Osos and Morro Bay) are within a 45-minute bus ride of campus. Cal Poly has a smaller regional population than the large co-op comparators (Atlanta 22×, Boston 18×, Cincinnati 8×, Albany–Troy 3×, Waterloo 2×) and is the only one on the chart that assigns an entering class to unenrolled off semesters at admission: one student in four or five away every fall and every spring, from the first year. Its summer held about 9 percent of fall headcount in 2025; the design puts summer at 50 to 67 percent of fall headcount (40–50 percent of all students). Dartmouth's shared summer holds one class year; Rensselaer's Arch summer, required from 2019 until October 2025, the same. A smaller regional population does not by itself say where students will live or work; what the reviewed materials do not establish is whether suitable local jobs and housing exist at the scale required, or what support students would receive.</div>
+</div>
+<p class="cap" data-t="E4-004">Hover or tap the chart for details.</p>
+<div class="door"><button class="btn" data-open="elsewhere" data-t="E4-005">Open the record: Cal Poly against its peers <span class="arr">→</span></button></div>
+</section>
+<hr class="hr"/>
+<!-- 4. ELSEWHERE -->
+<section class="sec wrap" id="history-sec">
+<p class="mono" data-t="H3-001"><i></i>4 · We have done this before</p>
+<h2 data-t="H3-002">The state has changed the rules for summer four times in 25 years.</h2>
+<ul class="four">
+<li data-t="H3-003"><b>2001</b> The state pays CSU campuses to make summer a regular, state-supported term. Enrollment jumps.</li>
+<li data-t="H3-004"><b>2004</b> The state cuts CSU's funded enrollment by about 20,000. Campuses are allowed to shut state-supported summer to stay within it. Seven do; Cal Poly's summer falls 83%.</li>
+<li data-t="H3-005"><b>2009</b> Budget crisis. The Chancellor's Office lets campuses move summer to self-support and charge students full cost. Most of it moves.</li>
+<li data-t="H3-006"><b>2025</b> Summer starts moving back to state support, because it now counts toward enrollment targets.</li>
+</ul>
+<p class="lede" data-t="H3-007">Cal Poly's own state-supported summer enrollment, in students,<sup class="fn">*</sup> across the last conversion.</p>
+<p class="sidenote" data-t="H3-008"><sup class="fn">*</sup>"Student" on this page means a full-time-equivalent student (FTES): one undergraduate enrolled in 15 units. Two half-time students count as one.</p>
+<div aria-label="Line chart of Cal Poly summer enrollment, 1997 to 2027: about 2,100 estimated in 1997, 2,364 in 2001, 412 in 2004, 2,152 in 2006, a dotted gap with no published data to 2025, 1,099 in 2025, about 770 projected for 2026. Bands mark when summer was state-supported, when the CSU moved summer to self-support, and the return to state support in 2025." class="fig haspop" tabindex="0">
+<svg role="img" viewbox="0 0 760 300">
+<!-- x: 1996 at 40, 2027 at 720 (21.94 px/yr). y: 0 at 260, 2,364 at 90 -->
+<rect class="peerfill" height="190" opacity=".14" width="285" x="40" y="70"></rect>
+<rect class="mutefill" height="190" opacity=".10" width="351" x="325" y="70"></rect>
+<rect class="cpfill" height="190" opacity=".10" width="44" x="676" y="70"></rect>
+<g font-size="10">
+<g fill="none" stroke="var(--peer)" stroke-width="1.5"><line x1="40" x2="325" y1="40" y2="40"></line><line x1="40" x2="40" y1="35" y2="45"></line><line x1="325" x2="325" y1="35" y2="45"></line></g>
+<text data-t="H3-009" text-anchor="middle" x="182" y="20">STATE-SUPPORTED SUMMER, SINCE THE LATE 1960S</text>
+<text data-t="H3-010" text-anchor="middle" x="182" y="33">THE STATE PAYS PART OF EACH SUMMER SEAT</text>
+<g fill="none" stroke="var(--mute)" stroke-width="1.5"><line x1="325" x2="676" y1="68" y2="68"></line><line x1="325" x2="325" y1="63" y2="73"></line><line x1="676" x2="676" y1="63" y2="73"></line></g>
+<text data-t="H3-011" text-anchor="middle" x="500" y="48">SELF-SUPPORT · CSU SYSTEMWIDE</text>
+<text data-t="H3-012" text-anchor="middle" x="500" y="61">STUDENTS PAY THEIR OWN WAY IN SUMMER</text>
+<g fill="none" stroke="var(--cp)" stroke-width="1.5"><line x1="676" x2="720" y1="40" y2="40"></line><line x1="676" x2="676" y1="35" y2="45"></line><line x1="720" x2="720" y1="35" y2="45"></line></g>
+<text class="redtext" data-t="H3-013" text-anchor="end" x="748" y="20">STATE-SUPPORTED AGAIN</text>
+<text class="redtext" data-t="H3-014" text-anchor="end" x="748" y="33">COUNTS AS STATE ENROLLMENT · FUNDED BY TUITION</text>
+</g>
+<line class="ax" x1="40" x2="720" y1="260" y2="260"></line>
+<g font-size="10"><text data-t="H3-015" text-anchor="middle" x="62" y="280">1997</text><text data-t="H3-016" text-anchor="middle" x="237" y="280">2005</text><text data-t="H3-017" text-anchor="middle" x="347" y="280">2010</text><text data-t="H3-018" text-anchor="middle" x="457" y="280">2015</text><text data-t="H3-019" text-anchor="middle" x="566" y="280">2020</text><text data-t="H3-020" text-anchor="middle" x="676" y="280">2025</text></g>
+<line class="cpline" stroke-dasharray="3 5" stroke-width="1.5" x1="62" x2="150" y1="109" y2="90"></line>
+<polyline class="cpline" points="150,90 215,230 259,105" stroke-width="2.5"></polyline>
+<line class="cpline" stroke-dasharray="3 5" stroke-width="1.5" x1="259" x2="676" y1="105" y2="181"></line>
+<line class="cpline" stroke-dasharray="3 5" stroke-width="1.5" x1="676" x2="698" y1="181" y2="205"></line>
+<circle class="hollow" cx="62" cy="109" r="5" style="stroke-dasharray:0;stroke-width:2"></circle>
+<g class="cpfill"><circle cx="150" cy="90" r="5"></circle><circle cx="215" cy="230" r="5"></circle><circle cx="259" cy="105" r="5"></circle><circle cx="676" cy="181" r="5"></circle></g>
+<circle class="hollow" cx="698" cy="205" r="5" style="stroke-dasharray:0;stroke-width:2"></circle>
+<text class="big" data-t="H3-021" font-size="16" text-anchor="middle" x="62" y="134">≈2,100</text>
+<text data-t="H3-022" font-size="9" text-anchor="middle" x="62" y="146">1997 EST.</text>
+<text class="big" data-t="H3-023" font-size="18" text-anchor="middle" x="150" y="80">2,364</text>
+<text class="big" data-t="H3-024" font-size="18" text-anchor="middle" x="215" y="252">412</text>
+<text class="big" data-t="H3-025" font-size="18" text-anchor="start" x="269" y="100">2,152</text>
+<text class="big" data-t="H3-026" font-size="18" text-anchor="end" x="668" y="168">1,099</text>
+<text class="big" data-t="H3-027" font-size="18" text-anchor="end" x="690" y="232">≈770</text>
+<text data-t="H3-028" font-size="9" text-anchor="end" x="690" y="245">2026 PROJ.</text>
+<text class="redtext" data-t="H3-029" font-size="10" text-anchor="end" x="200" y="170">−83%</text>
+<text data-t="H3-030" font-size="10" text-anchor="middle" x="470" y="200">NO CAL POLY FIGURES PUBLISHED, 2007–24</text>
+</svg>
+<div class="popover">Summer term students (full-time equivalent), Cal Poly San Luis Obispo, all state-supported. 1997: estimate; the LAO reported Cal Poly's summer at 15 percent of fall that year, and 15 percent of the campus's 1998–99 full-time-equivalent enrollment of 13,877 is about 2,100. 2001–2006: Legislative Analyst's Office. The 2004 collapse followed a cut of about 20,000 in CSU's funded enrollment; the 2006 recovery followed the return of funded growth in 2005–06 and 2006–07, when campuses short of their targets used summer to reach them. 2025: Cal Poly's 2025–26 operating budget (2,078 people enrolled, 1,099 full-time equivalent; $12.87 million in revenue, all tuition, against about $12.7 million in expense). 2026: Institutional Research projects a 30 percent drop in summer headcount and units from the move to two sessions. In 2015 the LAO found Cal Poly's state-supported summer below 10 percent of fall. No year-by-year campus series has been located for 2007–2024, the years in which the CSU moved most of its summer to self-support.</div>
+</div>
+<p class="cap" data-t="H3-031">Hover or tap the chart for sources and figures.</p>
+<div class="callout">In 2001 the state put money behind summer: $19.9 million to cut CSU summer fees to the regular-term level and a share of $33.1 million to move summer onto state support, with enrollment growth as a condition. <b>For the conversion now planned, no state funding has been announced or scheduled.</b> Cal Poly's own budget shows summer 2025 funded by tuition alone, and the Legislative Analyst has told the Legislature that CSU's reported growth is overstated by summer reclassification.</div>
+<div class="door"><button class="btn" data-open="history" data-t="H3-032">Open the record: 1999 to 2026 <span class="arr">→</span></button></div>
+</section>
+<hr class="hr"/>
+<!-- 5. SAY SO -->
+<section class="sayso wrap" id="sayso-sec">
+<p class="mono" data-t="S5-001" style="display:flex;gap:12px;align-items:center;margin-bottom:18px"><i style="display:inline-block;width:28px;height:1px;background:var(--cp)"></i>5 · Tell us your thoughts</p>
+<h2 data-t="S5-002">What do you think of all this?</h2>
+<p class="lede" data-t="S5-003">The survey takes only a few minutes; your email is used only to verify you. Answers remain private and all data are anonymized.</p>
+<div class="ctas">
+<a class="btn primary" data-open="survey" data-survey="" data-t="S5-004" href="#survey">Take the survey <span class="arr">→</span></a> <a class="btn primary" href="takeaction/">Take action <span class="arr">→</span></a>
+<button class="btn" data-open="sayso" data-t="S5-005">What else can be done <span class="arr">→</span></button>
+</div>
+</section>
+<footer>
+<div class="wrap">
+<p class="mono" data-t="FT-001">Prepared by Cal Poly faculty. Not a university publication.<br/>Figures current to 16 October 2026.</p>
+<button class="linkbtn" data-open="sources" data-t="FT-002">Sources and notes</button>
+</div>
+</footer>
+</main>
+<div class="modal" id="calendar-modal" hidden role="dialog" aria-modal="true" aria-labelledby="calendar-title">
+<div class="modal-box">
+<div class="modal-head"><span class="mono">The keystone mystery</span><button aria-label="Close" class="close" data-modal-close="" type="button">×</button></div>
+<p class="modal-lede" id="calendar-title"><b>The Calendar</b>, and why everything depends on it</p>
+<div class="modal-body">
+<p>The calendar is a central organizing tool for the university and impacts curriculum, admissions, financial aid, maintenance and many other things. The calendar is the one area on YRO where the administration actually has repeatedly sought faculty input. However, the feedback to the variety of proposed calendars has been strongly negative. Two years out, the discussion has mostly converged on a 14-week calendar whose Summer term starts in the 2nd week of May, with spring commencement at the end of April and summer finals in mid-August.</p>
+<ul>
+<li>One of the main reasons given for the switch to semesters was to align the Cal Poly calendar with high schools, community colleges, and other universities. The proposed calendar would destroy the alignment we just attained.</li>
+<li>For most technical courses, especially lower-level service courses like mathematics, the sciences, and engineering, it is simply not possible to compress 15 weeks of material into 14.
+<ul>
+<li>Material will need to be moved to another course. Any content in those courses is <b>required</b> for some other course. It is also not possible to simply "teach faster" without degrading the education and leaving students irreparably behind.</li>
+<li>The curriculum is a complex web of prerequisites and breadth requirements, and changes in one course can impact other majors, including the number of units in the program and the time to graduation.</li>
+<li>Any changes need to be reviewed to ensure students don't get caught in the churn, missing prereqs and having graduation delayed. However, the time required for review far exceeds the window before YRO launch.</li>
+</ul>
+</li>
+<li>A Fall–Summer admit will move into the residence halls in Fall. After 4 months, they will move out and spend January–April doing … whatever. Then in May they move back into the residence halls just as everyone they met in orientation, clubs, fraternities/sororities, and on sports teams, is moving out. No student will willingly choose this.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="scrim" data-close=""></div>
+<!-- PANEL: CLOCK -->
+<aside aria-labelledby="h-clock" aria-modal="true" class="panel" hidden="" id="p-clock" role="dialog">
+<div class="panel-head"><span class="mono">1 · The clock</span><button aria-label="Close" class="close" data-close="">×</button></div>
+<div class="panel-body">
+<h2 data-t="PC-001" id="h-clock">The questions that have been answered ... and all the other ones.</h2>
+<p class="big" data-t="PC-002">After the two-year delay announced on October 21, 2026, the first year-round classes start in fall 2029. The Cal State application for fall 2029 opens in October 2028. The design must be settled by summer 2028 in order for track assignment to be presented correctly in the application and recruiting materials.</p>
+<div class="keystone-wrap"><p class="keystone-lede">The keystone mystery:</p>
+<button class="keystone" data-modal="calendar-modal" type="button"><span class="k-big">The Calendar</span><span class="k-small">and why everything depends on it <span class="arr">→</span></span></button></div>
+<p class="pull">No reason has been given for why there is such urgency with implementing YRO.</p>
+<p>The administration has been asked repeatedly, and the response has been "We've wanted to do this for a long time", which is not a valid reason for destabilizing campus operations, especially right after the massive ordeal of semester conversion.</p>
+<p>The public record of what has been settled is outlined below.</p>
+<div aria-label="Detailed timeline from October 2026 to August 2029 with milestones" class="fig haspop" tabindex="0">
+<svg role="img" viewbox="0 0 760 150">
+<line class="ax" x1="40" x2="720" y1="100" y2="100"></line>
+<g id="ticks2"></g>
+<g font-size="9">
+<text class="redtext" data-t="PC-003" x="40" y="124">OCT 2026</text>
+<text data-t="PC-004" text-anchor="middle" x="460" y="124">JUL 2028</text>
+<text data-t="PC-005" text-anchor="middle" x="520" y="136">OCT 2028</text>
+<text data-t="PC-006" text-anchor="middle" x="580" y="124">JAN 2029</text>
+<text data-t="PC-007" text-anchor="middle" x="620" y="136">MAR 2029</text>
+<text data-t="PC-008" text-anchor="middle" x="660" y="124">MAY 2029</text>
+<text data-t="PC-009" text-anchor="middle" x="700" y="136">JUL 2029</text>
+<text data-t="PC-010" text-anchor="middle" x="724" y="124">AUG 2029</text>
+</g>
+<line class="cpline" stroke-width="2" x1="40" x2="40" y1="58" y2="100"></line>
+<text class="redtext" data-t="PC-011" x="46" y="52">TODAY</text>
+<rect class="hollow" height="22" width="420" x="40" y="66"></rect>
+<text class="redtext" data-t="PC-012" text-anchor="middle" x="250" y="81">DESIGN WINDOW · ≈ 21 MONTHS</text>
+<line class="cpline" stroke-width="1.5" x1="380" x2="380" y1="88" y2="126"></line>
+<text class="redtext" data-t="PC-023b" font-size="9" text-anchor="middle" x="380" y="136">CATALOG DEADLINE · ≈ MAR 2028</text>
+<g font-size="9">
+<line class="fgline" x1="460" x2="460" y1="40" y2="100"></line>
+<text class="fgtext" data-t="PC-013" text-anchor="middle" x="460" y="34">DESIGN MUST BE SET</text>
+<line class="fgline" x1="520" x2="520" y1="90" y2="100"></line>
+<text class="fgtext" data-t="PC-014" text-anchor="middle" x="520" y="74">STUDENTS BEGIN</text><text class="fgtext" data-t="PC-015" text-anchor="middle" x="520" y="85">TO APPLY</text>
+<line class="fgline" x1="580" x2="580" y1="69" y2="100"></line>
+<text class="fgtext" data-t="PC-016" text-anchor="middle" x="580" y="52">NEW FACULTY</text><text class="fgtext" data-t="PC-017" text-anchor="middle" x="580" y="63">HIRED</text>
+<line class="fgline" x1="620" x2="620" y1="40" y2="100"></line>
+<text class="fgtext" data-t="PC-018" text-anchor="middle" x="620" y="34">OFFERS TO STUDENTS</text>
+<line class="fgline" x1="660" x2="660" y1="69" y2="100"></line>
+<text class="fgtext" data-t="PC-019" text-anchor="middle" x="660" y="52">STUDENTS</text><text class="fgtext" data-t="PC-023" text-anchor="middle" x="660" y="63">COMMIT</text>
+<line class="fgline" x1="700" x2="700" y1="90" y2="100"></line>
+<text class="fgtext" data-t="PC-020" text-anchor="middle" x="700" y="74">FIRST</text><text class="fgtext" data-t="PC-021" text-anchor="middle" x="700" y="85">SUMMER</text>
+<line class="fgline" x1="716" x2="716" y1="26" y2="100"></line>
+<text class="fgtext" data-t="PC-022" text-anchor="end" x="740" y="20">FIRST PROGRAMS START</text>
+</g>
+</svg>
+<div class="popover">Milestones from the president's April 2026 email to campus (phased implementation from summer 2028), the Academic Affairs planning list (23 programs in 2028–29, Business first in 2027–28), the Registrar's catalog timeline (March 12, 2027 for changes effective fall 2028) and the standard Cal State admissions calendar (applications open October 1). The July 2028 "design must be set" point is our recommended allowance before the application opens, not a deadline the campus has published. Dates shown reflect the two-year delay announced on October 21, 2026; the catalog deadline for 2029–30 changes is our estimate pending the Registrar's calendar. Disclosure of track rules before students apply is a safeguard we advocate; no campus rule requires it. <span id="months-left"></span></div>
+</div>
+<p>Communication has been very poor, and very little information about the details have been shared. Many key questions are unanswered.</p>
+<div class="cols">
+<div class="col">
+<h3 data-t="PC-024">Questions answered</h3>
+<p class="colcount" data-t="PC-025">6 items</p>
+<div class="tiles">
+<div class="tile done" data-t="PC-026"><span class="k" data-t="PC-027">2023</span>The announcement: up to 600 students in three colleges, "possibly 6,000" in summer within a few years, no more than 25,000 on campus in any term until after 2035</div>
+<div class="tile done" data-t="PC-028"><span class="k" data-t="PC-029">2025</span>The design: two of three semesters; about 60 percent fall–spring, 20–25 percent on each summer track; at most 85 percent on campus at once; 40–50 percent in summer</div>
+<div class="tile done" data-t="PC-030"><span class="k" data-t="PC-031">Scope</span>23 programs in six colleges for 2028–29; the College of Business first, in 2027–28</div>
+<div class="tile done" data-t="PC-032"><span class="k" data-t="PC-033">Hiring</span>117 tenure-track faculty hired in two years, "partly to prepare" for year-round operations</div>
+<div class="tile done" data-t="PC-034"><span class="k" data-t="PC-035">Calendar</span>Draft 2027–28 calendars from the Registrar: 14-week terms, Summer 2028 beginning the 2nd week of May; the Senate Executive Committee voted not to endorse the April draft on 5 May 2026</div>
+<div class="tile done" data-t="PC-036"><span class="k" data-t="PC-037">Semesters</span>The quarter-to-semester conversion, complete August 2026</div>
+</div>
+</div>
+<div class="col">
+<h3 data-t="PC-038">Questions raised but unanswered</h3>
+<p class="colcount" data-t="PC-039">8 items</p>
+<div class="tiles">
+<div class="tile open" data-t="PC-040"><span class="k" data-t="PC-041">Money</span>The budget. The president, May 2024: the investments "will not be significantly out of line" with traditional growth. No figure before or since.</div>
+<div class="tile open" data-t="PC-042"><span class="k" data-t="PC-043">Projections</span>Enrollment and faculty-hiring projections, reported in April 2026 as not yet released</div>
+<div class="tile open" data-t="PC-044"><span class="k" data-t="PC-045">Calendar</span>The academic calendar for year-round operation, which the April 2026 email says will be developed</div>
+<div class="tile open" data-t="PC-046"><span class="k" data-t="PC-047">Readiness</span>Which programs are ready: "initial areas of readiness," under consultation with the colleges</div>
+<div class="tile open" data-t="PC-048"><span class="k" data-t="PC-049">Students</span>Town halls for student input, promised in April 2026 with details "still being confirmed". May have happened; results unannounced.</div>
+<div class="tile open" data-t="PC-050"><span class="k" data-t="PC-051">Aid</span>Financial aid under a two-of-three semester design. The 2024 statement covered a quarter-system year with a chosen start term. Peer institutions manage this with co-op programs, but Cal Poly has none.</div>
+<div class="tile open" data-t="PC-052"><span class="k" data-t="PC-053">Teaching</span>Who teaches summer. Faculty "will not be required to teach in summer but may opt in"; the staffing of summer sections is unstated.</div>
+<div class="tile open" data-t="PC-054"><span class="k" data-t="PC-055">Switching</span>How a student changes tracks. The 2024 plan let students choose a start term; the 2025 design assigns one. No process for moving between tracks has been published, but the president has promised there will be one. It has been rumoured this may be possible only by requesting a change of major.</div>
+</div>
+</div>
+<div class="col">
+<h3 data-t="PC-056">Questions not raised in public</h3>
+<p class="colcount" data-t="PC-057">20 questions</p>
+<div class="tiles">
+<div class="tile absent" data-t="PC-058"><span class="k" data-t="PC-059">Departments</span>Who teaches the summer sections of the service courses, in departments that have not converted to YRO and still operate only Fall–Spring?</div>
+<div class="tile absent" data-t="PC-060"><span class="k" data-t="PC-061">Departments</span>How do lab and studio sequences run when one student in four or five is away in any fall or spring, and more than half in summer?</div>
+<div class="tile absent" data-t="PC-062"><span class="k" data-t="PC-063">Departments</span>What happens to curriculum review? Faculty report being told it may be suspended to meet the timeline, which may endanger accreditation.</div>
+<div class="tile absent" data-t="PC-064"><span class="k" data-t="PC-065">Departments</span>Advising, orientation and first-year programs for three entry points a year instead of one</div>
+<div class="tile absent" data-t="PC-066"><span class="k" data-t="PC-067">Departments</span>Labs and studios need maintenance and calibration that can only be done when they are not in use. When does that happen?</div>
+<div class="tile absent" data-t="PC-068"><span class="k" data-t="PC-069">Departments</span>Some disciplines, such as Agriculture and Natural Resources, are tied to the seasons. How do their students do research or find internships on an assigned calendar?</div>
+<div class="tile absent" data-t="PC-098"><span class="k" data-t="PC-099">Departments</span>How does an academic department operate when a third of its faculty are not on campus at any given time?</div>
+<div class="tile absent" data-t="PC-100"><span class="k" data-t="PC-101">Departments</span>How does departmental service work when a third of the faculty are not present to share it?</div>
+<div class="tile absent" data-t="PC-102"><span class="k" data-t="PC-103">Departments</span>Courses offered once a year will have to be offered two or three times a year under YRO. Who pays for that, and who teaches it when only a couple of people in the department can?</div>
+<div class="tile absent" data-t="PC-104"><span class="k" data-t="PC-105">Departments</span>For summer to be comparable to fall and spring, its tenure density should equal theirs. It has been rumoured that only lower-division tenure density will be maintained (lower-division courses are disproportionately taught by lecturers).</div>
+<div class="tile absent" data-t="PC-070"><span class="k" data-t="PC-071">Students</span>Clubs, teams, ensembles and chapters when one member in four or five is away each fall and spring, and more than half each summer</div>
+<div class="tile absent" data-t="PC-072"><span class="k" data-t="PC-073">Students</span>Where summer-track students live. Sorority chapter houses are generally closed in summer; Rensselaer's administration cited national Panhellenic housing rules when it excluded sororities from its summer-housing plan.</div>
+<div class="tile absent" data-t="PC-074"><span class="k" data-t="PC-075">Students</span>The summer internship window, for students whose summer is filled with a full semester's worth of classes</div>
+<div class="tile absent" data-t="PC-076"><span class="k" data-t="PC-077">Students</span>Which track a sixteen-year-old applicant chooses (Fall–Spring, Spring–Summer, Fall–Summer), and on what information</div>
+<div class="tile absent" data-t="PC-106"><span class="k" data-t="PC-107">Students</span>Transfer students. Admitting community-college transfers is a statutory CSU mission, and the state's 116 community colleges run on the semester calendar Cal Poly just adopted. Which track does a junior transfer land on, and how does a transfer degree built for two semesters a year fit a two-of-three calendar?</div>
+<div class="tile absent" data-t="PC-078"><span class="k" data-t="PC-079">Town</span>Leases. Student rentals run September to June or twelve months; a student present two terms in three pays for a room they live in for six, and summer vacancy becomes year-round churn for landlords and property managers.</div>
+<div class="tile absent" data-t="PC-082"><span class="k" data-t="PC-083">Town</span>Employers that staff with students; city services sized to a nine-month population. The October 2025 City Council presentation covered housing, parking and event space, not the calendar.</div>
+<div class="tile absent" data-t="PC-086"><span class="k" data-t="PC-087">Governance</span>Will the Chancellor's Office approve a three-equivalent-semester calendar?</div>
+<div class="tile absent"><span class="k">Governance</span>Will the Chancellor's Office approve self-support students and state-support students taking the same course? (Generally, this is forbidden under current rules, to avoid <span class="term haspop" role="button" tabindex="0">supplanting<span class="popover"><b>Supplanting · Education Code §89708</b>Supplanting is the state's term for using fee-funded "special session" (self-support) courses in place of instruction the state already pays for. Education Code §89708 defines it as reducing the number of state-supported course offerings while increasing the number of self-supporting versions of those courses. The section requires that self-support sessions not supplant the regular state-supported courses of the academic year, that courses required for an undergraduate degree be offered state-supported wherever possible, and that a state-supported student never be made to take a self-support course to graduate. The Chancellor's Office requires a showing of no supplanting before it approves a self-support counterpart to a state-supported program.</span></span>.)</div>
+<div class="tile absent" data-t="PC-088"><span class="k" data-t="PC-089">Governance</span>Collective bargaining over summer workload, which the contract requires</div>
+</div>
+</div>
+</div>
+<div class="legend"><span data-t="PC-090"><i class="l-done"></i>Questions answered</span><span data-t="PC-091"><i class="l-open"></i>Questions raised but unanswered</span><span data-t="PC-092"><i class="l-absent"></i>Questions not raised in public</span></div>
+<h3 data-t="PC-093">What the clock means</h3>
+<p data-t="PC-094">Anything that pushes the budget, staffing, aid or governance work past mid-2028 pushes the first rollout from 2029–30 to 2030–31. The order of operations is already visible: students are to be recruited into tracks in two years, and no process for leaving one has been described (though the president has promised such a mechanism).</p>
+<blockquote class="quote" data-t="PC-095">Writing the rules as we go along.<span class="src" data-t="PC-096">Interim dean, College of Engineering, on the development of year-round operations, April 2026</span></blockquote>
+<p data-t="PC-097">Readiness is the administration's own gate. An April 2026 email from the administration ties the first programs to "initial areas of readiness" identified with the colleges.</p>
+</div>
+</aside>
+<!-- PANEL: BILL -->
+<aside aria-labelledby="h-bill" aria-modal="true" class="panel" hidden="" id="p-bill" role="dialog">
+<div class="panel-head"><span class="mono">2 · The bill</span><button aria-label="Close" class="close" data-close="">×</button></div>
+<div class="panel-body">
+<h2 data-t="PB-001" id="h-bill">What a third semester costs.</h2>
+<p class="big" data-t="PB-002">Existing faculty cannot be compelled to teach a summer term, and historically have shown little interest in teaching during summer. A very large number of new tenure-track faculty will need to be hired, and those costs persist whether or not student summer enrollment persists. The money to carry them can not be supplied entirely by growth. Faculty have been told it requires Californians paying full cost.</p>
+<h3 data-t="PB-003">How it would be paid for</h3>
+<p data-t="PB-004">The plan was presented to the faculty as a revenue source: growth whose surplus would fund the Teacher-Scholar Model and other high-impact practices. Within the assumptions and cases documented in a faculty financial analysis built on the public evidence, no configuration consistent with an equal-stature summer produces the $12–16 million a year the Teacher-Scholar Model would need, and most configurations lose money. The levers that close the gap in that analysis are state growth funding at marginal cost, indexed and sustained, or full-cost admission. This is a conditional model result, not proof that every feasible financing arrangement requires self-support.</p>
+<p data-t="PB-061">Faculty have been told by the administration, in college YRO planning meetings, that self-support enrollment is part of the funding model: students admitted to the same major, on the same calendar, through Extended Education at a per-unit fee set to recover full cost, outside the state-supported count. CSU policy allows a self-support counterpart of an existing state-supported degree, subject to Chancellor's Office review and written approval, a cost-recovery budget with per-unit fees, and a showing that state-supported instruction is not supplanted (Education Code §89708). If this is the proposed pathway, the university should identify its approval status, cost-recovery budget, student charges, and how it would avoid supplanting. A Californian who pays $15,724 for two semesters of engineering today would pay on the order of $27,000 to $30,000 on either published full-cost reference point; the actual fee has not been published. The reported proposal is not specific to summer.</p>
+<p>There are rules against self-support and state-supported students attending the same courses. The State Auditor found in 2016 that UC had disadvantaged California residents by admitting non-residents for revenue; a full-cost resident pathway reaches a similar end by a different route.</p>
+<p data-t="PB-005">None of this has been proposed on the public record. The issue has been raised in Academic Senate but not fully discussed, nor is it clear all faculty have been told.</p>
+<div class="callout swap">
+<p class="mono" data-t="PB-006" style="margin-bottom:10px">Why growth does not entirely pay for the summer</p>
+<p data-t="PB-007" style="margin-top:0">At the 25,000 cap, fall and spring are full. To seat one new student, two existing students have to give up a regular term and take summer instead. <b>For each pair of students that enters a summer term, only one brings new revenue but both contribute to summer instructional costs and overhead.</b> What that one is worth after teaching and serving all three is uncertain, and may not always be positive.</p>
+<div aria-label="Diagram: before, students A and B each occupy fall and spring and a new student has no seat; after, A takes fall and summer, B takes spring and summer, and the new student takes the fall and spring seats they gave up. Two summer seats are taught for one new tuition." class="fig" style="margin-top:14px">
+<svg role="img" viewbox="0 0 760 226">
+<text data-t="PB-008" x="20" y="18">BEFORE · CAMPUS FULL</text>
+<text data-t="PB-009" x="400" y="18">AFTER · ONE NEW STUDENT ADMITTED</text>
+<g font-size="10">
+<text data-t="PB-010" text-anchor="middle" x="135" y="44">FALL</text><text data-t="PB-011" text-anchor="middle" x="195" y="44">SPRING</text><text data-t="PB-012" text-anchor="middle" x="255" y="44">SUMMER</text>
+<text data-t="PB-013" text-anchor="middle" x="515" y="44">FALL</text><text data-t="PB-014" text-anchor="middle" x="575" y="44">SPRING</text><text data-t="PB-015" text-anchor="middle" x="635" y="44">SUMMER</text>
+</g>
+<!-- before -->
+<text class="fgtext" data-t="PB-016" x="20" y="74">STUDENT A</text><rect class="fgfill" height="26" opacity=".85" width="50" x="110" y="56"></rect><rect class="fgfill" height="26" opacity=".85" width="50" x="170" y="56"></rect><rect class="lin" height="26" stroke-dasharray="3 3" width="50" x="230" y="56"></rect>
+<text data-t="PB-017" style="fill:var(--peer)" x="20" y="114">STUDENT B</text><rect class="peerfill" height="26" width="50" x="110" y="96"></rect><rect class="peerfill" height="26" width="50" x="170" y="96"></rect><rect class="lin" height="26" stroke-dasharray="3 3" width="50" x="230" y="96"></rect>
+<text class="redtext" data-t="PB-018" x="20" y="154">NEW STUDENT</text><text class="redtext" data-t="PB-019" font-size="10" x="110" y="154">NO SEAT · TURNED AWAY</text>
+<!-- arrow -->
+<path class="fgline" d="M310 110 L372 110" stroke-width="1.5"></path><path class="fgfill" d="M372 104 L384 110 L372 116 Z"></path>
+<!-- after -->
+<text class="fgtext" data-t="PB-020" x="400" y="74">STUDENT A</text><rect class="fgfill" height="26" opacity=".85" width="50" x="490" y="56"></rect><rect class="lin" height="26" stroke-dasharray="3 3" width="50" x="550" y="56"></rect><rect class="fgfill" height="26" opacity=".85" width="50" x="610" y="56"></rect>
+<text data-t="PB-021" style="fill:var(--peer)" x="400" y="114">STUDENT B</text><rect class="lin" height="26" stroke-dasharray="3 3" width="50" x="490" y="96"></rect><rect class="peerfill" height="26" width="50" x="550" y="96"></rect><rect class="peerfill" height="26" width="50" x="610" y="96"></rect>
+<text class="redtext" data-t="PB-022" x="400" y="154">NEW STUDENT</text><rect class="cpfill" height="26" width="50" x="490" y="136"></rect><rect class="cpfill" height="26" width="50" x="550" y="136"></rect><rect class="lin" height="26" stroke-dasharray="3 3" width="50" x="610" y="136"></rect>
+<!-- tallies -->
+<g font-size="9">
+<text class="redtext" data-t="PB-023" x="400" y="188">NEW REVENUE: 1 NEW TUITION · (NET AFTER COSTS UNCERTAIN)</text>
+<text data-t="PB-024" x="400" y="202">NEW COSTS: 2 SUMMER SEATS TO TEACH</text>
+<text class="redtext" x="400" y="216">NET (PROFIT): MAY NOT BE POSITIVE</text>
+</g>
+</svg>
+</div>
+</div>
+<p data-t="PB-026">The administration's public position on cost is one sentence from May 2024: the investments required "will not be significantly out of line" with traditional growth. Since then the campus has hired 117 tenure-track faculty "partly to prepare," described the design, named 23 programs, and published no cost, revenue or staffing figure for a third semester.</p>
+<h3 data-t="PB-027">What is published, and where</h3>
+<p data-t="PB-028">Strategic Enrollment Management described the design in October 2025: students enrol in two of three semesters, about 60 percent on the traditional track and 20–25 percent on each summer track, with no more than 85 percent of the student body on campus in any term and 40–50 percent in summer; its target is 25,000 students present on campus in a term by 2030, the Master Plan ceiling. The 2023 announcement spoke of a 600-student pilot and "possibly 6,000" summer students. Academic Affairs lists the 23 programs. None of them is a cost or a revenue, and no cost or revenue figure has been published alongside them.</p>
+<p data-t="PB-029">What follows from them is not published either. If fall and spring are at the ceiling and 40–50 percent of students spend one of them away, the number of distinct students enrolled across a year rises to 31,250 under a 60/20/20 track split and 33,333 under 50/25/25, the two readings of the reported shares that sum to 100; the faculty financial analysis’s central case, about 29,000, assumes the summer tracks fill only partly. Every cost that scales with people, from advising to housing to the city's rental market, scales with that larger number, and the administration has not said what it is.</p>
+<h3 data-t="PB-030">The only summer with public books</h3>
+<p data-t="PB-031">Cal Poly's 2025–26 operating budget carries summer 2025 as its own column: 2,078 people enrolled, 1,099 students full-time equivalent, $12.87 million in revenue against $12.91 million in expense. That summer was taught by volunteers at the quarter-system rate and ran at the overhead of a campus already open, and it roughly broke even. Institutional Research projects summer 2026 about 30 percent smaller from the move to two sessions. The one summer the campus has published accounts for is a small voluntary term that just clears zero, and it is about to shrink.</p>
+<h3 data-t="PB-032">The lines</h3>
+<p data-t="PB-033">Summer instruction has to be taught by someone. The bargaining agreement makes summer teaching voluntary for academic-year faculty, and the administration has said faculty "will not be required to teach in summer." An equal-stature summer with the same tenure density as fall and spring therefore means new tenure-track lines whose appointments include summer. Each dot below is one such line.</p>
+<div aria-label="About 240 dots in a grid, each one new tenure-track line; 117 of them marked as already hired" class="fig haspop" tabindex="0">
+<svg id="lines-grid" role="img" viewbox="0 0 760 190"></svg>
+<div class="popover">About 240 new tenure lines at the faculty financial analysis’s central settings; its scenarios span roughly 150 to 250. Assumptions: 40 percent of summer instruction by lecturers, the regular-term share, the rest by tenure-line faculty once the volunteer pool is exhausted; a $115,000 starting salary, a 10 percent recruiting premium and Cal Poly's 64.4 percent benefits rate, so each line costs about $208,000 a year, roughly $50 million a year of base budget for 240. The 117 tenure-track faculty hired in 2023–25 "partly to prepare" are shown filled for scale only; how many of them carry summer obligations, and how many count against the 240, is unpublished.</div>
+</div>
+
+<p data-t="PB-035">A tenure line is a thirty-year commitment. The present value of 240 of them at 5 percent is roughly three-quarters of a billion dollars, before startup packages that run to six figures each in engineering and science. If summer enrollment falls short, the lines are hard to shed: the bargaining agreement permits layoffs for lack of work or funds, with tenured faculty last in order, and the CSU has used that authority rarely, in 2025 only alongside program eliminations at Sonoma State. A line hired for summer 2028 could create decades of continuing costs, and shedding it has academic and human consequences the plan has not priced. The shortfall comes instead from the parts of the budget that can move: lecturer sections, operating budgets, deferred maintenance, and the discretionary programs the new revenue was supposed to fund. The same hires directed at fall and spring would lift tenure density from about 63 percent toward the level the Senate has asked for, for the same money. That is the cost of the calendar, and no revenue argument changes it.</p>
+<div aria-label="Two horizontal bars: summer policy has reversed direction in 2004, 2006, 2009 and 2023; a tenure line hired in 2028 runs to about 2058" class="fig">
+<svg role="img" viewbox="0 0 760 120">
+<line class="lin" x1="40" x2="40" y1="20" y2="100"></line>
+<text data-t="PB-036" x="40" y="112">2001</text><text data-t="PB-037" text-anchor="middle" x="315" y="112">2026</text><text data-t="PB-038" text-anchor="end" x="700" y="112">2061</text>
+<line class="lin" stroke-dasharray="2 3" x1="315" x2="315" y1="20" y2="100"></line>
+<text data-t="PB-039" x="40" y="36">SUMMER POLICY · DIRECTION CHANGES</text>
+<line class="ax" x1="40" x2="315" y1="48" y2="48"></line>
+<g class="cpfill"><rect height="14" width="4" x="38" y="41"></rect><rect height="14" width="4" x="71" y="41"></rect><rect height="14" width="4" x="93" y="41"></rect><rect height="14" width="4" x="126" y="41"></rect><rect height="14" width="4" x="280" y="41"></rect></g>
+<text data-t="PB-040" x="40" y="78">240 TENURE LINES HIRED FOR SUMMER 2028 · A CAREER EACH</text>
+<rect class="fgfill" height="8" opacity=".7" width="330" x="337" y="86"></rect>
+</svg>
+</div>
+<p class="cap" data-t="PB-041">Five direction changes in state summer policy in 25 years. A line hired in 2028 is still on the payroll in the 2050s.</p>
+<h3 data-t="PB-042">The off term produces no tuition</h3>
+<p data-t="PB-043">A student on a two-of-three track pays tuition for two semesters a year, the same as a student on the traditional track, so moving an existing student onto a summer track brings no new tuition and adds a summer seat to teach. At the co-op universities the plan is compared to, a student on a work term is in a paid position that a co-op office helped them find, is often still registered, and is supported. Under the Cal Poly plan the off-semester student is not enrolled at all, pays nothing, and has no office arranging anything.</p>
+<h3 data-t="PB-044">Financial aid at the off term</h3>
+<p data-t="PB-045">In May 2024 the administration said aid would cover a full academic year regardless of start term. That statement was made under the quarter calendar, for a design in which students chose a summer or fall start. Nothing has been published about aid under a two-of-three semester design: whether Year-Round Pell covers the summer semester, how Cal Grant and institutional scholarships treat a spring off term, work-study for a student whose off term is spring, and disbursement timing. Worked examples for each track and aid type would answer them. These are the questions the co-op universities answer with a paid work term arranged through a co-op office, which the Cal Poly plan does not include.</p>
+<h3 data-t="PB-046">The state is already discounting the numbers</h3>
+<p data-t="PB-047">The Legislative Analyst's Office (LAO) tracks CSU summer enrollment by funding type. Between 2022–23 and 2025–26, campuses moved summer courses back under state support, and the LAO warned the Legislature that CSU's reported enrollment growth is overstated by that shift. Counting courses shifted from self-support to state support as new enrollment is what the LAO flagged; new summer instruction is not reclassification, and the administration's model should separate the two.</p>
+<div aria-label="CSU resident summer students by funding: 2022-23 state-supported 30 percent of 18,710; 2025-26 state-supported 68 percent" class="share">
+<div class="bar"><span>2022–23</span><div class="track"><div class="state" data-t="PB-048" style="width:30%">30% STATE-SUPPORTED</div><div class="self" data-t="PB-049">70% SELF-SUPPORT · 18,710 STUDENTS</div></div></div>
+<div class="bar"><span>2025–26</span><div class="track"><div class="state" data-t="PB-050" style="width:68%">68% STATE-SUPPORTED</div><div class="self" data-t="PB-051">32%</div></div></div>
+</div>
+<p class="cap" data-t="PB-052">CSU resident summer students, annualized. State-supported summer up 164 percent over three years; self-support down 45 percent; total up 18 percent. Source: LAO, The 2026–27 Budget: California State University.</p>
+<h3 data-t="PB-057">Costs with no line</h3>
+<ul class="rec">
+<li data-t="PB-058">Summer housing and dining for the 40–50 percent of students on campus in summer, in a term when sorority chapter houses are generally closed and most fraternity houses are empty.</li>
+<li data-t="PB-059">Two more orientations, two more advising cycles, two more move-in operations, and two more first-year programs a year.</li>
+<li data-t="PB-060">Attrition. In the faculty financial analysis’s modeled scenario, a student who leaves after a thin first semester takes the gross tuition of three further years with them.</li>
+</ul>
+</div>
+</aside>
+<!-- PANEL: HISTORY -->
+<aside aria-labelledby="h-elsewhere" aria-modal="true" class="panel" hidden="" id="p-elsewhere" role="dialog">
+<div class="panel-head"><span class="mono">3 · Nobody does it this way</span><button aria-label="Close" class="close" data-close="">×</button></div>
+<div class="panel-body">
+<h2 data-t="PE-001" id="h-elsewhere">Cal Poly's plan against the places it is compared to.</h2>
+<p class="big" data-t="PE-002">The president has cited Dartmouth and Waterloo as models, and the campus has studied the co-op universities. Of the institutions reviewed, none assigns an entering class to unenrolled off semesters at admission. The one that required a summer semester of every student ended the requirement in October 2025. The others run co-op work terms, student-chosen leave terms, or experiential requirements with student choice of timing and form.</p>
+<nav class="toc" aria-label="Jump to"><span class="mono">Jump to</span><a data-jump="peer-success" href="#peer-success">Successful peers</a><a data-jump="peer-fail" href="#peer-fail">Unsuccessful peers</a><a data-jump="peer-declined" href="#peer-declined">Peers that decided against it</a><a data-jump="why-place" href="#why-place">Why place matters</a><a data-jump="give-up" href="#give-up">What each student gives up</a></nav>
+<h3 data-t="PE-003" id="peer-success">How Cal Poly compares to successful peer institutions</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th data-t="PE-004"></th><th class="cp" data-t="PE-005">Cal Poly plan</th><th data-t="PE-006">Dartmouth</th><th data-t="PE-007">Rensselaer</th><th data-t="PE-008">Georgia Tech</th><th data-t="PE-009">Cincinnati</th><th data-t="PE-010">Northeastern</th><th data-t="PE-011">Waterloo</th></tr></thead>
+<tbody>
+<tr><th data-t="PE-020">Students assigned a calendar at admission</th><td class="cp y" data-t="PE-021">Yes · 2 of 3, by track</td><td class="n" data-t="PE-022">No</td><td class="n" data-t="PE-023">No</td><td class="n" data-t="PE-024">No</td><td class="y" data-t="PE-025">In part · co-op is required in engineering, design, business and IT, with cohort-based rotations from second year; students stay enrolled</td><td class="n" data-t="PE-026">No</td><td class="y" data-t="PE-027">In part · several engineering programs assign Stream 4 or 8 before first year</td></tr>
+<tr><th data-t="PE-300">Existing courses compressed into a shorter term</th><td class="cp y" data-t="PE-260">Yes · the 15-week semester adopted in 2026 becomes 14 weeks in 2028; summer 69 instructional days against 73</td><td class="n" data-t="PE-261">No · 10-week terms unchanged since 1972</td><td class="n" data-t="PE-262">No · a full 15-week summer semester</td><td class="n" data-t="PE-263">No · semesters unchanged</td><td class="n" data-t="PE-264">No · co-op predates the 2012 quarter-to-semester conversion and was unaffected by it</td><td class="n" data-t="PE-265">No</td><td class="n" data-t="PE-266">No · 12-week terms by design since 1957</td></tr>
+<tr><th data-t="PE-310">Calendar out of step with surrounding institutions</th><td class="cp y" data-t="PE-267">Yes · the only CSU campus, and the only California public university, on a compulsory three-term calendar; community colleges and K–12 stay on the semester Cal Poly just adopted</td><td class="n" data-t="PE-268">No · quarters shared with many peers; one summer</td><td class="n" data-t="PE-269">No · standard semesters</td><td class="n" data-t="PE-270">No · standard semesters</td><td class="n" data-t="PE-271">No · standard semesters</td><td class="n" data-t="PE-272">No · standard semesters</td><td class="n" data-t="PE-273">No · September–January–May terms are the Ontario standard</td></tr>
+<tr><th data-t="PE-320">Decided before faculty and students were consulted</th><td class="cp y" data-t="PE-274">Yes · Senate resolution AS-982-24 asked for postponement; students first invited to comment in April 2026, three years into planning</td><td class="n" data-t="PE-275">No · the faculty voted the D-Plan in, 1971</td><td class="y" data-t="PE-276">In part · announced by the administration and piloted for two years; the requirement ended in 2025 after student objections</td><td class="n" data-t="PE-277">No · co-op grew inside the faculty’s own programs</td><td class="n" data-t="PE-278">No · co-op grew inside the faculty’s own programs</td><td class="n" data-t="PE-279">No · co-op grew inside the faculty’s own programs</td><td class="n" data-t="PE-280">No · designed in at the founding</td></tr>
+<tr><th data-t="PE-210">Part of a centrally governed statewide public university system</th><td class="cp y" data-t="PE-211">Yes · one of 22 CSU campuses under a Chancellor's Office; the other 21 would stay on semesters</td><td class="n" data-t="PE-212">No · private</td><td class="n" data-t="PE-213">No · private</td><td class="y" data-t="PE-214">Yes · Univ System of Georgia. <i>Shares the same calendar as the rest of the system</i></td><td class="n" data-t="PE-215">No · public, independently governed; Ohio has no system</td><td class="n" data-t="PE-216">No · private</td><td class="n" data-t="PE-217">No · public, autonomous; Ontario has no system</td></tr>
+<tr><th data-t="PE-360">The pitch: use the idle campus, grow without building</th><td class="cp y" data-t="PE-361">Yes · resources "sit idle outside the traditional school year"</td><td class="y" data-t="PE-362">Yes · 1972: admit women and grow without new dormitories</td><td class="n" data-t="PE-363">No · the Arch was a pedagogical program</td><td class="n" data-t="PE-364">No · co-op is a teaching and employment model</td><td class="n" data-t="PE-365">No · co-op is a teaching and employment model</td><td class="n" data-t="PE-366">No · co-op is a teaching and employment model</td><td class="n" data-t="PE-367">No · co-op is a teaching and employment model</td></tr>
+<tr><th data-t="PE-012">Three academically equivalent semesters, three equal cohorts</th><td class="cp y" data-t="PE-013">Yes</td><td class="y" data-t="PE-014">In part · four equal 10-week terms, but one cohort: the whole class takes the same required summer, after sophomore year</td><td class="y" data-t="PE-015">In part · a full summer semester, but one cohort: the whole class took the same required summer after sophomore year, 2019–2025; requirement dropped October 2025</td><td class="n" data-t="PE-016">No · summer is a shorter session</td><td class="n" data-t="PE-017">No · summer is heavily used, but faculty work two primary terms and one secondary, limited-duty term; students rotate rather than split into cohorts</td><td class="n" data-t="PE-018">No · two semesters plus two short summer sessions</td><td class="y" data-t="PE-019">In part · three equal terms, but co-op programs split students into two streams, not three equal cohorts</td></tr>
+<tr><th data-t="PE-028">Entering class split across different calendars</th><td class="cp y" data-t="PE-029">Yes · ~60 / 20 / 20</td><td class="n" data-t="PE-030">No · class stays together</td><td class="n" data-t="PE-031">No</td><td class="n" data-t="PE-032">No</td><td class="n" data-t="PE-033">No</td><td class="n" data-t="PE-034">No</td><td class="y" data-t="PE-035">In part · by stream, in dual-stream programs</td></tr>
+<tr><th data-t="PE-036">Off term is a paid work term, supported by a co-op office (the student finds the job)</th><td class="cp y" data-t="PE-037">No · simply not enrolled; no supporting office announced</td><td class="n" data-t="PE-038">No · student-chosen leave</td><td class="y" data-t="PE-039">In part · internship, research, or study abroad, in a term of the student’s choice, supported by the career office</td><td class="y" data-t="PE-040">Yes · supported by the co-op office; students find their own positions</td><td class="y" data-t="PE-041">Yes · supported by the co-op college; students find their own positions</td><td class="y" data-t="PE-042">Yes, by the co-op office</td><td class="y" data-t="PE-043">Yes, by the co-op office</td></tr>
+<tr><th data-t="PE-230">Launched on top of a second calendar conversion</th><td class="cp y" data-t="PE-231">Yes · quarters to semesters, complete August 2026; YRO August 2028: two conversions in 24 months, the first unassessed when the second is designed</td><td class="n" data-t="PE-232">No · the 1972 D-Plan was the one conversion</td><td class="n" data-t="PE-233">No · the Arch sat on an unchanged semester calendar</td><td class="n" data-t="PE-234">No · semesters since 1999, co-op since 1912</td><td class="n" data-t="PE-235">No</td><td class="n" data-t="PE-236">No</td><td class="n" data-t="PE-237">No · three terms since founding, 1957</td></tr>
+<tr><th data-t="PE-250">Someone pays more because of the conversion</th><td class="cp y" data-t="PE-251">Yes · faculty have been told self-support enrollment is part of the funding model: some Californians at near-nonresident prices</td><td class="n" data-t="PE-252">No · same tuition in every term</td><td class="n" data-t="PE-253">No · same tuition in every term</td><td class="n" data-t="PE-254">No · the off term is paid work</td><td class="n" data-t="PE-255">No · the off term is paid work</td><td class="n" data-t="PE-256">No · the off term is paid work</td><td class="n" data-t="PE-257">No · the off term is paid work</td></tr>
+<tr><th data-t="PE-200">College of agriculture or natural resources, with coursework, research and internships tied to the growing season</th><td class="cp y" data-t="PE-201">Yes · CAFES: about 4,100 students, 1/5 of the undergrad population, 14 agricultural degrees; nearly 10,000 acres of campus, farm and ranch land</td><td class="n" data-t="PE-202">No</td><td class="n" data-t="PE-203">No</td><td class="n" data-t="PE-204">No</td><td class="n" data-t="PE-205">No</td><td class="n" data-t="PE-206">No</td><td class="n" data-t="PE-207">No · a Faculty of Environment, no agriculture</td></tr>
+</tbody>
+</table>
+</div>
+<p class="cap" data-t="PE-076">Peer facts from each university's published calendar and co-op rules; Rensselaer from its student newspaper's coverage of the Arch; Dartmouth from the college's published D-Plan. Agriculture row from each institution's published list of colleges, schools or faculties; Cal Poly figures from the CAFES profile below. Dashes mark what the sources do not state.</p>
+<h3 data-t="PE-077" id="peer-fail">How Cal Poly compares to unsuccessful peer institutions</h3>
+<p data-t="PE-078">Four universities have run a compulsory year-round or trimester calendar at scale and reversed it. The complaints that ended each one are already on the record at Cal Poly, two years before the first class. Growth was a primary motivation for all failed schools; the only successful school that was motivated by growth issues was Dartmouth.</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th data-t="PE-079"></th><th class="cp" data-t="PE-080">Cal Poly plan · 2028</th><th data-t="PE-081">UNSW Sydney · 2019–25</th><th data-t="PE-082">Florida state universities · 1962–67</th><th data-t="PE-083">Univ. of Pittsburgh · 1959–65</th><th data-t="PE-084">SUNY Binghamton (Harpur College) · 1963–67</th></tr></thead>
+<tbody>
+<tr><th data-t="PE-330">Students assigned a calendar at admission</th><td class="cp y" data-t="PE-281">Yes · 2 of 3, by track</td><td class="y" data-t="PE-282">Yes · trimesters compulsory for every student</td><td class="y" data-t="PE-283">Yes · trimesters compulsory system-wide</td><td class="y" data-t="PE-284">Yes · compulsory trimesters; a summer track for a quarter of undergraduates</td><td class="y" data-t="PE-285">Yes · compulsory year-round calendar</td></tr>
+<tr><th data-t="PE-340">Existing courses compressed into a shorter term</th><td class="cp y" data-t="PE-286">Yes · the 15-week semester adopted in 2026 becomes 14 weeks in 2028; summer 69 instructional days against 73</td><td class="y" data-t="PE-287">Yes · 12-week semesters into 10-week terms</td><td class="y" data-t="PE-288">Yes · 16-week courses into 14</td><td class="y" data-t="PE-289">Yes · semesters into trimesters without curriculum revision</td><td class="n" data-t="PE-290">—</td></tr>
+<tr><th data-t="PE-350">Calendar out of step with surrounding institutions</th><td class="cp y" data-t="PE-291">Yes · the only CSU campus, and the only California public university, on a compulsory three-term calendar; community colleges and K–12 stay on the semester Cal Poly just adopted</td><td class="y" data-t="PE-292">Yes · out of step with every other Australian university, internship cycles and exchange partners</td><td class="y" data-t="PE-293">Yes · out of step with other states’ colleges and the summer-job calendar</td><td class="n" data-t="PE-294">—</td><td class="n" data-t="PE-295">—</td></tr>
+<tr><th data-t="PE-091">Decided before faculty and students were consulted</th><td class="cp y" data-t="PE-092">Yes · Senate resolution AS-982-24; students first invited to comment in April 2026, three years into planning</td><td class="y" data-t="PE-093">Yes · "no proper consultation with students and staff" (NTEU)</td><td class="y" data-t="PE-094">Yes · faculty not consulted before adoption</td><td class="y" data-t="PE-095">Yes · "rash moves without total planning for budget, space, and curriculum"</td><td class="n" data-t="PE-096">—</td></tr>
+<tr><th data-t="PE-220">Part of a centrally governed statewide public university system</th><td class="cp y" data-t="PE-221">Yes · one of 22 CSU campuses under a Chancellor's Office; the other 21 would stay on semesters</td><td class="n" data-t="PE-222">No · public, autonomous; its terms fell out of step with other Australian universities</td><td class="y" data-t="PE-223">Yes · the whole State University System converted together, by central decision, and reverted together</td><td class="n" data-t="PE-224">No · private at the time; became state-related in 1966 after the trimester deficit</td><td class="y" data-t="PE-225">Yes · SUNY; the other SUNY campuses were not year-round</td></tr>
+<tr><th data-t="PE-085">The pitch: use the idle campus, grow without building</th><td class="cp y" data-t="PE-086">Yes · resources "sit idle outside the traditional school year"</td><td class="y" data-t="PE-087">Yes · campus "largely empty" five months a year</td><td class="y" data-t="PE-088">Yes · more students without a major expansion</td><td class="y" data-t="PE-089">Yes · expansion without proportional capital</td><td class="y" data-t="PE-090">Yes · designed for 50% more students</td></tr>
+<tr><th data-t="PE-097">Conversion implemented without curriculum redesign</th><td class="cp y" data-t="PE-098">Yes · 15 week terms reduced to 14 week terms without sufficient time for review; faculty told review may be suspended</td><td class="y" data-t="PE-099">Yes · 10-week terms; "less time to understand the material"</td><td class="y" data-t="PE-100">Yes · 16-week courses forced into 14; "no new curriculum adapted"</td><td class="y" data-t="PE-101">Yes · planning for curriculum lacking</td><td class="n" data-t="PE-102">—</td></tr>
+<tr><th data-t="PE-103">Faculty workload and pay</th><td class="cp y" data-t="PE-104">Unresolved · faculty cannot be compelled to teach summer; 150–250 new tenure lines implied; no workload model published</td><td class="y" data-t="PE-105">Staff "unable to complete set work within working hours"; "relentlessness of assessment"</td><td class="y" data-t="PE-106">An 11% raise for loads 25% heavier</td><td class="y" data-t="PE-107">70% of faculty kept for a summer that enrolled a quarter of undergraduates</td><td class="n" data-t="PE-108">—</td></tr>
+<tr><th data-t="PE-109">Students did not want the summer</th><td class="cp y" data-t="PE-110">80% of engineering students surveyed say YRO will harm Cal Poly; 40–50% to be assigned to summer regardless</td><td class="y" data-t="PE-111">Lowest student satisfaction in Australia (2020); student council voted to abolish (2024)</td><td class="y" data-t="PE-112">"Like trying to drink water from a high-pressure fire hose" (a student, 1966)</td><td class="y" data-t="PE-113">One undergraduate in four enrolled in summer; most would not have come on a summer track</td><td class="y" data-t="PE-114">"Almost no increase" in enrollment</td></tr>
+<tr><th data-t="PE-115">Internships, jobs and student life</th><td class="cp y" data-t="PE-116">Top student concerns: internships, clubs, leases, buildings without cooling</td><td class="y" data-t="PE-117">40% less time for paid work; 41% less for activities; summer jobs cut</td><td class="y" data-t="PE-118">Faculty "out of step with the rest of the academic world"</td><td class="n" data-t="PE-119">—</td><td class="n" data-t="PE-120">—</td></tr>
+<tr><th data-t="PE-121">The money</th><td class="cp y" data-t="PE-122">No budget published; "not significantly out of line"; faculty told self-support is part of the funding model</td><td class="n" data-t="PE-123">—</td><td class="y" data-t="PE-124">Raise granted; system dropped within four years</td><td class="y" data-t="PE-125">Operating cost per student doubled; $15M deficit; chancellor resigned; university became state-related</td><td class="n" data-t="PE-126">—</td></tr>
+<tr><th data-t="PE-127">Years before reversal</th><td class="cp y" data-t="PE-128">—</td><td class="y" data-t="PE-129">6 · three more to unwind, to 2028</td><td class="y" data-t="PE-130">4–5 · to quarters in 1967</td><td class="y" data-t="PE-131">5–6</td><td class="y" data-t="PE-132">4 · announced July 1963, dropped 1967</td></tr>
+</tbody>
+</table>
+</div>
+<p class="cap" data-t="PE-133">UNSW: Times Higher Education (2025); Honi Soit (2024, 2025), citing the university's 2023 calendar review and staff surveys. Florida, Pittsburgh, Binghamton: Time, "Universities: Trimester's Tribulations" (11 March 1966); Binghamton dates from the university's own history, "Binghamton University at 80" (2026); Hofstra University review of calendar research, ERIC ED 056 646 (1971); Michigan Daily (1965). Cal Poly: Mustang News (April 2026), Academic Senate AS-982-24, Registrar's 2027–28 calendar proposal. Dashes mark what the sources do not report.</p>
+<h3 data-t="PE-400" id="peer-declined">How Cal Poly compares to institutions that decided against YRO</h3>
+<p data-t="PE-401">Cal Poly has not been compared, at least not publicly, with the universities that studied a compulsory year-round calendar and decided against it; on the characteristics that matter, they are the closest match to Cal Poly’s situation.</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th data-t="PE-402"></th><th class="cp" data-t="PE-403">Cal Poly plan · 2025–</th><th data-t="PE-406">Purdue · 2012–15</th><th data-t="PE-404">George Washington · 2002–03</th><th data-t="PE-405">Minnesota · 2012–13</th></tr></thead>
+<tbody>
+<tr><th data-t="PE-410">The pitch: revenue and capacity from a campus that sits idle in summer</th><td class="cp y" data-t="PE-411">Yes · resources "sit idle outside the traditional school year"; growth without new buildings</td><td class="y" data-t="PE-414">Yes · use the campus in summer; raise summer enrollment; faster degrees</td><td class="y" data-t="PE-412">Yes · use classrooms, labs and faculty more efficiently to hold down tuition increases</td><td class="y" data-t="PE-413">Yes · year-round use of facilities, more enrollment, more tuition revenue</td></tr>
+<tr><th data-t="PE-420">The design studied: a compulsory three-term calendar</th><td class="cp y" data-t="PE-421">Yes · three equal terms; every student assigned two of three at admission</td><td class="y" data-t="PE-424">Yes · a year-round trimester, announced January 2012, target fall 2015</td><td class="y" data-t="PE-422">Yes · three 14-week terms; every student required to attend two of the three</td><td class="y" data-t="PE-423">Yes · a full third summer semester, university-wide</td></tr>
+<tr><th data-t="PE-430">Existing terms compressed to fit</th><td class="cp y" data-t="PE-431">Yes · the 15-week semester adopted in 2026 becomes 14 weeks</td><td class="y" data-t="PE-434">Yes · 16 weeks of class to 14, with 50-minute classes lengthened to 60 and 75 to 90</td><td class="n" data-t="PE-432">— · three 14-week terms proposed</td><td class="n" data-t="PE-433">—</td></tr>
+<tr><th data-t="PE-440">Initiated by the president, then handed to a study</th><td class="cp y" data-t="PE-441">Yes · the president’s initiative; the Senate’s only action on a YRO calendar (AS-982-24) asked for postponement</td><td class="y" data-t="PE-444">Yes · announced by President Córdova and Provost Sands; a University Senate task force under President Daniels</td><td class="y" data-t="PE-442">Yes · President Trachtenberg’s task force, fall 2002</td><td class="y" data-t="PE-443">Yes · President Kaler’s ad hoc committee</td></tr>
+<tr><th data-t="PE-450">Problems the study turned up</th><td class="cp y" data-t="PE-451">Raised by faculty and students: aid, summer jobs and internships, curriculum review, housing, faculty workload (see the clock record)</td><td class="y" data-t="PE-454">Students skeptical of longer classes and of summer on campus; faculty wanted summer enrollment, not a shorter term</td><td class="y" data-t="PE-452">Unequal terms are "not a true trimester"; summer credit for students abroad or interning better served by a longer optional session</td><td class="y" data-t="PE-453">Federal aid built on two semesters, no summer Pell; students who need summer jobs; faculty research in summer; athletics</td></tr>
+<tr><th data-t="PE-460">Outcome</th><td class="cp y" data-t="PE-461">Proceeding · launch delayed two years, to fall 2029, on October 21, 2026</td><td class="y" data-t="PE-464">Never adopted · 16-week semesters kept; summer grown voluntarily ("Think Summer", Summer Start)</td><td class="y" data-t="PE-462">Dropped within six months · a 10-week optional summer instead; semesters kept</td><td class="y" data-t="PE-463">"Not yet needed" · an optional three-year pilot in two College of Design programs; semesters kept</td></tr>
+</tbody>
+</table>
+</div>
+<p class="cap" data-t="PE-465">George Washington: GW Hatchet, "Committee nixes trimesters," 27 March 2003. Minnesota: Minnesota Daily, "U works out kinks in year-round calendar," 18 February 2013. Purdue: WBAA (January 2012), Purdue Today (January 2013), Purdue Exponent (2014), and the Registrar’s current calendar. Dashes mark what the sources do not report.</p>
+<h3 data-t="PE-149" id="why-place">Why place matters</h3>
+<p data-t="PE-150">Co-op students on a work term are in a paid position that an office helped them find, are often still registered, and are supported; Cincinnati tells its co-op students to be willing to work anywhere in the country. A Cal Poly student on an assigned off semester is not enrolled, has no job the university arranged, and has no office to turn to. Cal Poly also has a smaller regional population than the large co-op comparators: the San Luis Obispo–Paso Robles metropolitan area is about 280,000, and about 72,000 people live within a 45-minute bus ride of campus. The reviewed materials do not establish whether suitable local jobs and affordable housing would be available at the scale required, or what support students would receive during assigned off semesters. The Senate's budget committee is charged this year with reviewing work-integrated learning in selected programs and the financial projections behind the College of Business's YRO model; nothing from that review has been published.</p>
+<div aria-label="The same population and away-share graphic as on the main page" class="fig haspop" tabindex="0">
+<svg id="geo-panel" role="img" viewbox="0 0 1100 340"></svg>
+<div class="popover">Population of each campus's metropolitan or micropolitan statistical area, rounded (Waterloo: the Region of Waterloo). Cal Poly's is the San Luis Obispo–Paso Robles area, about 280,000, of which about 72,000 (the city, Los Osos and Morro Bay) are within a 45-minute bus ride of campus. Cal Poly has a smaller regional population than the large co-op comparators (Atlanta 22×, Boston 18×, Cincinnati 8×, Albany–Troy 3×, Waterloo 2×) and is the only one on the chart that assigns an entering class to unenrolled off semesters at admission: one student in four or five away every fall and every spring, from the first year. Its summer held about 9 percent of fall headcount in 2025; the design puts summer at 50 to 67 percent of fall headcount (40–50 percent of all students). Dartmouth's shared summer holds one class year; Rensselaer's Arch summer, required from 2019 until October 2025, the same. A smaller regional population does not by itself say where students will live or work; what the reviewed materials do not establish is whether suitable local jobs and housing exist at the scale required, or what support students would receive.</div>
+</div>
+<p class="cap" data-t="PE-151">Two rows: the population of each campus's metropolitan area, and the enrollment growth the calendar is designed to produce. The four co-op universities are grouped; at Waterloo and in Cincinnati's engineering, design and IT programs co-op is required, elsewhere optional. Hover or tap for details.</p>
+<p data-t="PE-152">The scale is the other half. In 2015 the Legislative Analyst's Office found only two CSU campuses with state-supported summer enrollment above 10 percent of fall, and Cal Poly was not one of them. The plan puts 40 to 50 percent of all students on campus every summer and sends 20 to 25 percent away every fall and every spring. Rensselaer, the only peer that required a summer semester of every student, sent about one student in eight away for one semester of the junior year from 2019, took three years and a pilot to get there, and dropped the requirement in October 2025 after years of student opposition (a 2019 Student Senate survey found 78 percent of respondents unsatisfied).</p>
+<div class="peers">
+<div class="peer"><h4 data-t="PE-153">Dartmouth</h4><p class="mono" data-t="PE-154">Hanover, NH · D-Plan since 1972</p><p data-t="PE-155">Every sophomore is on campus for the same summer. Off-terms are chosen individually around that shared core; the class is kept together for its first year and its sophomore summer. Dartmouth students told a Rensselaer delegation that the D-Plan helps their Greek houses because underclassmen take leadership roles while upperclassmen are away. The Cal Poly plan divides each entering class by track at admission, so that shared core does not exist.</p></div>
+<div class="peer"><h4 data-t="PE-156">Rensselaer</h4><p class="mono" data-t="PE-157">Troy, NY · The Arch, required 2019–2025</p><p data-t="PE-158">The one peer that required a summer semester of every student, from 2019 until October 2025, when the requirement was dropped; a 2019 Student Senate survey had found 78 percent of respondents unsatisfied. In 2016 the university told Greek-affiliated students they would live in residence halls for the Arch summer; the Greek council called it financially harmful to the houses. In 2025 the vice provost described summer Greek housing as still under evaluation, citing safety, summer dining and housing revenue. The housing question was still open when the requirement ended.</p></div>
+<div class="peer"><h4 data-t="PE-159">Georgia Tech</h4><p class="mono" data-t="PE-160">Atlanta, GA · co-op since 1912</p><p data-t="PE-161">Georgia Tech's summer is a shorter session, not a third semester equivalent to fall and spring. Co-op is optional, alternates work and school terms at the student's choice, and is run by a standing office in a metropolitan area of six million people. It is a program at the margin of a conventional calendar, not a third semester.</p></div>
+</div>
+<h3 data-t="PE-162">The Fall–Summer student experience: a scenario</h3>
+<p data-t="PE-163">A Fall–Summer first-year arrives in August with the rest of the class, joins a chapter or a team in September, and leaves in December. They are away all spring. They return in May to a summer campus holding 40–50 percent of students and none from the traditional track, where most fraternity houses are empty and sorority chapter houses are generally closed, and where the officers who recruited them are gone. The design assumes this student stays. We expect the first organized request to switch tracks to come from the chapters, the teams and the friend groups that want to be on the same calendar, and the track they will ask for is the traditional one.</p>
+<h3 data-t="PE-134" id="give-up">What each student is asked to give up</h3>
+<p data-t="PE-135">Each strip is one illustrative student under that institution’s rules: four years, read across, with a column for fall, spring and summer. ON is a term on campus. WORK and OFF are terms the student chose to spend away, in a paid co-op job or on leave. The teal SUM is a summer the whole class spends on campus together, once. The red cells are the terms Cal Poly would assign at admission, in the same slot every year: AWAY is a semester the student is simply not enrolled; SUM is a full summer semester on campus.</p>
+<div class="patterns">
+<div class="pat"><div class="t" data-t="PE-136">Georgia Tech · a co-op student</div><div class="s" data-t="PE-137">Optional. The student decides which terms to work, if any; most students never do</div>
+<div class="yrs">
+<div class="yr hd"><b></b><span>Fall</span><span>Spring</span><span>Summer</span></div>
+<div class="yr"><b>Y1</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+<div class="yr"><b>Y2</b><i class="peer" data-l="ON"></i><i class="choice" data-l="WORK"></i><i class="peer" data-l="ON"></i></div>
+<div class="yr"><b>Y3</b><i class="choice" data-l="WORK"></i><i class="peer" data-l="ON"></i><i class="choice" data-l="WORK"></i></div>
+<div class="yr"><b>Y4</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+</div></div>
+<div class="pat"><div class="t" data-t="PE-138">Dartmouth · D-Plan</div><div class="s" data-t="PE-139">One summer on campus with the whole sophomore class; one or more later off-terms, chosen by the student</div>
+<div class="yrs">
+<div class="yr hd"><b></b><span>Fall</span><span>Spring</span><span>Summer</span></div>
+<div class="yr"><b>Y1</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+<div class="yr"><b>Y2</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i class="req" data-l="SUM"></i></div>
+<div class="yr"><b>Y3</b><i class="choice" data-l="OFF"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+<div class="yr"><b>Y4</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+</div></div>
+<div class="pat"><div class="t" data-t="PE-140">Rensselaer · the Arch, 2019–2025</div><div class="s" data-t="PE-141">One summer on campus with the whole sophomore class; one junior semester away, fall or spring at the student’s choice. Requirement ended 2025</div>
+<div class="yrs">
+<div class="yr hd"><b></b><span>Fall</span><span>Spring</span><span>Summer</span></div>
+<div class="yr"><b>Y1</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+<div class="yr"><b>Y2</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i class="req" data-l="SUM"></i></div>
+<div class="yr"><b>Y3</b><i class="choice" data-l="OFF"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+<div class="yr"><b>Y4</b><i class="peer" data-l="ON"></i><i class="peer" data-l="ON"></i><i data-l="–"></i></div>
+</div></div>
+<div class="pat"><div class="t" data-t="PE-142">Cal Poly plan · a Fall–Summer student</div><div class="s" data-t="PE-143">Assigned at admission. Every spring away, every summer on campus, all four years; no choice of terms</div>
+<div class="yrs">
+<div class="yr hd"><b></b><span>Fall</span><span>Spring</span><span>Summer</span></div>
+<div class="yr"><b>Y1</b><i class="on" data-l="ON"></i><i class="off" data-l="AWAY"></i><i class="sum" data-l="SUM"></i></div>
+<div class="yr"><b>Y2</b><i class="on" data-l="ON"></i><i class="off" data-l="AWAY"></i><i class="sum" data-l="SUM"></i></div>
+<div class="yr"><b>Y3</b><i class="on" data-l="ON"></i><i class="off" data-l="AWAY"></i><i class="sum" data-l="SUM"></i></div>
+<div class="yr"><b>Y4</b><i class="on" data-l="ON"></i><i class="off" data-l="AWAY"></i><i class="sum" data-l="SUM"></i></div>
+</div></div>
+</div>
+<div class="patkey"><span data-t="PE-144"><i style="background:var(--peer);border-color:var(--peer)"></i>On campus</span><span data-t="PE-145"><i style="background:color-mix(in srgb,var(--peer) 22%,transparent);border:1px dashed var(--peer)"></i>Away, student’s choice (WORK = paid co-op term, OFF = leave)</span><span data-t="PE-146b"><i style="background:color-mix(in srgb,var(--peer) 60%,var(--fg));border-color:transparent"></i>Required summer, whole class together</span><span data-t="PE-147"><i style="border:1px dashed var(--cp)"></i>Away, assigned at admission</span><span data-t="PE-146"><i style="background:var(--cp);border-color:var(--cp)"></i>Summer on campus, assigned at admission</span><span data-t="PE-147b"><i></i>Ordinary summer break</span></div>
+<p class="cap" data-t="PE-148">Illustrative of each model’s rules, not of any one student’s schedule; Dartmouth’s four 10-week terms are shown in three columns. A Cal Poly Spring–Summer student has the mirror image: every fall away. Co-op students at Georgia Tech, Cincinnati, Northeastern and Waterloo usually take five years, alternating school and paid work.</p>
+</div>
+</aside>
+<!-- PANEL: ELSEWHERE -->
+<aside aria-labelledby="h-history" aria-modal="true" class="panel" hidden="" id="p-history" role="dialog">
+<div class="panel-head"><span class="mono">4 · We have done this before</span><button aria-label="Close" class="close" data-close="">×</button></div>
+<div class="panel-body">
+<h2 data-t="PH-001" id="h-history">This is not the first foray into boosting summer use of campus</h2>
+<p class="big" data-t="PH-002">In 2001 the Legislature funded year-round operations at the CSU and fifteen campuses converted summer to a state-supported term. What happened next is the best evidence available about what happens to a Cal Poly summer term over time.</p>
+<div aria-label="Line showing CSU state-supported summer instruction rising in 2001, collapsing in 2004, recovering by 2006, falling to self-support in 2009 to 2011, and returning toward state support from 2023" class="fig haspop" tabindex="0">
+<svg role="img" viewbox="0 0 760 262">
+<line class="lin" x1="60" x2="730" y1="200" y2="200"></line>
+<!-- x scale: 1999 at 60, 2026 at 730 -> 24.8px/yr -->
+<g class="lin" stroke-dasharray="2 4"><line x1="60" x2="60" y1="50" y2="200"></line><line x1="184" x2="184" y1="50" y2="200"></line><line x1="457" x2="457" y1="50" y2="200"></line><line x1="630" x2="630" y1="50" y2="200"></line><line x1="655" x2="655" y1="50" y2="200"></line><line x1="730" x2="730" y1="50" y2="200"></line></g>
+<polyline class="fgline" points="60,185 110,60 160,50 185,185 235,70 309,120 358,185 458,185 631,175 706,70" stroke-width="2"></polyline>
+<g class="fgfill">
+<circle cx="110" cy="60" r="4"></circle><circle cx="185" cy="185" r="4"></circle><circle cx="235" cy="70" r="4"></circle><circle cx="358" cy="185" r="4"></circle><circle cx="631" cy="175" r="4"></circle><circle cx="706" cy="70" r="4"></circle>
+</g>
+<text class="fgtext" data-t="PH-005" text-anchor="middle" x="110" y="48">2001 · CONVERTED</text>
+<text class="fgtext" data-t="PH-006" text-anchor="middle" x="185" y="222">2004 · UNDER 10,000 · 7 CAMPUSES AT ZERO</text>
+<text class="fgtext" data-t="PH-007" dx="30" text-anchor="middle" x="235" y="58">2006 · BACK TO 2001 LEVEL</text>
+<text class="fgtext" data-t="PH-008" text-anchor="middle" x="358" y="236">2011 · LONG BEACH: 18 OF 17,500 SEATS</text>
+<text class="fgtext" data-t="PH-009" dx="-20" text-anchor="middle" x="631" y="222">2022–23 · 5,660 STATE-SUPPORTED</text>
+<text class="fgtext" data-t="PH-014" font-size="10" x="68" y="197">1999 · ≈17,000</text>
+<text class="fgtext" data-t="PH-010" text-anchor="end" x="706" y="58">2025–26 · 68%</text>
+<text data-t="PH-011" text-anchor="middle" x="60" y="254">1999</text>
+<text data-t="PH-060" text-anchor="middle" x="184" y="254">2004</text>
+<text data-t="PH-061" text-anchor="middle" x="457" y="254">2015</text>
+<text data-t="PH-062" text-anchor="end" x="627" y="254">2022</text>
+<text data-t="PH-063" x="658" y="254">2023</text>
+<text data-t="PH-012" text-anchor="middle" x="730" y="254">2026</text>
+<text data-t="PH-013" text-anchor="middle" x="457" y="44">2015 · SUPPLANTING BANNED</text>
+</svg>
+<div class="popover">Schematic. The two ends are measured in different units (students per summer term before 2009, annualized after) and are not drawn to a common scale. The direction of each move is documented; the detailed figures are below.</div>
+</div>
+<p class="cap" data-t="PH-064">Hover or tap the chart for a note on units and scale.</p>
+<h3 data-t="PH-015">The swings</h3>
+<ul class="rec">
+<li data-t="PH-016"><b>1999.</b> Before the initiative: about 17,000 state-supported and 12,800 self-supported summer students systemwide.</li>
+<li data-t="PH-017"><b>2001.</b> Fifteen campuses convert summer to a state-supported term. Summer 2001 reaches 42,146 students across 21 campuses, and the CSU serves 1,977 more students than the Legislature had funded.</li>
+<li data-t="PH-018"><b>2003.</b> State-supported summer peaks at over 18,000 students, annualized.</li>
+<li data-t="PH-019"><b>2004.</b> The state cuts CSU's funded enrollment by about 20,000; the CSU permits campuses "to reduce or eliminate their state-supported summer offerings." Seven campuses report zero. Systemwide summer enrollment falls to 29,787 students. Cal Poly falls from 2,364 to 412.</li>
+<li data-t="PH-020"><b>2006.</b> Summer recovers to 42,741 students, 101 percent of 2001. Cal Poly is back at 2,152. The reason is funding, not demand: the state resumed paying for enrollment growth in 2005–06 (about 8,100 students) and 2006–07, the CSU was running below its new targets, and summer was the quickest way to add funded enrollment. The $7 million appropriated for conversion had stayed in the CSU base throughout.</li>
+<li data-t="PH-021"><b>2009–11.</b> The fiscal crisis creates authority and incentive to move summer into self-support. Long Beach, which reported 3,620 state-supported summer students in 2006, offers 18 state-supported summer seats out of more than 17,500 in 2010–11 and 2011–12.</li>
+<li data-t="PH-022"><b>2015.</b> The Legislature amends Education Code §89708 to ban supplanting: a campus may not reduce state-supported offerings while expanding self-support versions, and may not require a state-supported student to take a self-support course to graduate.</li>
+<li data-t="PH-023"><b>2022–23.</b> Thirty percent of resident summer instruction is state-supported systemwide.</li>
+<li data-t="PH-024"><b>2023–26.</b> Enrollment-target incentives move summer back toward state support; the share reaches 68 percent, and the LAO warns that reported growth is overstated by the shift.</li>
+<li data-t="PH-025"><b>2025, Cal Poly.</b> Summer 2025 enrolled 2,078 people, 1,099 students full-time equivalent, state-supported, with $12.87 million of tuition revenue against about $12.7 million of expense. The campus projects summer 2026 about 30 percent smaller.</li>
+</ul>
+<h3 data-t="PH-026">Cal Poly's own summer, then and now</h3>
+<p data-t="PH-027">Cal Poly ran a state-supported summer quarter from the late 1960s. In 2001 it enrolled 2,364 summer students; in 2004, after the system let campuses cut state-supported summer, 412; in 2006, 2,152. The campus has published no summer series for 2007 through 2024. By 2015 the LAO put its state-supported summer below 10 percent of fall. In 2025 the operating budget shows 2,078 people enrolled and 1,099 full-time-equivalent students, less than half the 2001 level, carried entirely on tuition with no General Fund line, and within two percent of break-even. For 2026 the campus projects a 30 percent drop as summer compresses to two sessions on the semester calendar.</p>
+<p data-t="PH-028">So the summer that YRO would turn into a semester of equal stature is one that the campus has let shrink by more than half since 2001, that the state has not paid for in the budget's own presentation, and that is about to shrink again. The 2001 conversion came with state money attached, $19.9 million for CSU fee reductions and a share of $33.1 million for conversion, and with enrollment-growth conditions. No appropriation has been announced or scheduled for this one.</p>
+<h3 data-t="PH-029">Fifteen campuses, three summers</h3>
+<p data-t="PH-030">State-supported summer students at the fifteen campuses that fully converted in 2001. Hollow boxes are zeros.</p>
+<div aria-label="Small bars for fifteen campuses in 2001, 2004 and 2006; in 2004 Chico, Fullerton, Humboldt, San Bernardino, San Jose, San Marcos and Stanislaus are zero" class="fig">
+<svg id="campus-strip" role="img" viewbox="0 0 760 380"></svg>
+</div>
+<div class="campus-list">
+<div><b>Chico</b><span>662 → 0 → 330</span></div>
+<div><b>Dominguez Hills</b><span>1,474 → 786 → 1,207</span></div>
+<div><b>East Bay</b><span>4,583 → 4,466 → 4,253</span></div>
+<div><b>Fullerton</b><span>2,980 → 0 → 3,496</span></div>
+<div><b>Humboldt</b><span>653 → 0 → 465</span></div>
+<div><b>Long Beach</b><span>3,208 → 2,796 → 3,620</span></div>
+<div><b>Los Angeles</b><span>6,594 → 6,462 → 6,216</span></div>
+<div><b>Pomona</b><span>4,644 → 3,678 → 4,874</span></div>
+<div><b>San Bernardino</b><span>1,997 → 0 → 3,146</span></div>
+<div><b>San Diego</b><span>2,659 → 2,939 → 2,753</span></div>
+<div><b>San Francisco</b><span>3,138 → 2,739 → 2,725</span></div>
+<div><b>San José</b><span>2,312 → 0 → 1,451</span></div>
+<div class="cp"><b>San Luis Obispo</b><span>2,364 → 412 → 2,152</span></div>
+<div><b>San Marcos</b><span>452 → 0 → 586</span></div>
+<div><b>Stanislaus</b><span>610 → 0 → 718</span></div>
+</div>
+<p class="cap" data-t="PH-031">Summer 2001 → 2004 → 2006, state-supported students. Source: LAO 2006–07 and 2008–09 analyses.</p>
+<h3 data-t="PH-032">What flips, and what remains constant</h3>
+<p data-t="PH-033">Summer funding, fee authority, enrollment credit and classification have each changed direction within a budget cycle or two, in both directions. The commitments a year-round campus makes do not.</p>
+<div aria-label="Three horizontal bars: summer policy reversed in 2004, 2006, 2009 and 2023; a housing revenue bond typically runs 30 years; a tenure-track line runs a career" class="fig">
+<svg role="img" viewbox="0 0 760 170">
+<!-- 2001 at 40, 11px/yr to 2061 at 700 -->
+<line class="lin" x1="40" x2="40" y1="20" y2="150"></line>
+<text data-t="PH-034" x="40" y="162">2001</text><text data-t="PH-035" text-anchor="middle" x="315" y="162">2026</text><text data-t="PH-036" text-anchor="end" x="700" y="162">2061</text>
+<line class="lin" stroke-dasharray="2 3" x1="315" x2="315" y1="20" y2="150"></line>
+<text data-t="PH-037" x="40" y="38">SUMMER POLICY · DIRECTION CHANGES</text>
+<line class="ax" x1="40" x2="315" y1="50" y2="50"></line>
+<g class="cpfill"><rect height="14" width="4" x="38" y="43"></rect><rect height="14" width="4" x="71" y="43"></rect><rect height="14" width="4" x="93" y="43"></rect><rect height="14" width="4" x="126" y="43"></rect><rect height="14" width="4" x="280" y="43"></rect></g>
+<text class="redtext" data-t="PH-038" x="40" y="70">01</text><text class="redtext" data-t="PH-039" x="71" y="70">04</text><text class="redtext" data-t="PH-040" x="93" y="70">06</text><text class="redtext" data-t="PH-041" x="126" y="70">09</text><text class="redtext" data-t="PH-042" x="280" y="70">23</text>
+<text data-t="PH-043" x="40" y="94">HOUSING REVENUE BOND · TYPICALLY 30 YEARS</text>
+<rect class="fgfill" height="8" opacity=".8" width="330" x="315" y="100"></rect>
+<text data-t="PH-044" x="40" y="128">TENURE-TRACK LINE · A CAREER</text>
+<rect class="fgfill" height="8" opacity=".5" width="385" x="315" y="134"></rect>
+</svg>
+</div>
+<p class="cap" data-t="PH-045">Five direction changes in summer policy in 25 years; the longest interval between two of them was fourteen years. A bond issued in 2026 is still being repaid in the 2050s.</p>
+<h3 data-t="PH-046">Thou shalt not compel a California resident to pay as a nonresident</h3>
+<blockquote class="quote" data-t="PH-047">A campus shall not require a state-supported matriculated student to enroll in a special session course in order to fulfill a graduation requirement for a state-supported degree program.<span class="src" data-t="PH-048">Education Code §89708(d), as amended by AB 716, Chapter 252, Statutes of 2015</span></blockquote>
+<p data-t="PH-049">Any design that routes state-supported students into a self-support summer they need for degree progress is prohibited on its face. A state-supported summer does not engage the statute, which is why the question of which kind of summer Cal Poly is planning is not a detail.</p>
+<h3 data-t="PH-050">The lesson</h3>
+<p data-t="PH-051">The 2001 initiative did not fail; it worked, was cut, recovered, was reclassified, and is being reclassified again. Its record is of volatility, not collapse. A plan that assigns seventeen-year-olds to a summer track, builds housing for them and hires faculty to teach them needs the summer term's funding, classification and enrollment credit to hold still for decades. Nothing in the record suggests they will.</p>
+</div>
+</aside>
+<!-- PANEL: SAY SO -->
+<aside aria-labelledby="h-sayso" aria-modal="true" class="panel" hidden="" id="p-sayso" role="dialog">
+<div class="panel-head"><span class="mono">5 · Tell us your thoughts</span><button aria-label="Close" class="close" data-close="">×</button></div>
+<div class="panel-body">
+<h2 data-t="PS-001" id="h-sayso">What can be done in the next nine months.</h2>
+<p class="big" data-t="PS-002">Ask the administration to follow the plan's own sequencing – with transparency and timeliness.</p>
+<h3 data-t="PS-003">Take the survey</h3>
+<p data-t="PS-004">The survey takes only a few minutes; your email is used only to verify you. Answers remain private and all data are anonymized.</p>
+<p data-t="PS-005"><a class="btn primary" data-open="survey" data-survey="" data-t="PS-006" href="#survey">Take the survey <span class="arr">→</span></a> <a class="btn primary" href="takeaction/">Take action <span class="arr">→</span></a></p>
+<h3 data-t="PS-007">Ask for the models</h3>
+<p data-t="PS-008">In April 2026 the administration said enrollment and faculty-hiring projections existed and had not been released. The president has said the investments are "not significantly out of line" with traditional growth, which implies a comparison someone has made. A request for documents the administration says exist is a request it can grant. The Academic Senate is being asked to make it. If it isn't passed or goes unanswered, consider filing a Public Records Act request; Cal Poly is a CA state entity.</p>
+<h3 data-t="PS-009">Document readiness</h3>
+<p data-t="PS-010">The president’s April 2026 email ties the first programs to “initial areas of readiness” identified with the colleges. Readiness is therefore the administration’s own test. A department that documents, in writing and by the same standards it applies to any curricular change, whether it can deliver its program on a two-of-three calendar is doing what the plan asks, and the record stands whichever way the answer comes out. Course sequencing, lab capacity, who teaches summer, and advising for three entry points are the questions to answer.</p>
+<h3 data-t="PS-011">Finish the design before recruiting students</h3>
+<p data-t="PS-012">Ask the Academic Senate to resolve that no student be recruited into a track until the budget, staffing and financial-aid models have been completed and reviewed by the Senate, and until a published process exists for moving between tracks. Recruiting begins in a year. The 2024 plan let students choose a start term; the 2025 design assigns one; no process for changing the assignment has been published, though the president has promised one. A resolution that sets the order of operations, models before marketing, costs nothing and binds nobody to oppose YRO; it only says the design must exist before students are sold it.</p>
+</div>
+</aside>
+<!-- PANEL: SURVEY -->
+<aside aria-labelledby="h-survey" aria-modal="true" class="panel" hidden="" id="p-survey" role="dialog">
+<div class="panel-head"><span class="mono">Take the survey</span><button aria-label="Close" class="close" data-close="">×</button></div>
+<div class="panel-body">
+<h2 data-t="SV-001" id="h-survey">Share your opinion</h2>
+<div class="survey-choices">
+<a class="btn primary" data-t="SV-002" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=2wING578lUSVNx03nMoq5xCnHHnGzn1PuxGhX8pnnwBURVhKUExBTVVWSjRXQjY0RVZWS01XSE9PRC4u" rel="noopener" target="_blank">Click here if you have a Cal Poly login <span class="arr">→</span></a>
+<a class="btn primary" data-t="SV-003" href="https://docs.google.com/forms/d/e/1FAIpQLSerW6IWjEKnQwc4XcaYyMiNAoDMxwOCfFsULlntfKS5dOAE9w/viewform?usp=header" rel="noopener" target="_blank">Click here if you are a member of the community without a Cal Poly login <span class="arr">→</span></a>
+</div>
+</div>
+</aside>
+<!-- PANEL: SOURCES -->
+<aside aria-labelledby="h-sources" aria-modal="true" class="panel" hidden="" id="p-sources" role="dialog">
+<div class="panel-head"><span class="mono">Sources and notes</span><button aria-label="Close" class="close" data-close="">×</button></div>
+<div class="panel-body">
+<h2 data-t="PX-001" id="h-sources">Where every figure comes from.</h2>
+<p class="big" data-t="PX-002">Primary sources first. Where a figure is derived or approximate, the note says so.</p>
+<h3 data-t="PX-003">Cal Poly</h3>
+<p data-t="PX-004">Public documents are linked. Where a claim rests on what faculty have been told rather than on a published document, the text says so, and the entry below gives the forum and role.</p>
+<ul class="srcs">
+<li data-t="PX-005"><a href="https://edsource.org/2024/why-one-california-university-leader-thinks-year-round-operations-will-aid-enrollment/712001">EdSource, "Why one California university leader thinks year-round operations will aid enrollment," 16 May 2024</a><span class="mono">"Not significantly out of line"; Dartmouth and Waterloo as models; students to choose a summer or fall start; aid to cover a full academic year regardless of start term.</span></li>
+<li data-t="PX-006"><a href="https://www.noozhawk.com/cal-poly-will-expand-school-year-with-regular-summer-classes/">San Luis Obispo Tribune via Noozhawk, "Cal Poly Will Expand School Year With Regular Summer Classes," 19 September 2023</a><span class="mono">Up to 600 students; "possibly 6,000" in summer; 25,000 cap per term until after 2035.</span></li>
+<li data-t="PX-007"><a href="https://mustangnews.net/cal-poly-enrollment-growth/">Mustang News, "Cal Poly enrollment growth," 30 October 2025</a><span class="mono">The two-of-three design, track shares, 85 percent ceiling, 40–50 percent in summer, 25,000 by 2030, +2,000 over five years; faculty "will not be required to teach in summer but may opt in"; City Council presentation.</span></li>
+<li data-t="PX-008"><a href="https://mustangnews.net/year-round-operations/">Mustang News, "Cal Poly to seek student input on year-round operations amid backlash," 28 April 2026</a><span class="mono">President's email: calendar, resource site and infrastructure assessment to come; phased implementation from summer 2028; enrollment and faculty-hiring projections not released; "initial areas of readiness"; town hall details "still being confirmed."</span></li>
+<li data-t="PX-009"><a href="https://mustangnews.net/cal-poly-engineering-students-oppose-year-round/">Mustang News, "Majority of engineering students surveyed think year-round operations will harm Cal Poly," 11 April 2026</a><span class="mono">"Writing the rules as we go along"; internships, clubs, leases, cooling.</span></li>
+<li data-t="PX-010"><a href="https://magazine.calpoly.edu/winter-2025/growing-intelligently/">Cal Poly Magazine, "Growing intelligently," the president's column, Winter 2025</a><span class="mono">117 tenure-track faculty hired over two years, "partly to prepare" for year-round operations.</span></li>
+<li data-t="PX-011"><a href="https://academicaffairs.calpoly.edu/year-round-operations-academic-planning">Cal Poly Academic Affairs, Year-Round Operations: Academic Planning</a><span class="mono">The 23 programs, as the page read in April 2026; it has since been replaced by a placeholder that refers readers to the internal site.</span></li>
+<li data-t="PX-012">Cal Poly Registrar, 2027–2028 Academic Calendar Proposal, memorandum and calendar grid, 3 April 2026; Academic Senate Executive Committee vote of 5 May 2026. Senate documents; the compiled college and department responses to the draft are posted with them (<a href="https://content-calpoly-edu.s3.amazonaws.com/academicsenate/1/documents/2025-2026/Registrars2027-28_Summary_Themes.pdf" rel="noopener" target="_blank">summary of themes</a>).<span class="mono">April draft: fall 73, spring 72, summer 69 instructional days; Summer 2028 listed as beginning May 3. Later 14-week "draft/mock" calendar circulated to faculty, not posted: fall 73, spring 74, summer 72 instructional days; Summer 2028 begins the 2nd week of May, spring commencement end of April, summer finals mid-August.</span></li>
+<li data-t="PX-013"><a href="https://digitalcommons.calpoly.edu/senateresolutions/983/">Cal Poly Academic Senate, AS-982-24, Resolution on the Proposed 14-Week Trimester Calendar and Year-Round Operations, 26 August 2024</a></li>
+<li data-t="PX-014"><a href="https://afd.calpoly.edu/fees/estimated-fees">Cal Poly Administration &amp; Finance, Estimated Fees 2026–27</a><span class="mono">Resident total base registration and tuition fees, College of Engineering, $7,862 a semester; non-resident example, 15 units, $19,327 a semester including $471 a unit non-resident tuition and the $4,402 Cal Poly Opportunity Fee.</span></li>
+<li data-t="PX-015"><a href="https://magazine.calpoly.edu/winter-2025/growing-intelligently/">Cal Poly Magazine, Winter 2025 (president's column)</a><span class="mono">Surplus from growth to fund "salaries, deferred maintenance and other areas."</span></li>
+<li data-t="PX-016">Statements by the administration, through college deans, to faculty in YRO planning meetings, 2026, that self-support enrollment is part of the funding model. Not published; the forum and role are given, individual speakers are not named.<span class="mono">Education Code §89708; State Auditor Report 2015-107 (UC, March 2016).</span></li>
+<li data-t="PX-048"><a href="https://www.calstate.edu/csu-system/administration/academic-and-student-affairs/academic-programs-innovation-and-faculty-development/Documents/Adding_Self_Support_to_State-SupportFinal.pdf">CSU, Adding a Self-Support Counterpart to a State-Supported Program</a> · <a href="https://www.calstate.edu/csu-system/about-the-csu/budget/Documents/fy-budget-coded-memos/B_2026-02_Final_Budget_Allocations_Memo-signed.pdf">CSU, Final Budget Allocations Memo B 2026-02</a><span class="mono">Chancellor's Office review and written approval, cost-recovery budget with per-unit fees, no supplanting; state share of the marginal cost of instruction, $11,296 per FTES, 2026–27.</span></li>
+<li data-t="PX-049"><a href="https://www.calfac.org/contract-2022-2025/article-38-layoff/">CSU–CFA collective bargaining agreement, Article 38 (Layoff)</a> · <a href="https://www.calfac.org/?p=7684">Article 21 (Summer Term Employment)</a> · <a href="https://news.sonoma.edu/articles/2025/ssu-takes-major-steps-address-239-million-deficit-2025-26">Sonoma State University, January 22, 2025</a><span class="mono">Layoff for lack of work, lack of funds or programmatic change, tenured faculty last in order; summer teaching for extra pay is voluntary (21.24(a)); about 46 faculty, tenured and adjunct, given notice alongside 22 program eliminations.</span></li>
+<li data-t="PX-017"><a href="https://greeklife.calpoly.edu/faqs">Cal Poly Fraternity &amp; Sorority Life, FAQs</a><span class="mono">37 chapters; dues; recruitment timing; housing.</span></li>
+</ul>
+<h3 data-t="PX-018">CSU history</h3>
+<ul class="srcs">
+<li data-t="PX-019"><a href="https://www.lao.ca.gov/analysis_2006/education/ed_21_anl06.html">LAO, 2006–07 Analysis: Year-Round Operations at UC and CSU</a><span class="mono">Summer 2001 and 2004 state-supported summer students by campus; "any students in a state-supported summer program".</span></li>
+<li data-t="PX-020"><a href="https://lao.ca.gov/analysis_2008/education/ed_anl08020.aspx">LAO, 2008–09 Analysis: Addressing the Local Impacts of Campus Growth</a><span class="mono">Summer and fall 2006 students by campus.</span></li>
+<li data-t="PX-021"><a href="https://lao.ca.gov/2006/enrollment/UC-CSU_enrollment_032806.htm">LAO, Funding Enrollment Growth at UC and CSU (March 2006)</a><span class="mono">2004–05 target cut of about 20,000; 2005–06 growth funding for about 8,100 students; CSU below target; summer at 9 percent of fall.</span></li>
+<li data-t="PX-022"><a href="https://lao.ca.gov/analysis_2002/education/ed_23-26_intersegmental_anl02.htm">LAO, 2002–03 Analysis: Intersegmental Issues</a><span class="mono">1,977 students beyond funded enrollment; $4.9 million.</span></li>
+<li data-t="PX-023"><a href="https://www.calstate.edu/csu-system/board-of-trustees/past-meetings/2006/Documents/november-14-2006-educational-policy.pdf">CSU Trustees, November 2006, Educational Policy, Item 1</a><span class="mono">"Campuses were permitted to reduce or eliminate their state-supported summer offerings"; 18,000 / under 10,000 / 16,000 / over 17,000 annualized FTES, 2003–2006.</span></li>
+<li data-t="PX-024"><a href="https://www.calstate.edu/csu-system/board-of-trustees/past-meetings/2010/Documents/september-21-2010-educational-policy.pdf">CSU Trustees, September 2010, Educational Policy, Item 5</a><span class="mono">1999 baseline (about 17,000 state-supported, 12,800 self-supported summer students); 2002 peak; summer 2010 through Extended Education.</span></li>
+<li data-t="PX-025"><a href="https://information.auditor.ca.gov/reports/responses/2012-113/4">California State Auditor, Report 2012-113</a><span class="mono">Long Beach: 18 state-supported summer seats of more than 17,500, 2010–11 and 2011–12.</span></li>
+<li data-t="PX-026"><a href="https://lao.ca.gov/Publications/Report/3532">LAO, Assessing UC and CSU Enrollment and Capacity (January 2017)</a><span class="mono">40/25 percent expectations (Chapter 386 of 2009).</span></li>
+<li data-t="PX-027"><a href="https://lao.ca.gov/Publications/Report/5142">LAO, The 2026–27 Budget: California State University (February 2026)</a><span class="mono">Resident summer students by funding, 2022–23 to 2025–26; "enrollment growth continues to be overstated due to shift in summer courses". Percentages on this page are computed from the LAO table.</span></li>
+<li data-t="PX-028"><a href="https://codes.findlaw.com/ca/education-code/edc-sect-89708/">Education Code §89708</a> · <a href="https://www.leginfo.ca.gov/pub/15-16/bill/asm/ab_0701-0750/ab_716_bill_20150904_status.html">AB 716, Chapter 252, Statutes of 2015</a></li>
+</ul>
+<h3 data-t="PX-029">Peers</h3>
+<ul class="srcs">
+<li data-t="PX-030"><a href="https://poly.rpi.edu/2016/10/26/greeks_on_campus_for_summer_arch">The Polytechnic (Rensselaer), "Greeks on campus for Summer Arch," 26 October 2016</a></li>
+<li data-t="PX-031"><a href="https://poly.rpi.edu/news/2025/02/follow-up-interview-with-vice-provost-hradsky/">The Polytechnic (Rensselaer), follow-up interview with the vice provost, February 2025</a></li>
+<li data-t="PX-032"><a href="https://poly.rpi.edu/news/2015/12/2015-12-02-dartmouthrsquos-d-plan-similar-to-arch">The Polytechnic (Rensselaer), "Dartmouth's D-Plan similar to Arch," 2 December 2015</a></li>
+<li data-t="PX-033"><a href="https://www.thedartmouth.com/article/1994/06/social-system-provides-continuity">The Dartmouth, "Social system provides continuity," June 1994</a></li>
+<li data-t="PX-050"><a href="https://poly.rpi.edu/news/2025/10/rpi-will-no-longer-require-arch-summer-semester/">The Polytechnic (Rensselaer), "RPI will no longer require Arch summer semester," October 2025</a> · <a href="https://ccpd.rpi.edu/rpi-experience-program/frequently-asked-questions">Rensselaer, RPI Experience Program FAQ</a><span class="mono">Requirement dropped for the Class of 2028 onward; 2019 Student Senate survey, 78 percent unsatisfied, 64 percent would not participate if optional.</span></li>
+<li data-t="PX-051"><a href="https://dartmouth.smartcatalogiq.com/en/2022/orc/regulations/undergraduate-study/requirements-for-the-degree-of-bachelor-of-arts/enrollment-patterns">Dartmouth, enrollment patterns (D-Plan residence rules)</a> · <a href="https://uwaterloo.ca/engineering/undergraduate-students/co-op-experience/co-op-study-sequences">Waterloo Engineering, co-op study sequences</a> · <a href="https://uc.edu/campus-life/careereducation/get-experience/co-op/full-time.html">University of Cincinnati, Mandatory Co-op</a><span class="mono">First year, sophomore summer and two senior terms in residence; Stream 4 and Stream 8 assigned before first year in dual-stream programs; co-op required in engineering, DAAP and IT, "anywhere in the continental U.S. or worldwide."</span></li>
+<li data-t="PX-047"><a href="https://www.agdaily.com/?p=47844">AGDAILY, college profile: Cal Poly College of Agriculture, Food and Environmental Sciences</a> · <a href="https://morning-mustang.beehiiv.com/p/it-s-official-cal-poly-has-the-largest-campus-in-ca">Morning Mustang, "It's official: Cal Poly has the largest campus in CA," 11 April 2025</a><span class="mono">4,078 agricultural students of 21,037 enrolled; 14 agricultural degrees; the 3,200-acre Swanton Pacific Ranch; nearly 10,000 acres in all. Peer colleges, schools and faculties from each institution's own listing: Dartmouth, Rensselaer, Georgia Tech, Cincinnati, Northeastern and Waterloo list no college or faculty of agriculture.</span></li>
+</ul>
+<h3 data-t="PX-034">The schools that stopped</h3>
+<ul class="srcs">
+<li data-t="PX-035"><a href="https://www.timeshighereducation.com/news/unsw-scraps-trimester-calendar-after-workload-complaints">Times Higher Education, "UNSW scraps trimester calendar after workload complaints," 2025</a></li>
+<li data-t="PX-036"><a href="https://honisoit.com/2024/03/unsw-postured-to-scrap-trimester-system/">Honi Soit, "UNSW postured to scrap trimester system," March 2024</a> · <a href="https://honisoit.com/2025/04/unsw-introduces-flexible-semester-scraps-trimester-system/">"UNSW introduces 'flexible semester', scraps trimester system," April 2025</a><span class="mono">2023 calendar review: 40 percent less time for paid work, 41 percent less for activities; "significant workload and anxiety issues for both staff and students"; NTEU on consultation.</span></li>
+<li data-t="PX-037"><a href="https://time.com/archive/6834085/universities-trimesters-tribulations/">Time, "Universities: Trimester's Tribulations," 11 March 1966</a> · <a href="https://www.binghamton.edu/news/story/6290/Binghamton-at-80-thehistory" rel="noopener" target="_blank">Binghamton University, "Binghamton University at 80: The history"</a><span class="mono">Florida statewide trimester dropped in 1966; 11 percent raise for 25 percent heavier loads; 16-week courses in 14; Pittsburgh's Ford Foundation study, costs per student doubled, a quarter of undergraduates in summer; Binghamton "almost no increase."</span></li>
+<li data-t="PX-060"><a href="https://www.gwhatchet.com/2003/03/27/committee-nixes-trimesters/" rel="noopener" target="_blank">GW Hatchet, "Committee nixes trimesters," 27 March 2003</a><span class="mono">Trachtenberg task force, fall 2002; true trimester of three 14-week terms with two required; initial findings favored 14-14-10 and a stronger summer program.</span></li>
+<li data-t="PX-061"><a href="https://mndaily.com/251059/uncategorized/u-work-out-kinks-year-round-calendar/" rel="noopener" target="_blank">Minnesota Daily, "U works out kinks in year-round calendar," 18 February 2013</a><span class="mono">Kaler ad hoc committee; university-wide third semester "not yet needed"; optional pilot in two College of Design programs; aid, summer jobs, research and athletics concerns.</span></li>
+<li data-t="PX-062"><a href="https://www.wbaa.org/education/2012-01-11/purdue-begins-process-of-switching-to-trimesters" rel="noopener" target="_blank">WBAA, "Purdue begins process of switching to trimesters," 11 January 2012</a> · <a href="https://www.purdue.edu/newsroom/purduetoday/releases/2013/Q1/forum-to-continue-conversation-on-trimester-initiative.html" rel="noopener" target="_blank">Purdue Today, forum on the trimester initiative and "Think Summer," 31 January 2013</a> · <a href="https://www.purdueexponent.org/features/feature-purdue-pursues-trimester-calendar/article_7b7648d4-fe27-5435-aaf8-68a9b8c4a690.html" rel="noopener" target="_blank">Purdue Exponent, "Purdue pursues trimester calendar," 2014</a> · <a href="https://www.purdue.edu/registrar/calendars/academic-archive/" rel="noopener" target="_blank">Purdue Registrar, academic calendars</a><span class="mono">Trimester announced 2012; task force studied 14-week terms and longer class periods for fall 2015; never adopted, 16-week semesters kept.</span></li>
+<li data-t="PX-038"><a href="https://eric.ed.gov/?id=ED056646">Hofstra University, review of academic-calendar research, ERIC ED 056 646 (1971)</a> · Michigan Daily, 1965<span class="mono">Pittsburgh: "rash moves without total planning for budget, space, and curriculum"; deficit and student-interest figures.</span></li>
+</ul>
+<h3 data-t="PX-039">Notes</h3>
+<ul class="rec">
+<li data-t="PX-040">Populations are rounded metropolitan or micropolitan statistical areas on a common definition: Atlanta 6.3M; Boston 4.9M; Cincinnati 2.3M; Albany–Schenectady–Troy 0.9M; the Region of Waterloo 0.6M; Lebanon, NH–VT (the Upper Valley, for Dartmouth) about 0.22M; San Luis Obispo–Paso Robles about 0.28M. The 45-minute-by-bus figure for Cal Poly is a selected nearby-community population, not a measured transit catchment: the City of San Luis Obispo (about 47,000), Los Osos (about 14,500) and Morro Bay (about 10,700), about 72,000 together.</li>
+<li data-t="PX-041">"Share of students away each fall or spring, by design": Cal Poly from the track shares the administration reported at the October 2025 Strategic Enrollment Management presentation, as reported by Mustang News (about 60 percent traditional, 20–25 percent on each summer track; the primary slide has not been located). The calculations on this page use 60/20/20, the reading that sums to 100, with 50/25/25 shown as the upper case. Rensselaer's figure is historical, derived from the Arch rules in force 2019–2025: one away semester in the junior year, so about half of one class year in any fall or spring. The co-op peers are shown as optional except where a program requires co-op.</li>
+<li data-t="PX-042">"Under 10 percent of fall": the LAO's 2017 report found only Maritime Academy and Bakersfield with state-supported summer enrollment above 10 percent of fall.</li>
+<li data-t="PX-043">Program founding years (Cincinnati 1906, Northeastern 1909, Georgia Tech 1912, Waterloo 1957, Dartmouth D-Plan 1972) are the institutions' own stated dates. Rensselaer's Arch: announced 2016, piloted summer 2017, required of rising juniors from 2019.</li>
+<li data-t="PX-044">CSU figures before 2009 count students in the summer term; figures from 2022–23 are annualized and resident-only. All are full-time-equivalent students. The two series are not converted into one another anywhere on this page.</li>
+<li data-t="PX-045">"Twenty-four months" is counted to the opening of the Cal State application in October 2028, for the fall 2029 launch announced on October 21, 2026. The design window shown ending in July 2028 is our recommended allowance before the October 1, 2028 application opening, not a date the campus has published; the catalog deadline for 2029–30 changes is our estimate (March 2028, by analogy with the March 12, 2027 deadline for 2028–29) pending the Registrar's calendar.</li>
+<li data-t="PX-046">This page is prepared by Cal Poly faculty. It is not a publication of the university or the CSU.</li>
+</ul>
+</div>
+</aside>
+<script>
+(function(){
+  // --- ticks on the two timelines ---
+  function ticks(id,x0,x1,n,y,h){
+    var g=document.getElementById(id); if(!g) return; var s='';
+    for(var i=0;i<=n;i++){var x=x0+(x1-x0)*i/n; var big=(i%12===0); s+='<line class="lin" x1="'+x+'" y1="'+y+'" x2="'+x+'" y2="'+(y+(big?h*2:h))+'"/>';}
+    g.innerHTML=s;
+  }
+  ticks('ticks',40,730,46,96,5);
+  ticks('yr-ticks',40,720,9,130,4);
+  ticks('ticks2',40,720,34,100,5);
+
+  // --- work bars on the story timeline ---
+  (function(){
+    var done=document.getElementById('done-bar'), todo=document.getElementById('todo-bar'); if(!done||!todo) return;
+    var w=26, gap=2, s='', x=220-6*(w+gap)+gap;
+    for(var i=0;i<6;i++){ s+='<rect class="doneblk" x="'+x+'" y="170" width="'+w+'" height="26"/>'; x+=w+gap; }
+    done.innerHTML=s; s=''; x=222;
+    for(var j=0;j<27 && x<745;j++){ s+='<rect class="cpfill" x="'+x+'" y="250" width="'+w+'" height="26"/>'; x+=w+gap; }
+    todo.innerHTML=s;
+  })();
+
+  // --- months remaining ---
+  (function(){
+    var el=document.getElementById('months-left'); if(!el) return;
+    var now=new Date(), open=new Date(2028,9,1);
+    var m=(open.getFullYear()-now.getFullYear())*12+(open.getMonth()-now.getMonth());
+    if(m>0) el.textContent='As of today, '+m+' month'+(m===1?'':'s')+' remain until the application opens.';
+  })();
+
+  // --- geography: two rows of small multiples ---
+  (function(){
+    var cols=[
+      {name:'GEORGIA TECH', metro:'ATLANTA 6.3M', pop:6.3, grow:'none'},
+      {name:'NORTHEASTERN', metro:'BOSTON 4.9M', pop:4.9, grow:'none'},
+      {name:'U. CINCINNATI', metro:'CINCINNATI 2.3M', pop:2.3, grow:'none'},
+      {name:'WATERLOO', metro:'WATERLOO REGION 0.6M', pop:0.6, grow:'none'},
+      {name:'RENSSELAER', metro:'ALBANY–TROY 0.9M', pop:0.9, grow:'none'},
+      {name:'DARTMOUTH', metro:'UPPER VALLEY 0.22M', metro2:'HANOVER 11K', pop:0.22, grow:'dplan'},
+      {name:'CAL POLY', metro:'SLO COUNTY 0.28M', metro2:'72K BY BUS', pop:0.28, grow:[0.16,0.33], cp:true}
+    ];
+    var W=134, x0=200;
+    function draw(id){
+      var svg=document.getElementById(id); if(!svg) return; var s='';
+      s+='<rect class="peerfill" x="'+(x0-W/2+4)+'" y="30" width="'+(4*W-8)+'" height="300" rx="4" opacity=".07"/>';
+      s+='<text style="fill:var(--peer)" font-size="10" x="'+(x0-W/2+12)+'" y="20">CO-OP: PAID WORK TERMS ARRANGED THROUGH A CO-OP OFFICE</text>';
+      s+='<text font-size="10" x="14" y="126">POPULATION OF THE</text><text font-size="10" x="14" y="139">METROPOLITAN AREA</text>';
+      s+='<text font-size="10" x="14" y="276">ENROLLMENT GROWTH</text><text font-size="10" x="14" y="289">THE CALENDAR IS</text><text font-size="10" x="14" y="302">DESIGNED TO PRODUCE</text>';
+      var b1=174, sc1=82/6.3;
+      s+='<line class="lin" x1="'+(x0-20)+'" x2="'+(x0+(cols.length-1)*W+20)+'" y1="'+b1+'" y2="'+b1+'"/>';
+      cols.forEach(function(c,n){
+        var x=x0+n*W, red=c.cp?' class="redtext"':'', fill=c.cp?'cpfill':'peerfill';
+        s+='<text'+red+' font-size="10" text-anchor="middle" x="'+x+'" y="50">'+c.name+'</text>';
+        var bh=Math.max(1.5,c.pop*sc1);
+        s+='<rect class="'+fill+'" x="'+(x-16)+'" y="'+(b1-bh).toFixed(1)+'" width="32" height="'+bh.toFixed(1)+'"'+(c.cp?'':' opacity=".85"')+'/>';
+        s+='<text'+red+' font-size="10" text-anchor="middle" x="'+x+'" y="188">'+c.metro+'</text>';
+        if(c.metro2) s+='<text'+red+' font-size="10" text-anchor="middle" x="'+x+'" y="200">'+c.metro2+'</text>';
+        var b3=292, sc3=170;
+        if(c.grow==='none'){
+          s+='<line class="lin" x1="'+(x-16)+'" x2="'+(x+16)+'" y1="'+b3+'" y2="'+b3+'"/>';
+          s+='<text font-size="10" text-anchor="middle" x="'+x+'" y="306">NONE</text><text font-size="10" text-anchor="middle" x="'+x+'" y="318">NOT A GROWTH</text><text font-size="10" text-anchor="middle" x="'+x+'" y="330">MEASURE</text>';
+        } else if(c.grow==='dplan'){
+          s+='<rect class="hollow" x="'+(x-16)+'" y="'+(b3-30)+'" width="32" height="30"/>';
+          s+='<text font-size="10" text-anchor="middle" x="'+x+'" y="306">YES · 1972</text><text font-size="10" text-anchor="middle" x="'+x+'" y="318">TO GROW WITHOUT</text><text font-size="10" text-anchor="middle" x="'+x+'" y="330">NEW BUILDINGS</text>';
+        } else {
+          var g1=c.grow[0]*sc3, g2=c.grow[1]*sc3;
+          s+='<rect class="cpfill" opacity=".45" x="'+(x-16)+'" y="'+(b3-g2)+'" width="32" height="'+(g2-g1)+'"/><rect class="cpfill" x="'+(x-16)+'" y="'+(b3-g1)+'" width="32" height="'+g1+'"/>';
+          s+='<text class="redtext" font-size="10" text-anchor="middle" x="'+x+'" y="306">+16% TO +33%</text><text class="redtext" font-size="10" text-anchor="middle" x="'+x+'" y="318">29,000–33,300</text><text class="redtext" font-size="10" text-anchor="middle" x="'+x+'" y="330">ON A 25,000 CAMPUS</text>';
+        }
+      });
+      svg.innerHTML=s;
+    }
+    draw('geo-story'); draw('geo-panel');
+  })();
+
+  // --- tenure lines grid ---
+  (function(){
+    var svg=document.getElementById('lines-grid'); if(!svg) return;
+    var n=240, hired=117, cols=40, r=5, dx=18, dy=22, x0=22, y0=22, s='';
+    for(var i=0;i<n;i++){ var c=i%cols, row=Math.floor(i/cols); var cx=x0+c*dx, cy=y0+row*dy;
+      s+= i<hired ? '<circle class="cpfill" cx="'+cx+'" cy="'+cy+'" r="'+r+'"/>' : '<circle class="hollow" style="stroke-dasharray:0" cx="'+cx+'" cy="'+cy+'" r="'+r+'"/>'; }
+    s+='<text class="redtext" x="22" y="172">● 117 HIRED 2023–25, "PARTLY TO PREPARE" (SUMMER OBLIGATIONS UNPUBLISHED) · ○ THE REST OF THE LEDGER\'S 240 · EACH ≈ $208,000 A YEAR</text>';
+    svg.innerHTML=s;
+  })();
+
+  // --- campus strip ---
+  (function(){
+    var svg=document.getElementById('campus-strip'); if(!svg) return;
+    var names=['CHICO','DOMINGUEZ HILLS','EAST BAY','FULLERTON','HUMBOLDT','LONG BEACH','LOS ANGELES','POMONA','SAN BERNARDINO','SAN DIEGO','SAN FRANCISCO','SAN JOSÉ','SAN LUIS OBISPO','SAN MARCOS','STANISLAUS'];
+    var d=[[662,0,330],[1474,786,1207],[4583,4466,4253],[2980,0,3496],[653,0,465],[3208,2796,3620],[6594,6462,6216],[4644,3678,4874],[1997,0,3146],[2659,2939,2753],[3138,2739,2725],[2312,0,1451],[2364,412,2152],[452,0,586],[610,0,718]];
+    var yrs=['2001','2004','2006'], base=[88,188,288], max=6594, H=70, col=46, x0=60, s='';
+    for(var r=0;r<3;r++){
+      s+='<text x="10" y="'+(base[r]-30)+'">'+yrs[r]+'</text><line class="lin" x1="'+x0+'" y1="'+base[r]+'" x2="'+(x0+15*col)+'" y2="'+base[r]+'"/>';
+      for(var c=0;c<15;c++){
+        var v=d[c][r], x=x0+c*col+8, w=col-16, cls=(c===12?'cpfill':'fgfill');
+        if(v===0){ s+='<rect class="hollow" x="'+x+'" y="'+(base[r]-28)+'" width="'+w+'" height="28"/><text class="redtext" x="'+(x+w/2)+'" y="'+(base[r]-10)+'" text-anchor="middle">0</text>'; }
+        else { var h=Math.max(2,H*v/max); s+='<rect class="'+cls+'" x="'+x+'" y="'+(base[r]-h)+'" width="'+w+'" height="'+h+'"'+(c===12?'':' opacity=".75"')+'/>'; }
+      }
+    }
+    for(var c2=0;c2<15;c2++){ var lx=x0+c2*col+col/2+4; s+='<text transform="rotate(-90 '+lx+' 300)" x="'+lx+'" y="300" text-anchor="end" font-size="9"'+(c2===12?' class="redtext"':'')+'>'+names[c2]+'</text>'; }
+    svg.innerHTML=s;
+  })();
+
+  // --- panels ---
+  var body=document.body, lastFocus=null, current=null;
+  function panelFor(id){ return document.getElementById('p-'+id); }
+  function open(id){
+    var p=panelFor(id); if(!p) return;
+    if(current && current!==p){ current.classList.remove('in'); current.hidden=true; }
+    lastFocus=document.activeElement; current=p;
+    p.hidden=false; body.classList.add('open'); document.documentElement.style.overflow='hidden';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ p.classList.add('in'); }); });
+    p.querySelector('.panel-body').scrollTop=0;
+    var c=p.querySelector('.close'); if(c) c.focus();
+    try{ history.replaceState(null,'','#'+id); }catch(e){}
+  }
+  function close(){
+    if(!current) return; var p=current; current=null;
+    p.classList.remove('in'); body.classList.remove('open'); document.documentElement.style.overflow='';
+    var done=function(){ p.hidden=true; p.removeEventListener('transitionend',done); };
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ p.hidden=true; } else { p.addEventListener('transitionend',done); setTimeout(function(){ if(!p.classList.contains('in')) p.hidden=true; },700); }
+    try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.addEventListener('click',function(e){
+    var o=e.target.closest('[data-open]'); if(o){ e.preventDefault(); open(o.getAttribute('data-open')); return; }
+    if(e.target.closest('[data-close]')){ close(); return; }
+    var cp=e.target.closest('[data-copy]'); if(cp){ var t=document.querySelector(cp.getAttribute('data-copy')); var txt=t?t.textContent:''; var ok=function(){ cp.textContent='Copied'; setTimeout(function(){cp.textContent='Copy';},1500); };
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(ok,function(){ var r=document.createRange(); r.selectNodeContents(t); var s=getSelection(); s.removeAllRanges(); s.addRange(r); }); } else { var r2=document.createRange(); r2.selectNodeContents(t); var s2=getSelection(); s2.removeAllRanges(); s2.addRange(r2); }
+      return; }
+    var sv=e.target.closest('[data-survey]'); if(sv && sv.getAttribute('href')==='#'){ e.preventDefault(); }
+  });
+  var mdLast=null;
+  function openModal(id){ var m=document.getElementById(id); if(!m) return; mdLast=document.activeElement; m.hidden=false; var c=m.querySelector('.close'); if(c) c.focus(); }
+  function closeModals(){ var any=false; document.querySelectorAll('.modal').forEach(function(m){ if(!m.hidden){ m.hidden=true; any=true; } }); if(any && mdLast && mdLast.focus) mdLast.focus(); return any; }
+  document.addEventListener('click',function(e){
+    var mo=e.target.closest('[data-modal]'); if(mo){ e.preventDefault(); openModal(mo.getAttribute('data-modal')); return; }
+    if(e.target.closest('[data-modal-close]')){ closeModals(); return; }
+    if(e.target.classList && e.target.classList.contains('modal') && !e.target.hidden){ closeModals(); }
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ if(!closeModals()) close(); } });
+  document.addEventListener('click',function(e){ var j=e.target.closest('[data-jump]'); if(!j) return; var t=document.getElementById(j.getAttribute('data-jump')); if(!t) return; e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); });
+  document.querySelectorAll('.haspop').forEach(function(el){ el.addEventListener('click',function(){ el.classList.toggle('show'); }); });
+  var h=(location.hash||'').replace('#','');
+  if(['clock','bill','history','elsewhere','sayso','sources','survey'].indexOf(h)>=0){ open(h); }
+})();
+</script>
+</body>
+</html>

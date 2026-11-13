@@ -387,7 +387,7 @@ nav.contents a:hover{color:var(--accent);border-color:var(--accent)}
     <p class="lede" style="font-size:19px">An assessment of what "summer as a full semester" would cost based on publicly available data. The model is complex and highly sensitive to some parameters, and reasonable assumptions on the parameters (based on public data and previous experiments with summer operation in the CSU and elsewhere) could lead to extremely negative projections.</p>
     <p class="lede" style="font-size:19px;margin-top:10px">It is <em>not</em> the purpose of this document to convince anyone that these negative outcomes will occur. Rather, it is to determine the factors on which financial viability of YRO rests and understand the underlying assumptions.</p>
     <p class="caveat">This model and calculator were built by Claude and revised in response to hostile interrogation by ChatGPT for accuracy and fairness. It is based entirely on public data and the draft 14+1 calendar; sources are cited wherever they exist. An extensive discussion follows the calculator, providing methods, assumptions, sources, and various worked examples. All dollars are 2028-29 nominal unless otherwise noted. Compiled September 2026. It is a fiscal ledger rather than a full cost-benefit analysis: the educational and student benefits of the plan (added graduates, access to once-a-year courses, off-season internships) are reported where they arise but are not given a dollar value.</p>
-    <p class="lede" style="font-size:19px">This model refers to five scenarios, which are used as presets in the calculator. <b>The plan pays.</b> This is not the administration&rsquo;s actual plan (that plan has not been shared). This is one collection of settings that combines the values the administration has stated (45% of students on summer tracks, 31,800 distinct students a year with fall and spring at the ceiling, no recruitment premium) with various favorable settings for parameters it has not specified. <b>Break even</b> asks what it would take for the plan to pay without contradicting the evidence. Every setting with firm evidence behind it, or with little room to move, is left at the central scenario; the less-constrained settings are placed where they plausibly could sit, mostly to the plan&rsquo;s advantage; and the number of students admitted on a full-cost (self-support) basis is then raised until the ten-year ledger clears zero, which takes about <span data-live="mcaBE"></span> of them (Section 13). <b>The central scenario</b> positions every slider at the best available estimate from public data, past history, and other reasons argued for in detail in Sections 5&ndash;13: sourced where a source exists, author-selected where none does, and labeled as such in each &ldquo;Why?&rdquo; popover. <b>All internal levers pulled</b> comes from the central scenario by taking all eight settings the campus controls and pushing the value to the most favorable point in their documented ranges (Finding 3). I.e., everything set by Sacramento, the Trustees, the bargaining agreement or the construction market is left where the central scenario has it. <b>What CSU history suggests</b> is a stress test built from the record of the 2001 conversions.</p>
+    <p class="lede" style="font-size:19px">This model refers to five scenarios, which are used as presets in the calculator. <b>The plan pays.</b> This is not the administration&rsquo;s actual plan (that plan has not been shared). This is one collection of settings that combines the values the administration has stated (45% of students on summer tracks, 31,800 distinct students a year with fall and spring at the ceiling, no recruitment premium) with various favorable settings for parameters it has not specified. <b>Break even</b> asks what it would take for the plan to pay without contradicting the evidence. Every setting with firm evidence behind it, or with little room to move, is left at the central scenario; the less-constrained settings are placed where they plausibly could sit, mostly to the plan&rsquo;s advantage; and the number of students admitted on a full-cost (self-support) basis is then raised until the ten-year ledger clears zero, which takes about <span data-live="mcaBE"></span> of them (Section 13). <b>The central scenario</b> is the one the faculty budget summary uses: the cautious scenario with about thirty settings moved in the plan&rsquo;s favor, among them 500 full-cost admits, a 3% rather than 10% hiring premium, a $10M rather than $80M cooling retrofit, lower staffing, service and one-time costs, and no calendar, attrition or applicant-pool effects. <b>All internal levers pulled</b> comes from the central scenario by taking all eight settings the campus controls and pushing the value to the most favorable point in their documented ranges (Finding 3). I.e., everything set by Sacramento, the Trustees, the bargaining agreement or the construction market is left where the central scenario has it. <b>The cautious scenario</b> positions every slider at the best available estimate from public data, past history, and other reasons argued for in detail in Sections 5&ndash;13: sourced where a source exists, author-selected where none does, and labeled as such in each &ldquo;Why?&rdquo; popover.</p>
     <div class="jumps">
       <a href="#calc"><span class="j-main">Jump to the calculator</span><span class="j-sub">Section 1 · the full ledger, with presets</span></a>
       <a href="#marginal"><span class="j-main">Jump to the last-student calculator</span><span class="j-sub">Section 2 · the sliders that decide it</span></a>
@@ -404,14 +404,14 @@ nav.contents a:hover{color:var(--accent);border-color:var(--accent)}
     <ul>
       <li><span data-live="H"></span> distinct students a year: the 29,000 design applied to the programs on YRO, about two-thirds of enrollment</li>
       <li>40% of students on summer-inclusive tracks</li>
-      <li>70% realization &mdash; off-cycle students who actually enroll in summer</li>
+      <li>65% realization &mdash; off-cycle students who actually enroll in summer</li>
       <li>25,000 concurrent on-campus capacity per term</li>
       <li>15% of added students are non-resident</li>
       <li>35% of fee revenue not consumed by the service it funds</li>
       <li>no new state growth appropriation for the added resident FTES</li>
       <li>15% of them funded through the CSU reallocation pool at $9,400 each</li>
-      <li>no students admitted on a full-cost basis</li>
-      <li>$3,000 of student services and overhead per added student</li>
+      <li>500 of the added students admitted on a full-cost basis</li>
+      <li>$2,800 of student services and overhead per added student</li>
     </ul>
     <button type="button" class="jumpbtn small" data-scroll="marginal" style="margin:14px 0 0">Jump to the last-student calculator ↓</button></div>
   <div><div class="lab">Finding 2</div><div class="big">1/2</div><p>Fraction of students added to a summer session that bring new revenue when the campus is at capacity. Two summer seats are required for every new student YRO adds to a summer track. To make space for a new fall&ndash;spring student, one existing student must move to fall&ndash;summer and another must move to spring&ndash;summer. The summer term is therefore twice the size of the growth it makes possible, at any track share.</p><p style="margin-top:8px">Moving a student from fall&ndash;spring to a summer track <b>brings $0 in revenue but incurs a cost of <span data-live="colAAdmin"></span>&ndash;<span data-live="colAHistory"></span> a year</b>, depending on the other assumptions: <span data-live="colAAdmin"></span> under the assumptions under which the plan pays, <span data-live="colA"></span> at the central scenario, <span data-live="colAHistory"></span> on what CSU history suggests.</p><p style="margin-top:8px">Most of the summer term is comprised of shifted students, not added students (86% at the central mix, 75&ndash;80% at SEM's projections) and each of those pays the same per-term tuition they would have paid in the term they gave up.</p></div>
@@ -439,7 +439,7 @@ nav.contents a:hover{color:var(--accent);border-color:var(--accent)}
         <p class="small prose" style="margin-top:6px">Everything is incremental to the status quo: 23,400 students in fall and spring plus the current form of summer. The ten-year chart runs the dynamics; the tiles, ledger and other charts show the steady-state year in 2028-29 dollars.</p>
         <ul class="claims small" style="margin-top:8px;font-size:15px">
           <li>Slider display: Default: (<b>KEY</b>) only the top 10 or so most impactful settings for the panel are shown. <b>SEE ALL</b> reveals all parameters in the panel.</li>
-          <li>Presets load a full set of assumptions: plan-pays, break even, central scenario, all internal levers, what CSU history suggests; see details below. Every result on this page is a scenario at the current settings, not a forecast.</li>
+          <li>Presets load a full set of assumptions: plan-pays, break even, central scenario, all internal levers, cautious scenario; see details below. Every result on this page is a scenario at the current settings, not a forecast.</li>
           <li>Changes from the selected preset are tracked by chips just below them, which display [slider number · value]. Use <b>Copy settings code</b> to share or save settings.</li>
           <li>Slider locks: Each slider defaults to <b>FREE</b> but can also be <b>LOCKED</b>. A locked slider keeps its value when a preset is loaded, so two presets can be compared with a few settings held fixed. Locked sliders can still be moved by hand and stay visible in Key view; <b>UNLOCK ALL</b> frees them.</li>
           <li>On a wide screen the slider column stays in view and scrolls on its own, so you can scroll the charts and ledger past it and watch them change as you drag.</li>
@@ -449,14 +449,14 @@ nav.contents a:hover{color:var(--accent);border-color:var(--accent)}
           <li>Sliders shown as <b>+pts</b> are changes to a rate, in percentage points: +3 pts takes a 12% D/F/W rate to 15%.</li>
         </ul>
       </div>
-      <p class="preset-note"><b>The plan pays</b> combines the values the administration has stated (45% of students on summer tracks, 31,800 distinct students a year with fall and spring at the ceiling, hiring a year ahead, no recruitment premium) with favorable settings for everything it has not stated: 95% realization, the state funding every added resident FTES at the marginal-cost rate, no section fragmentation, 20 FTES per faculty member, $800 per summer FTES of operations, a $15M cooling retrofit, no calendar layer, no realization decay and no hiring lead. <b>Break even</b> keeps the central scenario wherever the evidence is firm or the slider has little room to move, places the less-constrained settings mostly to the plan&rsquo;s advantage, and then adds full-cost admits (Section 13) until the ten-year result clears zero: <span data-live="mcaBE"></span> of them, with the steady-state margin at <span data-live="netBE"></span> a year; without them the same settings run <span data-live="beNoMCA"></span> a year short. It leaves the summer housing credit (slider <span data-num="hshare"></span>) at zero, the author&rsquo;s setting; at the central scenario&rsquo;s 50% housed share the ten-year result clears zero with <span data-live="mcaBEh"></span>. <b>Central scenario</b> is every slider at the default argued for in Sections 5–13: sourced where a source exists, author-selected where none does, and labeled as such in each &ldquo;Why?&rdquo; popover. <b>All internal levers pulled</b> is the central scenario with the eight settings the campus controls by itself at the favorable end of their documented ranges (Finding 3): no fragmentation, no cooling retrofit, $1,000 of operations and 5 staff per 1,000 summer FTES, $2,000 of services, no transition cost, and $1M each of maintenance premium and administration; everything set by Sacramento, the Trustees, the bargaining agreement or the construction market is left where the central scenario has it. <b>What CSU history suggests</b> is a stress test built from the record of the 2001 conversions.</p>
+      <p class="preset-note"><b>The plan pays</b> combines the values the administration has stated (45% of students on summer tracks, 31,800 distinct students a year with fall and spring at the ceiling, hiring a year ahead, no recruitment premium) with favorable settings for everything it has not stated: 90% realization, the state funding 30% of added resident FTES at the marginal-cost rate, 3% section fragmentation, 19 FTES per faculty member, $1,000 per summer FTES of operations, a $15M cooling retrofit, no calendar layer, no realization decay and no hiring lead. <b>Break even</b> keeps the central scenario wherever the evidence is firm or the slider has little room to move, places the less-constrained settings mostly to the plan&rsquo;s advantage, and then adds full-cost admits (Section 13) until the ten-year result clears zero: <span data-live="mcaBE"></span> of them, with the steady-state margin at <span data-live="netBE"></span> a year; without them the same settings run <span data-live="beNoMCA"></span> a year short. It leaves the summer housing credit (slider <span data-num="hshare"></span>) at zero, the author&rsquo;s setting; at the central scenario&rsquo;s 60% housed share the ten-year result clears zero with <span data-live="mcaBEh"></span>. <b>Central scenario</b> is the cautious scenario with about thirty settings moved in the plan&rsquo;s favor (500 full-cost admits, a 3% hiring premium, a $10M cooling retrofit, lower staffing, service and one-time costs, no calendar, attrition or applicant-pool effects); it is the scenario the faculty budget summary uses. <b>All internal levers pulled</b> is the central scenario with the eight settings the campus controls by itself at the favorable end of their documented ranges (Finding 3): no fragmentation, no cooling retrofit, $1,000 of operations and 5 staff per 1,000 summer FTES, $2,000 of services, no transition cost, and $1M each of maintenance premium and administration; everything set by Sacramento, the Trustees, the bargaining agreement or the construction market is left where the central scenario has it. <b>Cautious scenario</b> is every slider at the value argued for in Sections 5–13: sourced where a source exists, author-selected where none does, and labeled as such in each &ldquo;Why?&rdquo; popover.</p>
       <div class="presets" role="group" aria-label="Presets">
         <span class="preset-label">Set all sliders according to:</span>
         <button type="button" data-preset="admin">Assumptions under which the plan pays</button>
         <button type="button" data-preset="breakeven">Break even</button>
         <button type="button" data-preset="central" aria-pressed="true">Central scenario</button>
         <button type="button" data-preset="levers">All internal levers pulled</button>
-        <button type="button" data-preset="history">What CSU history suggests</button>
+        <button type="button" data-preset="cautious">Cautious scenario</button>
         <button type="button" class="unlockall" id="unlockall" disabled title="Locked sliders keep their values when a preset is loaded">UNLOCK ALL</button>
       </div>
     </div>
@@ -622,7 +622,7 @@ nav.contents a:hover{color:var(--accent);border-color:var(--accent)}
             <h4>Revenue against cost</h4><div class="dq">Calculated at the current settings</div>
             <div class="sub">$M per year. Net is the gap.</div>
             <div class="legend"><span><i style="background:var(--rev)"></i>Revenue</span><span><i style="background:var(--cost)"></i>Cost</span></div>
-            <div class="chartbox"><svg id="c-bars" viewBox="0 0 520 300" role="img" aria-label="Revenue and cost components"></svg><div class="tip" id="tip-bars"></div></div>
+            <div class="chartbox"><svg id="c-bars" viewBox="0 0 400 330" role="img" aria-label="Revenue and cost components"></svg><div class="tip" id="tip-bars"></div></div>
             <details class="tbl"><summary>Table</summary><table id="t-bars"></table></details>
           </div>
           <div class="card">
@@ -684,7 +684,7 @@ nav.contents a:hover{color:var(--accent);border-color:var(--accent)}
         <button type="button" data-preset="breakeven">Break even</button>
         <button type="button" data-preset="central" aria-pressed="true">Central scenario</button>
         <button type="button" data-preset="levers">All internal levers pulled</button>
-        <button type="button" data-preset="history">What CSU history suggests</button>
+        <button type="button" data-preset="cautious">Cautious scenario</button>
       </div>
     </div>
     <div class="grid">
@@ -1548,13 +1548,16 @@ function model(p, ov){
 
 /* ===================== PRESETS ===================== */
 const PRESETS = {
-  central:{H:29000,s:40,r:70,leave:0,lam:100,cap:25000,nr:15,tui:7683,aid:30,nrrev:26000,fee:7600,feed:35,st:0,strate:11296,stre:15,rerate:9400,tgtcommit:100,realloc:5,mca:0,k:18,frag:9,tt:800,svcshare:60,v:15,w:50,lec:40,sal:125000,nsal:115000,prem:10,equity:250,lsal:89000,fr:64,startup:100000,ops:2000,staff:10,svc:3000,hvac:80,capseat:75000,maint:4,aux:2,adm:2,turn:400,trans:10,days:73,dfw:3,aff:40,absorb:50,attrC:1,redesign:2,callayer:0,calyrs:3,D:3.7,att1:3,att:2,blk:4,cg:3.5,tg:2,decay:-10,lead:0,stcut:10,disc:5,hshare:50,hmarg:5000,auxcal:3,refdyn:0,pell:23,pellsup:2500,pellaid:0,suglag:0,pool:-1.7,poolsens:0,poolleave:0,hold:10,yshare:68,yjoin:11,lecappt:1,wtutt:10.5,office:50000},
-  admin:{H:31800,s:45,r:95,leave:0,lam:100,cap:25000,nr:15,tui:7683,aid:30,nrrev:26000,fee:7600,feed:50,st:100,strate:11296,stre:0,rerate:9400,tgtcommit:100,realloc:0,mca:0,k:20,frag:0,tt:800,svcshare:40,v:35,w:60,lec:50,sal:125000,nsal:115000,prem:0,equity:250,lsal:89000,fr:64,startup:50000,ops:800,staff:4,svc:2000,hvac:15,capseat:50000,maint:1,aux:0,adm:1,turn:100,trans:5,days:73,dfw:0,aff:40,absorb:100,attrC:0,redesign:0,callayer:0,calyrs:0,D:3.7,att1:0,att:0,blk:0,cg:0,tg:0,decay:0,lead:0,stcut:10,disc:5,hshare:60,hmarg:6500,auxcal:0,refdyn:0,pell:23,pellsup:2500,pellaid:0,suglag:0,pool:0,poolsens:0,poolleave:0,hold:10,yshare:100,yjoin:11,lecappt:0,wtutt:12,office:0},
+  cautious:{H:29000,s:40,r:70,leave:0,lam:100,cap:25000,nr:15,tui:7683,aid:30,nrrev:26000,fee:7600,feed:35,st:0,strate:11296,stre:15,rerate:9400,tgtcommit:100,realloc:5,mca:0,k:18,frag:9,tt:800,svcshare:60,v:15,w:50,lec:40,sal:125000,nsal:115000,prem:10,equity:250,lsal:89000,fr:64,startup:100000,ops:2000,staff:10,svc:3000,hvac:80,capseat:75000,maint:4,aux:2,adm:2,turn:400,trans:10,days:73,dfw:3,aff:40,absorb:50,attrC:1,redesign:2,callayer:0,calyrs:3,D:3.7,att1:3,att:2,blk:4,cg:3.5,tg:2,decay:-10,lead:0,stcut:10,disc:5,hshare:50,hmarg:5000,auxcal:3,refdyn:0,pell:23,pellsup:2500,pellaid:0,suglag:0,pool:-1.7,poolsens:0,poolleave:0,hold:10,yshare:68,yjoin:11,lecappt:1,wtutt:10.5,office:50000},
+  central:null,
+  admin:{H:31800,s:45,r:90,leave:0,lam:100,cap:25000,nr:15,tui:7683,aid:30,nrrev:26000,fee:7600,feed:45,st:30,strate:11296,stre:0,rerate:9400,tgtcommit:100,realloc:0,mca:0,k:19,frag:3,tt:800,svcshare:40,v:30,w:60,lec:50,sal:125000,nsal:115000,prem:0,equity:250,lsal:89000,fr:64,startup:50000,ops:1000,staff:4,svc:2000,hvac:15,capseat:50000,maint:1,aux:0,adm:1,turn:100,trans:5,days:73,dfw:0,aff:40,absorb:100,attrC:0,redesign:0,callayer:0,calyrs:0,D:3.7,att1:0,att:0,blk:0,cg:0,tg:0,decay:0,lead:0,stcut:10,disc:5,hshare:60,hmarg:6500,auxcal:0,refdyn:0,pell:23,pellsup:2500,pellaid:0,suglag:0,pool:0,poolsens:0,poolleave:0,hold:10,yshare:100,yjoin:11,lecappt:0,wtutt:12,office:0},
   history:{H:26900,s:40,r:35,leave:0,lam:90,cap:25000,nr:15,tui:7683,aid:30,nrrev:26000,fee:7600,feed:35,st:0,strate:11296,stre:20,rerate:8200,tgtcommit:100,realloc:5,mca:0,k:18,frag:12,tt:800,svcshare:65,v:10,w:50,lec:40,sal:125000,nsal:115000,prem:15,equity:300,lsal:89000,fr:64,startup:120000,ops:2000,staff:12,svc:3000,hvac:100,capseat:100000,maint:6,aux:3,adm:3,turn:600,trans:15,days:70,dfw:5,aff:50,absorb:30,attrC:2,redesign:4,callayer:1,calyrs:10,D:3.7,att1:5,att:4,blk:6,cg:4,tg:0,decay:-15,lead:1,stcut:10,disc:5,hshare:40,hmarg:3500,auxcal:5,refdyn:0,pell:23,pellsup:2500,pellaid:0,suglag:0,pool:-1.7,poolsens:0,poolleave:0,hold:10,yshare:68,yjoin:11,lecappt:1,wtutt:10.5,office:100000}
 };
+// Central: the cautious scenario with the settings below moved in the plan's favor; it is the scenario the faculty budget summary uses.
+PRESETS.central = Object.assign({}, PRESETS.cautious, {r:65,strate:11161,realloc:0,mca:500,v:20,prem:3,startup:50000,staff:8,svc:2800,hvac:10,capseat:50000,maint:2,aux:1,adm:1,turn:100,trans:5,dfw:0,absorb:100,attrC:0,redesign:1,calyrs:0,att1:0,att:0,blk:0,cg:3,decay:-5,hshare:60,auxcal:2.5,stre:15,pool:0,office:20000});
 // Break even: the central scenario for every setting with firm evidence behind it or little room to move; the less-constrained settings placed
 // where the author judges them plausible, mostly to the plan's advantage; then full-cost admits raised, in steps of 50, until the ten-year result clears zero.
-PRESETS.breakeven = Object.assign({}, PRESETS.central, {auxcal:0,leave:50,feed:35,realloc:0,mca:600,svcshare:40,v:25,lec:50,prem:0,startup:50000,ops:800,staff:4,svc:2000,hvac:15,capseat:50000,maint:1,aux:0.5,adm:1,turn:100,trans:5,dfw:0,absorb:100,attrC:0,redesign:0,calyrs:0,att1:0,att:0,blk:0,cg:0,decay:0,hshare:0,stre:30,pool:0,office:5000});
+PRESETS.breakeven = Object.assign({}, PRESETS.central, {auxcal:0,leave:50,feed:35,realloc:0,mca:400,svcshare:40,v:25,lec:50,prem:0,startup:50000,ops:800,staff:4,svc:2000,hvac:15,capseat:50000,maint:1,aux:0.5,adm:1,turn:100,trans:5,dfw:0,absorb:100,attrC:0,redesign:0,calyrs:0,att1:0,att:0,blk:0,cg:0,decay:0,hshare:0,stre:30,pool:0,office:5000});
 // Finding 3: the central scenario with every lever the campus controls by itself at the favorable end of its documented range.
 PRESETS.levers = Object.assign({}, PRESETS.central, {frag:0, staff:5, svc:2000, ops:1000, hvac:0, turn:0, maint:1, adm:1});
 // The measured baseline: the central scenario with no state funding for the added enrollment beyond what has been allocated.
@@ -1564,6 +1567,7 @@ PRESETS.baseline = Object.assign({}, PRESETS.central, {stre:0});
 function qSteady(p){ return p.yjoin>=11 ? p.yshare/100 : 1; }
 function effP(p){ const q=qSteady(p); return Object.assign({}, p, {H: BASE.H0+(p.H-BASE.H0)*q, s: p.s*q}); }
 const LOCKED=new Set();
+IDS.forEach(id=>{ if(PRESETS.central[id]!==undefined && $(id)) $(id).value=PRESETS.central[id]; });   // sliders start at the central scenario
 function applyPreset(name){
   lastPreset=name;
   const p=PRESETS[name]; IDS.forEach(id=>{ if(p[id]!==undefined && !LOCKED.has(id)) $(id).value=p[id]; });
@@ -1903,15 +1907,15 @@ function drawBars(m){
   const svg=$("c-bars"); svg.innerHTML=""; const box=svg.parentElement, tip=$("tip-bars");
   const revItems=[["Tuition",m.revTui],["Non-resident",m.revNR],["Fees",m.revFee],["State",m.revState],["Full-cost admits",m.revMCA],["Summer housing margin",m.revAux]].filter(d=>Math.abs(d[1])>1e3);
   const costItems=[["Volunteers",m.cVol],["Summer lecturers",m.cLecS],["New hires",m.cHires],["Fall/spring lecturers",m.dLecReg],["Operations",m.cOps],["Staff",m.cStaff],["Services",m.cSvc],["Cooling",m.cHvac],["Overflow build",m.cBuildYRO],["Maintenance",m.cMaint],["Transitions",m.cTurn],["Target penalty",m.cTargetPenalty],["Auxiliary",m.cAux],["Calendar: auxiliaries",m.cAuxCal],["Admin",m.cAdm],["Equity adjustments",m.cEquity],["D/F retakes",m.cRetake],["Need-related support",m.cPell+m.cSugLag]].filter(d=>Math.abs(d[1])>1e3);
-  const W=520,Hh=300,L=56,R=16,T=18,B=40; const plotH=Hh-T-B;
+  const W=400,Hh=330,L=50,R=10,T=46,B=34; const plotH=Hh-T-B;
   const ext=items=>{let up=0,dn=0;items.forEach(d=>{if(d[1]>=0)up+=d[1];else dn+=d[1];});return {up,dn};};
   const re=ext(revItems), ce=ext(costItems);
   const maxV=niceMax(Math.max(re.up,ce.up,m.revenue,m.cost,1));
   const minRaw=Math.min(re.dn,ce.dn,m.revenue,0);
   const minV=minRaw<0? -niceMax(-minRaw) : 0;
   const y=v=>T+plotH-((v-minV)/(maxV-minV))*plotH;
-  for(let i=0;i<=4;i++){const v=minV+(maxV-minV)*i/4; svg.appendChild(svgEl("line",{x1:L,x2:W-R,y1:y(v),y2:y(v),stroke:css("--grid"),"stroke-width":1})); text(svg,L-8,y(v)+4,(v<0?"\u2212":"")+"$"+(Math.abs(v)/1e6).toFixed(0)+"M",{anchor:"end"});}
-  const bw=130, x1=L+40, x2=L+230;
+  for(let i=0;i<=4;i++){const v=minV+(maxV-minV)*i/4; svg.appendChild(svgEl("line",{x1:L,x2:W-R,y1:y(v),y2:y(v),stroke:css("--grid"),"stroke-width":1})); text(svg,L-8,y(v)+4,(v<0?"\u2212":"")+"$"+(Math.abs(v)/1e6).toFixed(0)+"M",{anchor:"end",size:12.5});}
+  const bw=148, x1=L+12, x2=x1+bw+32;
   function stack(items,x,color,color2,label,total){
     let up=0,dn=0;
     items.forEach((d,i)=>{
@@ -1919,20 +1923,20 @@ function drawBars(m){
       const h=Math.abs(y1-y0);
       const r=svgEl("rect",{x,y:Math.min(y0,y1),width:bw,height:Math.max(0,h-2),fill:i%2?color2:color,"fill-opacity":v<0?0.45:1,rx:2});
       svg.appendChild(r); tipOn(box,tip,r,`${d[0]}: ${M(v)}${v<0?" (offset)":""}`);
-      if(h>17) text(svg,x+bw/2,(y0+y1)/2+4,d[0],{anchor:"middle",fill:v<0?css("--ink"):"#fff",size:10.5,weight:600});
+      if(h>17) text(svg,x+bw/2,(y0+y1)/2+4.5,d[0],{anchor:"middle",fill:v<0?css("--ink"):"#fff",size:12.5,weight:600});
       if(v>=0) up+=v; else dn+=v;
     });
     const yt=total>=0? y(Math.max(up,total))-6 : y(Math.min(dn,total))+14;
-    text(svg,x+bw/2,yt,M(total),{anchor:"middle",fill:css("--ink"),weight:600,size:12});
-    text(svg,x+bw/2,Hh-B+18,label,{anchor:"middle",fill:css("--ink-2"),size:12});
+    text(svg,x+bw/2,yt,M(total),{anchor:"middle",fill:css("--ink"),weight:600,size:14});
+    text(svg,x+bw/2,Hh-B+20,label,{anchor:"middle",fill:css("--ink-2"),size:13.5});
   }
   stack(revItems,x1,css("--rev"),css("--rev-2"),"Revenue",m.revenue);
   stack(costItems,x2,css("--cost"),css("--cost-2"),"Cost",m.cost);
-  const nx=x2+bw+22; const yr=y(m.revenue), yc=y(m.cost);
+  const nx=(x1+bw+x2)/2; const yr=y(m.revenue), yc=y(m.cost);
   svg.appendChild(svgEl("line",{x1:nx,x2:nx,y1:Math.min(yr,yc),y2:Math.max(yr,yc),stroke:css(m.net<0?"--crit":"--good"),"stroke-width":2}));
   svg.appendChild(svgEl("line",{x1:nx-5,x2:nx+5,y1:yr,y2:yr,stroke:css("--axis"),"stroke-width":1}));
   svg.appendChild(svgEl("line",{x1:nx-5,x2:nx+5,y1:yc,y2:yc,stroke:css("--axis"),"stroke-width":1}));
-  text(svg,nx+8,(yr+yc)/2+4,"Net "+M(m.net),{fill:css(m.net<0?"--crit":"--good"),weight:600,size:11.5});
+  text(svg,(m.net<0?x2:x1)+bw/2,Math.min(yr,yc)-26,"Net "+M(m.net),{anchor:"middle",fill:css(m.net<0?"--crit":"--good"),weight:700,size:14.5});   // above the taller stack, over its total
   svg.appendChild(svgEl("line",{x1:L,x2:W-R,y1:y(0),y2:y(0),stroke:css("--axis"),"stroke-width":1.5}));
   $("t-bars").innerHTML = `<tr><th>Item</th><th class="r">$M</th></tr>`+revItems.concat(costItems).map(d=>`<tr><td>${d[0]}</td><td class="r">${(d[1]/1e6).toFixed(1)}</td></tr>`).join("")+`<tr><td><b>Net</b></td><td class="r"><b>${(m.net/1e6).toFixed(1)}</b></td></tr>`;
 }
@@ -2522,7 +2526,7 @@ function openPop(btn,id){
   if(popBtn===btn){ closePop(); return; }
   closePop(); popBtn=btn; btn.setAttribute("aria-expanded","true");
   const cur=FMT[id](parseFloat($(id).value));
-  POP.innerHTML = `<button class="p-close" aria-label="Close">×</button><h4>${NUM[id]?`<span class="numtag">${NUM[id]}</span>`:""}${w.name}</h4><p>${w.what}</p><p class="p-why"><b>Why the default${cur===FMT[id](PRESETS.central[id])?"":" (you have set "+cur+")"}:</b> ${w.why}</p><p class="p-range"><b>Plausible range:</b> ${w.range}</p><p class="p-link">${SECLINK[id]?`<a href="#${SECLINK[id][0]}">Discussed in Section ${SECLINK[id][1]} →</a>`:""}<a class="modellink" href="${MODEL_URL}#${id}${settingsTokens()?"~"+settingsTokens():""}" target="_blank" rel="noopener" title="Open the model explorer at this slider, with the current settings">Show in model ↗</a></p>`;
+  POP.innerHTML = `<button class="p-close" aria-label="Close">×</button><h4>${NUM[id]?`<span class="numtag">${NUM[id]}</span>`:""}${w.name}</h4><p>${w.what}</p><p class="p-why"><b>Why the cautious value${cur===FMT[id](PRESETS.cautious[id])?"":" (you have set "+cur+")"}:</b> ${w.why}${PRESETS.central[id]!==PRESETS.cautious[id]?` <b>The central scenario uses ${FMT[id](PRESETS.central[id])}, a setting more favorable to the plan; the reasoning here is for the cautious scenario's ${FMT[id](PRESETS.cautious[id])}.</b>`:""}</p><p class="p-range"><b>Plausible range:</b> ${w.range}</p><p class="p-link">${SECLINK[id]?`<a href="#${SECLINK[id][0]}">Discussed in Section ${SECLINK[id][1]} →</a>`:""}<a class="modellink" href="${MODEL_URL}#${id}${settingsTokens()?"~"+settingsTokens():""}" target="_blank" rel="noopener" title="Open the model explorer at this slider, with the current settings">Show in model ↗</a></p>`;
   POP.querySelector(".p-close").addEventListener("click",closePop);
   POP.style.display="block";
   const r=btn.getBoundingClientRect(); const pw=POP.offsetWidth, ph=POP.offsetHeight;
@@ -2689,7 +2693,7 @@ function jumpTo(id){ const inp=$(id); if(!inp) return; const ctl=inp.closest(".c
 function updateChips(){
   const host=$("chips"); if(!host) return; const p=read(); const base=PRESETS[lastPreset]||PRESETS.central;
   const diff=IDS.filter(id=>id!=="refdyn" && base[id]!==undefined && Math.abs(p[id]-base[id])>1e-9);
-  const name={central:"the central scenario",admin:"the plan-pays assumptions",breakeven:"the break-even case",baseline:"approved funding only",levers:"all internal levers pulled",history:"what CSU history suggests"}[lastPreset];
+  const name={central:"the central scenario",admin:"the plan-pays assumptions",breakeven:"the break-even case",baseline:"approved funding only",levers:"all internal levers pulled",cautious:"the cautious scenario",history:"what CSU history suggests"}[lastPreset];
   if(!diff.length){ host.innerHTML=`<span>Sliders are at ${name}.</span>`; return; }
   host.innerHTML=`<span class="cnt">${diff.length} slider${diff.length===1?"":"s"} moved from ${name}:</span>`+diff.map(id=>{ const lab=($(id).closest(".ctl").querySelector("label")||{}).textContent||id; return `<button type="button" data-jump="${id}" title="${lab.replace(/"/g,"&quot;")}">${NUM[id]||""} · ${FMT[id](p[id])}</button>`; }).join("")+`<button type="button" data-reset="1" title="Reload the preset, keeping locked sliders">reset</button>`;
   host.querySelectorAll("button[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
@@ -2701,7 +2705,7 @@ function updateChips(){
   const strip=document.createElement("div"); strip.className="strip"; strip.id="strip";
   strip.innerHTML='<div class="in"><span><span class="lab">Net, steady state</span><b id="st-net"></b></span><span><span class="lab">Ten-year</span><b id="st-ten"></b></span><span><span class="lab">Last student added</span><b id="st-last"></b></span><span class="presets mini" id="st-presets"></span><span class="pre" id="st-pre"></span><a href="#calc" style="font-weight:600">↑ results</a></div>';
   document.body.appendChild(strip);
-  const SHORT={admin:"Plan pays",breakeven:"Break even",central:"Central",levers:"All levers",history:"CSU history"};
+  const SHORT={admin:"Plan pays",breakeven:"Break even",central:"Central",levers:"All levers",cautious:"Cautious"};
   const sp=$("st-presets");
   document.querySelectorAll("#calc .presets button[data-preset]").forEach(b=>{ const n=b.dataset.preset; const m=document.createElement("button"); m.type="button"; m.dataset.preset=n; m.title=b.textContent; m.textContent=SHORT[n]||b.textContent; m.setAttribute("aria-pressed", b.getAttribute("aria-pressed")||"false"); m.addEventListener("click",()=>applyPreset(n)); sp.appendChild(m); });
   // The strip is shown while any of the three calculator sections is in the viewport. Visibility is decided from the

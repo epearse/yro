@@ -595,7 +595,7 @@ nav.contents a:hover{color:var(--accent);border-color:var(--accent)}
           <div class="sub">Cumulative net result under the current slider settings, with two reference lines: the assumptions under which the plan pays (its preset, with no enrollment decay, no hiring lead and no divergence between cost growth and tuition growth) and the central scenario.</div>
           <div class="ctl" style="margin:4px 0 8px;max-width:520px"><label for="refdyn">Reference curves are drawn according to</label><output id="refdyn-o"></output><input type="range" id="refdyn" min="0" max="1" step="1" value="0" class="hiddenrange"><div class="toggle2" data-for="refdyn" role="group" aria-label="Which dynamics the reference curves use"><button type="button" data-v="0">dynamics of chosen scenario</button><button type="button" data-v="1">current settings of Dynamics sliders</button></div><span class="note" id="refdyn-note" style="display:none"></span></div>
           <div class="sub" id="ten-summary" style="color:var(--ink);font-weight:600"></div>
-          <div class="legend"><span><i style="background:var(--rev)"></i>Annual net, current settings</span><span><i style="background:var(--ink);height:2px"></i>Cumulative, current settings</span><span><i style="background:var(--cost);height:2px"></i>Cumulative, assumptions under which the plan pays</span><span><i style="background:var(--muted);height:2px"></i>Cumulative, central scenario</span><span><i style="background:var(--cost);opacity:.18"></i>Gap to the plan-pays projection</span></div>
+          <div class="legend"><span><i style="background:var(--rev)"></i>Annual net, current settings</span><span><i style="background:var(--ink);height:2px"></i>Cumulative, current settings</span><span><i style="background:var(--cost);height:2px"></i>Cumulative, assumptions under which the plan pays</span><span><i style="background:var(--accent);height:2px"></i>Cumulative, central scenario</span><span><i style="background:var(--muted);height:2px"></i>Cumulative, cautious scenario</span><span><i style="background:var(--cost);opacity:.18"></i>Gap to the plan-pays projection</span></div>
           <div class="chartbox"><svg id="c-ten" viewBox="0 0 900 340" role="img" aria-label="Ten-year cumulative net under the current settings, the assumptions under which the plan pays, and the central scenario"></svg><div class="tip" id="tip-ten"></div></div>
           <details class="tbl"><summary>Table and notes</summary><p class="small" style="font-size:12.5px;margin:8px 0 10px">Loading a preset puts the live curve on top of its reference line. Tracks phase in cohort by cohort (about 30%, 55%, 80% and 100% of the design over the first four years); the cooling retrofit is expensed as cash as each stage of the design is reached, transition and redesign in year one, and none carries an annualized charge afterward; the standing costs of a third term phase in with the design share; startup is charged as hires arrive; tenure lines never shrink. Dynamics are the sliders in the Dynamics group. Nominal; the present value and discounted payback use the discount-rate slider.</p><table id="t-ten"></table></details>
         </div>
@@ -630,6 +630,7 @@ nav.contents a:hover{color:var(--accent);border-color:var(--accent)}
             <div class="sub">Headcount per term against the concurrent cap.</div>
             <div class="legend"><span><i style="background:var(--rev)"></i>Students present</span><span><i style="background:var(--crit);height:2px"></i>Cap</span><span><i style="background:var(--axis);height:2px"></i>Today</span></div>
             <div class="chartbox"><svg id="c-terms" viewBox="0 0 520 300" role="img" aria-label="Students present by term"></svg><div class="tip" id="tip-terms"></div></div>
+            <p class="small" style="font-family:var(--sans);font-size:12.5px;line-height:1.45;margin:8px 0 4px;border-left:3px solid var(--gold);padding-left:10px"><b style="color:var(--ink)">The plan&rsquo;s design makes summer half the size of fall.</b> Every student enrolls in two of three terms, so the terms&rsquo; shares of the student body add up to 200%. Strategic Enrollment Management&rsquo;s stated split is about 60% fall&ndash;spring and 20&ndash;25% on each summer track: 60/20/20 puts 80% of students on campus in fall, 80% in spring and 40% in summer; 50/25/25 puts 75%, 75% and 50%. Summer is half to two-thirds of fall even if every program joins and every assigned student shows up, and smaller when they do not.</p>
             <details class="tbl"><summary>Table</summary><table id="t-terms"></table></details>
           </div>
         </div>
@@ -1936,7 +1937,7 @@ function drawBars(m){
   svg.appendChild(svgEl("line",{x1:nx,x2:nx,y1:Math.min(yr,yc),y2:Math.max(yr,yc),stroke:css(m.net<0?"--crit":"--good"),"stroke-width":2}));
   svg.appendChild(svgEl("line",{x1:nx-5,x2:nx+5,y1:yr,y2:yr,stroke:css("--axis"),"stroke-width":1}));
   svg.appendChild(svgEl("line",{x1:nx-5,x2:nx+5,y1:yc,y2:yc,stroke:css("--axis"),"stroke-width":1}));
-  text(svg,(m.net<0?x2:x1)+bw/2,Math.min(yr,yc)-26,"Net "+M(m.net),{anchor:"middle",fill:css(m.net<0?"--crit":"--good"),weight:700,size:14.5});   // above the taller stack, over its total
+  text(svg,nx,Math.min(yr,yc)-9,"Net "+M(m.net),{anchor:"middle",fill:css(m.net<0?"--crit":"--good"),weight:700,size:14.5});   // centered over the bracket it labels
   svg.appendChild(svgEl("line",{x1:L,x2:W-R,y1:y(0),y2:y(0),stroke:css("--axis"),"stroke-width":1.5}));
   $("t-bars").innerHTML = `<tr><th>Item</th><th class="r">$M</th></tr>`+revItems.concat(costItems).map(d=>`<tr><td>${d[0]}</td><td class="r">${(d[1]/1e6).toFixed(1)}</td></tr>`).join("")+`<tr><td><b>Net</b></td><td class="r"><b>${(m.net/1e6).toFixed(1)}</b></td></tr>`;
 }
@@ -2112,6 +2113,7 @@ function drawTen(p,m){
   const withDyn = base => { const q=Object.assign({},base); if(p.refdyn>0.5) DYN.forEach(k=>q[k]=p[k]); return q; };
   const admin=tenYear(withDyn(PRESETS.admin));
   const central=tenYear(withDyn(PRESETS.central));
+  const cautious=tenYear(withDyn(PRESETS.cautious));
   const DYNLAB={cg:"cost growth",tg:"tuition growth",decay:"realization decay",lead:"hiring lead",calyrs:"calendar layer",stcut:"state funding",hold:"rollout",pool:"applicant pool",poolsens:"realization sensitivity to the pool",poolleave:"enrol-elsewhere sensitivity to the pool"};
   const dynFmt = (k,v) => FMT[k](v).replace(/-(\d)/g,"\u2212$1");
   const dynDiff = DYN.filter(k=>Math.abs(PRESETS.admin[k]-PRESETS.central[k])>1e-9), dynSame = DYN.filter(k=>dynDiff.indexOf(k)<0);
@@ -2121,7 +2123,7 @@ function drawTen(p,m){
     ? `The plan-pays trajectory and central scenario are plotted with whatever sliders ${dynNums()} currently read.`
     : `The plan-pays trajectory is computed with ${dynDesc(PRESETS.admin,dynDiff)}. The central scenario is plotted with ${dynDesc(PRESETS.central,dynDiff)}.${dynSame.length?` Both use ${dynDesc(PRESETS.central,dynSame)}.`:""}`;
   const mine = "current settings";
-  const vals=years.flatMap(d=>[d.annual,d.cum]).concat(admin.map(d=>d.cum)).concat(central.map(d=>d.cum)); let lo=Math.min(...vals,0), hi=Math.max(...vals,0); const pad=(hi-lo)*0.12||1e7; lo-=pad; hi+=pad;
+  const vals=years.flatMap(d=>[d.annual,d.cum]).concat(admin.map(d=>d.cum)).concat(central.map(d=>d.cum)).concat(cautious.map(d=>d.cum)); let lo=Math.min(...vals,0), hi=Math.max(...vals,0); const pad=(hi-lo)*0.12||1e7; lo-=pad; hi+=pad;
   const ys=v=>T+plotH-((v-lo)/(hi-lo))*plotH; const bw=plotW/10*0.5; const xc=i=>L+plotW/10*(i+0.5);
   const step=niceMax((hi-lo)/5); const startv=Math.ceil(lo/step)*step;
   for(let v=startv; v<=hi; v+=step){ svg.appendChild(svgEl("line",{x1:L,x2:W-R,y1:ys(v),y2:ys(v),stroke:css("--grid")})); text(svg,L-8,ys(v)+5,(v<0?"−":"")+"$"+(Math.abs(v)/1e6).toFixed(0)+"M",{anchor:"end",size:14}); }
@@ -2131,8 +2133,11 @@ function drawTen(p,m){
   svg.appendChild(svgEl("path",{d:"M"+up.join(" L")+" L"+down.join(" L")+" Z",fill:css("--cost"),"fill-opacity":0.10}));
   years.forEach((d,i)=>{ const r=svgEl("rect",{x:xc(i)-bw/2,y:Math.min(ys(d.annual),ys(0)),width:bw,height:Math.abs(ys(d.annual)-ys(0)),fill:css("--rev"),"fill-opacity":d.annual<0?0.45:0.85,rx:2}); svg.appendChild(r); tipOn(box,tip,r,`${d.label}: current settings, annual ${M(d.annual)}, cumulative ${M(d.cum)}; ${n0(d.H)} students, ${n0(d.hires)} lines filled`); text(svg,xc(i),Hh-B+18,d.label.slice(0,4),{anchor:"middle",size:13.5}); });
   const pathC=central.map((d,i)=>(i?"L":"M")+xc(i).toFixed(1)+" "+ys(d.cum).toFixed(1)).join(" ");
-  svg.appendChild(svgEl("path",{d:pathC,fill:"none",stroke:css("--muted"),"stroke-width":1.5,"stroke-dasharray":"5 4"}));
-  central.forEach((d,i)=>{const c=svgEl("circle",{cx:xc(i),cy:ys(d.cum),r:3,fill:css("--muted"),stroke:css("--surface"),"stroke-width":2}); svg.appendChild(c); tipOn(box,tip,c,`${d.label}: central scenario, cumulative ${M(d.cum)} (annual ${M(d.annual)})`);});
+  const pathK=cautious.map((d,i)=>(i?"L":"M")+xc(i).toFixed(1)+" "+ys(d.cum).toFixed(1)).join(" ");
+  svg.appendChild(svgEl("path",{d:pathK,fill:"none",stroke:css("--muted"),"stroke-width":1.8}));
+  cautious.forEach((d,i)=>{const c=svgEl("circle",{cx:xc(i),cy:ys(d.cum),r:3,fill:css("--muted"),stroke:css("--surface"),"stroke-width":2}); svg.appendChild(c); tipOn(box,tip,c,`${d.label}: cautious scenario, cumulative ${M(d.cum)} (annual ${M(d.annual)})`);});
+  svg.appendChild(svgEl("path",{d:pathC,fill:"none",stroke:css("--accent"),"stroke-width":1.5,"stroke-dasharray":"5 4"}));
+  central.forEach((d,i)=>{const c=svgEl("circle",{cx:xc(i),cy:ys(d.cum),r:3,fill:css("--accent"),stroke:css("--surface"),"stroke-width":2}); svg.appendChild(c); tipOn(box,tip,c,`${d.label}: central scenario, cumulative ${M(d.cum)} (annual ${M(d.annual)})`);});
   const pathA=admin.map((d,i)=>(i?"L":"M")+xc(i).toFixed(1)+" "+ys(d.cum).toFixed(1)).join(" ");
   svg.appendChild(svgEl("path",{d:pathA,fill:"none",stroke:css("--cost"),"stroke-width":2}));
   admin.forEach((d,i)=>{const c=svgEl("circle",{cx:xc(i),cy:ys(d.cum),r:3.5,fill:css("--cost"),stroke:css("--surface"),"stroke-width":2}); svg.appendChild(c); tipOn(box,tip,c,`${d.label}: assumptions under which the plan pays, cumulative ${M(d.cum)} (annual ${M(d.annual)})`);});
@@ -2141,7 +2146,7 @@ function drawTen(p,m){
   years.forEach((d,i)=>{const c=svgEl("circle",{cx:xc(i),cy:ys(d.cum),r:3.5,fill:css("--ink"),stroke:css("--surface"),"stroke-width":2}); svg.appendChild(c); tipOn(box,tip,c,`${d.label}: current settings, cumulative ${M(d.cum)}`);});
   const last=years[9], lastA=admin[9], lastC=central[9];
   // end labels: place the three, nudging apart when they collide
-  const labels=[{y:ys(lastA.cum),t:"plan-pays assumptions "+M(lastA.cum),c:css("--cost")},{y:ys(lastC.cum),t:"central scenario "+M(lastC.cum),c:css("--muted")}];
+  const labels=[{y:ys(lastA.cum),t:"plan-pays assumptions "+M(lastA.cum),c:css("--cost")},{y:ys(lastC.cum),t:"central scenario "+M(lastC.cum),c:css("--accent")},{y:ys(cautious[9].cum),t:"cautious scenario "+M(cautious[9].cum),c:css("--muted")}];
   if(!isAdmin && !isCentral) labels.push({y:ys(last.cum),t:"current settings "+M(last.cum),c:css("--ink")});
   labels.forEach(l=>{ l.y -= 11; });                      // sit just above the line end
   labels.sort((a,b)=>a.y-b.y);
